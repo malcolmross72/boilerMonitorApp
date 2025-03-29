@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart with the origin at the east axis</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [1,1,1],
+            options: {
+                origin: 0,
+                tooltips: ['Alvin','Pete','Hoolio'],
+                labels: ['Alvin','Pete','Hoolio']
+            }
+        }).draw();
+    
+        setTimeout(function ()
+        {
+            pie.explodeSegment(0,10);
+        }, 250);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

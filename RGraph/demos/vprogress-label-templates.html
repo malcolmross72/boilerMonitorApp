@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Vertical Progress bar using label templates</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="200" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        names = ['Alf','Berty','Carlos','Dave'];
+
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 40,
+            value: [10,10,10,10],
+            options: {
+                marginRight: 115,
+                labelsSpecific: '%{global:names[%{index}]}: %{value_formatted}',
+                labelsCount: 4,
+                labelsSpecificFormattedUnitsPost: '%'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

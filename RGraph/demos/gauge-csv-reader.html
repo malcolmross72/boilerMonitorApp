@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Gauge chart using the CSV reader</h1>
+    
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            // Fetch the the first number on the first row, 
+            var row = csv.row(0, 1, 1);
+
+            var gauge = new RGraph.Gauge({
+                id: 'cvs',
+                min: -50,
+                max: 50,
+                value: row[0],
+                options: {
+                    marginLeft: 10,
+                    marginRight: 10,
+                    marginTop: 10,
+                    marginBottom: 10,
+                    shadowBlur: 10,
+                    shadowColor: '#ddd',
+                    valueTextUnitsPost: 'mm',
+                    tickmarksSmall: 50,
+                    tickmarksMedium: 5,
+                    tickmarksLarge: 5,
+                    labelsCount: 10,
+                    colorsRanges: [[-50,-45,'red'], [-45,40,'yellow'], [-40,40, '#cfc'], [40,45, 'yellow'], [45,50,'red']]
+                }
+            }).grow()
+        }});
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

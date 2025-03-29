@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Scatter chart with an X-axis scale</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 700px; height: 250px" id="chart-container"></div>
+    </div>
+
+    <script>
+        data = [
+            {x:156,y:5},{x:133,y:6},{x:151,y:6},
+            {x:121,y:6},{x:181,y:5},{x:142,y:4},
+            {x:183,y:5},{x:165,y:6},{x:138,y:7},
+            {x:116,y:6},{x:102,y:4},{x:153,y:5}
+        ];
+
+        scatter = new RGraph.SVG.Scatter({
+            id: 'chart-container',
+            data: data,
+            options: {
+                xaxisScale: true,
+                xaxisScaleUnitsPost: 'Kg',
+                xaxisScaleMin:100,
+                xaxisScaleMax: 200,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A rotating Bar chart using CSS3 3D transformations</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,6,8,7],
+            options: {
+                title: 'A demo of 3D transformations',
+                titleSize: 16,
+                titleBold: true,
+                xaxisLabels: ['John','Fred','George','Paul','Ringo']
+            }
+        }).draw();
+
+        // Initially the x/y/z angles are all zero
+        x = 0;
+        y = 0;
+        z = 0;
+
+        // This is the spin function that gets called repeatedly and sets the appropriate CSS values.
+        // It calls itself again at the end after a small delay.
+        mySpinFunc = function ()
+        {
+            // Set the appropriate CSS properties for WebKit browsers
+            document.getElementById("cvs").style.WebkitTransform = 'rotate3d(1,0,0, ' + x + 'deg) rotate3d(0,1,0, ' + y + 'deg) rotate3d(0,0,1, ' + z + 'deg)';
+            
+            // Set the unprefixed CSS properties (for Firefox, MSIE etc)
+            document.getElementById("cvs").style.transform = 'rotate3d(1,0,0, ' + x + 'deg) rotate3d(0,1,0, ' + y + 'deg) rotate3d(0,0,1, ' + z + 'deg)';
+
+
+            // Increment the X/Y/Z angles
+            x += 3;
+            y += 3;
+            z += 3;
+
+            // Call ourselves again after a small delay
+            setTimeout(mySpinFunc, 50);
+        }
+        
+        mySpinFunc();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

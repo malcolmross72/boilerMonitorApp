@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart roundRobin() then explode() demo</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,3,5,1,2],
+            options: {
+                linewidth: 0,
+                colorsStroke: 'rgba(0,0,0,0)',
+                
+            }
+        }).roundRobin(null, function () {pie.explodeSegment(0, 10);});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

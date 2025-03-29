@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.thermometer.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Thermometer chart grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="125" height="450">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        thermometer = new RGraph.Thermometer({
+            id: 'cvs',
+            min: 0,
+            max: 10,
+            value: 4,
+            options: {
+                scaleVisible: true,
+                labelsValue: false
+            }
+        }).grow();
+
+        setTimeout(func = function ()
+        {
+            thermometer.value = RGraph.random(0,10);
+            thermometer.grow();
+            
+            setTimeout(func, 2000);
+        }, 2000);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

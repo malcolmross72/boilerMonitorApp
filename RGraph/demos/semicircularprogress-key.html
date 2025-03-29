@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.semicircularprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Semi-circular Progress chart with an interactive key</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        values = [12,16,17,15];
+
+        new RGraph.SemiCircularProgress ({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: values,
+            options: {
+                _labels: ['Tom','Kev','Pete','Olga'],
+                key: '%{property:_labels[%{index}]}: %{value}%',
+                keyLabelsSize: 16,
+                keyInteractive: true,
+                labelsCenterUnitsPost: '%',
+                labelsCenterSize: 45,
+                labelsCenterSpecific: 'Avg: {1}%'.format(RGraph.arraySum(values) / 4)
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart showing the Dropbox userbase</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [100,300,400,500],
+            options: {
+                marginInner: 50,
+                colors: ['#DE2E2D'],
+                backgroundGridLinewidth: 2,
+                backgroundGridColor: 'gray',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxisScaleUnitsPost: ' million',
+                marginTop: 50,
+                marginLeft: 100,
+                title: 'Dropbox userbase',
+                titleX: 100,
+                titleY: 30,
+                titleHalign: 'left',
+                titleSize: 16,
+                titleBold: true,
+                titleItalic: true,
+                yaxis: false,
+                xaxis: false,
+                xaxisTextColor: 'gray',
+                yaxisTextColor: 'gray',
+                xaxisLabels: ['November 2012','May 2014','June 2015','March 2016'],
+                textSize: 9
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

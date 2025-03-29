@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bipolar chart with a Gauge on the same page</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs1" width="600" height="250">[No canvas support]</canvas>
+        <canvas id="cvs2" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Bipolar({
+            id: 'cvs1',
+            left: [4,8,6,4,3],
+            right: [18,4,6,3,3],
+            options: {
+                yaxisLabels: ['Luis','Peter','Joe','Hoolio','Gina']
+            }
+        }).draw();
+
+        new RGraph.Gauge({
+            id: 'cvs2',
+            min: 0,
+            max: 100,
+            value: 87,
+            options: {
+                adjustable: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.horseshoe.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horseshoe chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="300" height="300" data-image-src="page-demos-pie-horseshoe.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        horseshoe = new RGraph.Horseshoe({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 65,
+            options: {
+                labelUnitsPost: '%'
+            }
+        }).grow();
+        
+        update = function ()
+        {
+            horseshoe.value = horseshoe.value + RGraph.random(-20,20);
+            horseshoe.grow();
+            
+            setTimeout(update, 2000);
+        };
+
+        setTimeout(update, 2000);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

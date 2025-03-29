@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A combined Bar and Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" media="screen" />
+        <canvas id="cvs" width="450" height="200">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [[50,60,52],[65,30,50],[40,80,70],[115,100,92]],
+            options: {
+                // Used for tooltips
+                days: ['Monday','Tuesday','Wednesday'],
+
+                marginTop: 35,
+                marginLeft: 35,
+                marginRight: 15,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['Gradient(white:#f11:#f11)', 'Gradient(white:#1cc:#1cc)', 'Gradient(white:#00f:#00f)'],
+                tooltips: '<b style="font-size: 18pt">%{property:xaxisLabels[%{dataset}]} on %{property:days[%{index}]}: %{value} sales</b>',
+                highlightStroke: 'rgba(0,0,0,0.1)',
+                colorsStroke: 'rgba(0,0,0,0)',
+                shadow: false,
+                shadowOffsetx: -2,
+                shadowOffsety: -2,
+                yaxisScaleMax: 150,
+                yaxis: false,
+                yaxisScale: false,
+                xaxisLabels: ['Bob', 'Jamie', 'Cynthia', 'Peter'],
+                labelsAbove: true,
+                labelsAboveSize: 8,
+                labelsAboveOffsety: 5,
+                linewidth: 2,
+                marginInner: 15,
+                title: 'A combined Bar and Pie chart',
+                titleBold: true,
+                titleSize: 16,
+                titleX: 415,
+                titleHalign: 'right'
+            }
+        }).draw();
+
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [270,270,164],
+            options: {
+                exploded: [7,2,],
+                labels: ['Mondays sales'],
+                labelsSticks: [true],
+                labelsList: false,
+                labelsSticksColor: 'black',
+                centerx: 60,
+                centery: 55,
+                radius: 25,
+                shadow: false,
+                colors: ['Gradient(white:#c11:#c11:#c11)', 'Gradient(white:#1cc:#1cc:#1cc)', 'Gradient(white:#11c:#11c:#11c)'],
+                tooltips: ['Total Monday sales: 270', 'Total Tuesday sales: 270', 'Total Wednesday sales: 264'],
+                tooltipsEvent: 'mousemove',
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+
+        $('#cvs').addClass('animated expand');
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

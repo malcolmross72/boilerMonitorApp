@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Rose chart using both the grow() effect and the roundrobin() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 450px; height: 400px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [],
+            options: {
+                backgroundGridRadialsCount: 0
+            }
+        }).draw();
+
+        new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [[9,1,5],[3,8,6],[2,1,1],[4,6,5],[3,5,2],[5,6,3],[8,4,6]],
+            options: {
+                colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+                backgroundGrid: false,
+                linewidth: 2,
+                amargin: '5deg',
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                tooltips: [
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed',
+                    'Mon','Tue','Wed'
+                ],
+                linewidth: .5
+            }
+        }).roundrobin().grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

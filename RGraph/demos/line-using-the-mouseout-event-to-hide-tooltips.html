@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js"></script>
+    <script src="../libraries/RGraph.common.dynamic.js"></script>
+    <script src="../libraries/RGraph.common.tooltips.js"></script>
+    <script src="../libraries/RGraph.line.js"></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using the mouseout event to hide tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [84,86,15,56,53,68,98],
+            options: {
+                xaxisLabels: ['Kim','Hoolio','Jack','Jim','Louise','Ringo','John'],
+                tooltips: ['Kim','Hoolio','Jack','Jim','Louise','Ringo','John deserves a longer tooltip'],
+                marginLeft: 50,
+                textSize: 14
+            }
+        }).draw()
+
+
+
+        // This is the event listener that handles the hiding of the tooltip.
+        line.canvas.onmouseout = function (e)
+        {
+            // Hide the tooltip
+            RGraph.hideTooltip();
+            
+            // Redraw the canvas so that any highlighting is gone
+            RGraph.redraw();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of a Pie chart that uses the pseudo-events</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [12,13,16,15,16],
+            options: {
+                labels: ['Charly','Lou','Pete','Jim','Fred'],
+                shadow: false
+            }
+        }).draw()   
+
+        // This is the function for the mousemove event. It changes the pointer to the hand.
+        // When the mouse is moved away from the segment the pointer is changed back to what it was
+        // automatically for you.
+        .on('mousemove', function (e, shape)
+        {
+            return true;
+        })
+
+        // This is the function for the click event.
+        .on('click', function (e, shape)
+        {
+            alert('A segment was clicked (with index: ' + shape.index + ')');
+        });
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

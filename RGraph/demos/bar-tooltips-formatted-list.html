@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with a list in the tooltips</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+
+        <style>
+            .RGraph_tooltip li {
+                text-align: left;
+                margin: 3px;
+            }
+    
+            .RGraph_tooltip h2 {
+                color: white;
+                margin: 5px;
+                font-style: italic;
+            }
+        </style>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,6],
+            options: {
+
+                tooltips: '<h2>Results</h2> %{list}',
+                tooltipsEffect: 'none',
+                
+                // The type of the list (ordered or unordered)
+                tooltipsFormattedListType: 'ol',
+                
+                // The items that appear in the list
+                tooltipsFormattedListItems: [
+                    ['Barry','Larry','Harry'],
+                    ['Bill','Lil','Jill'],
+                    ['Jack','Zak','Quack']
+                ],
+
+                // The rest of the chart configuration
+                marginInner: 70,
+                xaxisLabels: ['Monday','Tuesday','Wednesday'],
+                textSize: 16,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                title: 'A demonstration of a tooltip list',
+                titleBold: true,
+                titleOffsety: 5
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

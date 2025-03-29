@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Gauge chart with non-zero maximum and minimum values</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="350" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var gauge = new RGraph.Gauge({
+            id: 'cvs',
+            min: -50,
+            max: 50,
+            value: 26,
+            options: {
+                valueTextUnitsPost: 'mm',
+                tickmarksSmall: 50,
+                tickmarksMedium: 5,
+                tickmarksLarge: 5,
+                labelsCount: 10,
+                colorsRanges: [
+                    [-50,-45,'red'],
+                    [-45,40,'yellow'],
+                    [-40,40, '#cfc'],
+                    [40,45, 'yellow'],
+                    [45,50,'red']
+                ]
+            }
+        }).draw();
+
+
+        //
+        // This is all the code that's necessary to make the Gauge interactive
+        //
+        gauge.canvas.addEventListener('mousedown', function (e)
+        {
+            var gauge = RGraph.ObjectRegistry.getObjectByXY(e);
+            gauge.value = gauge.getValue(e);
+            gauge.grow();
+        }, false);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

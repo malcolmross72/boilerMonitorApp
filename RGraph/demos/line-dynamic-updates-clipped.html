@@ -1,0 +1,151 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dynamically updating dual-color (at scale value 25) Line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="text-align:center; font-weight: bold; font-size: 14pt; width: 600px">
+            <canvas id="cvs" width="700" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        // Initialise a few variables that will be used later
+        canvas    = document.getElementById("cvs");
+        obj       = null;
+        obj2      = null;
+        data      = [];
+        numvalues = 1200;
+        clipValue = 25;
+        delay     = 16.666;
+
+        // Pre-pad the data array with null values
+        for (var i=0; i<numvalues; ++i) {
+            data.push(null);
+        }
+
+
+
+
+
+
+
+
+        // The function that draws the chart (or more
+        // accurately - both charts). This function is called
+        // (approximately) 60 times a second.
+        function drawGraph ()
+        {
+            if (!obj || !obj2) {
+                
+                // This is the green, top Line chart (only the
+                // top half of this chart is shown due to clipping)
+                obj = new RGraph.Line({
+                    id: 'cvs',
+                    data: [],
+                    options: opt = {
+                        colors: ['green'],
+                        linewidth: 0.75,
+                        shadow: false,
+                        tickmarksStyle: null,
+                        marginRight: 75,
+                        backgroundGridVlines: false,
+                        backgroundGridBorder: false,
+                        yaxisPosition: 'right',
+                        yaxisTickmarksCount: 5,
+                        xaxisTickmarksCount: 0,
+                        yaxisLabelsCount: 5,
+                        yaxis: false,
+                        xaxisTickmarksCount: 6,
+                        xaxisTitle: 'Last 60 seconds',
+                        xaxisTitleItalic: true,
+                        title: 'Bandwidth used  (Mb/s)',
+                        textSize: 16,
+                        marginTop: 45,
+                        clip: 'scale:25-max'
+                    }
+                });
+
+
+
+
+
+
+
+                // This is the red, bottom Line chart (only the
+                // bottom half of this chart is shown due to
+                // clipping)
+                obj2 = new RGraph.Line({
+                    id: 'cvs',
+                    data: [],
+                    options: {
+                        
+                        // Copy the configuration of the first
+                        // chart with spread operator
+                        ...opt,
+                        
+                        // Change the color of the line freom green
+                        // to red
+                        colors: ['red'],
+                        
+                        // Change the clipping so only the bottom
+                        // is drawn
+                        clip: 'scale:min-25'
+                    }
+                });
+            }
+
+
+
+
+
+            // Add some data to the data arrays
+            var len          = data.length,
+                lastvalue    = RGraph.isNull(data[len - 1]) ? 26 : data[len - 1],
+                random_value = RGraph.random(lastvalue  - 2,lastvalue  + 2);
+           
+           // Constrain the random value to between 0 and 250
+           random_value = Math.max(random_value, 0);
+           random_value = Math.min(random_value, 250);
+
+            // Add the new random value to the end of the data
+            data.push(random_value);
+            
+            // If the number of items in the data array is more
+            // than the numvalues variable then get rid of the
+            // value at the front of the array
+            if (data.length > numvalues) {
+                data = RGraph.arrayShift(data);
+            }
+
+            // Set the new data on the charts
+            obj.original_data[0]  = data;
+            obj2.original_data[0] = data;
+
+
+
+
+            // Redraw the two charts
+            RGraph.redraw();
+
+
+
+
+            // Call this function again after a few milliseconds
+            setTimeout(drawGraph, delay);
+        }
+    
+        drawGraph();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

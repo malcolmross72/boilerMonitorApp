@@ -1,0 +1,112 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart with a canvas background</h1>
+
+    <div id="rgraph-demo-html">
+        <style>
+            div#outer {
+                position: relative;
+            }
+            
+            div#outer canvas {
+                position: absolute;
+                left: 50px;
+                top: 50px;
+                width: 680px;
+                height: 230px;
+            }
+        </style>
+
+        <div id="outer" style="padding: 15px; display: inline-block">
+            <canvas width="750" height="300" id="cvs_background"></canvas>
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        color1    = 'white';
+        color2    = 'rgba(64,64,64,0.15)';
+        increment = 0.0005;
+        radius    = 500; // The gradient radius
+    
+        ca    = document.getElementById('cvs_background'),
+        co    = ca.getContext('2d');
+        cx    = ca.width / 2,
+        cy    = ca.height / 2,
+        angle = 0
+    
+        // This draws the rotating background on the canvas
+        function draw ()
+        {
+            co.clearRect(-5000,-5000,10000,10000);
+    
+    
+            co.translate(cx,cy);
+            co.rotate(increment);
+            co.translate(cx * -1,cy * -1);
+            
+            // Keep a record of what the angle used is
+            angle += increment;
+            
+            for (var i=0; i<6.28; i+=(6.28 / 15)) {
+    
+                var endpoint1 = RGraph.getRadiusEndPoint(cx, cy, i - 0.1, 10000 * angle * 4);
+                var endpoint2 = RGraph.getRadiusEndPoint(cx, cy, i + 0.1, 10000 * angle * 4);
+            
+                co.beginPath();
+                    co.fillStyle = color2;
+                    co.moveTo(cx,cy);
+                    co.lineTo(endpoint1[0],endpoint1[1]);
+                    co.lineTo(endpoint2[0],endpoint2[1]);
+                    co.lineTo(cx,cy);
+                co.fill();
+            }
+            
+            // Draw a circular gradient from the center outwards
+            var grad = co.createRadialGradient(cx, cy, 0, cx, cy, radius);
+                grad.addColorStop(0, 'white');
+                grad.addColorStop(0.25, 'rgba(255,255,255,0.75)');
+                grad.addColorStop(0.5, 'rgba(255,255,255,0)');
+            
+            co.fillStyle = grad;
+            RGraph.path(co, 'b a % % % % % % f',cx, cy,1000,0,2 * Math.PI,-1);
+    
+            setTimeout(draw, 25);
+        }
+        
+        draw();
+        
+        var bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [4,8,6,5,3,7,8],
+            options: {
+                backgroundGrid: false,
+                colors: ['black'],
+                labelsAbove: true,
+                labelsAboveUnitsPost: 'km',
+                labelsAboveOffsety: 30,
+                labelsAboveColor: 'white',
+                labelsAboveBold: true,
+                labelsAboveItalic: true,
+                marginInner: 25,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thuesday','Friday','Saturday','Sunday'],
+                tooltips: '%{property:xaxisLabels[%{dataset}]}: %{value_formatted}',
+                tooltipsFormattedUnitsPost: 'kg'
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

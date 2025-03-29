@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Donut chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="350" data-image-src="page-demos-donut-3d.png">[No canvas support]</canvas>
+        </div>
+    </div>    
+
+    <script id="rgraph-demo-source-code">
+        labels = ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'];
+
+        // Create the Pie chart, set the donut variant and the rest of the
+        // configuration. The variant property is what sets the chart to
+        // be a Donut chart instead of a regular Pie chart.
+        donut = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,8,6,3,5,2,5],
+            options: {
+                shadow: true,
+                shadowOffsetx: 0,
+                shadowOffsety: 5,
+                shadowColor: '#aaa',
+                variant: 'donut3d',
+                labels: labels,
+                labelsSticksLength: 15,
+                labelsSticksLinewidth: 2,
+                colorsStroke: 'transparent',
+                tooltipsCss:{
+                    fontSize:'16pt'
+                }
+            }
+        }).draw();
+        
+        donut.responsive([
+            {maxWidth: null,width:600,height:350,options:{radius: 100,labelsList: true, labels:labels,title:'',tooltips:null}},
+            {maxWidth: 900,width:400,height:250,options:{radius: 90,labels: null,title: '(Click for labels)',tooltips:labels}}
+        ]);
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

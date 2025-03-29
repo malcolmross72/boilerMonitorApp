@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.sheets.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using the Google Sheets connector</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Sheets('AIzaSyBPofvjcDhOdet_U2Tr4-rSLItAgaCsMCM', '1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E', 'Bar chart', function (sheet)
+        {
+            var data   = sheet.get('B2:B13');
+            var labels = sheet.get('A2:A13');
+            
+            for (var i=0; i<labels.length; i+=2) {
+                labels[i] = "\n" + labels[i];
+            }
+
+            var bar = new RGraph.Bar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    xaxisLabels: labels,
+                    colors: ['#f66'],
+                    shadow: false,
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    xaxis: false,
+                    yaxis: false,
+                    marginLeft: 50,
+                    marginBottom: 70,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    textSize: 16,
+                    title: 'A Bar chart using the Google Sheets connector',
+                    titleBold: true,
+                    titleSize: 16
+                }
+            }).wave();
+        });
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

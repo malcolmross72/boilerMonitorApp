@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG dual-color Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 700px; height: 300px"></div>
+    </div>
+
+    <script>
+        // The (red) top half of the chart
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data = [8,6,4,3,5,-2,-5,-8,-1,-9,-4,-5],
+            options: opt = {
+                yaxisScaleMin: 'mirror',
+                colors: ['Gradient(red:red:red:white)'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisTickmarks: false,
+                xaxisLabels: RGraph.SVG.MONTHS_SHORT,
+                yaxis: false,
+                xaxisLinewidth: 3,
+                yaxisLinewidth: 3,
+                tooltips: 'Sales quantity: %{value}',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                },
+                textSize: '18pt',
+                marginLeft: 50,
+                clip:'tophalf'
+            }
+        }).wave();
+
+
+
+
+        // The (black) bottom half of the chart
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                ...opt,
+                colors: ['black'],
+                clip:'bottomhalf'
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

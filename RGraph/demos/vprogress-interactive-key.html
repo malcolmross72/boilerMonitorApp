@@ -1,0 +1,97 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>     
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Vertical Progress bar with an interactive key</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="display: inline-block">
+            <canvas id="cvs1" width="275" height="500">[No canvas support]</canvas>
+            <canvas id="cvs2" width="275" height="500">[No canvas support]</canvas>
+            <canvas id="cvs3" width="275" height="500">[No canvas support]</canvas>
+            <canvas id="cvs4" width="275" height="500">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        new RGraph.VProgress({
+            id: 'cvs1',
+            min: 0,
+            max: 100,
+            value: [10,12,13,16,18],
+            options: {
+                textSize: 12,
+                key: ['Jim','Jack','Joseph','Jane', 'Jimmy'],
+                keyInteractive: true,
+                keyPositionX: 160,
+                keyPositionY: 20,
+                marginRight: 160,
+                corners: 'round',
+                cornersRoundRadius: 50
+            }
+        }).draw();
+
+
+        new RGraph.VProgress({
+            id: 'cvs2',
+            min: 0,
+            max: 100,
+            value: [10,12,13,16,18],
+            options: {
+                textSize: 12,
+                key: ['Jim','Jack','Joseph','Jane', 'Jimmy'],
+                keyInteractive: true,
+                keyPositionX: 160,
+                keyPositionY: 20,
+                marginRight: 190
+            }
+        }).draw();
+
+
+        new RGraph.VProgress({
+            id: 'cvs3',
+            min: 0,
+            max: 80,
+            value: 67,
+            options: {
+                textSize: 12,
+                key: ['Jim'],
+                keyInteractive: true,
+                keyPositionX: 160,
+                keyPositionY: 20,
+                marginRight: 190,
+                corners: 'round',
+                cornersRoundRadius: 100
+            }
+        }).draw();
+
+
+        new RGraph.VProgress({
+            id: 'cvs4',
+            min: 0,
+            max: 80,
+            value: 67,
+            options: {
+                textSize: 12,
+                key: ['Jim'],
+                keyInteractive: true,
+                keyPositionX: 160,
+                keyPositionY: 20,
+                marginRight: 190
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

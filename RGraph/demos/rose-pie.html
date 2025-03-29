@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Rose chart customised to be a Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="padding: 50px">
+            <canvas id="cvs" width="450" height="450">[No canvas support]</canvas>
+        </div>
+
+         <style>
+            .RGraph_tooltip {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+                padding: 10px;
+                text-align:center;
+                font-weight: bold;
+            }
+         </style>
+    </div>
+    
+    <script>
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [[50,53],[51,52],[52,56],[51,25],[55,12]],
+            options: {
+                margin: 2,
+                variant: 'non-equi-angular',
+                backgroundGridColor: 'rgba(0,0,0,0)',
+                labelsAxes: '',
+                colorsAlpha: 1,
+                colors: ['red','blue','green','pink','black','yellow','cyan','brown', 'blue', 'pink'],
+                colorsSequential: true,
+                colorsStroke: 'transparent',
+                labels: ['Richard','Robert','Rico','Ray','Raife','Ryan','Roland'],
+                tooltips: ['Richard','Robert','Rico','Ray','Raife','Ryan','Roland'],
+                shadow: true
+            }
+        }).roundRobin({frames: 60});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

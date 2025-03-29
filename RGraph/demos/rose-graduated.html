@@ -1,0 +1,75 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A graduated Rose chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // Set the data. The actual values don't matter for this chart
+        data = [
+            [1,1,1,1,1,1],
+            [1,1,1,1,1],
+            [1,1,1,1,1,1],
+            [1,1,1,1,1,1],
+            [1,1,1,1],
+            [1,1,1,1,1]
+        ];
+        
+        // These are the original rgba color values
+        originalColors = [
+            'rgba(255,0,0,0)',
+            'rgba(0,255,0,0)',
+            'rgba(0,0,255,0)',
+            'rgba(255,255,0,0)',
+            'rgba(255,0,255,0)',
+            'rgba(0,0,0,0)'
+        ];
+
+        // An array which will contain the colors when they have been generated
+        colors = [];
+        
+        // Generate the colors
+        for (var i=0; i<data.length; ++i) {
+
+            var tmp = [];
+
+            for (var j=0; j<data[i].length; ++j) {
+
+                tmp.push((function (c) {return c.replace(/0\)$/, 0.1 * (10 - (j*2)) + ')');})(originalColors[i]));
+            }
+
+            colors = colors.concat(tmp.reverse());
+
+        }
+
+        new RGraph.Rose({
+            id: 'cvs',
+            data: data,
+            options: {
+                labels: ['Luna','Kevin','Richard','John','Dave','Bob'],
+                colors: colors,
+                colorsSequential: true,
+                margin: 0,
+                labelsAxes: '',
+                scaleMax: 6,
+                labelsBold: true,
+                labelsSize: 16,
+                backgroundGridCirclesCount: 6
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>    
+
+</body>
+</html>

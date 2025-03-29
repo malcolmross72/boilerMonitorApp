@@ -1,0 +1,27 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.radar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Radar chart trace effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var radar = new RGraph.Radar({
+            id: 'cvs',
+            data: [8,6,4,8,7,5]
+        }).trace();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

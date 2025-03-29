@@ -1,0 +1,191 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar/Bar/Pie dashboard</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="border: 1px solid gray; width: 750px; height: 600px">
+            <div style="width: 375px; height: 200px; float: left" id="chart-container1"></div>
+            <div style="width: 375px; height: 200px; float: left" id="chart-container2"></div>
+            <div style="width: 150px; height: 200px; float: left" id="chart-container3"></div>
+            <div style="width: 150px; height: 200px; float: left" id="chart-container4"></div>
+            <div style="width: 150px; height: 200px; float: left" id="chart-container5"></div>
+            <div style="width: 150px; height: 200px; float: left" id="chart-container6"></div>
+            <div style="width: 150px; height: 200px; float: left" id="chart-container7"></div>
+            <div style="width: 750px; height: 200px; float: left" id="chart-container8"></div>
+        </div>
+    </div>
+
+    <script>
+        data   = [
+            [10,23,18,25,15],
+            [12,25,14,5,4],
+            [13,20,13,8,3],
+            [12,19,17,10,8],
+            [15,16,13,8,5]
+        ];
+        colors    = ['#0B74B5','#D56229','#1B9F77','#CF77A9','#E79F26'];
+        pieLabels = ['Category 1','Category 2','Category 3','Category 4','Category 5'];
+        labels    = ['Item 1','Item 2','Item 3','Item 4','Item 5'];
+
+        pie = new RGraph.SVG.Pie({
+            id: 'chart-container1',
+            data: data[0],
+            options: {
+                colors: colors,
+                centerx: 250
+            }
+        }).draw();
+
+        hbar1 = new RGraph.SVG.HBar({
+            id: 'chart-container2',
+            data: data,
+            options: {
+                colors: colors,
+                grouping: 'stacked',
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                yaxisLabels: labels,
+                xaxisScaleMax: 90
+            }
+        }).draw();
+        
+        // Add the labels on the left of the Pie chart
+        for (var i=0; i<pieLabels.length; ++i) {
+        
+            var y = (i * 30) + 35;
+        
+            RGraph.SVG.text({
+                object: pie,
+                text: pieLabels[i],
+                x: 100,
+                y: y,
+                halign: 'right',
+                valign: 'center'
+            });
+            
+            RGraph.SVG.create({
+                svg: pie.svg,
+                type: 'circle',
+                attr: {
+                    cx: 115,
+                    cy: y,
+                    r: 8,
+                    fill: colors[i]
+                }
+            });
+        }
+
+
+        // Second row
+        
+
+        hbar2 = new RGraph.SVG.HBar({
+            id: 'chart-container3',
+            data: data[0],
+            options: {
+                colors: [colors[0]],
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                yaxisLabels: labels,
+                xaxisScaleMax: 30,
+                textSize: 10,
+                xaxisLabelsCount: 2
+            }
+        }).draw();
+        
+
+        hbar2 = new RGraph.SVG.HBar({
+            id: 'chart-container4',
+            data: data[1],
+            options: {
+                colors: [colors[1]],
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                xaxisScaleMax: 30,
+                textSize: 10,
+                xaxisLabelsCount: 2
+            }
+        }).draw();
+        
+
+        hbar3 = new RGraph.SVG.HBar({
+            id: 'chart-container5',
+            data: data[2],
+            options: {
+                colors: [colors[2]],
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                xaxisScaleMax: 30,
+                textSize: 10,
+                xaxisLabelsCount: 2
+            }
+        }).draw();
+        
+
+        hbar4 = new RGraph.SVG.HBar({
+            id: 'chart-container6',
+            data: data[3],
+            options: {
+                colors: [colors[3]],
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                xaxisScaleMax: 30,
+                textSize: 10,
+                xaxisLabelsCount: 2
+            }
+        }).draw();
+        
+
+        hbar5 = new RGraph.SVG.HBar({
+            id: 'chart-container7',
+            data: data[4],
+            options: {
+                colors: [colors[4]],
+                backgroundGrid: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                xaxisScaleMax: 30,
+                textSize: 10,
+                xaxisLabelsCount: 2
+            }
+        }).draw();
+        
+
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container8',
+            data: data,
+            options: {
+                colors: colors,
+                backgroundGridHlinesCount: 2,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                yaxis: false,
+                yaxisScaleMax: 30,
+                yaxisLabelsCount: 2,
+                marginInner: 25,
+                xaxisLabels: labels
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

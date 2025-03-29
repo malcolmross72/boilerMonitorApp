@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with labels that follow the line up and down</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [4,8,6,5,3,5,4,6,8,9,2,7,8,4],
+            options: {
+                xaxis: false,
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                shadow: false,
+                linewidth: 1,
+                labelsAngledAccessible: false,
+                labelsAngled: ['Up','Down','Level'],
+                labelsAngledSize: 10
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

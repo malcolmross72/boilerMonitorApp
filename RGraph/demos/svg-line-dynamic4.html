@@ -1,0 +1,89 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with dynamically updating data</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        iteration = 0;
+        data      = [];
+        last      = 0;
+        DELAY     = 50;
+
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                marginInner: 0,
+                title: 'An updating SVG Line chart',
+                yaxis: false,
+                xaxis: false,
+                backgroundGridColor: '#ccc',
+                backgroundGridVlinesCount: 15,
+                backgroundGridBorder: true,
+                colors: ['#c00'],
+                linewidth: 1,
+                yaxisScaleMax: 100
+            }
+        }).draw();
+        
+        RGraph.SVG.create({
+            svg: line.svg,
+            type: 'rect',
+            attr: {
+                x:35,
+                y:35,
+                width:680,
+                height:230,
+                stroke: '#ccc',
+                fill: 'transparent'
+            }
+        });
+
+
+
+
+        function update ()
+        {
+            if (iteration === 0) {
+                line.originalData[0] = RGraph.SVG.arrayFill({
+                    array:  [],
+                    length: 1440
+                });
+            }
+
+            // A global
+            last  = last + RGraph.SVG.random({min:-5, max:5});
+            if (last < 0)   last = 0;
+            if (last > 100) last = 100;
+
+            line.originalData[0].push(last);
+            line.originalData[0].shift();
+
+            RGraph.SVG.redraw();
+            
+            iteration++;
+
+            setTimeout(function ()
+            {
+                update()
+            }, DELAY); // Change this to 60000 for a whole days worth of monitoring
+        }
+
+        update();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

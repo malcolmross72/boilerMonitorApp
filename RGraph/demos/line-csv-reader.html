@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using the CSV reader</h1>
+
+    <script>
+        if (!location.host) {
+            document.write(`
+<div id="<?php echo $id ?>" style="margin: 10px; background-color: #fff7d0;padding: 10px;border-left: 10px solid #e7c000;line-height: 25px; border-top: 1px solid #ccc; border-right: 1px solid #ccc; border-bottom: 1px solid #ccc; border-top-right-radius: 5px; border-bottom-right-radius: 5px">
+<span style="color: #aa0;font-weight: bold">Warning</span><br />
+For browser security reasons the <code>ajax</code> demos don't work offline.
+You can view the demos on the RGraph website here:
+    <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+</div>`);
+        }
+    </script>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Create a new CSV connector object passing it the URL of the CSV file and a
+        // function that creates the chart. Due to AJAX restrictions the URL must be
+        // relative to the current website/domain.
+        new RGraph.CSV('/sample.csv', function (csv)
+        {
+            // Fetch the third column from the CSV file (the numbering is zero-indexed)
+            var data = csv.column(2);
+
+            // Create the Line chart and give it the data that we just got from the
+            // CSV file along with some hardcoded X-axis labels.
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: data,
+                options: {
+                    xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                    shadow: false,
+                    backgroundGridBorder: false,
+                    backgroundGridVlines: false,
+                    xaxis: false,
+                    yaxis: false,
+                    responsive: [
+                        {maxWidth: null, width:500,height:250, options: {xaxisLabelsAngle: 0,textSize: 12,marginLeft: 35},parentCss: {marginBottom: 0}},
+                        {maxWidth: 900,width: 400,height: 150,options: {xaxisLabelsAngle: 20,textSize: 10,marginLeft: 45},parentCss: {marginBottom: '35px'}}
+                    ]
+                }
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

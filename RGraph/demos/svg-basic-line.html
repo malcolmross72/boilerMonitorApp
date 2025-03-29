@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [
+                [0.05,0.06,0.01,0.06,0.09,0.02,0.07],
+                [0.07,0.02,0.06,0.08,0.05,0.05,0.02]
+            ],
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                key: ['Richard','Charlie'],
+                marginInner: 0,                
+                title: 'A basic linechart',
+                marginTop: 55,                
+                marginRight: 75,
+                marginLeft: 75,
+                marginBottom: 75,
+                yaxisScaleDecimals: 2,
+                spline: true,                
+                xaxis: false,
+                yaxis: false,
+                tooltips: ' ',
+                tooltipsOverride: function (obj, opt) {},
+                shadow: true,
+                responsive: [
+                    {maxWidth: 900,width: 450, height: 250, options:{textSize: 10,  xaxisLabels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], linewidth: 3}},
+                    {maxWidth: null,width: 750, height: 300, options:{textSize: 12, xaxisLabels: ['\r\nMonday', 'Tuesday', '\r\nWednesday', 'Thursday', '\r\nFriday', 'Saturday', '\r\nSunday'],linewidth:5}}
+                ]
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

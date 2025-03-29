@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Line chart using one-touch adjusting</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // The data for the chart
+        data = [11,13,14,15,17,19,20,19,17,15,14,14,13];
+
+        // Create and configure the chart
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                yaxisScaleMax: 20,
+                marginInner: 10,
+                tickmarksStyle: 'circle',
+                xaxisLabels: ['Fred', 'John', 'Kev', 'Lou', 'Pete','Mark','Neil','Indra','Lewis','Bob'],
+                xaxis: false,
+                yaxis: false,
+                yaxisTickmarksCount: 5,
+                tickmarksStyle: 'filledcircle',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                labelsAbove: true,
+                labelsAboveBorder: false,
+                labelsAboveDecimals: 1,
+                labelsAboveSize: 9,
+                labelsAboveBold: true,
+                labelsAboveOffsety: -10,
+                shadow: false,
+                
+                adjustable: true,
+                adjustableXonly: true,
+                tooltipsHotspotSize: 20
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

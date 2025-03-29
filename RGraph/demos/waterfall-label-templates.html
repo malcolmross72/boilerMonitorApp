@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Waterfall chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px">
+            <canvas id="cvs" width="750" height="400">[No canvas support]</canvas>
+        </div>
+    </div>
+
+
+    <script>
+        new RGraph.Waterfall({
+            id: 'cvs',
+            data: [4,6,-8,-9,3,2,-7],
+            options: {
+                marginInner: 20,
+                xaxisPosition: 'center',
+                names: ['Richard','Rachel','Jezza','Gary','Lucy','Peter','Neil','Total'],
+                xaxisLabelsFormattedUnitsPost: 'kg',
+                xaxisLabels: '%{property:names[%{index}]} (%{value_formatted})',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

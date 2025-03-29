@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A responsive Horizontal Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [[1,8],[1,2],[5,4]],
+            options: {
+                colors: ['red','black'],
+                grouping: 'grouped',
+                marginLeft: 100,
+                marginInner: 10,
+                marginInnerGrouped: 2,
+                xaxis: false,
+                yaxis: false,
+                yaxisLabels: ['Monday','Tuesday','Wednesday'],
+                backgroundGridBorder: false,
+                backgroundGridHlines: false,
+                responsive:     [
+                    {maxWidth: 700,  width: 400, height: 200, options: {textSize: 8}},
+                    {maxWidth: 900,  width: 400, height: 200, options: {textSize: 12}},
+                    {maxWidth: null, width: 700, height: 350, options: {textSize: 20}}
+                ]
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

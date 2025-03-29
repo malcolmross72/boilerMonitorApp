@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Pie chart thats banded</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 350px; height: 300px; border: 1px solid #ddd" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [4,8,6,5,3,5,6,8],
+            options: {
+                labels: ['David','Paul','Molly','Rachel','Jobe','Lucy','John','Bob'],
+                labelsSticks: false,
+                exploded: 5,
+                donut: true
+            }                    
+        }).on('draw', function (obj)
+        {
+            var svg  = obj.svg,
+                path = '';
+            
+            var r = obj.radius;
+            
+            while (r > 0) {
+                path =
+                    RGraph.SVG.TRIG.getArcPath3({
+                        cx: obj.centerx,
+                        cy: obj.centery,
+                        r:  r,
+                        start: 0,
+                        end: 3.1415 * 2,
+                        anticlockwise: false,
+                        lineto: false
+                    }) + " " + 
+                    RGraph.SVG.TRIG.getArcPath3({
+                        cx: obj.centerx,
+                        cy: obj.centery,
+                        r:  r - 5,
+                        start: 3.1415 * 2,
+                        end: 0,
+                        anticlockwise: true,
+                        lineto: true
+                    }) + ' Z'
+
+                RGraph.SVG.create({
+                    svg: svg,
+                    type: 'path',
+                    parent: obj.svg.all,
+                    attr: {
+                        d: path,
+                        fill: 'white'
+                    }
+                });
+                    
+                r -= 10;
+            }
+        }).roundRobin({frames: 90});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

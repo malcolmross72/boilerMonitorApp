@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart showing smoking preferences</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 600px; height: 600px"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [2453,524,516,1036,486],
+            options: {
+                colors: ['#ccd'],
+                colorsStroke: 'black',
+                linewidth: 2,
+                marginInner: 20,
+                backgroundGridVlines: false,
+                xaxisTickmarksLength: 10,
+                xaxisColor: 'gray',
+                xaxisTitle: 'Frequency',
+                xaxisTitleSize: 20,
+                xaxisTitleBold: true,
+                yaxisTickmarksLength: 10,
+                yaxisColor: 'gray',
+                yaxisLabelsOffsetx: -10,
+                yaxisLabels: ['Non-smoker','Light (1-5)','Moderate (6-15)','Heavy (16-25)','Vary heavy (>25)'],
+                yaxisTitle: 'Smoking status',
+                yaxisTitleSize: 20,
+                yaxisTitleBold: true,
+                yaxisTitleOffsetx: -15,
+                yaxisTitleBold: true,
+                marginLeftAuto: false,
+                marginLeft: 195,
+                marginBottom: 70,
+                textSize: 14
+            }
+        }).on('draw', function (obj)
+        {
+            RGraph.SVG.create(obj.svg, '<rect x="{1}" y="{2}" width="{3}" height="{4}" fill="transparent" stroke="gray" stroke-width="1"></rect>'.format(
+                obj.properties.marginLeft,
+                obj.properties.marginTop,
+                obj.width - obj.properties.marginLeft - obj.properties.marginRight,
+                obj.height - obj.properties.marginTop - obj.properties.marginBottom
+            ));
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

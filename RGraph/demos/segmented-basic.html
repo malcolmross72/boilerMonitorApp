@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.segmented.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Segmented donut chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        segmented = new RGraph.Segmented({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 73,
+            options: {
+            }
+        }).roundRobin();
+        
+        segmented.canvas.onclick = function (e)
+        {
+            var value = segmented.getValue(e);
+            segmented.value = value;
+            segmented.grow();
+        };
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

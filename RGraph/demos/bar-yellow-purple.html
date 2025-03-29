@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.background.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart showing boys/girls eye colour</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="350" height="250" data-image-src="page-demos-bar-basic.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        new RGraph.Drawing.Background({
+            id: 'cvs',
+            options: {
+                backgroundGridColor: 'gray',
+                backgroundGridVlinesCount: 18,
+                backgroundGridHlinesCount: 10,
+                backgroundGridHlinesCount: 14,
+                backgroundGridColor: 'gray',
+                backgroundGridLinewidth: 2
+            }
+        }).draw();
+    
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [[9,7],[4,4],[2,4]],
+            options: {
+                tooltips: '%{property:key[%{index}]}: %{value}',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                },
+                textBold: true,
+                keyLabelsBold: true,
+                marginInner: 10,
+                xaxisLinewidth: 5,
+                xaxisTickmarks: 0,
+                yaxisLinewidth: 5,
+                yaxisTickmarks: 0,
+                colorsStroke: 'black',
+                colors: ['#FFC000','#9842B0'],
+                linewidth: 5,
+                backgroundGrid: false,
+                xaxisLabels: ['Blue','Green','Brown'],
+                xaxisLabelsOffsety: 3,
+                key: ['Boys','Girls'],
+                keyPosition: 'margin',
+                textSize: 18
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

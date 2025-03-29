@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart which shows financial information</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="200">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // Generate the financial data
+        value = 5;
+        data  = [];
+
+        for (var i=0; i<365; i+=1) {
+            
+            data.push([i,value]);
+            
+            value += RGraph.random(-1, 1);
+            value = Math.max(0, value)
+            value = Math.min(10, value)
+        }
+
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: data,
+            options: {
+                yaxisScaleMax: 10,
+                xaxisScaleMin: 0,
+                xaxisScaleMax: data.length,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                tickmarksStyle: null,
+                line: true,
+                lineColors: ['red'],
+                yaxisScaleUnitsPre: '$',
+                marginTop: 40,
+                marginLeft: 40,
+                title: 'Sample financial data',
+                backgroundGridColor: '#eee',
+                backgroundGridVlinesCount: 64,
+                backgroundGridHlinesCount: 20,
+                xaxis: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

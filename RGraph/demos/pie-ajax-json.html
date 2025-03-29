@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart using AJAX and JSON</h1>
+
+    <script>
+        if (!location.host) {
+            document.write('<div style="background-color: #ffc; border: 2px solid #cc0; border-radius: 5px; padding: 5px;"><b>Note:</b>For browser security reasons the AJAX demos don\'t work offline.You can view the demos on the RGraph website here:<a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a></div>');
+        }
+    </script>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="450" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        RGraph.AJAX.getJSON('/getdata.html?json', function (json)
+        {
+            var pie = new RGraph.Pie({
+                id: 'cvs',
+                data: json.data,
+                options: {
+                    tooltips: 'Score for <b>%{property:myNames[%{index}]}</b> was  %{value_formatted}',
+                    tooltipsFormattedUnitsPost: '%',
+                    tooltipsCss: {
+                        fontSize: '18pt'
+                    },
+                    myNames: json.labels,
+                    shadow: false,
+                    key: json.labels,
+                    keyPositionGraphBoxed: false,
+                    keyValign: 'center',
+                    colors: ['red','gray','#afa','blue','pink','yellow','black','orange','cyan','purple'],                    
+                    centerx: 175
+                }
+            }).draw();
+        });
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rscatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An RScatter chart using the explode effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="500">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        colors = ['red','green','blue'];
+
+        for (var i=0,data=[]; i<360; i+=2) {
+            data.push([i*2, RGraph.random(0, 30), colors[RGraph.random(0,2)]]);
+        }
+
+        new RGraph.RScatter({
+            id: 'cvs',
+            data: data,
+            options: {
+            }
+        }).explode({frames: 30});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

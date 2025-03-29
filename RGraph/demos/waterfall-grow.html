@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Waterfall chart using the grow() effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Waterfall({
+            id: 'cvs',
+            data: [50,12,-50,-19, -130, -30],
+            options: {
+                backgroundGridHlinesCount: 4,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                title: 'A chart showing income/expenditure',
+                titleY: 10,
+                colors: ['black','red','blue'],
+                colorsStroke: 'white',
+                yaxisLabelsCount: 2,
+                yaxisScaleUnitsPre: '$',
+                yaxisTickmarksCount: 4,
+                total: true,
+                xaxisLabels: ['Sales', 'Misc', 'Wages','Fees','Supplies','Food','Gross'],
+                tooltips: [
+                    'Total sales of products and services rendered',
+                    'Miscellaneous income',
+                    'Wages provided to the staff',
+                    'Fees (eg bank, transactions)',
+                    'Supplies to the office and daily running costs',
+                    'Food to keep the staff alive and running at peak efficiency',
+                    'Gross income before any taxes have been paid'
+                ],
+                highlightStroke: 'rgba(0,0,0,0)',                
+                // In older versions of Firefox this seriously slows down the grow() animation
+                shadowColor: '#aaa',
+                shadowBlur: 5,
+                shadowOffsetx: 0,
+                shadowOffsety: 0,
+                marginLeft: 70,
+                textSize: 12,
+                xaxisPosition: 'center'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

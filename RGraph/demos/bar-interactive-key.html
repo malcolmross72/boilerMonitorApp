@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of an interactive key</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250" style="margin-bottom: 50px">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Create a grouped Bar chart. Note that the data is a 2D array.
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [[8,4,1],[4,8,8],[1,2,2],[3,3,4],[6,5,2],[5,8,8],[4,8,5]],
+            options: {
+                // Specify the key as you would normally
+                key: ['Jim','Jack','Joseph'],
+                
+                // This makes the key interactive - ie you can click on the key elements
+                // and areas on the chart are highlighted. There are other libraries which
+                // are also necessary for it to work -
+                keyInteractive: true,
+                
+                // Specify the highlight colors for the interactive key highlight
+                keyInteractiveHighlightChartLinewidth: 2,
+                keyInteractiveHighlightChartStroke: 'black',
+                keyInteractiveHighlightChartFill: 'rgba(255,255,255,0.75)',
+                
+                // This is the size of the key text
+                keyTextSize: 14,
+
+                // This can be 'margin' or 'graph' and determines the position of the key
+                keyPosition: 'margin',
+
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                shadow: false,
+                textSize:18,
+                colorsStroke: 'rgba(0,0,0,0)',
+                marginInner: 10,
+                marginInnerGrouped: 1,
+                marginLeft: 45,
+                yaxis: false,
+                responsive: [
+                    {maxWidth: null, width:600,height:250, options: {marginBottom: 85,xaxisLabelsOffsety: 10,xaxisLabelsAngle: 25,xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],textSize:18,marginInner:10},css: {marginBottom: 0},parentCss:{textAlign:'none'}},
+                    {maxWidth: 900,width: 400,height: 150,options: {marginBottom: 25,xaxisLabelsOffsety: 0,xaxisLabelsAngle: 0,xaxisLabels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],textSize: 10,marginInner:5},css: {marginBottom: '35px'},parentCss:{textAlign:'center'}}
+                ]
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

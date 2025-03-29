@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>The old front page Pie chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [9,5,12,8,4,9],
+            options: {
+                colorsStroke: '#e8e8e8',
+                linewidth: 2,
+                shadowBlur: 5,
+                shadowOffsetx: 5,
+                shadowOffsety: 5,
+                shadowColor: '#aaa',
+                exploded: 10,
+                radius: 80,
+                labels: ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget']
+            }
+        }).on('click', function (e, shape)
+        {
+            var index = shape.index;
+            var obj = shape.object;
+            
+            // Reset all of the segments to 10
+            obj.set('exploded', 10);
+            
+            obj.explodeSegment(index, 15);
+            
+            e.stopPropagation();
+        }).on('mousemove', function (e, shape)
+        {
+            return true;
+        })
+
+        
+        pie.roundRobin({frames:30});
+
+        
+        window.addEventListener('mousedown', function (e)
+        {
+            pie.set('exploded', 10);
+        }, true);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.gantt.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Gantt chart grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var data = [
+            {start: 0,  duration: 5,  label: 'Fred',  color:'Gradient(aqua:white)'},
+            {start: 7,  duration: 10, label: 'Jerry', color:'Gradient(gray:white)'},
+            {start: 15, duration: 5, label:  'Barney',color:'Gradient(red:#fdd)'},
+            {start: 15, duration: 10,label:  'Ben',   color:'Gradient(blue:#ddf)'},
+            {start: 23, duration: 5, label:  'Rachel',color:'Gradient(green:#dfd)'},
+            {start: 27, duration: 5, label:  'Paul',  color:'Gradient(black:#ddd)'}
+        ];
+
+        gantt = new RGraph.Gantt({
+            id: 'cvs',
+            data: data,
+            options: {
+                borders: false,
+                xaxisScaleMax: 30,
+                backgroundGridHlinesCount: 6,
+                backgroundGridVlinesCount: 30
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

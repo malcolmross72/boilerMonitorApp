@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Pie chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 600px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [1,1,1,1,1,1,1,1],
+            options: {
+                tooltipsEvent: 'mousemove',
+                highlightStyle: 'outline',
+                exploded: 5,
+                tooltips: ['Alf','Berty','Craig','Dean','Elgar','Fliss','Lucy','Paul'],
+                responsive: [
+                    {maxWidth: 900, width: 450, height: 250, options: {key: null, marginTop: 15, marginBottom: 15, marginLeft: 15, marginRight: 15}},
+                    {maxWidth: null,width: 600, height: 350, options: {key: ['Bob','Rik','Alf','Hal','Kev','Tom','Mat','Pam'], marginTop: 35, marginBottom: 25, marginLeft: 25, marginRight: 25}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

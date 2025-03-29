@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart with draggable points</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="200">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [
+                [25,45],  [51,23], [132,52], [166,52], [311,5],
+                [322,42], [56,52], [10,20],  [355,56], [124,52],
+                [52,56],  [53,12], [225,53], [311,25], [144,52],
+                [133,25]
+            ],
+            options: {
+                xaxisScaleMax:365,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                tickmarksStyle: 'circle',
+                tickmarksSize: 7,
+                yaxisScaleMax: 60,
+                adjustable: true
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

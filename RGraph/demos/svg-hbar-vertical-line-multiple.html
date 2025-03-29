@@ -1,0 +1,113 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A vertical line using the SVG Horizontal Bar chart showing multiple lines</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 450px; height: 400px"></div>
+    </div>
+        
+    <script>
+        hbar1 = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [3,4,3,4,3,4,3],
+            options: {
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                colors: ['transparent'],
+                textSize: 18,
+                title: 'A vertical line chart',
+                titleBold: true,
+                marginTop: 50,
+                marginRight: 100,
+                
+                line: true,
+                lineLinejoin:                   'round',
+                lineLinecap:                    'round',
+                lineLinewidth:                  5,
+                lineTickmarksLinewidth:         3,
+                lineTickmarksStyle:             '',
+                lineTickmarksSize:              10,
+                lineColor:                      '#666',
+                lineShadow:                     true,
+                lineShadowColor:                '#666',
+                lineShadowBlur:                 3,
+                lineShadowOffsetx:              0,
+                lineShadowOffsety:              0,
+                lineSpline:                     1,
+                lineTickmarksDrawNonNull:       true
+            }
+        }).trace();
+
+        hbar2 = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [2,3,2,3,2,3,2],
+            options: {
+                backgroundGrid: false,
+                xaxisScale: false,
+                xaxis: false,
+                yaxis: false,
+                colors: ['transparent'],
+                marginTop: 50,
+                marginRight: 100,
+                marginLeft: hbar1.properties.marginLeft,
+                marginLeftAuto: false,
+                
+                line: true,
+                lineColor: 'red',
+                lineShadowColor: 'red',
+                lineShadowBlur: 3,
+                lineShadowOffsetx: 0,
+                lineShadowOffsety: 0,
+                lineSpline: true,
+                lineLinewidth: 5
+            }
+        }).trace();
+
+        hbar3 = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [1,2,1,2,1,2,1],
+            options: {
+                backgroundGrid: false,
+                xaxisScale: false,
+                xaxis: false,
+                yaxis: false,
+                colors: ['transparent'],
+                marginTop: 50,
+                marginRight: 100,
+                marginLeft: hbar1.properties.marginLeft,
+                marginLeftAuto: false,
+                
+                line: true,
+                lineLinejoin:                   'round',
+                lineLinecap:                    'round',
+                lineLinewidth:                  5,
+                lineTickmarksLinewidth:         3,
+                lineTickmarksStyle:             '',
+                lineTickmarksSize:              10,
+                lineColor:                      'green',
+                lineShadow:                     true,
+                lineShadowColor:                'green',
+                lineShadowBlur:                 3,
+                lineShadowOffsetx:              0,
+                lineShadowOffsety:              0,
+                lineSpline:                     1,
+                lineTickmarksDrawNonNull:       true
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

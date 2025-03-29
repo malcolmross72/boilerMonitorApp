@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart getting the X/Y value</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 600px">
+            <style>
+                input {
+                    font-size: 16pt;
+                }
+            </style>
+
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+            <div style="position: relative; left: 25px; width: 550px">
+                <span style="font-size: 16pt">X:</span> <input type="text" id="x" /><br />
+                <span style="font-size: 16pt">Y:</span> <input type="text" id="y" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+        data   = [];
+        colors = ['red',  'green', 'blue', 'pink', 'black', 'gray'];
+        xmax   = 365;
+        ymax   = 50;
+
+        // Generate some data
+        for (var i=0; i<100; ++i) {
+            data[i] = [
+                RGraph.random(0,xmax),
+                RGraph.random(0,ymax),
+                colors[RGraph.random(0,colors.length - 1)]
+            ];
+        }
+
+        scatter = new RGraph.Scatter({
+            id: 'cvs',
+            data: data,
+            options: {
+                xaxisScaleMax: xmax,
+                xaxisLabels: ['Q1','Q2','Q3','Q4'],
+                textSize: 14,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).draw();
+            
+        scatter.canvas.onmousemove = function (e)
+        {
+            var obj = e.target.__object__;
+            var x   = obj.getXValue(e);
+            var y   = obj.getYValue(e);
+            
+            document.getElementById("x").value = x.toFixed(1);
+            document.getElementById("y").value = y.toFixed(1);
+        }
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

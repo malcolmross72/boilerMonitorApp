@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with an offset X-axis</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [ [5,1,16,8,9,6,-5], [2,4,15,1,6,15,13] ],
+            options: {
+                yaxisScaleMin: -10,
+                yaxisScaleMax: 20,
+                spline: true,
+                linewidth: 2,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                yaxisLabelsCount: 3,
+                yaxisTickmarksCount: 3,
+                backgroundGridHlinesCount: 3,
+                marginBottom: 35,
+                marginLeft: 35,
+                marginRight: 35,
+                shadow: false,
+                textSize: 14,
+                xaxisTickmarksCount: 6,
+                yaxisTickmarksCount: 3,
+                linewidth: 3
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

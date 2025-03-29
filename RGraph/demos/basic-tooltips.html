@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of Pie charts in tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="1000" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // Creates the Bar chart
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [12,13,16,15],
+            options: {
+                marginLeft: 35,
+                marginInner: 75,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['red'],
+                title: 'A basic graph with charts in tooltips',
+                titleBold: true,
+                titleSize: 16,
+                xaxisLabels: ['Kev', 'Brian', 'Fred', 'John'],
+                yaxis: false,
+                tooltips: '<div style="text-align: center"><h3 style="margin: 0">%{property:xaxisLabels[%{dataset}]}\'s statistics</h3><canvas id="__tooltip__canvas__" width="100" height="100" data-l="false">[No canvas support]</canvas></div>',
+                tooltipsCss: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                    fontSize: '18pt'
+                }
+            }
+        }).wave().on('tooltip', function (obj)
+        {
+            var canvas  = obj.canvas,
+                context = obj.context,
+                id      = obj.id;
+            
+            // This gets the tooltip index from the tooltip (which is stored in the RGraph registry) itself
+            var idx = RGraph.Registry.get('tooltip').__index__;
+            
+            //
+            // The Pie chart data. Realistically this would come from a dynamic source
+            // eg AJAX
+            //
+            var pieData = [
+                [4,5,3,6],
+                [8,4,5,2],
+                [4,3,5,1],
+                [4,2,1,3]
+            ];
+            
+            var pie = new RGraph.Pie({
+                id: '__tooltip__canvas__',
+                data: pieData[idx],
+                options: {
+                    align: 'left',
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginLeft: 10,
+                    marginRight: 10,
+                    exploded: [3,3,3,3],
+                    colorsStroke: 'rgba(0,0,0,0)'
+                }
+            }).draw();
+        });
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

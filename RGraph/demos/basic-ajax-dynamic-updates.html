@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of a chart created using dynamic updates</h1>
+
+    <ul>
+        <li><a href="line-dynamic-updates-range.html">line-dynamic-updates-range.html</a></li>
+        <li><a href="line-dynamic-updates.html">line-dynamic-updates.html</a></li>
+    </ul>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // Prefill the data array
+        for (i=0,data=[];i<600; ++i) data[i] = null;
+    
+
+        var line = new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                xaxisLabels: ['60s','55s','50s','45s','40s','35s','30s','25s','20s','15s','10s','5s','0s'],
+                xaxisTickmarksCount: 12,
+                yaxisScaleMax: 100,
+                marginLeft: 35,
+                tickmarksStyle: null,
+                shadow: null,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                xaxis: false,
+                yaxis: false,
+                linewidth: 1
+            }
+        }).draw();
+
+
+        var last = RGraph.random(0,100);
+
+        function draw ()
+        {
+            last = RGraph.random(last - 5, last + 5);
+            last = Math.min(last, 100);
+            last = Math.max(last, 0);
+            
+            // Set the data on the object
+            line.original_data[0].push(last);
+            line.original_data[0].shift();
+
+            // Clear the canvas
+            RGraph.clear(line.canvas);
+            line.draw();
+
+            setTimeout(draw, 100);
+        }
+    
+    
+        
+        draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart with a vertically centered key</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="550" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // Create the Pie chart and configure a little
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [61,23,16,50,64,32],
+            options: {
+                tooltips: ['Bobby','Lucy','Peter','Piper','Billy','Harriet'],
+                tooltipsCss: {
+                    fontSize: '20pt'
+                },
+                
+                // Add the key and increase the size of its labels
+                key: ['Bobby','Lucy','Peter','Piper','Billy','Harriet'],
+                keyPosition: 'graph',
+                keyPositionGraphBoxed: false,
+                keyPositionY: 0,
+                keyLabelsSize: 16,
+                keyValign: 'center',
+                
+                shadow: false
+            }
+        
+        // Draw the Pie chart and add the exec function which
+        // runs after the draw function
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

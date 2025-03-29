@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.horseshoe.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horseshoe meter using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 350px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Horseshoe({
+            id: 'chart-container',
+            min: 0,
+            max: 100,
+            value: 68,
+            options: {
+                labelsCenterSpecific: '$%{value} earnt',
+                labelsCenterSize: 50
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

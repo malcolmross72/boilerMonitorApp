@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A responsive Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px">
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        // Create the new Bar chart. Nothing special is being done here - note
+        // though that when you create a new RGraph object you don't necessarily
+        // need to assign the chart object to a variable - like it isn't here.
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [12,18,10,9,6,20,18],
+            options: {
+                yaxisScaleUnitsPost: 'k',
+                colors: ['red'],
+                title: 'A basic responsive Bar chart',
+                titleBold: true,
+                xaxis: false,
+                yaxis: false,
+                marginLeft: 50,
+                marginBottom: 50,
+                responsive: [
+                    {maxWidth: 900,  width: 400, height: 150, options: {textSize:10, xaxisLabels: ['Mon\n(yuck!)', 'Tue', 'Wed', 'Thu', 'Fri\n(woo!)', 'Sat', 'Sun'], marginInner: 10}},
+                    {maxWidth: null, width: 750, height: 250, options: {textSize:14, xaxisLabels: ['Monday\n(yuck!)', 'Tuesday', 'Wednesday', 'Thursday', 'Friday\n(woo!)', 'Saturday','Sunday'], marginInner: 20}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

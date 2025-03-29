@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart showing smoking preferences</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="600">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [2453,524,516,1036,486],
+            options: {
+                colors: ['#ccd'],
+                colorsStroke: 'black',
+                linewidth: 3,
+                marginInner: 20,
+                backgroundGridVlines: false,
+                xaxisTickmarksLength: 5,
+                xaxisColor: 'gray',
+                xaxisTitle: 'Frequency',
+                xaxisTitleSize: 20,
+                xaxisTitleBold: true,
+                yaxisTickmarksLength: 5,
+                yaxisColor: 'gray',
+                yaxisLabelsOffsetx: -10,
+                yaxisLabels: ['Non-smoker','Light (1-5)','Moderate (6-15)','Heavy (16-25)','Vary heavy (>25)'],
+                yaxisTitle: 'Smoking status',
+                yaxisTitleSize: 20,
+                yaxisTitleBold: true,
+                marginLeftAuto: false,
+                marginLeft: 175,
+                marginBottom: 70,
+                textSize: 14
+            }
+        }).on('draw', function (obj)
+        {
+            obj.path('lw 1 ss gray');
+            obj.context.strokeRect(
+                obj.properties.marginLeft,
+                obj.properties.marginTop,
+                obj.canvas.width - obj.properties.marginLeft - obj.properties.marginRight,
+                obj.canvas.height - obj.properties.marginTop - obj.properties.marginBottom
+            );
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

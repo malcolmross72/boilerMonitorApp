@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.image.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of the drawing API image object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        
+        <style>
+            .RGraph_tooltip {
+                opacity: 0.8 ! important;
+            }
+        </style>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [5,4,8,4,3,5,2],
+            options: {
+                marginInner: 5,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                tickmarksStyle: 'circle',
+                tickmarksSize: 7
+            }
+        }).draw();
+        
+        coords = line.coords[2];
+        
+        img = new RGraph.Drawing.Image({
+            id: 'cvs',
+            x: coords[0],
+            y: coords[1] - 20,
+            src: '../images/rgraph-text-only.png',
+            options: {
+                width: 88,
+                height: 25,
+                halign: 'center',
+                valign: 'center',
+                colorsAlpha: 0.6,
+                tooltips: ['The tooltip!']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

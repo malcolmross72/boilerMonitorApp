@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An orange/blue SVG Horizontal Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 850px; height: 500px; border: 1px solid #eee" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [[-.27,-.21],[.06,.07],[0,.07],[.03,.03],[.03,.05],[.04,.06],[-.31,.38],[.09,.08],[-.02,.10],[.12,.11],[.22,.32],[.12,.1]],
+            options: {
+                marginBottom: 40,
+                marginRight: 100,
+                marginInner: 20,
+                yaxisLabels: [
+                    'Food and non-alcoholic beverages',
+                    'Alcohol and tobacco',
+                    'Clothing and footwear',
+                    'Housing and household services',
+                    'Furniture and household goods',
+                    'Health',
+                    'Transport',
+                    'Communication',
+                    'Recreation and culture',
+                    'Education',
+                    'Restaurants and hotels',
+                    'Miscellaneous goods and services'
+                ],
+                title: 'Contributions to the CPI 12-month rate: November 2015 and November 2016',
+                titleSize: 16,
+                yaxisColor: '#aaa',
+                xaxisScaleMin: 'mirror',
+                xaxisScaleMax: .5,
+                xaxisScaleDecimals: 1,
+                xaxisLabelsCount: 10,
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                textColor: 'gray',
+                textSize: 9,
+                colors: ['#274796','#F5942F'],
+                titleColor: 'gray',
+                marginInner: 5
+            }
+        }).on('draw', function (obj)
+        {
+            var properties = obj.properties;
+
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   'Percentage points %',
+                x:      840,
+                y:      obj.height - 5,
+                halign: 'right',
+                valign: 'bottom',
+                font:   properties.xaxisScaleFont   || properties.textFont,
+                size:   properties.xaxisScaleSize   || properties.textSize,
+                bold:   properties.xaxisScaleBold   || properties.textBold,
+                italic: properties.xaxisScaleItalic || properties.textItalic,
+                color:  properties.xaxisScaleColor  || properties.textColor
+            });
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

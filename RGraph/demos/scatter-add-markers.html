@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.circle.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Scatter chart with the ability to add markers</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="200">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        over_circle = false;
+
+        scatter = new RGraph.Scatter({
+            id: 'cvs',
+            data: [[15,91]],
+            options: {
+                marginLeft: 25,
+                xaxisScaleMax: 365,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            }
+        }).draw();
+    
+        scatter.canvas.onmousemove = function (e)
+        {
+            var obj = RGraph.ObjectRegistry.getObjectByXY(e);
+            
+            if (obj && obj.type == 'drawing.circle') {
+                over_circle = obj;
+                e.target.style.cursor = 'pointer';
+            } else {
+                over_circle = false;
+                e.target.style.cursor = 'default';
+            }
+        }
+
+        scatter.canvas.onclick = function (e)
+        {
+            if (over_circle == false) {
+
+                var obj = scatter;
+                var xValue = obj.getXValue(e);
+                var yValue = obj.getYValue(e);
+                var xCoord = obj.getXCoord(xValue);
+                var yCoord = obj.getYCoord(yValue);
+
+                var circle = new RGraph.Drawing.Circle({
+                    id: 'cvs',
+                    x: xCoord,
+                    y: yCoord,
+                    radius: 15
+                })
+                
+                circle.set({
+                    colorsFill: 'red',
+                    tooltips: ['A tooltip from the circle with UID: ' + circle.uid],
+                    shadow: true,
+                    shadowColor: '#aaa',
+                    shadowBlur:1,
+                    shadowOffsetx:2,
+                    shadowOffsety:2
+                }).draw();
+            }
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

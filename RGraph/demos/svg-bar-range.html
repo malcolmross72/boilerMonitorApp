@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A range Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" media="screen" />
+        <div id="chart-container" style="width: 600px; height: 250px; display: inline-block"></div><br />
+    </div>    
+        
+    <script>
+        data = [[5,16],[8,12],[9,16],[8,12],[9,15],[5,18],[4,12],[3,16]];
+
+        var bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                xaxisLabels: ['Quentin','Bob','Neil','Olga','Charles','Chris','Luis','Pete'],
+                xaxisColor: 'gray',
+                colors: ['transparent', 'gradient(red:#fdd)'],
+                backgroundColor: 'Gradient(#ddd:white:white)',
+                grouping: 'stacked',
+                yaxis: false,
+                backgroundGrid: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

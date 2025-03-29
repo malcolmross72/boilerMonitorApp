@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A pink Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="450" height="200" data-image-src="page-demos-pie-pink.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // A pretty straight-forward Pie chart. The only thing to note here
+        // really is the use of the linewidth property to create a small
+        // segment separation effect. The default color for the stroke is
+        // white so it just blends into the background of the page (the
+        // default background color of the canvas tag is transparent).
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [3,7.9,2,10.3,11.1,1,63.9],
+            options: {
+                colors: [
+                    'rgb(51,102,204)',
+                    'rgb(220,57,18)',
+                    'rgb(255,153,0)',
+                    'rgb(16,150,24)',
+                    'rgb(153,0,153)',
+                    'rgb(0,153,198)',
+                    'rgb(221,68,119)'
+                ],
+                linewidth: 2,
+                shadow: false,
+                labels: ['3%','7.9%','2%','10.3%','11.1%','1%','62.9%'],
+                textSize: 10,
+                textColor: '#444'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

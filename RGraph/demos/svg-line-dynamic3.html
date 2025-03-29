@@ -1,0 +1,116 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dynamically updating Line</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="outer-container">
+            <div style="width: 650px; height: 250px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Define some variables
+        var div       = document.getElementById("cc"),
+            obj       = null,
+            data      = [],
+            
+            // The letter 'L' - NOT a one
+            l         = 0,
+
+            numvalues = 1200,
+            updates   = 0;
+
+        // Pre-pad the data array with null values
+        for (var i=0; i<numvalues; ++i) {
+            data.push(null);
+        }
+
+        // This function is called repeatedly to draw the Line chart.
+        // It only creates the Line chart object once and then stores
+        // it in a global variable. On subsequent calls (this function
+        // gets called 60 times per second) this global variable is
+        // used instead of creating the entire Line chart again.
+        function drawGraph ()
+        {
+            // Create the Line chart if the global variable 'obj'
+            // doesn't exist.
+            if (!obj) {
+                
+                // The Line chart is configured to be quite minimal in appearance.
+                // Of course the less drawing that has to be done the smoother
+                // the updates.
+                obj = new RGraph.SVG.Line({
+                    id: 'chart-container',
+                    data: data,
+                    options: {
+                        colors: ['black'],
+                        linewidth: 0.75,
+                        shadow: false,
+                        marginTop: 10,
+                        marginBottom: 15,
+                        marginRight: 40,
+                        backgroundGrid: false,
+                        xaxisTickmarks: 0,
+                        xaxisLinewidth: 2,
+                        yaxisTickmarks: 0,
+                        yaxisLinewidth: 2,
+                        responsive: [
+                            {maxWidth: null,width:650,height:250,options:{textSize:16}},
+                            {maxWidth: 900, width:400,height:150,options:{textSize:12}}
+                        ]
+                    }
+                });
+
+            // If the chart has already been created then clear the SVG
+            } else {
+                RGraph.SVG.clear(obj.svg);
+            }
+
+            // Add some random data to the data array. The data is such that each
+            // point is only a few units higher or lower than the previous.
+            var len          = data.length,
+                lastvalue    = RGraph.SVG.isNull(data[len - 1]) ? 26 : data[len - 1],
+                random_value = RGraph.SVG.random({
+                    min: lastvalue  - 2,
+                    max: lastvalue + 2
+                });
+           
+           // The random value is constrained to a minimum of 0 and a
+           // maximum of 250.
+
+           random_value = Math.max(random_value, 0);
+           random_value = Math.min(random_value, 250);
+
+            // Add the random value to the data
+            data.push(random_value);
+            
+            // If the number of points in the data is greater than the numvalues
+            // variable take a point off of the front of the array.
+            if (data.length > numvalues) {
+                data.shift();
+            }
+
+            // Give the data to the Line chart and redraw the chart.
+            obj.originalData[0] = data;
+            obj.draw();
+            
+            // Call this function again after a small delay.
+            setTimeout(drawGraph, 16.666);
+        }
+        
+        // This sets everything going
+        drawGraph();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

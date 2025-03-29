@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dark themed  Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="350" style="border-radius: 5px; background-color: black">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [34,28,17,8,5,3],
+            options: {
+                shadow: false,
+                colorsStroke: 'transparent',
+                exploded: 15,
+                title: 'Geographical distribution of DNS root server sites',
+                titleColor: 'white',
+                titleOffsety: -10,
+                titleSize: 14,
+                titleBold: true,
+                marginTop: 50,
+                colors: [
+                    'Gradient(white:#2A8AB2:#2A8AB2)',
+                    'Gradient(white:#52A323:#52A323)',
+                    'Gradient(white:#BAB034:#BAB034)',
+                    'Gradient(white:#B31C15:#B31C15)',
+                    'Gradient(white:#BC941A:#BC941A)',
+                    'Gradient(white:#1152B8:#1152B8)',
+                    'Gradient(white:#B16498:#B16498)'
+                ],
+                key: [
+                    'Europe: 34%',
+                    'North America: 28%',
+                    'Asia: 17%',
+                    'South America: 8%',
+                    'Oceania: 5%',
+                    'Africa: 3%'
+                ],
+                keyColorShape: 'circle',
+                keyPositionGraphBoxed: false,
+                keyLabelsColor: 'white',
+                keyPositionY: 125,
+                keyPositionX: 450,
+                centerx: 235
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

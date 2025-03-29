@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A graduated blue Gauge chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Gauge({
+            id: 'cvs',
+            min: 0,
+            max: 10,
+            value: 7,
+            options: {
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: 10,
+                marginBottom: 10,
+                backgroundColor: 'Gradient(white:#00a)',
+                textColor: 'white',
+                tickmarksLargeColor: 'white',
+                tickmarksSmallColor: 'white',
+                colorsRedColor: 'rgba(0,0,0,0)',
+                colorsYellowColor: 'rgba(0,0,0,0)',
+                borderInner: '#00c',
+                borderOuter: 'Gradient(blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:blue:black)',
+                adjustable: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

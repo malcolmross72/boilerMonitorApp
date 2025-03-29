@@ -1,0 +1,83 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with dynamically updating data</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        iteration = 0;
+        data      = [];
+        data2     = [];
+        labels    = [
+            '','','','','','','','','','',
+            '','','','','','','','','',''
+        ];
+
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [data, data2],
+            options: {
+                marginInner: 0,
+                title: 'An updating SVG Line chart',
+                xaxisLabels: labels,
+                xaxisColor: '#aaa',
+                yaxis: false,
+                backgroundGridColor: '#eee',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['#00c','#c00'],
+                linewidth: 1,
+                tickmarksStyle: 'filledcircle'
+            }
+        }).draw();
+
+
+
+
+        function update ()
+        {
+            if (iteration === 0) {
+                line.originalData[0] = RGraph.SVG.arrayPad([],20);                
+                line.originalData[1] = RGraph.SVG.arrayPad([],20);
+            }
+
+            // A global
+            last  = RGraph.SVG.random({min:0, max:100})
+            last2 = RGraph.SVG.random({min:0, max:100})
+
+            line.originalData[0].push(last);
+            line.originalData[1].push(last2);
+
+            line.originalData[0].shift();
+            line.originalData[1].shift();
+
+            line.properties.xaxisLabels.push(iteration + 1)
+            line.properties.xaxisLabels.shift();
+
+            RGraph.SVG.redraw();
+            
+            iteration++;
+
+            setTimeout(function ()
+            {
+                update()
+            }, 1000);
+        }
+
+        update();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

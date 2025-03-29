@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped SVG Rose chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 1000px; height: 700px"></div>
+    </div>
+    
+    <script>
+        new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [4,6,3,5,2,8,9],
+            options: {
+                marginInner: .3,
+                segmentsAngleOffset: -.15,
+                labels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                tooltips: 'Richard on %{property:labels[%{dataset}]}: %{value}%',
+                labelsSize: 28,
+                tooltipsCss: {
+                    fontWeight:      'bold',
+                    fontSize:        '20pt',
+                    padding:         '15px'
+                }
+            }
+        }).draw();
+
+        new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [5,8,6,3,2,9,9],
+            options: {
+                colors: ['pink'],
+                amargin: .3,
+                segmentsAngleOffset: .15,
+                backgroundGrid: false,
+                days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                tooltips: 'Fred on %{property:days[%{dataset}]}: %{value}%',
+                tooltipsCss: {
+                    color:           'white',
+                    backgroundColor: 'black',
+                    fontWeight:      'bold',
+                    fontSize:        '20pt',
+                    padding:         '15px'
+                }
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A basic example of a Line chart that uses the pseudo-events</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="1000" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [12,13,16,15,16,19,19,12,23,16,13,24],
+            options: {
+                xaxisLabels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            }
+        }).draw()
+
+        //
+        // This is the function for the mousemove event. It changes the pointer to the hand.
+        // When the mouse is moved away from the point the pointer is changed back to what it was
+        // automatically for you.
+        // 
+        // @param object e     The event object
+        // @param array  point The details of the point that was hovered over
+        //
+        .on('mousemove', function (e, shape)
+        {
+            return true;
+        })
+        
+        //
+        // This is the function for the click event.
+        //
+        // @param object e     The event object
+        // @param array  point The details of the point that was clicked
+        //
+        .on('click', function (e, shape)
+        {
+            alert('A point was clicked');
+        });
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A circular and adjustable Meter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        meter = new RGraph.Meter({
+            id: 'cvs',
+            min: -100,
+            max: 100,
+            value: -25,
+            options: {
+                anglesStart: RGraph.PI - 0.5,
+                anglesEnd: RGraph.TWOPI + 0.5,
+                linewidthSegments: 15,
+                textSize: 14,
+                colorsStroke: 'white',
+                segmentsRadiusStart: 95,
+                needleRadius: 75,
+                border: 0,
+                tickmarksSmallCount: 0,
+                tickmarksLargeCount: 0,
+                colorsRanges: [[-100,-70, 'red'],[-70,70, '#0f0'],[70,100, 'red']],
+                centery: 155,
+                radius: 125,
+                adjustable: true,
+                needleHeadWidth: .15
+            }
+        }).draw();
+
+        meter.onbeforedraw = function (obj)
+        {
+          RGraph.clear(obj.canvas, 'white');
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

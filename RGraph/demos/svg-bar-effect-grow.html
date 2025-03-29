@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart using the grow() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [4,8,6,3,5,2,4],
+            options: {
+                marginInner: 20,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                title: 'A basic Bar chart'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

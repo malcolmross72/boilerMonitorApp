@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart demonstrating the marginInnerLeft and marginInnerRight settings</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 700px; height: 250px"></div>
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" media="screen" />
+    </div>    
+        
+    <script>
+        data = [[6,5,3],[1,8,6],[4,5,5],[8,9,4],[3,2,1],[5,6,6],[4,3,5],[4,8,6]];
+        //data = [4,8,6,5,3,5,9,4];
+
+        var bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                grouping: 'grouped',
+                xaxisLabels: ['Quentin','Bob','Neil','Olga','Charles','Chris','Luis','Pete'],
+                marginInnerLeft: 100,
+                marginInnerRight: 100,
+                marginInner: 10,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false
+            }
+        }).grow({frames: 30});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

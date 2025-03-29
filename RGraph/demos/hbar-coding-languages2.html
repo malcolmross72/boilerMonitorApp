@@ -1,0 +1,86 @@
+    <!DOCTYPE html > 
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Popular coding languages (an alternative method)</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // The labels for the chart are added by adding them
+        // on the second HBar chart
+        labels = ['PHP','Python','C#','Java','MySQL','Oracle','JSP','MS SQL Server','Ruby'];
+    
+        // The data for the chart
+        data = [86,75,71,65,60,55,53,51,45];
+    
+        // Create the Horizontal Bar chart and configure it. With there
+        // being no labels on the left-hand-side the margin autofit
+        // will make the left margin zero
+        new RGraph.HBar({
+            id: 'cvs',
+            data: data,
+            options: {
+                textSize: 14,
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                xaxisScale: false,
+                labelsAbove: true,
+                labelsAboveUnitsPost: '%',
+                labelsAboveColor: 'white',
+                labelsAboveOffsetx: -50,
+                labelsAboveOffsety: 3,
+                labelsAboveBold: true,
+                colors: ['green'],
+                shadow: true,
+                shadowColor: '#ddd',
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                tooltips: '<i style="position: relative; top: -5px">Usage worldwide:</i> <span style="font-size: 26pt; ">%{value}%',
+                tooltipsCss: {
+                    fontSize: '14pt'
+                },
+                highlightFill: 'Gradient(rgba(255,255,255,0):white)',
+                highlightStroke: 'Gradient(rgba(255,255,255,0):white)'
+            }
+        }).grow();
+    
+    
+    
+    
+        yaxis = new RGraph.HBar({
+            id: 'cvs',
+            data: [0,0,0,0,0,0,0,0,0],
+            options: {
+                yaxisLabels: labels,
+                backgroundGrid: false,
+                marginLeftAuto: false,
+                yaxisPosition: 'right',
+                marginRight: 590,
+                marginLeft: 5,
+                marginTop: 40,
+                yaxis: false,
+                xaxis: false,
+                xaxisScale: false,
+                yaxisLabelsColor: 'white',
+                yaxisLabelsBold: true,
+                yaxisLabelsSize: 14
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>    
+
+</body>
+</html>

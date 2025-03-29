@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A product revenue Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id:'cvs',
+            data: [
+                [62,67,48,35,42,48,69,61,86,67,65,79],
+                [41,50,33,39,62,57,28,41,42,58,59,41],
+                [37,29,25,29,39,20,21,30,26,32,30,23]
+            ],
+            options: {
+                colors: ['red', '#0c0','black'],
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                backgroundColor: 'Gradient(#aaf:white)',
+                backgroundGrid: false,
+                key: ['Atom synthesizer','Quantum computer','Proton cannon'],
+                keyPosition: 'margin',
+                shadow: false,
+                tickmarksStyle: ['square','circle','cross'],
+                tickmarksSize: 5,
+                linewidth: 1
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

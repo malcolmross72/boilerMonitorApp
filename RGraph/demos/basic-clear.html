@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of clearing your canvas</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+        <button onclick="drawBar()">Draw the Bar chart</button>
+        <button onclick="drawLine()">Draw the Line chart</button>
+        <button onclick="RGraph.clear(document.getElementById('cvs'))">Clear the canvas</button>
+        <button onclick="RGraph.reset(document.getElementById('cvs'))">Reset the canvas</button>
+        <button onclick="RGraph.redraw()">Redraw the canvas</button>
+    </div>
+
+    <script>        
+        function drawBar ()
+        {
+            var labels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+
+            var bar = new RGraph.Bar({
+                id: 'cvs',
+                data: [4,8,1,3,5,2,6],
+                options: {
+                    xaxisLabels: labels,
+                    tooltips: labels,
+                    marginBottom: 35
+                }
+            }).draw()
+        }
+        
+        function drawLine ()
+        {
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: [3,2,2,2,5,4,1],
+                options: {
+                    xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                    tooltips: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                    marginBottom: 35
+                }
+            }).draw()
+        }
+
+        drawBar();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

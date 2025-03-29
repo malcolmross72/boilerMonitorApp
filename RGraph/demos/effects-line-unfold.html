@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Line chart unfold effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [10,1,10,7,4,9,5,6,3,5],
+            options: {
+                animationUnfoldinitial: 0,
+                outofbounds: true,
+                outofboundsClip: true
+            }
+        }).unfold();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

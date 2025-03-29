@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart using tooltips</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [
+                112,118,110,91,-49,0,0,
+                81,61,-11,51,-31,0,0,
+                51,61,-45,-38,-26,0,0,
+                58,84,54,63,35,0,0
+            ],
+            options: {
+                xaxisLabels: [
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','',''
+                ],
+                
+                // A custom property
+                labels: [
+                    'Monday','Tuesday','Wednesday','Thursday','Friday','','',
+                    'Monday','Tuesday','Wednesday','Thursday','Friday','','',
+                    'Monday','Tuesday','Wednesday','Thursday','Friday','','',
+                    'Monday','Tuesday','Wednesday','Thursday','Friday','','',
+                ],
+                tooltips: '%{property:labels[%{dataset}]}: $%{value}',
+                tooltipsCss: {
+                    fontWeight:      'bold',
+                    fontSize:        '20pt',
+                    backgroundColor: 'black',
+                    color:           'white'
+                },
+                yaxisScaleUnitsPre: '$',
+                yaxisScaleUnitsPost: 'k',
+                yaxisScaleDecimals: 1,
+                yaxisScaleMin: -50,
+                yaxisScaleMax: 200,
+                colorsStroke: 'rgba(0,0,0,0)',
+                marginLeft: 75,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['#aaa','red','blue'],
+                title: 'A Bar chart using tooltips'
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

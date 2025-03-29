@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Vertical Progress Bar using the AJAX getNumber() function</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 130px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        RGraph.SVG.AJAX.getNumber('/getdata.html', function (num)
+        {
+            // This bar chart becomes the background
+            new RGraph.SVG.Bar({
+                id: 'chart-container',
+                data: [100],
+                options: {
+                    marginLeft: 45,
+                    colors: ['#ddd'],
+                    backgroundGrid: false,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScale: false,
+                    yaxisScaleMax: 100,
+                    shadow: true,
+                    shadowOpacity: .1
+                }
+            }).draw();
+
+            var bar = new RGraph.SVG.Bar({
+                id: 'chart-container',
+                data: [num],
+                options: {
+                    marginLeft: 45,
+                    colors: ['Gradient(red:#fcc)'],
+                    backgroundGrid: false,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScaleMax: 100,
+                    marginInner: 8
+                }
+            }).grow();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

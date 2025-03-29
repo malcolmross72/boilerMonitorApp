@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart which highlights based on the mouse X coordinate</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [4,5,5,8,8,7,8,9,8,11,13,13,12,14,15,15,17,18,18,17,17],
+            options: {
+                tooltips: function () {return "\0";},
+                tooltipsHotspotXonly: true,
+                xaxisTickmarksCount: 6,
+                marginLeft: 30,
+                marginRight: 30,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

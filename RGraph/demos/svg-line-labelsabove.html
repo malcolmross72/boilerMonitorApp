@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart using the labelsAbove option</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [8,6,3,5,9,4,8,7,5,6.3,8],
+            options: {
+                labelsAbove: true,
+                labelsAboveDecimals: 1,
+                spline: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

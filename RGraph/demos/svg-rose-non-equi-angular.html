@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Rose chart with unequal segment sizes</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 500px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        rose = new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [[56,5],[48,3],[81,2],[68,9],[45,9],[45,1],[12,3],[43,8],[65,2],[42,3]],
+            options: {
+                colorsStroke: 'white',
+                linewidth: 3,
+                variant: 'non-equi-angular',
+                colorsSequential: true,
+                colorsOpacity: 0.6,
+                tooltips: ['Alf','Bert','Craig','Doug','Edgar','Fred','Gary','Harry','Indigo','Jack'],
+                labels: ['Alf','Bert','Craig','Doug','Edgar','Fred','Gary','Harry','Indigo','Jack']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

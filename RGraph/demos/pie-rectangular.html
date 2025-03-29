@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A "rectangular" Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="350" height="250" style="border: 1px solid #aaa">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [4,8,4,6,5,3,2,5],
+            options: {
+                radius: 350,
+                key: ['Alvin','Pete','Hoolio','Jack','Kev','Luis','Lou','Jesse'],
+                colorsStroke: 'white',
+                linewidth: 3
+            }
+        }).roundRobin().grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

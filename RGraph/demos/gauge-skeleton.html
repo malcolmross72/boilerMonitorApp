@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A skeleton Gauge chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="150">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Gauge({
+            id: 'cvs',
+            min: 0,
+            max: 50,
+            value: 46,
+            options: {
+                centery: 120,
+                radius: 130,
+                anglesStart: RGraph.PI,
+                anglesEnd: RGraph.TWOPI,
+                needleSize: 85,
+                borderWidth: 0,
+                shadow: false,
+                needleType: 'line',
+                colorsRanges: [[0,10,'red'], [10,20,'yellow'],[20,50,'#0f0']],
+                borderInner: 'rgba(0,0,0,0)',
+                borderOuter: 'rgba(0,0,0,0)',
+                borderOutline: 'rgba(0,0,0,0)',
+                centerpinColor: 'rgba(0,0,0,0)',
+                centerpinRadius: 0
+            }
+        }).grow();
+        
+        gauge.canvas.onclick = function (e)
+        {
+            var value = gauge.getValue(e);
+            
+            if (typeof value === 'number') {
+                gauge.value = value;
+                gauge.grow();
+            }
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

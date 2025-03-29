@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.circle.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of the drawing API circle object being used as a tooltip hotspot</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="height: 320px">
+            <canvas id="cvs" width="600" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [5,8,6,4,3,5,2],
+            options: {
+                marginLeft: 75,
+                marginBottom: 125,
+                marginInner: 5,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                textSize: 20,
+                xaxisLabelsAngle: 45,
+                xaxisLabelsOffsety: 7
+            }
+        }).draw();
+        
+        coords = line.coords[0];
+
+        // Create the hotspot
+        circle = new RGraph.Drawing.Circle({
+            id: 'cvs',
+            x: coords[0],
+            y: coords[1],
+            radius: 7,
+            options: {
+                colorsFill: 'rgba(255,0,0,0.25)',
+                tooltips: 'Monday was a grand day out!',
+                tooltipsCss: {
+                    fontSize: '22pt'
+                },
+                tooltipsEvent: 'mousemove',
+                tooltipsOffsety: -10,
+                highlightStroke: 'transparent',
+                highlightFill: 'transparent'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

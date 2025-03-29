@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Donut chart with a 3D look using gradients</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="475" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [41,37,16,3,3],
+            options: {
+                colors: [
+                    'Gradient(#c00:red:#f66:red:#c00)', 
+                    'Gradient(#00c:blue:#66f:blue:#00c)',
+                    'Gradient(#0c0:#0f0:#6f6:#0f0:#0c0)',
+                    'Gradient(#c66:pink:pink:pink:#c66)',
+                    'Gradient(gray:#ccc:white:#ccc:gray)'
+                ],
+                variant: 'donut',
+                linewidth: 5,
+                exploded: 5,
+                colorsStroke: 'rgba(0,0,0,0)',
+                align: 'left',
+                shadow: true,
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                shadowBlur: 30,
+                centerx: 185
+            }
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

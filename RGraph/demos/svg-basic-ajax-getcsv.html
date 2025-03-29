@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Bar chart using the AJAX getCSV() function</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        // This is the function that runs every second to fetch new data
+        function update ()
+        {
+            RGraph.SVG.AJAX.getCSV('/getdata.html', function (csv)
+            {
+                if (window.bar) {
+                    RGraph.SVG.clear(window.bar.svg);
+                }
+
+                window.bar = new RGraph.SVG.Bar({
+                    id: 'chart-container',
+                    data: csv,
+                    options: {
+                    }
+                }).draw();
+            });
+
+            setTimeout(function ()
+            {
+                update()
+            }, 1000);
+        }
+
+        // Initiate the first AJAX request
+        update();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

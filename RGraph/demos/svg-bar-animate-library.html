@@ -1,0 +1,108 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <link rel="stylesheet" href="../css/animate.css" type="text/css" media="screen" />
+        <div style="width: 750px; height: 300px" id="chart-container" class="animated expand"></div>
+
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flash"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounce"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated shake"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated tada"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated swing"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated wobble"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated wiggle"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated pulse"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flip"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flipInX"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flipOutX"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flipInY"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated flipOutY"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeIn"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInUp"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInDown"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInUpBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInDownBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInLeftBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeInRightBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOut"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutUp"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutDown"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutUpBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutDownBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutLeftBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated fadeOutRightBig"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceIn"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceInDown"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceInUp"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceInLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceInRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceOut"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceOutDown"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceOutUp"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceOutLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated bounceOutRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateIn"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateInDownLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateInDownRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateInUpLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateInUpRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateOut"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateOutDownLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateOutDownRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateOutUpLeft"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rotateOutUpRight"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated lightSpeedIn"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated lightSpeedOut"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated hinge"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rollIn"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated rollOut"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated expand"></div> -->
+        <!-- <div style="width: 750px; height: 300px" id="chart-container" class="animated contract">&lt;/div> -->
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [4,8,6,3,5,9,8],
+            options: {
+                marginLeft: 50,
+                colors: ['#c66','#6c6','#66c'],
+                yaxisScaleUnitsPost: '%',
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                tooltips: [
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben',
+                    'Bob', 'Jerry', 'Ben'
+                ],
+                grouping: 'stacked',
+                marginInner: 20,
+                linewidth:3,
+                title: 'An SVG Bar chart',
+                shadow: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

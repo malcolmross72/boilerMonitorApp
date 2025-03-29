@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Meter chart with a triangular needle</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        meter = new RGraph.Meter({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 62,
+            options: {
+                segmentsRadiusStart: 125,
+                needleRadius: 115,
+                needleType: 'pointer',
+                tickmarksLargeColor: 'transparent',
+                tickmarksSmallColor: 'transparent',
+                labels: false,
+                linewidth: .00001,
+                linewidthSegments: 20,
+                colorsStroke: 'white',
+                colorsRanges: [
+                    [0, 33, '#FFC900'],
+                    [33, 66, '#8FCE21'],
+                    [66, 100, '#0094DA']
+                ]
+            }
+        }).grow();
+        
+        meter.canvas.onclick = function (e)
+        {
+            var value = meter.getValue(e);
+            
+            meter.value = value;
+            meter.grow();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

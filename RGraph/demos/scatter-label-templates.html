@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="demos.js" ></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart using label templates</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        labels = ['January','February','March','April'];
+        values = [8,4,6,9];
+
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [[0,1],[45,2],[90,3],[35,4],[80,5],[25,6],[70,7],[15,8],[10,6],[15,6],[20,15],[25,13],[30,16],[335,3],[340,8],[45,9]],
+            options: {
+                xaxisLabels: '%{global:labels[%{index}]} (%{global:values[%{index}]}%)',
+                xaxisLabelsCount: 4,
+                xaxisScaleMax: 100
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+
+        <div id="csvData" style="display: none">
+            Richard,8,4,7,6,5,3,4
+            Dave,7,4,6,9,5,8,7
+            Luis,4,3,5,2,6,5,4
+            Kevin,4,2,8,9,6,7,3
+            Joel,4,5,1,3,5,8,6
+            Pete,4,5,6,3,5,8,6
+        </div>
+    </div>
+    
+    <script>
+        //new RGraph.CSV('id:csvData', function (csv)
+        new RGraph.CSV({url:'/sample.csv', callback: function (csv)
+        {
+            // Fetch the first row of the CSV file, starting at the second column
+            var data = csv.column(3);
+
+            // Fetch the first column which becomes the labels
+            var labels = csv.column(0);
+
+            new RGraph.Bar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    marginTop: 50,
+                    title: 'A demo of the CSV reader',
+                    titleSize: 16,
+                    titleBold: true,
+                    xaxisLabels: labels,
+                    xaxisTickmarks: false,
+                    xaxisLinewidth: 2,
+                    yaxis: false,
+                    shadowOffsetx: 2,
+                    shadowOffsety: 2,
+                    shadowBlur: 5,
+                    marginInner: 15,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    colors: ['Gradient(#DDF:#01B4FF)']
+                }                    
+            }).grow();
+        }});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

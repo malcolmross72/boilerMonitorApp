@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Vertical Progress bar grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="125" height="450">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 10,
+            value: 9,
+            options: {
+            }
+        }).grow();
+        
+        setTimeout(function ()
+        {
+            vprogress.value = 1;
+            vprogress.grow();
+        }, 3500);
+    </script>
+
+    <script>showSource()</script>
+
+
+</body>
+</html>

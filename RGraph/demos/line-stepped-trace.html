@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stepped Line chart that uses the trace() effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [70,60,80,50,50,60,70,60,50,40,50,50],
+                [20,30,50,40,30,50,40,30,60,50,10,20]
+            ],
+            options: {
+                marginLeft: 65,
+                marginRight: 100,
+                backgroundGrid: false,
+                xaxis: false,
+                stepped: true,
+                yaxisScaleUnitsPre: '$',
+                yaxisScaleUnitsPost: 'K',
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                key: ['Credit limit','MTM + AR'],
+                keyPosition: 'margin',
+                keyColorShape: 'circle',
+                linewidth: 3,
+                shadow: false,
+                textSize: 14,
+                tickmarksStyle: null
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

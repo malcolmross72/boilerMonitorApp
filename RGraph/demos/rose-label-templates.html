@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="demos.js" ></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Rose chart using label templates</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="margin-left: 50px">
+            <canvas id="cvs" width="750" height="400">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        data = [[588,395],[554,363],[488,363],[865,324],[678,315],[155,398],[465,335]];
+        
+        //
+        // This function is called by the label templates
+        //
+        function format()
+        {
+            var a = arguments[0],
+                b = arguments[1];
+            
+            return '{1}Kg, {2}%'.format(a, b)
+        }
+
+        new RGraph.Rose({
+            id: 'cvs',
+            data: data,
+            options: {
+                scaleUnitsPost: 'k',
+                names: ['Jeff','Luis','Norman','Janice','Bill','Henry','Kev'],
+                labels: '%{property:names[%{index}]} (%{function:format(%{value})})'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

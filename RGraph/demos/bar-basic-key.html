@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Bar chart with a key</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        new RGraph.Bar({
+            id: 'cvs',
+            data: '40,13,12,12,5.9', // A string that RGraph will split up
+            options: {
+                title: 'Energy production from coal, natural gas, wind and solar',
+                titleBold: true,
+                titleSize: 16,
+                titleOffsety: -10,
+                colorsSequential: true,
+                marginLeft: 85,
+                marginRight: 85,
+                marginTop: 70,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['black','green','orange','purple','#dd0'],
+                key: ['Coal','Nuclear','Nat Gas','Wind','Solar'],
+                keyPosition: 'margin',
+                keyPositionY: 230,
+                labelsAbove: true,
+                labelsAboveUnitsPost: '%',
+                labelsAboveSize: 18,    
+                keyPositionMarginHSpace: 15
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

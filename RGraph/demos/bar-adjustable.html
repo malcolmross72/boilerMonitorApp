@@ -1,0 +1,42 @@
+    <!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // Quite a basic Bar chart which just has the single 'adjustable'
+        // property being stipulated meaning that you dynamically adjust
+        // the chart
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [8,6,4,8,9,5,3,2,5],
+            options: {
+                title: 'An adjustable Bar chart',
+                titleBold: true,
+                titleSize: 16,
+                adjustable: true,
+                xaxisLabels: ['Alf','Vinny','Moe','Bill','Neil','Olga','Lilly','Paul','John'],
+                responsive: [
+                    {maxWidth: null,width: 600,height: 250,options:{textSize:16}},
+                    {maxWidth: 800,width: 350,height: 200,options:{textSize:10}}
+                ]
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

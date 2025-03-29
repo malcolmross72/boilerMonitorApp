@@ -1,0 +1,114 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line and Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <div id="chart-container" style="width: 600px; height: 250px"></div>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+    
+        // This is the data for the red angled Line. A single array
+        // of lots of datapoints.
+        data = [
+            1,3,2,5,4,2,3,5,6,5,
+            4,6,7,5,6,8,7,5,8,6,
+            8,9,6,8,7,8,9,10,11,13,
+            9,11,10,13,12,11,10,11,13,11
+        ];
+        
+        // Now create the spline array - which is done by looping through
+        // the data array and setting the value to 1 less.
+        spline = [];
+        
+        data.forEach (function (v, k, arr)
+        {
+            spline[k] = v - 1;
+        });
+
+        // Create the red angled Line using the original data array.
+        // No axes are specified and the labels are set to use the
+        // same spacing and positioning as the Scatter chart. The
+        // labels are slightly smaller than the default.
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                xaxis: false,
+                xaxisLabels: ['Q1','Q2','Q3','Q4'],
+                xaxisLabelsPosition: 'section',
+                xaxisLabelsPositionSectionTickmarksCount: 4,
+                textSize: 10,
+                yaxisScaleMax: 15
+            }
+        }).draw();
+
+        // This is the spline chart which shows the data that's generated
+        // above. It doesn't have the backgroundGrid, the axes or the
+        // yaxisScale enabled.
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: spline,
+            options: {
+                colors: ['rgba(0,0,0,0.25)'],
+                spline: true,
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                yaxisScaleMax: 15
+            }
+        }).draw();
+        
+        // The Bar chart. The backgroundGrid, the axes and the Y-axis
+        // scale are disabled. The maximum value, like the Line charts
+        // above, is set to 15.
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data:[
+                1,8,6,3,5,4,2,5,8,4,
+                4,6,3,5,6,5,2,4,5,8,
+                1,9,4,6,8,5,2,3,5,6,
+                4,8,6,4,4,3,2,1,5,4,
+                7,6,8,5,4,5,9,9,8,6,
+                7,6,8,5,4,5,9,9,8,6,
+                7,6,8,5,4,5,9,9,8,6,
+                1,3,2,5,4,9,1,2,3,5
+            ],
+            options: {
+                marginTop: 125,
+                backgroundGrid: false,
+                colors: ['rgba(0,0,0,0.25)'],
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                yaxisScaleMax: 15,
+                marginInner: 1,
+                responsive: [
+                    {maxWidth:null,width:600,height:250},
+                    {maxWidth:900,width:400,height:200}
+                ]
+            }
+        
+        // Draw the chart and add some responsive capability
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

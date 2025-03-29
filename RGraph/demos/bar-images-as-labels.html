@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.drawing.image.js"></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example showing you how to use images as the labels</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="400" height="250" data-image-src="page-demos-bar-images-as-labels.png"></canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // This is a simple array that holds the paths to the images
+        images = [
+            '../images/face1.png',
+            '../images/face2.png'
+        ];
+
+        // Create the Bar chart. The configuration adds empty labels which
+        // have their coordinates stored which can then be used to add the
+        // images that are added after
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [8,4],
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                
+                // The empty labels that we use the coordinates of
+                xaxisLabels: ['',''],
+
+                marginBottom: 70,
+                marginInner: 45,
+                labelsAbove: true,
+                labelsAboveSpecific: ['Fred','Lenny'],
+                labelsAboveSize: 18,
+                textFont: 'Comic sans MS',
+                colors: ['#ccf'],
+                textSize: 16
+            }
+        }).grow();
+
+        // Loop through the coordinates and add the images that are used
+        // as the labels
+        for (var i=0,idx=0;i<bar.coordsText.length; i+=1) {
+            if (bar.coordsText[i].tag == 'xaxis.labels') {
+
+                // Use the drawing API Image object to add the image instead of the
+                // canvas' 2D context directly. This means that the images will be redrawn
+                // automatically should tooltips be added to the chart later. Plus, of
+                // course, the drawing API image objects supports having a tooltip itself.
+                new RGraph.Drawing.Image({
+                    id: 'cvs',
+                    
+                    // Use the coordinates of the blank labels that were added in the
+                    // chart configuration to position the image.
+                    x: bar.coordsText[i].x,
+                    y: bar.coordsText[i].y + 5,
+
+                    src: images[idx++],
+                    options: {
+                        halign: 'center'
+                    }
+                }).draw();
+
+                // Possible DOM1-style events for the drawing API Image object. These
+                // are examples of adding events to the image that you can use if you
+                // want
+                // 
+                // image.onclick = function (e, obj)
+                // {
+                // }
+                // image.onmousemove = function (e, obj)
+                // {
+                // }
+                // image.onmouseover = function (e, obj)
+                // {
+                // }
+                // image.onmouseout = function (obj)
+                // {
+                // }
+            }
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

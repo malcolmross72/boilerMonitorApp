@@ -1,0 +1,83 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.gantt.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Gantt chart showing a work schedule</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="350">[No canvas support]</canvas>
+        
+        <span style="display: inline-block; width: 125px">Name:</span> <input type="text" id="name" style="font-size: 16pt; padding: 5px"/><br />
+        <span style="display: inline-block; width: 125px">Event start:</span> <input type="text" id="eventStart"  style="font-size: 16pt; padding: 5px" /><br />
+        <span style="display: inline-block; width: 125px">Event duration:</span> <input type="text" id="eventduration"  style="font-size: 16pt; padding: 5px" />
+    </div>
+
+    <script>
+        data = [
+            {start: 3,  duration: 5, label: 'Barney', color: 'red'},
+            {start: 7,  duration: 3, label: 'Harry', color: 'blue'},
+            {start: 14, duration: 5, label: 'Cynthia', color: 'pink'},
+            [
+                {start: 14, duration: 5, label: 'Kiffen', color: '#aaf'},
+                {start: 21, duration: 5, color: '#aaf'}
+            ],
+            {start: 21, duration: 5, label: 'John', color: 'cyan'},
+            {start: 21, duration: 5, label: 'Jenny', color: 'green'},
+            {start: 21, duration: 5, label: 'Ken', color: 'black'},
+            {start: 14, duration: 5, label: 'Richard', color: 'pink'},
+            [
+                {start: 14, duration: 5, label: 'Lucy', color: '#fc7'},
+                {start: 21, duration: 5, color: '#fc7'}
+            ]
+        ];
+
+        new RGraph.Gantt({
+            id: 'cvs',
+            data: data,
+            options: {
+                borders: false,
+                xaxisLabels: [
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','','',
+                    'M','T','W','T','F','',''
+                ],
+                xaxisScaleMax: 28,
+                backgroundVbars: [
+                    [5, 2, 'rgba(240,240,240,0.75)'],
+                    [12, 2, 'rgba(240,240,240,0.75)'],
+                    [19, 2, 'rgba(240,240,240,0.75)'], 
+                    [26, 2, 'rgba(240,240,240,0.75)']
+                ],
+                adjustable: true
+            }
+        }).draw().on('adjust', function (obj)
+        {
+            var event    = RGraph.Registry.get('adjusting.gantt'); // Don't chain this line
+            var dataset  = event.dataset,
+                index = event.index;
+
+            if (RGraph.isArray(event.object.data[dataset])) {
+                document.getElementById('eventStart').value    = obj.data[dataset][index].start + 1;
+                document.getElementById('eventduration').value = obj.data[dataset][index].duration;
+                document.getElementById('name').value          = obj.data[dataset][0].label;
+
+            } else {
+                document.getElementById('eventStart').value    = obj.data[dataset].start + 1;
+                document.getElementById('eventduration').value = obj.data[dataset].duration;
+                document.getElementById('name').value          = obj.data[dataset].label;
+            }
+        });
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

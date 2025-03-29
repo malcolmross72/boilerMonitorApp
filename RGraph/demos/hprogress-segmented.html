@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A segmented Horizontal Progress bar</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="margin-bottom: 20px">
+            <canvas id="cvs" width="600" height="100">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        value = 7;
+
+        hprogress = new RGraph.HProgress({
+            id: 'cvs',
+            min: 0,
+            max: 10,
+            value: 0,
+            options: {
+                colors: ['red'],
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                linewidth: 5,
+                tickmarksCount: 0,
+                colorsBackground: 'rgba(0,0,0,0)',
+                marginTop: 10,
+                marginLeft: 10,
+                marginRight: 10,
+                marginBottom: 10,
+                labelsOffsetx: -30,
+                labelsOffsety: -65,
+                textColor: 'white',
+                textSize: 30
+            }
+        }).on('beforedraw', function (obj)
+        {
+            obj.context.fillStyle = 'black';
+            obj.context.fillRect(0,0,obj.canvas.width,obj.canvas.height);
+        }).on('draw', function (obj)
+        {
+            var [x,y,w,h] = obj.coords[0],
+                lw        = 5,
+                step      = 1;
+            
+            for (var i=0; i<=10; i+=step) {
+                
+                var x2 = obj.getXCoord(i);
+                
+                obj.path(
+                    'lw % ss white sr % % % %',
+                    lw, x, y, x2 - x, h
+                );
+            }
+        }).draw();
+        
+        
+        // Increase the represented value - a custom grow effect
+        // that increases the value in whole numbers
+        for (var i=0; i<=value; ++i) {
+            (function (num)
+            {
+                setTimeout(function ()
+                {
+                    hprogress.value = num;
+                    RGraph.redraw();
+                }, num * 150);
+            })(i)
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An offset X-axis Waterfall chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="450">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Waterfall({
+            id: 'cvs',
+            data: [5,4,11,-30,4,5,-3],
+            options: {
+                backgroundGridHlinesCount: 6,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun',''],
+                yaxisLabelsCount: 6,
+                yaxisScaleMin: -10,
+                yaxisScaleMax: 20,
+                yaxisScaleDecimals: 2,
+                yaxisScaleUnitsPre: '$',
+                yaxisTickmarksCount: 6,
+                marginLeft: 150
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

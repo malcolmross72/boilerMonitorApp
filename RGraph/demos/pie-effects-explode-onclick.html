@@ -1,0 +1,56 @@
+ <!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Pie chart explode (using the click event)</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="550" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,6,3,5,2,5,8],
+            options: {
+                labels: ['Monday', 'Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                textColor: '#aaa',
+                exploded: 5,
+                radius: 100,
+                linewidth: 1,
+                shadow: false
+            }
+        }).on('click', function (e, shape)
+        {
+            if (!pie.get('exploded') || !pie.get('exploded')[shape.index]) {
+                pie.explodeSegment(shape.index, 25);
+            }
+            
+            e.stopPropagation();
+        }).on('mousemove', function (e, shape)
+        {
+            return true;
+        }).draw()
+    
+    
+    
+        // Add the window click listener that resets the Pie chart
+        window.onmousedown = function (e)
+        {
+            pie.set('exploded', 5);
+            RGraph.redraw();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A demonstration of the Scatter chart Lasso option</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="300">[No canvas support]</canvas><br />
+        <button style="font-size: 20pt; cursor: pointer" onclick="scatter.clearLassoState(); RGraph.redraw();">Clear selections</button>
+        <button style="font-size: 20pt; cursor: pointer" onclick="console.log(scatter.lasso.state);">Log the state to the console</button>
+        <button style="font-size: 20pt; cursor: pointer" onclick="console.log(scatter.lasso.state.points);">Log the state.points to the console</button>
+    </div>
+    
+    <script>
+
+        data = [
+            [[10,1],[20,2],[30,3],[40,4],[50,5],[60,6]],
+            [[10,0],[20,0],[30,0],[40,0],[50,0],[60,0]]
+        ];
+
+        // Create and configure the Scatter chart
+        scatter = new RGraph.Scatter({
+            id: 'cvs',
+            data: data,
+            options: {
+                lasso: true,
+                //lassoStroke: '#006',
+                //lassoFill: '#f006',
+                //lassoLinewidth: 1,
+                //lassoHighlightLinewidth: 2,
+                //lassoHighlightStroke: '#0000',
+                //lassoHighlightFill: 'red',
+                
+                //This callback is called what points are cleared
+                //
+                //lassoClearCallback: function (state)
+                //{
+                //    $p(state.points);
+                //},
+                
+                // When points are selected - this callback function
+                // is called
+                
+                //lassoCallback: function (state)
+                //{
+                //    $c(state.points);
+                //},
+                
+                // Whether to enable persistence or not. If nothing
+                // else is specified then the state information is
+                // stored in the window.localStorage variable
+                lassoPersist: true,
+                
+                // Store the state information in the browser-based
+                // window.localStorage variable
+                lassoPersistLocal: true,
+
+                //lassoPersistSave: function (state)
+                //{
+                //    // Store the state information (for example,
+                //    // in a database). The state information is
+                //    // in the form of a JSON object.
+                //
+                //    console.log(state);
+                //},
+                //lassoPersistLoad: function ()
+                //{
+                //    // Get the data (for example, from a database,
+                //    // and return it (it should be a valid JavaScript
+                //    // object).
+                //    //
+                //    // return state;
+                //},
+
+                xaxisScaleMax: 100,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                tickmarksStyle: 'circle',
+                tickmarksSize: 8,
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

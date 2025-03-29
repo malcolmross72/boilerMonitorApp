@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A basic Pie chart example</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [84,76,79,84,86],
+            options: {
+                shadow: false,
+                exploded: [15],
+                labels: ['Jack','Hoolio','Kevin','Peter','Luis']
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

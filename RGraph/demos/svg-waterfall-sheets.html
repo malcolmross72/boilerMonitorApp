@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.sheets.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Waterfall chart using the Google Sheets connector</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 1000px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.Sheets(
+            'AIzaSyBPofvjcDhOdet_U2Tr4-rSLItAgaCsMCM',
+            '1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E',
+            'Bar chart', // Use the data from the "Bar chart" sheet
+        function (sheet)
+        {
+            var data   = sheet.get('B2:B13'),
+                labels = sheet.get('A2:A13');
+            
+            // TODO Carriage returns don't work yet
+            for (var i=0; i<labels.length; i+=2) {
+                labels[i] = "\n" + labels[i];
+            }
+            
+            labels.push('Total');
+
+            new RGraph.SVG.Waterfall({
+                id: 'chart-container',
+                data: data,
+                options: {
+                    marginTop: 50,
+                    marginBottom: 45,
+                    textSize: 9,
+                    xaxisLabels: labels,
+                    tooltips: labels,
+                    yaxis: false,
+                    backgroundGridColor: '#eee',
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    colorsStroke: '#aaa',
+                    yaxisLabelsCount: 6,
+                    xaxisColor: '#333',
+                    title: 'Cumulative total of widgets sold by Brian',
+                    titleSubtitle: 'Numbers are sales by store only',
+                    titleSubtitleItalic: true,
+                    titleSubtitleSize:10,
+                    labelsAbove: true,
+                    labelsAboveUnitsPost: 'pc'
+                }
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

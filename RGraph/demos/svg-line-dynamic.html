@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A scrolling SVG Line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: RGraph.SVG.arrayPad([],300, 0),
+            options: {
+                marginInner: 0,
+                title: 'A scrolling SVG Line chart',
+                marginLeft: 50,
+                marginBottom: 50,
+                yaxisScaleMax: 50,
+                yaxisScaleMin: -25,
+                yaxisLabelsCount: 3,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday', 'Friday'],
+                xaxisLabelsPosition: 'section',
+                xaxisTickmarks: false,
+                backgroundGridVlinesCount: 10,
+                xaxisColor: '#aaa',
+                yaxis: false,
+                backgroundGridColor: '#eee',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                backgroundGridHlinesCount: 3,
+                filled: true,
+                colors: ['#c00'],
+                linewidth: 1,
+                filledColors: ['rgba(255,0,0,0.25)']
+            }
+        }).draw();
+
+
+
+
+        function update ()
+        {
+            // A global
+            last = (window.last || (Math.random() * 75 + -25)) + (Math.random() * 4 - 2);
+            last = Math.min(50, last);
+            last = Math.max(-25, last)
+
+            line.originalData[0].push(last);
+            line.originalData[0].shift();
+
+            RGraph.SVG.redraw();
+
+            setTimeout(function ()
+            {
+                update()
+            }, 50);
+        }
+
+        update();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.funnel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Funnel chart with an interactive key</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="550">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Funnel({
+            id: 'cvs',
+            data: [500,422,215,56,32,5],
+            options: {
+                key: ['Phone call','Interview','Selection','2nd Interview','Offer'],
+                keyLabelsSize: 16,
+                keyInteractive: true,
+                keyPositionY: 80,
+                keyPositionX: 290,
+                keyPositionGraphBoxed: false,
+                marginRight: 150
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

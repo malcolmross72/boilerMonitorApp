@@ -1,0 +1,43 @@
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An inverted offset X-axis Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="400">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [-10,-24,51,65,68,99],
+            options: {
+                marginLeft: 85,
+                marginTop: 45,
+                outofbounds: true,
+                linewidth: 3,
+                colors: ['red'],
+                yaxisScaleMax: 150,
+                yaxisScaleInvert: true,
+                tickmarksStyle: null,
+                yaxisScaleMin: -50,
+                backgroundGridHlinesCount: 4,
+                yaxisLabelsCount: 4,
+                yaxisTickmarksCount: 4,
+                yaxisScaleUnitsPost: 'k  ',
+                marginInner: 15,
+                spline: true
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>SVG Pie charts based meters</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="background-color: black; width: 610px; height: 325px"></div>
+    </div>
+        
+    <script id="rgraph-demo-source-code">
+        // Create the first Pie chart. It uses the roundRobin()
+        // effect and is configured to appear as a donut chart.
+        // With there being only two values given to the chart
+        // it makes the donut chart look like a circular Progress
+        // bar.
+        
+        //
+        // Background for the right-most pie chart
+        //
+        pie1b = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [100],
+            options: {
+                centerx: 500,
+                centery: 100,
+                radius: 90,
+                colors: ['#aaa'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).draw();
+
+        pie1 = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [15,85],
+            options: {
+                centerx: 500,
+                centery: 100,
+                radius: 90,
+                colors: ['red', '#0000'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).on('draw', function (obj)
+        {
+            // Add the text label that indicates the 'value' of the
+            // first Pie segment
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   obj.data[0] + '%',
+                x:      obj.centerx,
+                y:      obj.centery,
+                halign: 'center',
+                valign: 'center',
+                size:   40,
+                bold:   true,
+                color:  '#999'
+            });
+
+            // Add the smaller text label that sits under the main percentage label.
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   'Charles',
+                x:      obj.centerx,
+                y:      obj.centery + 20,
+                halign: 'center',
+                valign: 'top',
+                size:   16,
+                bold:   true,
+                color:  '#999'
+            });
+        
+        // Use the roundRobin() effect for the red Pie segment.
+        }).roundRobin({frames: 45});
+
+
+
+
+
+
+
+
+
+        //
+        // Background for the middle pie chart
+        //
+        pie2b = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [100],
+            options: {
+                centerx: 300,
+                centery: 100,
+                radius: 90,
+                colors: ['#aaa'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).draw();
+
+        // Add the second 'meter' that shows Rickys progress
+        pie2 = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [50,50],
+            options: {
+                centerx: 300,
+                centery: 100,
+                radius: 90,
+                colors: ['red', 'transparent'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).on('draw', function (obj)
+        {
+            // Add the text label that indicates the 'value' of the
+            // second Pie segment
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   obj.data[0] + '%',
+                x:      obj.centerx,
+                y:      obj.centery,
+                halign: 'center',
+                valign: 'center',
+                size:   40,
+                bold: true,
+                color:  '#999'
+            });
+
+            // Add the smaller text label that sits under the main
+            // percentage label.
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svgAllElements,
+                text:   'Ricky',
+                x:      obj.centerx,
+                y:      obj.centery + 20,
+                halign: 'center',
+                valign: 'top',
+                size:   16,
+                bold: true,
+                color:  '#999'
+            });
+        }).roundRobin({frames: 45});
+
+
+
+
+
+
+
+
+
+
+
+        //
+        // Background for the left-most pie chart
+        //
+        pie3b = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [100],
+            options: {
+                centerx: 100,
+                centery: 100,
+                radius: 90,
+                colors: ['#aaa'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).draw();
+        
+        // Add the third 'meter' that shows Freddys progress
+        pie3 = new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [42,58],
+            options: {
+                centerx: 100,
+                centery: 100,
+                radius: 90,
+                colors: ['red', 'transparent'],
+                donut: true,
+                donutWidth: 20
+            }
+        }).on('draw', function (obj)
+        {
+            //
+            // Add the text label that indicates the 'value' of the
+            // third Pie segment
+            //
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   obj.data[0] + '%',
+                x:      obj.centerx,
+                y:      obj.centery,
+                halign: 'center',
+                valign: 'center',
+                size:   40,
+                bold: true,
+                color:  '#999'
+            });
+
+            // Add the smaller text label that sits under the main percentage label.
+            RGraph.SVG.text({
+                object: obj,
+                parent: obj.svg.all,
+                text:   'Freddy',
+                x:      obj.centerx,
+                y:      obj.centery + 20,
+                halign: 'center',
+                valign: 'top',
+                size:   16,
+                bold: true,
+                color:  '#999'
+            });
+        }).roundRobin({frames: 45});
+
+
+
+
+
+
+        // This is the common configuration for the red progress bars
+        conf = {
+            xaxis: false,
+            xaxisScale: false,
+            xaxisScaleMax: 100,
+            xaxisLabels: false,
+            yaxis: false,
+            colors: ['red'],
+            marginTop: 40,
+            marginBottom: 5,
+            backgroundGrid: false,
+            colors: ['red'],
+            backgroundColor:'gray',
+            marginInner: -1
+        };
+
+        // These Horizontal Bar charts become the progress bars
+        new RGraph.SVG.HBar({id: 'chart-container', data: [42], options: {...conf, marginTop: 205,marginBottom: 95}}).grow();
+        new RGraph.SVG.HBar({id: 'chart-container', data: [50], options: {...conf, marginTop: 245,marginBottom: 55}}).grow();
+        new RGraph.SVG.HBar({id: 'chart-container', data: [15], options: {...conf, marginTop: 285,marginBottom: 15}}).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.sheets.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using the Google Sheets connector</h1>
+    
+    <p>
+        You can see the spreadsheet here:
+        
+        <a href="https://docs.google.com/spreadsheets/d/1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E/edit#gid=177431438" target="_blank">
+            https://docs.google.com/spreadsheets/d/1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E/edit#gid=177431438
+        </a>
+    </p>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250"  data-image-src="page-demos-line-sheets.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // Create a new RGraph Sheets instance that allows you to connect
+        // to your Google Sheet spreadsheet and retrieve data from it. The
+        // first argument is the OAuth ID (see the Google Sheets documentation
+        // on the RGraph website). The second argument is the key (ie the
+        // unique identifier) of the spreadsheet. This can be found in the URL
+        // of your spreadsheet. The third argument is the worksheet if you
+        // need to give one - this argument is optional
+        new RGraph.Sheets(
+            'AIzaSyBPofvjcDhOdet_U2Tr4-rSLItAgaCsMCM',
+            '1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E',
+            'Line chart',
+        function (sheet)
+        {
+            // Now, in the Sheets object callback, the Line chart can be created
+            // as normal
+            new RGraph.Line({
+                id: 'cvs',
+                
+                // Use the sheets object to retrieve some data from the spreadsheet that acts
+                // as the data
+                data: sheet.get('B2:M2'),
+
+                options: {
+                    linewidth: 5,
+                    tickmarksStyle: null,
+                    
+                    // Use the sheets object again to retrieve some data from the
+                    // spreadsheet that acts as the X-axis labels on the chart
+                    xaxisLabels: sheet.get('B1:M1'),
+
+                    xaxisLabelsOffsety: 5,
+                    colors: ['#f66'],
+                    shadowOffsetx: 2,
+                    shadowOffsety: 2,
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    xaxis: false,
+                    yaxis: false,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    marginLeft: 35,
+                    marginInner: 10,
+                    spline: true,
+                    
+                    // Add some responsive capability
+                    // to accommodate smaller screens
+                    responsive: [
+                        {maxWidth: null,width:600,height:250,options:{textSize: 12}},
+                        {maxWidth: 900,width:400,height:200,options:{textSize: 10}}
+                    ]
+                }
+            
+            // Animate the chart using the trace() effect
+            }).trace();
+        });
+    </script>
+
+    <script>showSource()</script>    
+
+</body>
+</html>

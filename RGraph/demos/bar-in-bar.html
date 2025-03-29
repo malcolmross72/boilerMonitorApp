@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Bar chart with bars-in-bars</h1>
+    
+    <p>
+        <a href="svg-bar-in-bar.html">
+            There's an <code>svg</code> version of this chart here.
+        </a>
+    </p>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="200">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data = {};
+        data.shipped = [88000,88000,105000,105000,116000,116000,126000];
+        data.sold    = [30000,54000,54000,62000,63000,68000,68000];
+
+        bar1 = new RGraph.Bar({
+            id: 'cvs',
+            data: data.shipped,
+            options: {
+                marginTop: 40,
+                marginLeft: 70,
+                colors: ['rgba(0,0,255,0.2)'],
+                xaxisLabels: ['Fred','Barney','Wilma','Betty','Dino','Bam-bam','Pebble'],
+                labelsAbove: data.shipped,
+                title: 'Total cars produced vs sold',
+                titleSize: 14,
+                titleBold: true,
+                colorsStroke: 'rgba(0,0,0,0)',
+                xaxisScaleZerostart: true,
+                shadow: true
+            }
+        }).draw();
+
+        bar2 = new RGraph.Bar({
+            id: 'cvs',
+            data: data.sold,
+            options: {
+                yaxisScaleMax: bar1.scale2.max,
+                marginTop: 40,
+                marginLeft: bar1.get('marginLeft'),
+                colors: ['pink'],
+                xaxis: false,
+                yaxis: false,
+                labelsAbove: true,
+                marginInner: 20,
+                yaxisScale: false,
+                backgroundGrid: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                shadow: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

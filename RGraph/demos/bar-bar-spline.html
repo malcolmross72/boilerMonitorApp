@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A combined Bar and Spline chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        labels = ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe', 'Larry'];
+
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [4,5,3,8,4,9,6,5,3,7],
+            options: {
+                title: 'An animated combined spline and Bar chart',
+                titleBold: true,
+                titleSize: 16,
+                xaxis: false,
+                yaxis: false,
+                xaxisLabels: labels,
+                colors: ['#ddf'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                textSize: 12,
+                colorsStroke: 'rgba(0,0,0,0)',
+                marginBottom: 35
+            }
+        }).grow();
+
+
+
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [41,43,45,54,42,41,21,18,12,11],
+            options: {
+                xaxis: false,
+                yaxis: false,
+                spline: true,
+                shadow: true,
+                tickmarksStyle: 'circle',
+                tickmarksSize: 5,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                tooltips: 'Results for %{property:tooltipsNames[%{index}]}: %{value}',
+                tooltipsNames: labels,
+                tooltipsCss: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontSize: '20pt'
+                },
+                marginBottom: 35,
+                yaxisScale: false,
+                xaxisTickmarksCount: 0,
+                yaxisTickmarksCount: 0
+            }
+        });
+
+        
+        line.set('marginInner', (line.canvas.width - line.get('marginLeft') - line.get('marginRight')) / (bar.data.length * 2))
+            .trace({frames: 30});
+    </script>
+    
+    <script>showSource()</script>    
+
+</body>
+</html>

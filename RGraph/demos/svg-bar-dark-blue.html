@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dark and graduated blue Bar chart</h1>
+    
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 600px; height: 300px; background-color: black" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // This is not a complicated configuration - here the data is
+        // separated out to its own variable.
+        data = [6,4,5,5,7,4,8];
+    
+        // There's no labels or scale on this chart - 99% of the time
+        // you do want at least a scale on your chart but sometimes
+        // you will be able to omit it. Other than that, an RGraph
+        // gradient is being used and there's no horizontal
+        // background bars.
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                xaxis: false,
+                yaxis: false,
+                yaxisLabels: false,
+                backgroundGridColor: '#999',
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                colors: ['Gradient(#6969FF:#6969FF:#000)'],
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                textColor:'white',
+                textSize:16,
+                responsive: [
+                    {maxWidth: null,width:600, height: 300,options: {marginInner:15}},
+                    {maxWidth: 800, width:400, height: 200,options: {marginInner:10}}
+                ]
+            }
+        // Draw the chart and add some responsive capabilities
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

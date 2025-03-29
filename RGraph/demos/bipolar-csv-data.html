@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Bipolar chart using CSV data</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        
+        <div id="csv-data-left" style="display: none">6,8,6,3,5,2,4</div>
+        <div id="csv-data-right" style="display: none">4,8,6,3,5,2,4</div>
+    </div>
+
+    <script>
+        left  = document.getElementById("csv-data-left").innerHTML.split(/,/);
+        right = document.getElementById("csv-data-right").innerHTML.split(/,/);
+        
+        // Since they're strings, convert them to numbers
+        //
+        // Recent versions of RGraph should not need these conversions
+        //for (var i=0; i<left.length; ++i) {left[i] = Number(left[i]);}
+        //for (var i=0; i<right.length; ++i) {right[i] = Number(right[i]);}
+
+        var bipolar = new RGraph.Bipolar({
+            id: 'cvs',
+            left: left,
+            right: right,
+            options: {
+                xaxis: false,
+                textSize: 16,
+                yaxisLabels: ['John','Luke','Pete','Jane','Fred','Jolene','Luis'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.hprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Progress bar using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="100">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            // Fetch the first row, 
+            var row = csv.row(0, 1);
+
+            var progress = new RGraph.HProgress({
+                id: 'cvs',
+                min: 0,
+                max: 10,
+                value: row[0],
+                options: {
+                marginLeft: 20,
+                marginRight: 20,
+                marginTop: 20,
+                marginBottom: 20,
+                    marginInner: 10
+                }
+            }).draw();
+        }});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

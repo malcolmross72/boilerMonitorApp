@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.segmented.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>The Segmented meter grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        segmented = new RGraph.Segmented({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 64,
+            options: {
+                width: 50,
+                label: true,
+                labelSize: 55,
+                labelUnitsPost: '%'
+            }
+        }).grow();
+        
+        
+        setInterval(function ()
+        {
+            segmented.value = segmented.value + RGraph.random(-10,10);
+            segmented.grow();
+        }, 2000);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

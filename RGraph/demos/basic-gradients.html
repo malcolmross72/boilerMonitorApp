@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of the new simple gradient syntax</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="500">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [8,8,9,6,8,7,7],
+            options: {
+                colors: [
+                    'Gradient(white:red)',
+                    'Gradient(white:green)',
+                    'Gradient(white:blue)',
+                    'Gradient(white:pink)',
+                    'Gradient(white:#ddd)',
+                    'Gradient(white:cyan)',
+                    'Gradient(white:orange)'
+                ],
+                colorsSequential: true,
+                labelsAxes: 'n',
+                margin: 3
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

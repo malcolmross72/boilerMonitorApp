@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart fetching its data via AJAX</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+   <div id="rgraph-demo-html">
+       <canvas id="cvs" width="600" height="600">[No canvas support]</canvas>
+   </div>
+
+   <script>
+       RGraph.AJAX.getCSV({url: '/getdata.html', callback: function (data)
+       {
+            new RGraph.HBar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    grouping: 'grouped',
+                    marginInner: 5,
+                    yaxisLabels: ['Charlie','Jake','Luis','Jack','Bernie','Luis','Bob','Joe','Jack','Cynthia'],
+                    colors: ['Gradient(#6699EE:#3366CC:#3366CC)'],
+                    backgroundGridHlinesCount: 10,
+                    backgroundGridVlinesCount: 5,
+                    textSize: 16,
+                    marginLeft: 100
+                }
+            }).draw();
+       }});
+   </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

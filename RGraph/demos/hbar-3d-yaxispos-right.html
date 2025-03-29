@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Horizontal Bar chart with a right Y-axis</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="550" style=""border: 1px solid gray">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [[1,null],[1,2],[5,4],[7,8],[4,3],[8,8],[4,6]],
+            options: {
+                colors: ['red','#0f0'],
+                grouping: 'grouped',
+                xaxis: false,
+                xaxisScaleMax: -10,
+                yaxisPosition: 'right',
+                yaxis: false,
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                yaxisLabelsOffsetx: 15,
+                variant: '3d',
+                marginLeft: 5,
+                marginRight: 120,
+                marginInner: 10,
+                marginLeftAuto: false,
+                marginBottom: 100,
+                shadow: true,
+                shadowOffsety:  3,
+                shadowOffsetx: -1,
+                shadowBlur: 10,
+                shadowColor: '#ddd'
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

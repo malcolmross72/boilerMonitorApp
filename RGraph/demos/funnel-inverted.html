@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.funnel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An inverted Funnel chart showing a hypothetical company structure</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="500">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Funnel({
+            id: 'cvs',
+            data: [15,26,54,84,100, 186],
+            options: {
+                labels: ['Directors','Regional directors', 'Regional Managers','Managers','Supervisors','Programmers'],
+                labelsSticks: true,
+                labelsX: 5,
+                marginLeft: 230,
+                colorsStroke: 'rgba(0,0,0,0)',
+                textBoxed: false,
+                shadow: true,
+                shadowOffsetx: 0,
+                shadowOffsety: 0,
+                shadowBlur: 15,
+                shadowColor: 'gray',
+                colors: ['red','green','blue','pink','#666']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Bar chart showing income and expenditure</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data1 = [[2,5,9],[4,2,6],[6,5,8]];
+        data2 = [-4,-5,-20];
+        
+        // Top bar chart
+        bar1 = new RGraph.Bar({
+            id: 'cvs',
+            data: data1,
+            options: {
+                title: 'A stacked income/expenditure chart',
+                titleSize: 16,
+                titleBold: true,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                colors: ['blue','pink','aqua'],
+                marginInner: 25,
+                colorsStroke: 'rgba(0,0,0,0)',
+                backgroundGrid: false,
+                marginBottom: 125,
+                grouping: 'stacked',
+                yaxisScaleMax: 20
+            }
+        }).wave();
+
+        // Bottom bar chart
+        bar2 = new RGraph.Bar({
+            id: 'cvs',
+            data: data2,
+            options: {
+                shadow: false,
+                colors: ['red'],
+                marginInner: 25,
+                xaxisPosition: 'center',
+                backgroundGrid: false,
+                yaxisScaleMax: 20,
+                yaxisTickmarksCount: 10
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

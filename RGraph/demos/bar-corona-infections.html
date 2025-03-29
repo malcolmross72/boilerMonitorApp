@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart showing levels of Corona virus infections</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="350">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [
+                0,8,2,10,5,6,15,8,9,25,
+                8,9,3,15,15,16,39,14,13,10,
+                65,38,45,14,80,70,102,98,110,70,
+                120,315,371,258,0
+            ],
+            options: {
+                backgroundGridHlinesCount: 4,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxisLabelsCount: 4,
+                yaxisScaleMax: 400,
+                xaxisLabels: [
+                    '','23 Jan','','','','','',
+                    '','','31 Jan','','','','',
+                    '','','','8 Feb','','','',
+                    '','','','','16 Feb','','',
+                    '','','','','','24 Feb','',
+                ],
+                xaxisLabelsSize: 16,
+                xaxisLabelsOffsety: 5,
+                xaxisTickmarks: false,
+                xaxisLinewidth: 2,
+                yaxis: false,
+                marginInner: 1,
+                colors: ['#1280A1'],
+                title: 'Daily confirmed cases of Corona virus outside of China',
+                titleBold: true,
+                titleSize: 16,
+                titleX: 35,
+                titleHalign: 'left'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

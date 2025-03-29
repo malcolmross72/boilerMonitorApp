@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Generic vScissorsClose effect</h1>
+    
+    <p>
+        <span style="color: red; font-weight: bold">This effect requires jQuery</span>
+    </p>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data = [4,8,6,3,1,2,5];
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            }
+        }).draw()
+          .vScissorsClose();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

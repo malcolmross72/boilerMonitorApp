@@ -1,0 +1,91 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A tri-color Line chart that clips to scale values</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: data = [
+                4,8,6,3,2,4,5,4,5,6,1,9,1,2,3,5,7,4,2,2,6,2,3,4,
+                4,8,6,2,3,5,18,14,19,27,28,24,23,18,7,5,6,4,5,1,2,3,4,6
+            ],
+            options: {
+                textSize: 15,
+                yaxis: false,
+                backgroundGridHlinesCount: 6,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                backgroundGridDashed: true,
+                backgroundGridColor: 'gray',
+                shadow: false,
+                linewidth: 3,
+                colors: ['red'],
+                filled: true,
+                filledColors:['#fdd'],
+                marginInner: 15,
+                marginLeft: 75,
+                marginTop: 50,
+                spline: true,
+                xaxisTickmarksCount: 12,
+                xaxisColor: 'gray',
+                yaxisLabelsCount: 3,
+                yaxisScaleUnitsPost: '%',
+                textSize: 16,
+                title: 'A tri-color Line chart using the RGraph clipping functionality',
+                titleSize: 20,
+                clip: 'scale:25-max'
+        }
+        }).trace();
+
+
+
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: line.data,
+            options: {
+                ...line.properties,
+                xaxis: false,
+                yaxis: false,
+                xaxisLabels: false,
+                colors: ['#cc0'],
+                filledColors: ['#ffc'],
+                clip: 'scale:20-25'
+            }
+        }).trace();
+
+
+
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: line.data,
+            options: {
+                ...line.properties,
+                xaxis: false,
+                xaxisLabels: false,
+                yaxis: false,
+                colors: ['green'],
+                filledColors: ['#cfc'],
+                clip: 'scale:min-20',
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            }
+        }).trace();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

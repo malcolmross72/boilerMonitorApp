@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable black Meter gauge</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="300" height="300" style="background-color: black; border-radius: 15px; box-shadow:3px 3px 3px gray" data-image-src="page-demos-meter-black.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        meter = new RGraph.Meter({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 75,
+            options: {
+
+                marginLeft: 15,
+                marginRight: 15,
+                marginTop: 15,
+                marginBottom: 15,
+
+                backgroundColor: 'black',
+                anglesStart: RGraph.PI - 0.55,
+                anglesEnd: RGraph.TWOPI + 0.5,
+                centery: 150,
+                textSize: 14,
+                textColor: 'white',
+                textValign: 'center',
+                colorsGreenColor: '#0a0',
+                segmentsRadiusStart: 95,
+                border: 0,
+                tickmarksSmallCount: 0,
+                tickmarksLargeCount: 0,
+                needleRadius: 70,
+                needleColor: '#ddd',
+                needleHeadWidth: 0.1,
+                needleHeadLength: 20,
+                centerpinStroke: 'black',
+                centerpinFill: '#ddd'
+            }
+        }).draw();
+
+        meter.canvas.onclick = function (e)
+        {
+            var newvalue = meter.getValue(e);
+            
+            meter.value = newvalue;
+            meter.grow();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with Pie charts in tooltips</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [14,16,18,19,13,14],
+            options: {
+                title: 'A Bar chart with Pie charts in the tooltips',
+                titleBold: true,
+                titleSize: 18,
+                xaxisLabels: ['Fred','John','James','Louis','Pete','Kevin'],
+                tooltips: '<div style="text-align: center; font-weight: bold; font-size: 16pt">%{property:xaxisLabels[%{dataset}]}</div><br  /><canvas id="tooltip_canvas" width="250" height="110"></canvas>',
+                tooltipsPointer: false,
+                tooltipsPositionStatic: false,
+                tooltipsCss: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '3px solid black'
+                }
+            }
+        }).grow().on('tooltip', function (obj)
+        {
+            var pie_data = [
+                [80,75,65], [84,85,95],
+                [43,54,85], [43,51,62],
+                [74,75,65], [78,85,95],
+                [46,35,52], [84,94,94]
+            ]
+            var tooltip = RGraph.Registry.get('tooltip');
+            var index   = tooltip.__index__;
+            
+            RGraph.reset(document.getElementById("tooltip_canvas"));
+
+            var pie = new RGraph.Pie({
+                id: 'tooltip_canvas',
+                data: pie_data[index],
+                options: {
+                    labels: ['Monday','Tuesday','Wednesday'],
+                    marginTop: 10,
+                    labelsList: false,
+                    marginBottom: 25,
+                    colors: ['red','#00c','#0c0'],
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    shadow: false,
+                    exploded: 1
+                }
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

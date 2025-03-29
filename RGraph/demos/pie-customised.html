@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A customised Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="margin-left: 50px">
+            <canvas id="cvs" width="550" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        data   = [20,13.43,2.83,4.24,7.42,13.43,38.65];
+        labels = ['Miscellaneous','Cooking','Office equipment','Refridgeration','Cooling','Ventilation','Lighting'];
+        
+        //for (var i=0; i<data.length; ++i) {
+        //    labels[i] = labels[i] + ', ' + data[i] + '%';
+        //}
+
+        new RGraph.Pie({
+            id: 'cvs',
+            data: data,
+            options: {
+                labels: labels,
+                tooltips: '%{property:labels[%{index}]}: %{value}%',
+                colors: ['#EC0033','#A0D300','#FFCD00','#00B869','#999999','#FF7300','#004CB0'],
+                colorsStroke: 'white',
+                linewidth: 0,
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                shadowBlur: 3,
+                exploded: 7
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A black and orange SVG Horizontal Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 500px; height: 300px; background-color: black" id="chart-container"></div>
+        </div>
+    </div>        
+
+    <script id="rgraph-demo-source-code">
+        // The data for the chart
+        data   = [70,80,60,50,40,80];
+        
+        // The labels for the chart. These labels are positioned on the
+        // left-hand-side as normal and the data is also given as the
+        // labelsAbove labels.
+        labels = ['JavaScript','HTML','CSS','React','Ruby','Python'];
+
+        // Create the HBar chart that becomes the gray backgrounds to
+        // the bars. Note that all of the bits of data are set to one.
+        // This means that all of the gray bars on the chart will be
+        // as far right as it goes.
+        bar_bg = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [1,1,1,1,1,1],
+            options: {
+                colors: ['gray'],
+                xaxisScale: false,
+                backgroundGrid: false,
+                marginInner: 5,
+                
+                // If these aren't given then the marginLeftAuto will make
+                // the left margin 0 when it actually needs to match the
+                // other chart.
+                yaxisLabels: labels, 
+                
+                // Don't want to see any text on the background chart.
+                textColor: 'rgba(0,0,0,0)',
+
+                // Add the labels that you can see on the right of the
+                // chart.
+                labelsAboveColor: 'white',
+                labelsAboveSpecific: data,
+                responsive:[
+                    {maxWidth: null, width: 500, height: 300, options: {textSize: 12}},
+                    {maxWidth: 800, width: 400,  height: 250, options: {textSize: 10}}
+                ]
+            }
+        }).draw();
+
+
+
+
+
+
+
+
+        // This is the orange HBar chart that you can see and which
+        // represents the actual values.
+        bar_fg = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                colors: ['orange'],
+                textColor: 'white',
+                yaxisLabels: labels,
+                xaxisScale: false,
+                backgroundGrid: false,
+                marginInner: 5,
+                responsive: [
+                    {maxWidth: null, width: 500, height: 300, options: {textSize: 12}},
+                    {maxWidth: 800, width: 400,  height: 250, options: {textSize: 10}}
+                ]
+            }
+        
+        // The orange chart uses the wave() effect.
+        }).grow({callback: function ()
+        {
+            bar_bg.set('labelsAbove', true);
+            RGraph.SVG.redraw();
+        }});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

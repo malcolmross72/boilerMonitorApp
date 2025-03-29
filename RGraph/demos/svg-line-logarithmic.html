@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart using a logarithmic scale</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 950px; height: 250px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        data = [0,10,0,100,0,1000,0,10000,0,100000];
+        
+        for (var i=0; i<data.length; ++i) {
+            if (data[i] > 0) {
+                data[i] = RGraph.SVG.log({num:data[i], base: 10});
+            }
+        }
+
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                xaxisLabels: ['','A','','B','','C','','D','','E'],
+                yaxisScale: false,
+                yaxisLabels:['0','10','100','1,000','10,000','100,000','1,000,000'],
+                marginLeft: 100,                
+                backgroundGridHlinesCount: 6,
+                yaxisScaleMin: 0,
+                yaxisScaleMax: 6,
+                linewidth: 3,
+                yaxis: false,
+                xaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

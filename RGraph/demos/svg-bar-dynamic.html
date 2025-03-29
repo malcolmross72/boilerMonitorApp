@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dynamic SVG Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 550px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        data  = [3,5,4,9,5,6,3,5,2,5,4,2];
+        delay = 200;
+        
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                labelsAbove: true,
+                labelsAboveDecimals: 1,
+                labelsAboveUnitsPost: 'kg',
+                labelsAboveSize: 10,
+                title: 'A dynamic Bar chart',
+                titleFont: 'Impact',
+                titleSize: 18,
+                backgroundGridVlines:false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            }
+        }).draw();
+        
+        function update()
+        {
+            for (var i=0; i<12; ++i) {
+                // This condition means that a value is only changed 10% of the time. ish.
+                if (Math.random() > .9) {
+                    var random = Math.random();
+                    bar.data[i] = bar.data[i] + (random > 0.5 ? .1 : -.1);
+                    
+                    bar.data[i] = Math.max(bar.data[i], 0);
+                    bar.data[i] = Math.min(bar.data[i], 10);
+                }
+            }
+
+            RGraph.SVG.redraw();
+        
+            setTimeout(update, delay);
+        }
+
+        setTimeout(update, delay);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

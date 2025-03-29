@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart with out-of-bounds values</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 700px; height: 500px; border: 1px solid #ddd" id="chart-container"></div>
+    </div>
+
+    <script>
+        data = [
+            {x:0, y:0},{x:1, y:1},{x:2, y:2},{x:3, y:3},{x:4, y:4},{x:5, y:5},
+            {x:6, y:6},{x:7, y:7},{x:8, y:8},{x:9, y:9},{x:10, y:10}
+        ];
+
+        new RGraph.SVG.Scatter({
+            id: 'chart-container',
+            data: data,
+            options: {
+                xaxisLabels: ['A','B','C','D','E','F','G','H','I','J'],
+                marginBottom: 250,
+                xaxisScaleMax: 10,
+                yaxisScaleMin: 5,
+                yaxisScaleMax: 10,
+                outofbounds: true,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                colors: ['black']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

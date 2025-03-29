@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart showing Chrome speeds</h1>
+
+   <div id="rgraph-demo-html">
+       <canvas id="cvs" width="350" height="176">[No canvas support]</canvas>
+   </div>
+
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [215, 175],
+            options: {
+                xaxisLinewidth: 3,
+                yaxisLinewidth: 3,
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                yaxisLabels: ['Chrome 18', 'Chrome 19'],
+                colors: ['#3266CC'],
+                title: 'SunSpider score',
+                xaxisTitle: 'milliseconds (less is better)',
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                backgroundGridVlinesCount: 4,
+                marginBottom: 55,
+                marginInner: 8,
+                marginTop: 35,
+                marginLeft: 85,
+                tooltips: ['<b>Chrome 18</b>','<b>Chrome 19</b><br /><a href="http://www.google.com" style="color: #ddf" target="_blank">Learn more...</a>']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

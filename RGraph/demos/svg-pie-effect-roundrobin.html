@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Pie chart using the roundRobin() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 350px; border: 1px solid #ddd" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [85,48,13,56,79,95],
+            options: {
+                labels: ['Alf','Berty','Craig','Dean','Elgar','Fliss'],
+                shadow: true,
+                exploded: [0,25],
+                colors: [
+                    'Gradient(white:red)',
+                    'Gradient(white:pink)',
+                    'Gradient(white:blue)',
+                    'Gradient(white:yellow)',
+                    'Gradient(white:#f0f)',
+                    'Gradient(white:brown)',
+                    'Gradient(white:gray)'
+                ]
+            }
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

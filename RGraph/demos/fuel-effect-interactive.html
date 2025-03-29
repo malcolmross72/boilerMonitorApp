@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.fuel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A clickable interactive Fuel chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var fuel = new RGraph.Fuel({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 96,
+            options: {
+                scaleVisible: true,
+                colors: ['Gradient(white:blue)'],
+                needleColor: 'blue',
+                scaleUnitsPost: '%'
+            }
+        }).draw();
+        
+        fuel.canvas.onclick = function (e)
+        {
+            var obj   = e.target.__object__,
+                value = obj.getValue(e);
+            
+            obj.value = value;
+            obj.grow();
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

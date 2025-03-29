@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG stacked Rose chart with tooltips</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 500px; height: 500px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        rose = new RGraph.SVG.Rose({
+            id: 'chart-container',
+            data: [
+                [4,8,6,5],[4,5,1,2],
+                [2,5,9,1],[6,5,8,8],
+                [1,3,5,9],[4,6,8,5],
+                [4,5,6,3]
+            ],
+            options: {
+                tooltips: 'Value: %{value}k',
+                colors: ['blue','green','red','#aaa'],
+                linewidth: 3,
+                tooltipsPointer: false,
+                tooltipsPositionStatic: false,
+                tooltipsCss: {
+                    border:          '3px solid %{property:colors[%{index}]}',
+                    borderRadius:    '15px',
+                    backgroundColor: 'white',
+                    color:           'black',
+                    fontWeight:      'bold',
+                    boxShadow:       'none'
+                }
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Scatter chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        // Generate some random data
+        colors = ['red','black', 'green', 'blue','pink'];
+
+        for (var i=0,data=[]; i<colors.length; ++i) {
+            
+            data[i] = [];
+            
+            for (var j=0; j<100; ++j) {
+                data[i].push({
+                    x: RGraph.SVG.random({min:0, max:365}),
+                    y: RGraph.SVG.random({min:0, max:50}),
+                    tooltip: 'A tooltip',
+                    color: colors[i]
+                });
+            }
+        }
+
+
+        scatter = new RGraph.SVG.Scatter({
+            id: 'chart-container',
+            data: data,
+            options: {
+                key: ['Bob','Jack','Jim','Lou','Bill'],
+                marginTop: 55,
+                xaxisScaleMax: 365,
+                xaxisLabels: ['A','B','C','D','E'],
+                tooltips: 'Dataset: %{dataset}, index: %{index}, sequential index: %{seq}',
+                tooltipsCss: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontSize: '20pt'
+                },
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                colors: colors,
+                title: 'This is a Scatter chart with five datasets',
+                titleBold: true,
+                titleItalic:true,
+                responsive: [
+                    {maxWidth: 900, width: 450, height: 250, options: {textSize:10,titleSize: 14}},
+                    {maxWidth: null,width: 650, height: 350, options: {textSize:12,titleSize: 20}}
+                ]
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

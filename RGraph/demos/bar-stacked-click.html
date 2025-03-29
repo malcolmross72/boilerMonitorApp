@@ -1,0 +1,82 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked bar chart with clickable "whole bars"</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="350">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // The original data
+        data = [[5.33,2.33,3.32],[3.42,2.23,4.23],[4.23,3.23,4.99], [7.99,2.98,2.35], [2.75,1.02,5.24]];
+        
+        // Customise the data for the second bar chart
+        totals = [];
+        data.forEach(function (v, k, arr)
+        {
+            totals[k] = RGraph.arraySum(v);
+        });
+        
+        // The labels for the first chart
+        labels = ['John','Jim','Fred','Luke','Louise'];
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                title: 'A Bar chart with clickable "whole" bars',
+                titleBold: true,
+                titleSize: 16,
+                xaxisLabels: labels,
+                labelsAbove: true,
+                labelsAboveDecimals: 2,
+                linewidth: 2,
+                colorsStroke: 'white',
+                colors: ['Gradient(#4572A7:#66f)','Gradient(#AA4643:white)','Gradient(#89A54E:white)'],
+                shadow: false,
+                marginInner: 25,
+                marginLeft: 45,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisColor: '#ccc',
+                yaxis: false,
+                grouping: 'stacked'
+            }
+        }).draw();
+
+
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: totals,
+            options: {
+                myLabels: labels,
+                colors: ['transparent'],
+                marginInner: 25,
+                marginLeft: 45,
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                tooltips: '%{prop:myLabels[%{dataset}]}\'s results',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                }
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

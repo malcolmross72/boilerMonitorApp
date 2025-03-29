@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with custom drawn tickmarks</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [4,8,6,5,5,4,1,4,2,1,6,8,4,3,4],
+            options: {
+                textSize: 16,
+                yaxisScaleDecimals: 1,
+                marginLeft: 45,
+                marginTop: 45,
+                marginInner: 15,
+                title: 'A Line chart with custom tickmarks',
+                linewidth: 3,
+                shadow: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                
+                // Add a custom tickmark - just a regular circle
+                // but only drawn on every second point
+                tickmarksStyle: function (obj, dataset, value, index, x, y, color, prevX, prevY)
+                {
+                    if (index % 2 === 0) {
+                        obj.path(
+                            'b a % % % % % false f red',
+                            x, y, 7, 0, 6.29
+                        );
+                    }
+                }
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

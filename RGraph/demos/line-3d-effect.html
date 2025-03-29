@@ -1,0 +1,260 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Line chart with multiple datasets</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="450" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        //
+        // Margins for the rear of the chart
+        //
+        marginLeft    = 90;
+        marginRight   = 40;
+        marginTop     = 20;
+        marginBottom  = 105;
+        marginInner   = 5;
+        
+        //
+        // Colors for the lines
+        //
+        colors = [
+            'rgba(255,0,0,0.75)',
+            'rgba(0,0,255,0.75)',
+            'rgba(0,128,0,0.75)'
+        ];
+        filledColors = [
+            'rgba(255,0,0,0.5)',
+            'rgba(100,100,255,0.65)',
+            'rgba(0,200,0,0.75)'
+        ];
+        
+        //
+        // The line data
+        //
+        data = [
+            [8,9,7,8,10,10,13,12,9,8,9,11,8,11,13,12,11,13,10,8,9,10,8,12,11,9,10,9,8,11],
+            [8,7,6,5,6,7,5,6,8,8,8,9,5,6,8,7,5,6,6,8,7,5,6,8,7,8,6,9,9,7],
+            [5,6,8,3,6,5,5,4,5,6,6,7,6,5,4,6,7,5,4,5,6,5,5,5,6,8,7,8,6,5]
+        ];
+
+        //
+        // X-axis labels
+        //
+        xaxisLabels = [
+            '','','','Week 1','','','',
+            '','','','Week 2','','','',
+            '','','','Week 3','','','',
+            '','','','Week 4','','','',
+            '',''
+        ];
+        
+        // The title
+        title = 'Amount of sales last month';
+        
+        // Maximum value for the Y scale
+        yaxisScaleMax = 15;
+        
+        // How much to transform by to get the 3D look
+        transformX = -25;
+        transformY = 15;
+
+
+
+
+
+
+
+
+        // Set the initial transformation on the canvas in order
+        // to provide the 3D look
+        context = document.getElementById('cvs').getContext('2d');
+        context.setTransform(1,0.1,0,1,0,0);
+
+        //
+        // Draw the "chart" that provides the
+        // background grid. The chart is not
+        // displayed - it only shows the
+        // background grid
+        //
+        new RGraph.Line({
+            id: 'cvs',
+            data: [],
+            options: {
+                // The background grid is only enabled on this chart
+                backgroundGridColor: '#ccc',
+                backgroundGridHlinesCount: 5,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                //backgroundGridDashed: false,
+                //backgroundGridColor: '#333',
+                
+                // Set the margins based on the values that are defined above
+                marginBottom: marginBottom,
+                marginTop:    marginTop,
+                marginLeft:   marginLeft,
+                marginRight:  marginRight,
+                marginInner:  marginInner,
+
+                yaxisScaleMax: yaxisScaleMax,
+                xaxis: false,
+                yaxis: false,
+                yaxisPosition: 'right',
+                yaxisScaleUnitsPost: 'Kg',
+                textSize: 10,
+                title: title,
+                titleSize: 16,
+                titleBold: true,
+                titleOffsety: 5
+            }
+        }).draw();
+
+
+
+
+
+
+
+
+        //
+        // Draw the first chart after adjusting
+        // the transformation
+        //
+        context.transform(1,0,0,1,transformX,transformY);
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: data[0],
+            options: {
+
+                colors: [colors[0]],
+                
+                shadow: false,
+
+                // The background grid is only enabled on this chart - the
+                // bar chart at the back
+                backgroundGrid: false,
+
+                marginBottom: marginBottom,
+                marginTop: marginTop,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
+                marginInner: marginInner,
+                
+                filled: true,
+                filledColors: [filledColors[0]],
+
+                xaxis: false,
+                yaxisScaleMax: yaxisScaleMax,
+                yaxis: false,
+                yaxisPosition: 'right',
+                yaxisScale: false,
+                
+                linewidth: 5
+            }
+        }).draw();
+
+
+
+
+
+
+
+
+        //
+        // Draw the second line chart after adjusting
+        // the transformation
+        //
+        context.transform(1,0,0,1,transformX,transformY);
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: data[1],
+            options: {
+
+                colors: [colors[1]],
+                
+                shadow: false,
+
+                backgroundGrid: false,
+
+                marginBottom: marginBottom,
+                marginTop: marginTop,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
+                marginInner: marginInner,
+                
+                filled: true,
+                filledColors: [filledColors[1]],
+
+                yaxisScaleMax: yaxisScaleMax,
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                
+                linewidth: 5
+            }
+        }).draw();
+
+
+
+
+
+
+
+        //
+        // Draw the third line chart after adjusting
+        // the transformation
+        //
+        context.transform(1,0,0,1,transformX,transformY);
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: data[2],
+            options: {
+
+                colors: [colors[2]],
+                
+                shadow: false,
+
+                backgroundGrid: false,
+
+                marginBottom: marginBottom,
+                marginTop: marginTop,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
+                marginInner: marginInner,
+                
+                filled: true,
+                filledColors: [filledColors[2]],
+
+                yaxisScaleMax: yaxisScaleMax,
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                
+                // The X-axis labels are shown on this chart
+                textSize: 10,
+                
+                linewidth: 5,
+                
+                xaxisLabels: xaxisLabels
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

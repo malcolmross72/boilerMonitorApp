@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An animated and customised Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="480" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [1750, 6250],
+            options: {
+                colorsStroke: 'white',
+                colors: ['#DDDF0D','#7798BF'],
+                linewidth: 3,
+                exploded: [15],
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                shadowBlur: 5,
+                labels: ['Jerry'],
+                textSize:12
+            }
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

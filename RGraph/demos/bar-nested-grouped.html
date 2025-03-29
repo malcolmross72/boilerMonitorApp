@@ -1,0 +1,83 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A nested and grouped Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // The "master" inner data
+        data_inner = [[4,2,5],[6,8,4],[4,8,9],[3,5,2],[1,5,5],[4,8,8],[6,3,5]];
+        data_outer = [];
+
+
+        // The totalled "outer" data
+        data_inner.forEach(function (v, k, arr)
+        {
+            data_outer[k] = RGraph.arraySum(v);
+        });
+
+        outer = new RGraph.Bar({
+            id: 'cvs',
+            data: data_outer,
+            options: {
+                title: 'A nested grouped Bar chart',
+                titleSize: 16,
+                titleBold: true,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                colors: ['Gradient(#eee:#aaa)'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                xaxis: false,
+                yaxis: false,
+                labelsAbove: true,
+                labelsAboveOffsety: 5,
+                labelsAboveUnitsPost: 'kg',
+                yaxisScaleUnitsPost: 'kg',
+                marginTop: 50,
+                marginLeft: 50,
+                key: ['Johnny','Rufus','Larna'],
+                keyPosition: 'margin',
+                keyColors: ['red','green','blue']
+            }
+        }).grow();
+        
+
+        inner = new RGraph.Bar({
+            id: 'cvs',
+            data: data_inner,
+            options: {
+                colors: ['red','green','blue'],
+                backgroundGrid: false,
+                textSize: 12,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                xaxis: false,
+                yaxis: false,
+                yaxisScaleMax: outer.scale2.max,
+                marginInner: 10,
+                marginLeft: outer.get('marginLeft'),
+                labelsAbove: true,
+                labelsAboveColor: '#333',
+                labelsAboveSize: 8,
+                yaxisScale: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

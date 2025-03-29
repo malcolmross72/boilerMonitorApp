@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.activity.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A nested Donut chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="450" height="450" style="background-color: black">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        activity = new RGraph.Activity({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: [67,57,46],
+            options: {
+                icons: [
+                    '../images/activityMeter-arrowright.png',
+                    '../images/activityMeter-arrowup.png',
+                    '../images/activityMeter-arrowdown.png'
+                ],
+                width: 50,
+                marginTop: 5,
+                marginBottom: 5,
+                marginLeft: 5,
+                marginRight: 5,
+                responsive: [
+                    {maxWidth: null, width: 450, height: 450, options: {width: null}, parentCss: {width:''}},
+                    {maxWidth: 750,  width: 250, height: 250, options: {width: 25}, parentCss: {width:'100%'}}
+                ]
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

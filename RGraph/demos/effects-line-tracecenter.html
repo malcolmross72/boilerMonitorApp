@@ -1,0 +1,96 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using the animation option</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250" data-image-src="page-demos-effects-line-tracecenter.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        l1 = new RGraph.Line({
+            id: 'cvs',
+            data: [8,6,3,5,12,8,5,4,6,12],
+            options: {
+                animationTraceCenter: true,
+                tickmarksStyle: null,
+                shadow: false,
+                linewidth: 0,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                spline: true,
+                filled: true,
+                colors: ['Gradient(#fcc:red)'],
+                yaxisScaleMax: 35,
+                xaxisLabels:['8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm']
+            }
+        }).trace(null, function ()
+        {
+            new RGraph.Line({
+                id: 'cvs',
+                data: [
+                    [8,6,3,5,12,8,5,4,6,12],
+                    [4,8,6,3,5,2,4,8,5,2]
+                ],
+                options: {
+                    animationTraceCenter: true,
+                    tickmarksStyle: null,
+                    shadow: false,
+                    linewidth: 0,
+                    backgroundGrid: false,
+                    xaxis: false,
+                    yaxis: false,
+                    colors: ['transparent', 'Gradient(white:green)'],
+                    spline: true,
+                    filled: true,
+                    yaxisScaleMax: 35,
+                    yaxisScale: false
+                }
+            }).trace(null, function ()
+            {
+                new RGraph.Line({
+                    id: 'cvs',
+                    data: [
+                        [8,6,3,5,12,8,5,4,6,12],
+                        [4,8,6,3,5,2,4,8,5,2],
+                        [8,6,3,5,9,4,5,8,4,6]
+                    ],
+                    options: {
+                        animationTraceCenter: true,
+                        tickmarksStyle: null,
+                        shadow: false,
+                        linewidth: 0,
+                        backgroundGrid: false,
+                        xaxis: false,
+                        yaxis: false,
+                        colors: ['transparent', 'transparent', 'Gradient(white:blue)'],
+                        spline: true,
+                        filled: true,
+                        yaxisScaleMax: 35,
+                        yaxisScale: false
+                    }
+                }).trace();
+            });
+        });
+        
+        l1.responsive([
+            {maxWidth:null,width: 600,height:250,options:{textSize: 14}},
+            {maxWidth:900, width: 400,height:200,options:{textSize: 10}}
+        ]);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?php header('Content-Type: ISO-8859-1')?>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Bar chart using CSV data (with column based data)</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        //
+        // This is the callback for the AJAX request
+        //
+        var callback = function ()
+        {
+            // Parse the AJAX result text
+            var text   = this.responseText.split(/\r?\n/);
+            var labels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            var data   = [];
+            var key    = text[0].split(/,/);
+            
+            for (var row=1; row<text.length; ++row) {
+
+                var cells = text[row].split(/,/);
+
+                for (var i=0; i<cells.length; ++i) {
+                    
+                    if (!data[i]) data[i] = [];
+                    
+                    // Add the value that hs been retrieved from the CSV file. Remember that because the CSV file is a
+                    // text file - it needs to be converted to a number first
+                    data[i].push(Number(cells[i]));
+                }
+            }
+
+
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: data,
+                options: {
+                    linewidth: 2,
+                    shadowColor: '#ccc',
+                    xaxisLabels: labels,
+                    marginInner: 5,
+                    yaxisScaleDecimals: 2,
+                    yaxisScaleUnitsPre: '£',
+                    marginLeft: 65,
+                    key: key,
+                    keyPosition: 'margin'
+                }
+            }).draw();
+        }
+
+
+        //
+        // Make the AJAX call that fetches the CSV data
+        //
+        RGraph.AJAX({url: '/sample2.csv', callback: callback});
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

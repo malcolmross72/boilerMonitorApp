@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.radar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A non-filled Radar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="500" height="400" >[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // Create and configure the Radar chart so that it's not filled and
+        // only has the labels on the north axis. The text size has been
+        // slightly increased.
+        new RGraph.Radar({
+            id: 'cvs',
+            data: [
+                [8,7,6,7,8,6],
+                [8,9,4,6,6,8]
+            ],
+            options: {
+                backgroundGridPoly: true, // Default now
+                colors: ['transparent'],
+                axesColor: 'transparent',
+                highlights: true,
+                colorsStroke: ['red', 'black'],
+                linewidth: 3,
+                labels: ['', 'Barry', 'Gary','Dave','Paul','Rich'],
+                labelsAxes: 'n',
+                textSize: 16,
+                responsive: [
+                    {maxWidth: null, width: 500, height: 400},
+                    {maxWidth: 900,  width: 300, height: 300}
+                ]
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

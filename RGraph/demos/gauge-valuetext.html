@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Gauge chart using the labelsValue option</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Gauge({
+            id: 'cvs',
+            min: 0,
+            max: 10,
+            value: 5.2,
+            options: {
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: 10,
+                marginBottom: 10,
+                labelsValue: true,
+                labelsValueDecimals: 1,
+                labelsValueBounding: false,
+                labelsValueYPos: 0.65,
+                labelsValueUnitsPost: '%',
+                labelsValueSize: 14,
+                labelsValueBold: true,
+                labelsValueItalic: true,
+                labelsValueBounding: true,
+                labelsValueBoundingFill: '#eee',
+                labelsValueBoundingStroke: '#ccc',
+                colorsRedWidth: 15,
+                colorsYellowWidth: 15
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

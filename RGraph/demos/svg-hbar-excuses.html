@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart showing late excuse numbers</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 500px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [12, 7, 26, 5, 14],
+            options: {
+                backgroundGridBorder: false,
+                yaxisColor: '#ddd',
+                xaxisColor: '#ddd',
+                backgroundGridHlines: false,
+                colors: ['#4F81BD'],
+                marginInner: 25,
+                yaxisLabels: [
+                    'I had no clean pants to wear',
+                    'I thought it was Saturday',
+                    'I forgot to set my alarm',
+                    'It was still too dark, I thought it was nighttime',
+                    'I got stuck in traffic'
+                ],
+                labelsAbove: true,
+                labelsAboveColor: '#333'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

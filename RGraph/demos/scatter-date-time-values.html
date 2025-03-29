@@ -1,0 +1,88 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A DateTime Scatter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="200">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // The first dataset - the set of points that are drawn on
+        // to the chart. Note the different formats of the date/time
+        // values.
+        data1 = [
+            ['2012-02-12 15:51:55', 5],
+            ['2012-03-01 21:45',10],
+            [],
+            [],
+            ['August 15 2012',7],
+            ['15 Nov 2012', 16]
+        ];
+        
+        // The second set of points that are drawn on to the chart
+        data2 = [
+            ['5th January 2012 12:45', 6],
+            ['2012 Mar 05 09:45',17],
+            ['2012/05/05 12:48:45',13],
+            ['2012/09/09 15:45:45',19],
+            ['2012/12/31 23:59:59',2]
+        ];
+
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [data1, data2],
+            options: {
+                // Stipulate the start of year (ie the minimum value of the chart)
+                xaxisScaleMin: '2012-01-01',
+                
+                // Stipulate the end of year (ie the maximum value of the chart)
+                xaxisScaleMax: '2012-12-31 23:59:59',
+
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                yaxis: false,
+                line: true,
+                lineLinewidth: 1,
+                
+                // The value can either be a boolean (ie true or false) or an
+                // array of booleans - with one entry per dataset.
+                lineStepped: [false, true],
+
+                // Here are some more Line configuration properties
+                lineShadowColor: '#999',
+                lineShadowBlur: 15,
+                lineShadowOffsetx: 0,
+                lineShadowOffsety: 0,
+
+                // Configure the background grid
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                
+                tickmarksStyle: 'circle',
+                tickmarksSize: 8,
+                
+                // Add some responsive capabilities so that it
+                // fits well on smaller screens
+                responsive: [
+                    {maxWidth: null,width:600,height:200,options:{textSize:12}},
+                    {maxWidth: 900,width:400,height:200,options:{textSize:10}}
+                ]
+            }
+        
+        // Draw the chart
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

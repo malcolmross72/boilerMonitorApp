@@ -1,0 +1,86 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using AJAX</h1>
+
+    <script>
+        if (!location.host) {
+            document.write(`
+<b>Note:</b>
+For browser security reasons the AJAX demos don't work offline.
+You can view the demos on the RGraph website here:
+<a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+`);
+        }
+    </script>
+  
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250" data-image-src="page-demos-bar-ajax.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        RGraph.AJAX.getCSV('/getdata.html', function (data)
+        {
+            new RGraph.Bar({
+                id: 'cvs',
+                
+                // Use the CSV data directly in the chart configuration
+                data: data,
+
+                options: {
+                    colors: ['gradient(#080:green)'],
+                    xaxisLabels: ['John', 'Fred', 'Joe', 'Rich', 'Pete', 'Lilly', 'Fred', 'Joe', 'Rich', 'Pete'],
+                    marginLeft: 35,
+                    
+                    // This sets it so that the bar chart is drawn as a 3D variant
+                    variant: '3d',
+
+                    // 3D Bar charts look better with a transparent stroke color
+                    colorsStroke: 'transparent',
+
+                    marginInnerGrouped: true,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    shadowOffsetx: 10,
+                    marginBottom: 75,
+                    xaxis: false,
+                    yaxis: false,
+                    
+                    tooltips: '<span style="font-size: 14pt">Total value:</span><br /><span style="font-size: 26pt">%{value}%</span>',
+
+                    title: 'An animated 3D Bar chart',
+                    titleColor: '#666',
+                    titleBold: true,
+                    titleSize: 16,
+                    titleOffsety: 5,
+                    titleSubtitle: 'This chart uses random data',
+                    titleSubtitleOffsety: -5,
+                    
+                    //  Add some responsive capability is also added.
+                    responsive: [
+                        {maxWidth: null,width:600,height:250,options:{marginInner: 10,textSize:12}},
+                        {maxWidth: 900,width:400,height:200,options:{marginInner: 5,textSize:10}}
+                    ]
+                }
+            
+            // The grow() animation effect is used and works just like a regular Bar chart.
+            }).grow();
+        });
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

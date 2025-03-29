@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Waterfall chart with an offset X-axis</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 1000px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Waterfall({
+            id: 'chart-container',
+            data: [4,8,6,-5,-4,5,-18],
+            options: {
+                colorsStroke: 'transparent',
+                colorsConnector: '#ccc',
+                yaxisScaleMin: -5,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                colors: ['black','#c00','red'],
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Result'],
+                labelsAbove:true,
+                labelsAboveUnitsPost: ' units',
+                labelsAboveLastBold: true,
+                labelsAboveSize: 10,
+                title: 'Widgets in stock on Saturday'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

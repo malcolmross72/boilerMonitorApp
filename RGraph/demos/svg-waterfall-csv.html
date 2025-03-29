@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.csv.js" ></script>
+    <script src="../libraries/RGraph.svg.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Waterfall chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+
+    <div id="rgraph-demo-html">
+        <div id="klkl" style="display: none">
+            8,4,7,-6,-5,-3,14
+            Fred,Rich,Gary,Luis,Olga,Pete,Keanu
+        </div>
+    
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+    
+        
+
+    <script>
+        new RGraph.CSV('id:klkl', function (csv)
+        //new RGraph.CSV('/sample.csv', function (csv)
+        {
+            //
+            // Fetch the first row of the CSV file, starting at the second column
+            //
+            var data = csv.row(0);
+
+            //
+            // Fetch the first column which become the labels
+            //
+            var labels = csv.row(1);
+
+
+
+            new RGraph.SVG.Waterfall({
+                id: 'chart-container',
+                data: data,
+                options: {
+                    colors: ['Gradient(blue:#66a)', 'Gradient(red:#a66)', 'Gradient(#0f0:#6a6)'],
+                    xaxisLabels: labels,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    yaxis: false,
+                    xaxis: false,
+                    total: false
+                }                    
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart of my favourite dog breeds</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // This is used to give the background image the correct height and
+        // width
+        canvas = document.getElementById('cvs');
+
+        // Configure the Bar chart. It has a sketchy appearance because of the
+        // variant property.
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [99,10],
+            options: {
+                colors: ['#000'],
+                labelsAbove: true,
+                labelsAboveOffsety: 5,
+                labelsAboveSpecific: ['French Mastiff', 'Umm... whatever...'],
+                variant: 'sketch',
+                variantSketchVerticals: true,
+                yaxisLabelsCount: 1,
+                
+                marginTop: 50,
+                
+                // The font that's used can be set to any thats available
+                // to the browser - here the Comic Sans MS font fits with
+                // the sketchy style
+                textFont: 'Comic sans MS',
+
+                backgroundGrid: false,
+                textColor: '#000',
+                
+                // The background image properties. Give the URL of the image (which should
+                // be held on the same server as your website) and the X/Y/width/height
+                // properties. Also set the image to be semi-transparent.
+                backgroundImage: '../images/i-love-my-dog-de-bordeaux.png',
+                backgroundImageX: 0,
+                backgroundImageY: 0,
+                backgroundImageAlpha: 0.5,
+
+                linewidth: 5,
+                yaxis: false,
+                xaxisColor: '#000',
+                xaxisLinewidth: 5,
+                yaxisScaleUnitsPost: '%',
+                responsive: [
+                    {maxWidth: null, width: 600, height: 250,options:{marginLeft: 150,marginBottom: 60,marginInner: 45,labelsAboveSize: 24,textSize: 20,backgroundImageW: 600,backgroundImageH: 250}},
+                    {maxWidth: 900, width: 400, height: 200,options:{marginLeft: 50,marginBottom: 40,marginInner: 15,labelsAboveSize: 16,textSize: 10,backgroundImageW: 400,backgroundImageH: 200}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

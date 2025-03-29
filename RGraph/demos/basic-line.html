@@ -1,0 +1,35 @@
+<?php require('../common.php') ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A basic Line chart example</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="1000" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [84,76,79,84,86,52,53],
+            options: {
+                marginInner: 5,
+                tickmarksStyle: 'endcircle',
+                tickmarksSize: 7,
+                marginInner: 10,
+                xaxisLabels: ['Gary','Hoolio','Brad','Olga','Pete','Luis','John']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

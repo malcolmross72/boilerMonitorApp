@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A customised SVG Pie chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        var data     = [20,13.43,2.83,4.24,7.42,13.43,38.65];
+        var labels   = ['Miscellaneous','Cooking','Office equipment','Refridgeration','Cooling','Ventilation','Lighting'];
+
+        new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: data,
+            options: {
+                labels: labels,
+                tooltips: '<b>%{property:labels[%{index}]}:</b> %{value}%',
+                colors: ['#EC0033','#A0D300','#FFCD00','#00B869','#999999','#FF7300','#004CB0'],
+                colorStroke: 'white',
+                linewidth: 2,
+                shadow: true,
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                shadowBlur: 3,
+                exploded: 7
+            }
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

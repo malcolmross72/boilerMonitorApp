@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.semicircularprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Semi-circular Progress grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="200">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.SemiCircularProgress ({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 79,
+            options: {
+                labelsCenterSize: 35,
+                scaleUnitsPost: 'kg'
+            }
+        }).grow({frames: 30});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart showing the Darwin Southern Oscillation Index</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        data   = [];
+        colors = [];
+        
+        // Create the data
+        for (var i=0; i<150; i++) {
+            data[i] = RGraph.SVG.random({min: -2000, max: 2000}) / 1000;
+        }
+
+        // Create the colors
+        data.forEach(function (v, k, arr)
+        {
+            colors[k] = v < 0 ? 'blue' : 'red';
+        });
+
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                marginInner: 0,
+                xaxisTickmarks: false,
+                yaxisScaleDecimals: 1,
+                yaxisScaleMax: 3,
+                yaxisScaleMin: 'mirror',
+                backgroundGrid: false,
+                colors: colors,
+                colorsSequential: true,
+                title: 'Darwin Southern Oscillation Index'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

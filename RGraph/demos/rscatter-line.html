@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rscatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Radial Scatter chart with a connecting line</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="500">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data  = [[252,63],[293,63],[5,80],[85,63],[95,65]];
+        data2 = [[65,85],[174,85],[186,53],[226,65],[274,56]];
+        data3 = [[115,23],[185,42],[210,23],[223,23],[254,56]];
+
+        new RGraph.RScatter({
+            id: 'cvs',
+            data: [data,data2, data3],
+            options: {
+                line: true,
+                lineColors: ['red', 'green', 'blue'],
+                lineClose: [false, false],
+                lineLinewidth: 2,
+                lineShadow: true,
+                lineShadowOffsetx: 1,
+                lineShadowOffsety: 1,
+                lineShadowBlur: 3,
+                tickmarks: null,
+                labelsAxes: 'n',
+                axesColor: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script src="/libraries/RGraph.common.csv.js"></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic demo of the standalone CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        <span>Notice</span><br />
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <p>
+        This demo doesn't show a chart - but instead just uses the now standalone
+        <code>csv</code> reader to fetch a <code>csv</code> file and show it. Both the <code>canvas</code> and <code>svg</code>
+        versions of the <code>csv</code> reader are standalone. View
+        the source to see the code (CTRL+U in Chrome).
+    </p>
+
+
+    <div id="rgraph-demo-html">
+        <!-- Embedded CSV data -->
+        <div id="mydata" style="display: none">Jay,8,6,3,5,6,8</div>
+    </div>
+
+
+
+    <script>
+        new RGraph.CSV('id:mydata', function (csv)
+        {
+            // Get the first row
+            var data = csv.getRow(0);
+
+            alert('CSV data: >>> ' + data + ' <<< View the source to see the code');
+        });
+    </script>
+
+</body>
+</html>

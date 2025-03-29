@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with a trendline</h1>
+       
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // The Bar chart data
+        data = [[10,1,1],[9,6,3],[5,1,4],[6,2,1],[2,2,2],[1,3,1],[2,4,1]];
+        
+        // Make the Line chart data
+        for (var data_line=[],i=0; i<data.length; ++i) {
+            data_line[i] = RGraph.arraySum(data[i]);
+        }
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                grouping: 'stacked',
+                data: data,
+                marginInner: 25,
+                tooltips: '',
+                xaxis: false,
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                xaxisLabels: RGraph.DAYS_LONG,
+                tooltips: '%{color:%{property:colors[%{index}]}} %{property:xaxisLabels[%{dataset}]}: %{property:data[%{dataset}]}%',
+                tooltipsCss: {
+                    fontSize: '20pt',
+                    padding: '8px'
+                },
+                title: 'A stacked Bar chart with a trendline',
+                titleSize: 18,
+                titleSubtitle: 'The Line chart is used to facilitate the trendline functionality',
+                titleSubtitleSize: 12,
+                titleSubtitleColor: 'gray',
+                titleSubtitleItalic: true,
+                textFont: 'Verdana',
+                marginTop: 75,
+                yaxisLabelsBold: true,
+                xaxisLabelsBold: true
+            }
+        }).draw();
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: data_line,
+            options: {
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                backgroundGrid: false,
+                colors: ['transparent'],
+                shadow: false,
+                marginInner: 50,
+                trendline: true,
+                trendlineColors: ['black'],
+                trendlineLinewidth: 2,
+                trendlineDashed: true,
+                trendlineDashArray: [10,10]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

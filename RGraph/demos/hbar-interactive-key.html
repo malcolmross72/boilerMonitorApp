@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Horizontal Bar chart with an interactive key</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="550">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [[8,4,1],[4,8,8],[1,2,2],[3,3,4],[6,5,2],[5,8,8],[4,8,5]],
+            options: {
+                marginLeft: 95,
+                key: ['Jim','Jack','Joseph'],
+                keyInteractive: true,
+                keyInteractiveHighlightChartStroke: 'black',
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

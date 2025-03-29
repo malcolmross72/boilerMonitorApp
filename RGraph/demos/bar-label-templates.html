@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [12,18],
+            options: {
+                
+                names: ['Richard','Rachel'],
+                
+                title: 'A Bar chart showing label templates',
+                titleSubtitle: 'Richard and Rachels progress',
+                titleSize: 16,
+                titleBold: true,
+                marginInner: 100,
+                marginTop: 50,
+                xaxisLabelsFormattedUnitsPos: 'kg',
+                xaxisLabels: '%{property:names[%{index}]} (%{value_formatted})',
+                xaxisLabelsSize: 20,
+                //xaxisLabelsFormattedDecimals: 1,
+                //xaxisLabelsFormattedPoint: ',',
+                //xaxisLabelsFormattedThousand: ',,',
+                //xaxisLabelsFormattedUnitsPre: '$',
+                xaxisLabelsFormattedUnitsPost: 'kg',
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                tooltips: '%{key}',
+                tooltipsFormattedKeyLabels: ['1st competition:'],
+                tooltipsFormattedUnitsPost: 'Kg',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                }
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using the tooltipsHotspotXonly option</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [12,18,10,9,6,0,18],
+            options: {
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                tooltips: '%{property:xaxisLabels[%{dataset}]}: %{value}',
+                tooltipsHotspotXonly: true,
+                tooltipsEvent: 'mousemove',
+                shadow: false,
+                colors: ['red'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                tooltipsCss: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontSize: '20pt',
+                    fontWeight: 'bold'
+                },
+                title: 'A Bar chart using the tooltipsHotspotXonly option',
+                titleBold: true,
+                titleSize: 16,
+            }                
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

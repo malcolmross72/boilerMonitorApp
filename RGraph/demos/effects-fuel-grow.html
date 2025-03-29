@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.fuel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Fuel gauge grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        var data = [4,8,6,3,1,2,5,8,9];
+
+        var fuel = new RGraph.Fuel({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 56,
+            options: {
+            }
+        }).grow();
+        
+        
+        setTimeout(function ()
+        {
+            fuel.value = 12;
+            fuel.grow();
+        }, 3500);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

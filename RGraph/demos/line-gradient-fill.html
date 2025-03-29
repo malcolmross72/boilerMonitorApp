@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with a gradient fill</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        points = 365 * 2;
+        data   = [];
+        last   = 16;
+        max    = 50;
+    
+        // Create the data
+        for (var i=0; i<points; i+=1) {
+            
+            last = (RGraph.random(-1,1) + last);
+            last = Math.min(last, max);
+            last = Math.max(last, 0);
+            
+            data.push(last);
+        }
+    
+        new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                shadow: null,
+                filled: true,
+                filledColors: 'Gradient(rgba(255,255,255,0.5):rgba(0,200,200,0.25))',
+                xaxisTickmarksCount: 8,
+                xaxisLabels: [
+                    '','Q1 `10','',
+                    '','\r\nQ2 `10','',
+                    '','Q3 `10','',
+                    '','\r\nQ4 `10','',
+                    '','Q1 `11','',
+                    '','\r\nQ2 `11','',
+                    '','Q3 `11','',
+                    '','\r\nQ4 `11',''
+                ],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colors: ['rgb(33,200,200)'],
+                marginBottom: 50,
+                xaxis: false,
+                yaxis: false,
+                tickmarksStyle: null
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart using label substitution</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [4,8],
+            options: {
+                names: ['Jimmy','Bob'],
+                yaxisLabelsBold: true,
+                yaxisLabelsItalic: true,
+                yaxisLabelsFormattedUnitsPost: '%',
+                marginLeftAuto: false,
+                marginLeft: 100,
+                yaxisLabels: '%{property:names[%{index}]} (%{value_formatted})',
+                xaxis: false,
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                marginInner: 20
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

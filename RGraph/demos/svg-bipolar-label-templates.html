@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bipolar chart showing label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 500px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        function getName (index, value)
+        {
+            var names  = ['Bobby','Peter','Fabio','Jimmy','Luis','James','Richard'];
+            
+            return '{1} ({2}%)'.format(names[index], value);
+        }
+
+        new RGraph.SVG.Bipolar({
+            id: 'chart-container',
+            left:  [1,5,8,5,6,3,3],
+            right: [8,6,3,5,4,6,8],
+            options: {
+                yaxisLabels: '%{function:getName(%{index}, %{value})}'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

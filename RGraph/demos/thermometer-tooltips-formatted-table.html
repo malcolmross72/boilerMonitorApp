@@ -1,0 +1,89 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.thermometer.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Thermometer chart with a table in the tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="120" height="400">[No canvas support]</canvas>
+        </div>
+
+        <style>        
+            .RGraph_tooltip table{
+                border-collapse: collapse;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+    
+            .RGraph_tooltip h2 {
+                margin: 5px;
+                font-style: italic;
+            }
+            
+            .RGraph_tooltip table {
+                border: none;
+                font-family: Verdana;
+            }
+    
+            .RGraph_tooltip thead th {
+                font-style: italic;
+            }
+    
+            .RGraph_tooltip td {
+                padding: 5px;
+            }
+            
+            .RGraph_tooltip td:nth-child(1) {
+                background-color: #ddd;
+                font-style: italic;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </div>
+
+
+    <script>
+        new RGraph.Thermometer({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 67,
+            options: {
+
+                tooltips: '<h2>Historical</h2><h2>temperatures</h2> %{table}',
+                tooltipsEffect: 'none',
+                tooltipsPointer: false,
+                tooltipsPositionStatic: false,
+                tooltipsCss: {
+                    backgroundColor: 'white',
+                    color: 'black'
+                },
+                tooltipsFormattedTableData: [
+                    [
+                        ['Monday',    '55&deg;'],
+                        ['Tuesday',   '61&deg;'],
+                        ['Wednesday', '48&deg;'],
+                        ['Thursday',  '75&deg;'],
+                        ['Friday',    '46&deg;'],
+                        ['Saturday',  '50&deg;'],
+                        ['Sunday',    '59&deg;']
+                    ]
+                ]
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A line chart with alternate color fills</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="350" style="background-color: black">[No canvas support]</canvas><br />
+        
+        <style>
+            td{
+                text-align: left;
+                font-size: 12pt;
+            }
+            
+            table tr td:nth-child(1) {
+                color: gray;
+            }
+            
+            table tr:nth-child(3) td:nth-child(2) {
+                color: #0c0;
+                font-weight: bold;
+            }
+        </style>
+
+        <label for="checkboxTooltips"><span style="font-size: 30pt">Tooltips</span></label>
+        <input type="checkbox" value="1" id="checkboxTooltips" onchange="line.set('tooltips', this.checked ? '%{table}' : ''); RGraph.redraw()" style="width: 35px; height: 35px"  checked />
+    
+        &nbsp;&nbsp;&nbsp;
+        
+        <label for="checkboxAdjustable"><span style="font-size: 30pt">Adjustable</span></label>
+        <input type="checkbox" value="1" id="checkboxAdjustable" onchange="line.set('adjustable', this.checked); RGraph.redraw()" style="width: 35px; height: 35px" />
+    
+        &nbsp;&nbsp;&nbsp;
+    
+        <label for="checkboxSpline"><span style="font-size: 30pt">Spline</span></label>
+        <input type="checkbox" value="1" id="checkboxSpline" onchange="line.set('spline', this.checked); RGraph.redraw()" style="width: 35px; height: 35px" />
+    
+        &nbsp;&nbsp;&nbsp;
+    
+        <label for="checkboxTickmarks"><span style="font-size: 30pt">Tickmarks</span></label>
+        <input type="checkbox" value="1" id="checkboxTickmarks" onchange="line.set('tickmarksSize', this.checked ? 7 : 0); RGraph.redraw()" style="width: 35px; height: 35px" checked />
+        
+        &nbsp;&nbsp;&nbsp;
+        
+        <button onclick="line.wave({frames: 120});" style="cursor: pointer;font-size: 30pt">Animate</button>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [200,300,200,300,350,250,200,225],
+                [200,110,280,290,250,350,310,110]
+            ],
+            options: {
+                spline: false,
+                shadow: false,
+                yaxisScaleMax: 400,
+                colors: ['pink', 'cyan'],
+                textColor: '#ccc',
+                xaxis: false,
+                yaxis: false,
+                linewidth: 3,
+                tickmarksSize: 7,
+                backgroundGridColor: '#666',
+                backgroundGridDashed: true,
+                marginLeft: 75,
+                marginBottom: 50,
+                yaxisScaleUnitsPost: 'k',
+                xaxisLabels: ['Rich','Holly','Kevin','Bea','Gary','Pob','Luis','Jim'],
+                xaxisLabelsOffsety: 5,
+                textSize: 20,
+                tooltips: '%{table}',
+                tooltipsCss: {
+                    border: '3px solid #999'
+                },
+                tooltipsPointerCss: {
+                    borderBottom: '3px solid #999',
+                    borderRight:  '3px solid #999'
+                },
+                tooltipsPointerOffsetx: 0,
+                tooltipsPointerOffsety: -3.25,
+tooltipsPositionStatic: false,
+tooltipsOffsetx: 0,
+tooltipsOffsety: -5,
+                tooltipsFormattedTableData: [
+                    [
+                        ['Time: ',  'Rich'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$200   .43512']
+                    ],
+                    [
+                        ['Person: ',  'Holly'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$300.1945']
+                    ],
+                    [
+                        ['Person: ','Kevin'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$200.4956']
+                    ],
+                    [
+                        ['Time: ',  'Bea'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$300.4355']
+                    ],
+                    [
+                        ['Person: ',  'Gary'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$225.1358']
+                    ],
+                    [
+                        ['Person: ',  'Pob'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$350.4677']
+                    ],
+                    [
+                        ['Person: ',  'Luis'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$250.8465']
+                    ],
+                    [
+                        ['Person: ',  'Jim'],
+                        ['Date: ',  '23rd June 1978'],
+                        ['Price: ', '$200.1594']
+                    ],
+
+
+
+
+
+                    [
+                        ['Time: ',  'Rich'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$200.43512']
+                    ],
+                    [
+                        ['Person: ',  'Holly'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$110.1945']
+                    ],
+                    [
+                        ['Person: ','Kevin'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$280.4956']
+                    ],
+                    [
+                        ['Time: ',  'Bea'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$290.4355']
+                    ],
+                    [
+                        ['Person: ',  'Gary'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$250.1358']
+                    ],
+                    [
+                        ['Person: ',  'Pob'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$350.4677']
+                    ],
+                    [
+                        ['Person: ',  'Luis'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$310.8465']
+                    ],
+                    [
+                        ['Person: ',  'Jim'],
+                        ['Date: ',  '30th June 1978'],
+                        ['Price: ', '$110.1594']
+                    ],
+                ]
+            }
+        }).on('draw', function (obj)
+        {
+            // Use different sets of coordinates depending on
+            // whether a spline has been requested or not
+            var coordinates = obj.properties.spline ? obj.coordsSpline : obj.coords2;
+
+
+            // First, fill the bits which appear ABOVE the cyan
+            // (the first) line
+                
+            // Clip the canvas to the the top part of the
+            // canvas
+            //
+            var p1 = [obj.canvas.width - obj.properties.marginRight, obj.properties.marginTop];
+            var p2 = [obj.properties.marginLeft, obj.properties.marginTop];
+            
+            RGraph.clipTo.start(obj, [p1,p2].concat(coordinates[0]));
+
+                // Begin drawing the lines
+                obj.path('b');
+                
+                // Create a path from the first line
+                RGraph.pathLine({
+                    context: obj.context,
+                    coords:  coordinates[0]
+                });
+                
+                // Add the second line to the path in reverse
+                // order
+                RGraph.pathLine({
+                    context: obj.context,
+                    coords:  coordinates[1],
+                    moveto:  false,
+                    reverse: true
+                });
+                
+                // Set the globalAlpha and then fill the shape
+                // that has just been drawn
+                obj.path('ga 0.5 f purple');
+        
+            // Reset the canvas
+            RGraph.clipTo.end();
+            
+            
+            
+
+            // Second, fill the bits which appear BELOW the cyan
+            // (the first) line.
+
+            // Clip to the bottom bit of the canvas - below the
+            // first line.
+            var p3 = [obj.canvas.width - obj.properties.marginRight, obj.canvas.height - obj.properties.marginBottom];
+            var p4 = [obj.properties.marginLeft, obj.canvas.height - obj.properties.marginBottom];
+            
+            RGraph.clipTo.start(obj, [p3,p4].concat(coordinates[0]));
+
+
+                // Draw both of the lines
+                obj.path('b');
+                    RGraph.pathLine({
+                        context: obj.context,
+                        coords:  coordinates[0]
+                    });
+                    RGraph.pathLine({
+                        context: obj.context,
+                        coords:  coordinates[1],
+                        moveto:  false,
+                        reverse: true
+                    });
+                
+                // Set the globalAlpha and fill the shape in a green
+                // color
+                obj.path('ga 0.5 f green');
+            
+            // Reset the canvas
+            RGraph.clipTo.end();
+
+
+
+
+
+
+            //
+            // Now, because the fills that were done above appear
+            // a little bit over the lines, draw the lines again
+            // along with the tickmarks.
+            //
+
+            
+            // Add a custom tickmark - just a regular circle
+            // with the middle colored black
+            for (var i=0; i<2; ++i) {
+                
+                var coords = coordinates[i];
+            
+                // Redraw the lines
+                RGraph.drawLine({
+                    context:   obj.context,
+                    coords:    coords,
+                    linewidth: typeof obj.properties.linewidth === 'object' ? obj.properties.linewidth[i] : obj.properties.linewidth,
+                    stroke:    obj.properties.colors[i]
+                });
+                
+                
+                // Draw the tickmarks for the line if necessary
+                if (obj.properties.tickmarksSize > 0) {
+                    for (var j=0; j<coords.length; j+=(obj.properties.spline ? 10 : 1)) {
+                    
+                        var x = coords[j][0];
+                        var y = coords[j][1];
+                    
+                        // Draw a donut in the line color. The center of
+                        // the donut is colored black.
+                        obj.path(
+                            "b a % % % % % false f % b a % % % % % false f black",
+                            x, y, obj.properties.tickmarksSize, 0, 6.29,
+                            obj.properties.colors[i],
+                            x, y, obj.properties.tickmarksSize - 3, 0, 6.29
+                        );
+                    }
+                }
+            }
+        }).wave({frames: 120});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

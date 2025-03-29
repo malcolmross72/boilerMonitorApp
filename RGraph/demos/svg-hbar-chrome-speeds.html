@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart that shows Chrome speeds</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 450px; height: 180px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [215, 175],
+            options: {
+                yaxisLabels: ['Chrome 18', 'Chrome 19'],
+                colors: ['#3266cc'],
+                title: 'SunSpider score',
+                titleSubtitle: 'milliseconds (less is better)',
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                backgroundGridVlinesCount: 4,
+                marginInner: 8,
+                marginBottom: 35,
+                marginTop: 45,
+                marginLeft: 85,
+                xaxis: false
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="./demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A sequential trace effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250" style="background-color: black" data-image-src="page-demos-effects-line-trace-sequential.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        data = [
+            [8,6,3,5,12,8,5,4,6,12],
+            [4,8,6,3,5,2,4,8,5,2],
+            [8,6,3,5,9,4,5,8,4,6]
+        ];
+        
+        // These are the fill colors for the Lines.
+        colorsFill = [
+            'Gradient(rgba(96,0,0,0.5):red:red:red:red)',
+            'Gradient(rgba(0,96,0,0.5):#0f0:#0f0:#0f0)',
+            'Gradient(rgba(0,0,96,0.5):rgba(0,0,96,0.5):blue:blue:blue)'
+        ];
+
+
+        // Number of frames for each animation (ie for each dataset)
+        frms = 20;
+
+
+        // Show the first (red) dataset. The background grid is visible on this
+        // chart and is configured to only show the horizontal grid lines. The
+        // animation is the trace() effect and the callback function initiates
+        // the second chart to be drawn.
+        l1 = new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                textColor: '#fff',
+                tickmarksStyle: null,
+                shadow: false,
+                linewidth: 0.001,
+                colorsBackground: 'black',
+                backgroundGridVlines: false,
+                backgroundGridColor: '#666',
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                spline: true,
+                filled: true,
+                
+                // Set the colors so that we can only see the first dataset
+                filledColors: [colorsFill[0],'transparent','transparent'],
+
+                yaxisScaleMax: 35,
+                textSize: 12,
+                marginTop: 15,
+                marginBottom: 15,
+                marginLeft: 40,
+                marginRight: 15
+            }
+        }).trace({frames: frms}, drawChart2);
+
+
+
+
+        // Show the second (green) dataset. It's configured much the
+        // same as the first chart though the background grid doesn't
+        // need to be drawn and is disabled. The axes are also
+        // disabled. On this chart the middle color is  green and
+        // the other two are transparent. The callback function
+        // triggers the third chart to be drawn.
+        function drawChart2 ()
+        {
+            // A global
+            l2 = new RGraph.Line({
+                id: 'cvs',
+                data: data,
+                options: {
+                    tickmarksStyle: false,
+                    shadow: false,
+                    linewidth: 0.001,
+                    backgroundGrid: false,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScaleMax: 35,
+                    yaxisScale: false,
+                    
+                    // Set the colors so that we can only see the second dataset
+                    filledColors: ['transparent', colorsFill[1], 'transparent'],
+                    
+                    spline: true,
+                    filled: true,
+                    marginTop: 15,
+                    marginBottom: 15,
+                    marginLeft: 40,
+                    marginRight: 15
+                }
+            }).trace({frames: frms}, drawChart3);
+        }
+
+
+        // Show the third (blue) dataset. Again it's configured like the above
+        // two charts but there's no background grid or axes. The last color
+        // is used this time - a blue gradient. Because it's the last dataset
+        // to be shown there's no function that's called when the animation
+        // has completed.
+        function drawChart3 ()
+        {
+            // A global
+            l3 = new RGraph.Line({
+                id: 'cvs',
+                data: data,
+                options: {
+                    tickmarksStyle: false,
+                    shadow: false,
+                    linewidth: 0.001,
+                    backgroundGrid: false,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScaleMax: 35,
+                    yaxisScale: false,
+                    
+                    // Set the colors so that we can only see the third dataset
+                    filledColors: ['transparent', 'transparent', colorsFill[2]],
+                    
+                    spline: true,
+                    filled: true,
+                    marginTop: 15,
+                    marginBottom: 15,
+                    marginLeft: 40,
+                    marginRight: 15
+                }
+            // Add the responsive function after the last chart has finished animating
+            }).trace({frames: frms});
+        }
+
+        setTimeout(function ()
+        {
+            l1.responsive([
+                {maxWidth:null,width: 600,height:250,callback: function (){l1.properties.colors = RGraph.arrayClone(l1.original_colors);l2.properties.colors = RGraph.arrayClone(l2.original_colors);l3.properties.colors = RGraph.arrayClone(l3.original_colors);RGraph.redraw();}},
+                {maxWidth:900, width: 400,height:150,callback: function () {l1.properties.colors = RGraph.arrayClone(l1.original_colors);l2.properties.colors = RGraph.arrayClone(l2.original_colors);l3.properties.colors = RGraph.arrayClone(l3.original_colors);RGraph.redraw();}}
+            ]);
+        }, 1500);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

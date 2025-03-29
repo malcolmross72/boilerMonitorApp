@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart using the grow() effect</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 400px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [5,8,6,3,4,1,9],
+            options: {
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                xaxis: false
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

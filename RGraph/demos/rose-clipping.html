@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Rose chart that uses clipping</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [4,6,3,5,2,8,9],
+            options: {
+                clip:'scale:min-5',
+                textSize: 16
+            }
+        }).draw();
+        
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [4,6,3,5,2,8,9],
+            options: {
+                colors: ['blue'],
+                labels: ['Luna','Kevin','Richard','John','Dave','Bob','Paul'],
+                clip:'scale:5-max',
+                textSize: 16
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>    
+
+</body>
+</html>

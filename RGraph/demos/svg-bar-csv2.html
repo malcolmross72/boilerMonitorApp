@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.common.csv.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped SVG Bar chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>    
+
+    <script>
+        new RGraph.CSV('/sample.csv', function (csv)
+        {
+            var numrows = csv.numrows,
+                rows    = [],
+                row     = [],
+                labels  = [];
+        
+            for (var i=0; i<numrows; ++i) {
+                
+                var row   = csv.row(i, 1).slice(0,3);
+                var label = csv.row(i).slice(0,1)[0];
+
+                rows.push(row);
+                labels.push(label);
+            }
+
+            new RGraph.SVG.Bar({
+                id: "chart-container",
+                data: rows,
+                options: {
+                    marginLeft: 50,
+                    yaxisScaleUnitsPost: 'k',
+                    colors: ['red','green', 'blue'],
+                    marginInner: 10,
+                    xaxis: false,
+                    yaxis: false,
+                    backgroundGridBorder: false,
+                    backgroundGridVlines: false,
+                    xaxisLabels: labels
+                }
+            }).grow();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

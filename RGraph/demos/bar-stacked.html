@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="350">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        canvas = document.getElementById("cvs");
+
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [[5.33,2.33,3.32],[3.42,2.23,4.23],[4.23,3.23,4.99], [7.99,2.98,2.35], [2.75,1.02,5.24]],
+            options: {
+                title: 'A stacked Bar chart',
+                titleBold: true,
+                titleSize: 16,
+                titleX: 45,
+                titleY: 25,
+                titleHalign: 'left',
+                grouping: 'stacked',
+                xaxisLabels: ['John','James','Fred','Luke','Luis'],
+                labelsAbove: true,
+                labelsAboveDecimals: 2,
+                linewidth: 2,
+                colorsStroke: 'white',
+                colors: ['Gradient(#4572A7:#66f)','Gradient(#AA4643:white)','Gradient(#89A54E:white)'],
+                shadow: false,
+                marginInner: 25,
+                marginLeft: 45,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                key: ['Monday','Tuesday','Wednesday'],
+                keyColors: ['blue','#c00','#0c0'],
+                keyPosition: 'margin',
+                keyPositionX: canvas.width - 300,
+                keyPositionY: 18,
+                keyPositionMarginBoxed: true,
+                xaxisColor: '#ccc',
+                yaxis: false
+            }
+        }).on('draw', function (obj)
+        {
+            for (var i=0; i<obj.coords.length; ++i) {
+                
+                //Thse are the coordinates of the bar
+                var x      = obj.coords[i][0],
+                    y      = obj.coords[i][1],
+                    width  = obj.coords[i][2],
+                    height = obj.coords[i][3];
+
+                obj.context.fillStyle = 'white';
+                
+                var ret = RGraph.text({
+                    object: obj,
+                    font:   'Verdana',
+                    size:   10,
+                    x:      x + (width/ 2),
+                    y:      y + (height / 2),
+                    text:   obj.data_arr[i].toString(),
+                    valign: 'center',
+                    halign: 'center'
+                });
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

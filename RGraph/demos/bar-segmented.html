@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A segmented Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="display: inline-block; position: relative; max-width: 600px; max-height: 250px" id="canvas-container">
+            <canvas id="cvs1" width="600" height="250" style="position:absolute; top: 0; left: 0">[No canvas support]</canvas>
+            <canvas id="cvs2" width="600" height="250" style="position:absolute; top: 0; left: 0">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+
+        seg = new RGraph.SegmentedBar({
+            id: ['cvs1', 'cvs2'],
+            data: [4,5,3,2, 4,5,1],
+            options: {
+                segmentsCount: 5,
+                segmentsLinewidth: 10
+            }
+        });
+        
+        seg.foreground.set({
+            yaxisLabelsSpecific: ['Level 5','Level 4','Level 3','Level 2','Level 1',''],
+            xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+            shadow: false,
+            colors: ['Gradient(#fdd:red)'],
+            marginLeft: 75,
+            responsive: [
+                {maxWidth: null,width:600,height:250,options:{marginInner: 5,yaxisLabelsOffsety:20, textSize:16},parentCss:{width:'600px',height:'250px'}},
+                {maxWidth: 900,width:400,height:200,options:{marginInner: 3,yaxisLabelsOffsety:15, textSize:12},parentCss:{width:'400px',height:'200px'}}
+            ]
+        });
+        
+        seg.background.set({
+            marginLeft: 75,
+            responsive: [
+                {maxWidth: null,width:600,height:250,options:{marginInner: 5,yaxisLabelsOffsety:20, textSize:16},parentCss:{width:'600px',height:'250px'}},
+                {maxWidth: 900,width:400,height:200,options:{marginInner: 3,yaxisLabelsOffsety:15, textSize:12},parentCss:{width:'400px',height:'200px'}}
+            ]
+        });
+
+        seg.draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

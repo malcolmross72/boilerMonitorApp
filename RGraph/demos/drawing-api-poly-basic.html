@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.drawing.poly.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of the drawing API poly object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [5,8,6,4,3,5,2],
+            options: {
+                marginInner: 5,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            }
+        }).grow();
+        
+        new RGraph.Drawing.Poly({
+            id: 'cvs',
+            coords: [[50,25],[100,75],[75,125],[25,125],[25,75],[50,25]],
+            options: {
+                colorsStroke: ['black'],
+                colorsFill: ['rgba(255,128,128,0.5)'],
+                tooltips: ['Lou']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

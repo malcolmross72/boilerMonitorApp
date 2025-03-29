@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dual color Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [5,4,1,6,null,null,null],
+            options: {
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                colors: ['black'],
+                title: 'A dual color line chart',
+                titleSize: 16,
+                titleBold: true,
+                tickmarksStyle: 'filledcircle',
+                tickmarksSize: 5,
+                shadow: false,
+                marginTop: 35,
+                marginRight: 30,
+                marginLeft: 30
+            }
+        }).draw();
+
+
+        line2 = new RGraph.Line({
+            id: 'cvs',
+            data: [null,null,null,6,5,4,3],
+            options: {
+                colors: ['red'],
+                tickmarksStyle: 'filledcircle',
+                tickmarksSize: 5,
+                shadow: false,
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                marginTop: 35,
+                marginRight: 30,
+                marginLeft: 30
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

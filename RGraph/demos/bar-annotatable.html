@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.annotate.js" ></script>
+    <script src="../libraries/RGraph.common.context.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An annotatable bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [248,243,180,160,120,43],
+            options: {
+                title: 'An annotatable Bar chart',
+                titleBold: true,
+                titleSize: 16,
+                xaxisLabels: ['Jack','Jane','Lucy','Pete','Jen','Olga'],
+                annotatable: true,
+                annotatableLinewidth: 2,
+                colorsStroke: 'rgba(0,0,0,0)',
+                contextmenu: [
+                    ['Show palette...', RGraph.showPalette],
+                    ['Show png...', RGraph.showPNG],
+                    ['Clear', function () {RGraph.Clear(bar.canvas); RGraph.clearAnnotations(bar.canvas); RGraph.redraw();}]
+                ],
+                textSize: 14,
+                xaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                marginLeft: 45
+            }
+        }).on('beforedraw', function (obj)
+        {
+            RGraph.clear(obj.canvas, 'white');
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

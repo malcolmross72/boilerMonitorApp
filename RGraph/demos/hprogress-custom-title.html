@@ -1,0 +1,46 @@
+    <!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Progress chart with a custom title</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="100">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        hprogress = new RGraph.HProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 89,
+            options: {
+            }
+        }).on('draw', function (obj)
+        {
+            obj.context.fillStyle = 'black';
+            
+            RGraph.text({
+                object:     obj,
+                font:       'Arial',
+                italic:     true,
+                size:       16,
+                x:          obj.canvas.width / 2,
+                y:          obj.get('marginTop') - 5,
+                text:       'A custom title drawn with the draw event',
+                valign:     'bottom',
+                halign:     'center'
+            });
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

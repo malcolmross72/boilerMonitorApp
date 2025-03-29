@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A simple SVG Line chart</h1>
+    
+
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width:650px; height: 250px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">    
+        // This is the data for the Line chart. A simple JavaScript array.
+        data = [500,600,800,720,900,1100];
+        
+        // Create the labelsAboveSpecific array based on the data
+        labelsAbove = RGraph.SVG.arrayPad([],data.length,' ');
+        labelsAbove[labelsAbove.length - 1] = data[data.length - 1];
+
+        // Create the Line chart. Give it the data that's defined above.
+        // There's nothing notable about the configuration.
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                colors: ['#00AD4B'],
+                backgroundGrid: false,
+                xaxisLabels: ['February','March','April','May','June','July'],
+                xaxisTickmarks: false,
+                yaxisTickmarks: false,
+                backgroundGridColor: '#999',
+                tickmarksStyle: 'circle',
+                marginLeft: 75,
+                labelsAbove: true,
+                labelsAboveSpecific: labelsAbove,
+                labelsAboveBold: true,
+                labelsAboveOffsety:-25,
+                responsive: [
+                    {maxWidth:null,width:650,height:250,options:{linewidth:5,tickmarksSize: 8,textSize: 16,marginInner: 50,'data-textsize': 20,labelsAboveSize: 20,labelsAboveOffsety:-25}},
+                    {maxWidth:900,width:400,height:200,options:{linewidth:3,tickmarksSize: 4,textSize: 10,marginInner: 30,'data-textsize': 14,labelsAboveSize: 12,labelsAboveOffsety:-15}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

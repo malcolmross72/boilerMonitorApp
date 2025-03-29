@@ -1,0 +1,82 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.modaldialog.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Showing the ModalDialog with the dollar events</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="250">[No canvas support]</canvas>
+        
+        <style>
+            .ModalDialog_background {
+            }
+
+            .ModalDialog_topbar {
+            }
+
+            .ModalDialog_dialog {
+            }
+        </style>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,5,3,5,6,8],
+            options: {
+                title: 'Bar chart with clickable second bar',
+                xaxis: false,
+                yaxis: false,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                marginTop: 30,
+                textSize: 14,
+                marginTop: 40,
+                marginInner: 15
+            }
+        });
+
+        // Now add The highlight for the clickable bar. The .ondraw event must be used because if not then the
+        // highlight wouldn't get redrawn.
+        bar.ondraw = function (obj)
+        {
+            var idx = 1,
+                  x = bar.coords[idx][0],
+                  y = bar.coords[idx][1],
+                  w = bar.coords[idx][2],
+                  h = bar.coords[idx][3];
+            
+            bar.path(
+                'b lw 3 r % % % % s black',
+                x, y, w, h
+            );
+        }
+
+        bar.draw();
+        
+        // Now add the click and mousemove events
+        bar.$1.onmousemove = function (e, shape)
+        {
+            return true;
+        }
+        
+        bar.$1.onclick = function (e, shape)
+        {
+            ModalDialog.show('string:<div style="text-align: center"><h2>Notice:</h2><p>Put information here that you want to display to the user.</p><p></p></div>');
+        
+        }
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

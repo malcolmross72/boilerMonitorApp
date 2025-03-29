@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.text.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of the drawing API text object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,6,3,5,2,6],
+            options: {
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                tooltips: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                marginLeft: 35,
+                marginRight: 35,
+                marginTop: 55
+            }
+        }).grow();
+
+        new RGraph.Drawing.Text({
+            id: 'cvs',
+            x: bar.canvas.width / 2,
+            y: 45,
+            text: 'A custom title using the drawing API text object',
+            options: {
+                tooltips: ['A custom title using the drawing API text object'],
+                tooltipsEvent: 'mousemove',
+                halign: 'center',
+                valign: 'bottom',
+                colors: ['gray'],
+                textSize: 24,
+                textBold: true,
+                textItalic: true
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

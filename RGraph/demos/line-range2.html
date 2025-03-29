@@ -1,0 +1,82 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A range chart with a median value</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data = [10];
+        range_upper = [];
+        range_lower = [];
+
+        // Create some data
+        for (var i=1,last=10; i<240; i+=1) {
+
+            var num = Number(last) + RGraph.random(-2,2);
+            num = Math.max(num, 0);
+            num = Math.min(num, 20);
+
+            last = num;
+            data.push(num);
+
+            range_lower[i] = data[i] - 5;
+            range_lower[i] = Math.max(range_lower[i], 0);
+            range_upper[i] = data[i] + 5;
+        }
+
+
+
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                range_upper,
+                range_lower
+            ],
+            options: {
+                filled: true,
+                filledRange: true,
+                filledColors: 'rgba(0,132,0,0.25)',
+                colors: ['rgba(0,0,0,0)'],
+                backgroundGridVlinesCount: 11,
+                tickmarksStyle: null,
+                marginBottom: 50,
+                xaxisTickmarksCount: 11,
+                xaxis: false,
+                yaxis: false
+            }
+        }).draw();
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                colors: ['#00830B'],
+                backgroundGrid: false,
+                xaxis: false,
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                marginBottom: 50,
+                tickmarksStyle: null,
+                yaxisScaleMax: line.max,
+                shadow: false,
+                linewidth: 2,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

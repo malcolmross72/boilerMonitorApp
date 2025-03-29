@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An inverted Bipolar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Bipolar({
+            id: 'cvs',
+            left: [4,6,3,5,8],
+            right: [4,6,5,9,2],
+            options: {
+                colors: ['#7CB5EC'],
+                yaxisLabels: ['John','Luke','Pete','Jane','Fred'],
+                axes: false,
+                marginLeft: -225,
+                marginRight: 325,
+                marginCenterAutosize: false,
+                marginCenter: 75
+            }
+        }).grow();
+
+        new RGraph.Bipolar({
+            id: 'cvs',
+            left: [4,6,3,5,8],
+            right: [4,6,5,9,2],
+            options: {
+                yaxisLabels: ['John','Luke','Pete','Jane','Fred'],
+                axes: false,
+                marginLeft: 325,
+                marginRight: -230,
+                colors: ['#7CB5EC']
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

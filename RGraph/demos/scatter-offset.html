@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart with an offset X-axis</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="200">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [[15,11], [40,25],[38,23],[312,12],[160,15], [365, 8], [365, -8]],
+            options: {
+                backgroundGridHlinesCount: 4,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxisLabelsCount: 4,
+                colorsDefault: 'red',
+                tickmarksStyle: 'circle',
+                tickmarksSize: 5,
+                marginLeft: 25,
+                xaxisScaleMax: 365,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                yaxisScaleMin: -15,
+                yaxisScaleMax: 45,
+                yaxisTickmarksCount: 4
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

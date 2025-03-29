@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An orange and blue/green Line chart with two datasets</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="350" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [78,71,65,58,63,55,48,54],
+                [15,20,25,23,24,56,61,69]
+            ],
+            options: {
+                colors: ['#FF483A', '#15607A'],
+                yaxis: false,
+                yaxisScale: false,
+                xaxisColor: '#ddd',
+                tickmarksStyle: 'filledcircle',
+                shadow: false,
+                linewidth: 3,
+                backgroundGrid: false,
+                xaxisTickmarksCount: 1,
+                marginLeft:5,
+                marginRight:5,
+                marginTop:5,
+                marginBottom:5,
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

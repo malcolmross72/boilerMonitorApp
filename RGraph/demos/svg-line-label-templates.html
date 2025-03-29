@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [12,18,12,16,13,19],
+            options: {
+                marginLeft: 50,
+                marginRight: 50,
+                names: ['Richard','Rachel','David','John','Lucy','Freda'],
+                xaxisLabels: '%{property:names[%{index}]} (%{value_formatted})',
+                xaxisLabelsFormattedUnitsPost: '%',
+                spline: true,
+                marginInner: 5,
+                linewidth: 3,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxisScaleMin: -10,
+                yaxisScaleMax: 40
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

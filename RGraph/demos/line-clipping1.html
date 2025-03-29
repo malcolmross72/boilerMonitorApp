@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dual-color Line chart that uses clipping</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // The first line chart is clipped to the top half of the
+        // canvas so you only see the top half of the chart. The
+        // clipping is installed by the clip: option.   As a result
+        // you only see the top half of the chart (which is red)
+        new RGraph.Line({
+            id: 'cvs',
+            data: data = [
+                4,8,6,3,2,4,-5,-4,5,6,-1,-9,1,2,-3,-5,-7,-4,-2,-2,6,2,3,4,
+                4,8,6,2,3,5,1,4,9,5,6,4,3,8,7,5,6,4,5,1,2,3,4,6
+            ],
+            options: opt = {
+                textSize: 15,
+                xaxisPosition: 'center',
+                yaxis: false,
+                backgroundGridHlinesCount: 10,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                shadow: false,
+                linewidth: 0.5,
+                colors: ['red'],
+                filled: true,
+                filledColors:['rgba(255,128,128,0.25)'],
+                marginInner: 15,
+                spline: true,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                xaxisTickmarksCount: 12,
+                xaxisColor: 'gray',
+                clip: 'tophalf'
+            }
+        }).trace();
+
+
+        // This the chart object that shows the bottom half of the
+        // chart. Again, clipping is used to accomplish this.
+        // This chart uses blue colors instead instead of red.
+        new RGraph.Line({
+            id: 'cvs',
+            data: data,
+            options: {
+                ...opt, // Use the ES6 spread operator to combine
+                        // the options from above
+                colors: ['blue'],
+                clip: 'bottomhalf',
+                filledColors: ['rgba(128,128,255,0.25)'],
+                xaxisLabels: null
+            }
+        }).trace();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

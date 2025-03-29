@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.drawing.image.js" ></script>
+    <script src="../libraries/RGraph.odo.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>An Odometer chart using a background image</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Drawing.Image({
+            id: 'cvs',
+            x: -4,
+            y: 0,
+            src: '../images/odometer-background.png'
+        }).draw();
+        
+        new RGraph.Odometer({
+            id: 'cvs',
+            min: 0,
+            max: 360,
+            value: 56,
+            options: {
+                colorsGreenColor: 'rgba(0,0,0,0)',
+                colorsYellowColor: 'rgba(0,0,0,0)',
+                colorsRedColor: 'rgba(0,0,0,0)',
+                backgroundColor: 'rgba(0,0,0,0)',
+                backgroundBorder: 'rgba(0,0,0,0)',
+                backgroundLinesColor: 'rgba(0,0,0,0)',
+                tickmarks: false,
+                border: false,
+                tickmarksLargeColor: 'rgba(0,0,0,0)',
+                textColor: 'rgba(0,0,0,0)',
+                needleColor: '#ddd',
+                needleTail: false,
+                needleLength: 100
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

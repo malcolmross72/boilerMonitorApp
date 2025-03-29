@@ -1,0 +1,87 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A segmented Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="position: relative; padding: 15px; display: inline-block; width: 750px; height: 300px">
+            <div style="width: 750px; height: 300px; top: 0; left: 0; position: absolute" id="chart-container1"></div>
+            <div style="width: 750px; height: 300px; top: 0; left: 0; position: absolute" id="chart-container2"></div>
+        </div>
+    </div>
+
+
+
+        
+    <script>
+        var bar1 = new RGraph.SVG.Bar({
+            id: 'chart-container1',
+            data: [5,4,1,3,5,2,1],
+            options: {
+                marginLeft: 75,
+                yaxis: false,
+                xaxis: false,
+                yaxisScale: false,
+                backgroundGrid: false,
+                marginInner: 5
+            }
+        }).grow();
+        
+        
+        for (var i=0; i<=5; ++i) {
+            
+            var y = bar1.getYCoord(i);
+
+            RGraph.SVG.create({
+                svg: bar1.svg,
+                type: 'path',
+                attr: {
+                    d: 'M0 ' + y + ' L750 ' + y,
+                    stroke: 'white',
+                    'stroke-width': 8,
+                    'shape-rendering': "crispEdges"
+                }
+            });
+
+        }
+
+
+        var bar2 = new RGraph.SVG.Bar({
+            id: 'chart-container2',
+            data: [0,0,0,0,0,0,0],
+            options: {
+                yaxis: false,
+                xaxis: false,
+                marginLeft: 75,
+                yaxisScaleMax: 5,
+                yaxisLabelsOffsety: 25,
+                yaxisScaleFormatter: function (obj, num)
+                {
+                    if (!num) {
+                        return '';
+                    }
+
+                    return 'Level ' + num;
+                },
+                marginInner: 20,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                title: 'A segmented Bar chart',
+            }
+        }).draw();
+        
+        // Need to change the container positions to absolute
+        bar1.container.style.position = 'absolute';
+        bar2.container.style.position = 'absolute';
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

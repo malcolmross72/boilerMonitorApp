@@ -1,0 +1,180 @@
+    <!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with rounded tops</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <canvas id="cvs1" width="750" height="250">[No canvas support]</canvas>
+            <canvas id="cvs2" width="750" height="250">[No canvas support]</canvas>
+            <canvas id="cvs3" width="750" height="250">[No canvas support]</canvas>
+            <canvas id="cvs4" width="750" height="250">[No canvas support]</canvas>
+            <canvas id="cvs5" width="750" height="250">[No canvas support]</canvas>
+            <canvas id="cvs6" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        bar1 = new RGraph.Bar({
+            id: 'cvs1',
+            data: [2,18,10,9,6,20,18,5,9,13,15,11],
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A Bar chart with rounded tops',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                marginLeft: 50,
+                marginInner: 5,
+                corners: 'round',
+                cornersRoundRadius: 10
+
+            }
+        }).draw();
+
+        new RGraph.Bar({
+            id: 'cvs2',
+            data: [[1,6,8],[4,5,3],[9,8,5]],
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['','',''],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A grouped Bar chart with  a rounded right-hand-side corner',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                corners: 'round',
+                cornersRoundLeftRadius: 0,
+                cornersRoundRightRadius: 25,
+                marginLeft: 50,
+                marginInner: 40
+            }
+        }).grow();
+
+        new RGraph.Bar({
+            id: 'cvs3',
+            data: [[8,6,8],[8,5,3],[9,8,5]],
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Roberta','Harry','Philomena'],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A stacked Bar chart with rounded tops',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                corners: 'round',
+                cornersRoundRadius: 20,
+                grouping: 'stacked',
+                marginLeft: 50,
+                marginInner: 90
+            }
+        }).grow();
+
+        new RGraph.Bar({
+            id: 'cvs4',
+            data: [[8,-6,-8],[8,5,-1],[-9,-8,5]],
+            options: {
+                xaxisPosition: 'center',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Roberta','Harry','Philomena'],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A grouped Bar chart with rounded tops',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                yaxis: false,
+                corners: 'round',
+                cornersRoundRadius: 10,
+                marginLeft: 50,
+                marginInner: 40
+            }
+        }).grow();
+
+        new RGraph.Bar({
+            id: 'cvs5',
+            data: [[8,6,8],[8,5,3],[9,8,5]],
+            options: {
+                xaxisPosition: 'top',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Roberta','Harry','Philomena'],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A stacked Bar chart with rounded tops',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                corners: 'round',
+                cornersRoundRadius: 20,
+                grouping: 'stacked',
+                marginLeft: 50,
+                marginInner: 90
+            }
+        }).grow();
+
+        new RGraph.Bar({
+            id: 'cvs6',
+            data: [[8,6,8],[8,5,3],[9,8,5]],
+            options: {
+                xaxisPosition: 'top',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: ['Roberta','Harry','Philomena'],
+                yaxisScaleUnitsPost: 'k',
+                shadow: false,
+                colors: ['red','green','blue'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A grouped Bar chart with rounded tops',
+                titleSize: 14,
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                corners: 'round',
+                cornersRoundLeftRadius: 20,
+                cornersRoundRightRadius: 60,
+                marginLeft: 50,
+                marginInner: 40
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

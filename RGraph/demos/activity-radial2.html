@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.activity.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Activity meter configured as a Radial Progress meter</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="500">[No canvas support]</canvas>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        data   = [28,19,39,45];
+        values = RGraph.arrayClone(data);
+        labels = ['John','Fred','Mark','Andy'];
+
+        activity = new RGraph.Activity({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: data,
+            options: {
+                marginInner: 3,
+                backgroundColor: 'transparent',
+                backgroundGrid: false,
+                backgroundGridRadials: false,
+                backgroundRings: false,
+                colors: ['red','blue','#aaa','black'],
+                labels: '%{global:labels[%{index}]} (%{value_formatted})',
+                labelsFormattedUnitsPost: '%',
+                labelsSize: 16,
+                labelsBold: true,
+                labelsItalic: true,
+                labelsColor: '#333',
+                labelsOffsetx: -20,
+                adjustable: true,
+                labelsFormattedUnitsPost:'%'
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

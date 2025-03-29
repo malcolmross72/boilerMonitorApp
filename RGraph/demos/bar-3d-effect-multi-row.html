@@ -1,0 +1,185 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js"></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="650" height="300" data-image-src="page-demos-bar-3d-effect-multi-row.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <br clear="both" />
+
+    <script id="rgraph-demo-source-code">
+        // Some default variables. These margins are not all hard-and-fast
+        // values - some are increased and some are reduced for each chart.
+        marginLeft    = 40;
+        marginRight   = 50;
+        marginTop     = 10;
+        marginBottom  = 105;
+        marginInner   = 20;
+        
+        // This is the same for each chart
+        yaxisScaleMax = 35;
+
+        // Here are the three datasets for the chart
+        data = [
+            [5,16,10,12,13,15,16],
+            [20,21,24,23,18,19,20],
+            [35,34,32,28,26,35,34]
+        ];
+
+
+        // The colors for the bars
+        colors = [
+            'Gradient(#696:#0f0:#0f0)',
+            'Gradient(#966:#f00:#f00)',
+            'Gradient(#669:blue:blue)'
+        ];
+        
+        // And the X-axis labels for the chart
+        xaxisLabels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+
+
+
+
+
+
+
+        bar1 = new RGraph.Bar({
+            id: 'cvs',
+            data: data[2],
+            options: {
+                
+                // These few properties set the chart to be a 3D Bar chart and turn off
+                // the 3D axes that are drawn.
+                variant: '3d',
+                variantThreedYaxis: false,
+                variantThreedXaxis: false,
+
+                colorsStroke: 'rgba(0,0,0,0)',
+                colors: [colors[2]],
+
+                // The background grid is only enabled on this chart - the
+                // bar chart at the back
+                backgroundGridColor: '#ccc',
+                backgroundGridHlinesCount: 5,
+                backgroundGridVlinesCount: 14,
+                
+                // Set the margins based on the values that are defined above
+                marginBottom: marginBottom,
+                marginTop: marginTop,
+                marginLeft: marginLeft,
+                marginRight: marginRight,
+                marginInner: marginInner,
+
+                yaxisScaleMax: yaxisScaleMax,
+                xaxis: false,
+                yaxis: false,
+                yaxisPosition: 'right',
+                yaxisLabelsOffsetx: 10,
+                yaxisLabelsOffsety: -5,
+                variantThreedYaxis: false
+            }
+        }).grow(null, draw2);
+
+
+
+
+
+
+
+
+        function draw2 ()
+        {
+            bar2 = new RGraph.Bar({
+                id: 'cvs',
+                data: data[1],
+                options: {
+                    // Stipulate 3d but no 3D axes
+                    variant: '3d',
+                    variantThreedYaxis: false,
+                    variantThreedXaxis: false,
+    
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    colors: [colors[1]],
+    
+                    // No background grid or X/Y labels for the second and third charts
+                    backgroundGrid: false,
+                    yaxisLabels: false,
+                    xaxisLabels: [],
+    
+                    // The default margins are increased on one side and reduced on
+                    // the other in order to move the chart to the left a little and
+                    // enhance the perception of depth.
+                    marginBottom: marginBottom - 10,
+                    marginTop: marginTop + 10,
+                    marginLeft: marginLeft - 25,
+                    marginRight: marginRight + 25,
+                    marginInner: marginInner,
+    
+                    yaxisScaleMax: yaxisScaleMax,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScale: false
+                }
+            }).grow(null, draw3);
+        }
+
+
+
+
+
+
+
+
+        function draw3 ()
+        {
+            bar3 = new RGraph.Bar({
+                id: 'cvs',
+                data: data[0],
+                options: {
+    
+                    // Set the chart to be 3D but without any axes
+                    variant: '3d',
+                    variantThreedYaxis: false,
+                    variantThreedXaxis: false,
+    
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    colors: [colors[0]],
+                    
+                    // Now that we're drawing the chart that's "at the front" the X-axis labels can be drawn
+                    xaxisLabels: xaxisLabels,
+    
+                    backgroundGrid: false,
+                    
+                    // Add and subtract from the default margins in order to move the
+                    // chart to the left
+                    marginTop: marginTop + 20,
+                    marginBottom: marginBottom - 20,
+                    marginLeft: marginLeft - 40,
+                    marginRight: marginRight + 50,
+                    marginInner: marginInner,
+    
+                    yaxisScaleMax: yaxisScaleMax,
+                    xaxis: false,
+                    yaxis: false,
+                    yaxisScale: false
+                }
+            }).grow();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

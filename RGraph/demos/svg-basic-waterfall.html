@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Waterfall chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 900px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Waterfall({
+            id: 'chart-container',
+            data: [100,-5,-9,-8,null,-4,-26,-27],
+            options: {
+                key: ['Money in','Money out'],
+                tooltips: ['Start', 'Monday','Tuesday','Wednesday','Midweek','Thursday','Friday','Saturday','Result: <b>79 sold, 21 remaining</b>'],
+                backgroundGridDashed: true,
+                responsive: [
+                    {maxWidth: 900, width: 450, height: 200, options: {textSize:10,xaxisLabels: ['Start', 'Mon','Tue','Wed','Midwk','Thu','Fri','Sat','Result'],}},
+                    {maxWidth: null,width: 900, height: 300, options: {textSize:12,xaxisLabels: ['Start', 'Monday','Tuesday','Wednesday','Midweek','Thursday','Friday','Saturday','Result'],}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

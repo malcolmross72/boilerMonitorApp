@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A variable-width Rose chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        rose = new RGraph.Rose({
+            id: 'cvs',
+            data: [[5,5],[5,5],[5,5],[5,5],[5,5],[6.5,2]],
+            options: {
+                colors: [
+                    'white','#019CFF',
+                    'white','#00CD00',
+                    'white','#EBC809',
+                    'white','#FA9601',
+                    'white','#A537B5',
+                    'white','gray'
+                ],
+                colorsSequential: true,
+                margin: 1,
+                backgroundGridColor: 'rgba(0,0,0,0)',
+                labelsAxes: '',
+                tooltips: [
+                    null, 'Fred',
+                    null, 'Gail',
+                    null, 'Bazza',
+                    null, 'Paul',
+                    null, 'Mark',
+                    null, 'Lewis'
+                ],
+                tooltipsCss: {
+                    fontSize: '28pt'
+                },
+                labels: ['Fred','Gail','Bazza','Paul','Mark','Lewis'],
+                labelsSize: 20
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>    
+
+</body>
+</html>

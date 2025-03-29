@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="350">[No canvas support]</canvas>
+
+        <style>
+            .RGraph_tooltip {
+                font-size: 16pt !important;
+                font-weight: bold;
+                text-align: center;
+                padding: 15px;
+            }
+        </style>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [4,8,4,6,5,3,2,5],
+            options: {
+                marginLeft: 50,
+                marginRight: 50,
+                linewidth: 0,
+                colorsStroke: 'rgba(0,0,0,0)',
+                tooltips: ['Alvin','Pete','Hoolio','Jack','Kev','Luis','Lou','Jesse'],
+                labels: ['Alvin','Pete','Hoolio','Jack','Kev','Luis','Lou','Jesse'],
+                colors: ['red','yellow','blue','cyan','green','pink','white','#aaa'],
+                variant: 'pie3d',
+                radius: 100,
+                labelsSticksColors: [,'#cc0',,,'#0f0',,'black'],
+                radius: 80,
+                shadowOffsety: 5,
+                shadowColor: '#aaa',
+                exploded: [,,40],
+                title: 'A 3D Pie chart',
+                titleOffsety: 50,
+                titleSize: 16
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

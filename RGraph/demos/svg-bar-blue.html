@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A blue SVG Bar chart</h1>    
+
+    <div id="rgraph-demo-html">
+        <div style="width: 950px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [12.8,23.3,4.9,10.3,-2.6,4.3,7.5],
+            options: {
+                marginInner: 25,
+                yaxisLabels: false,
+                yaxisScaleMin: -10,
+                yaxisScaleMax: 30,
+                yaxis: false,
+                xaxis: false,
+                backgroundGrid: false,
+                labelsAbove: true,
+                labelsAboveUnitsPost: '%',
+                labelsAboveOffsety: -5,
+                labelsAboveDecimals: 1,
+                labelsAboveSize: 10,
+                colors: ['#00B9F2'],
+                xaxisLabels: ['Hailey','Olga','Barry','Trevor','Stan','Kristian','Tommy'],
+                xaxisTextSize: 8,
+                xaxisTextColor: '#666',
+                yaxisScale: false,
+                title: 'Belfast 2016',
+                titleSubtitle: 'The results of the chilli-off competition',
+                titleSubtitleItalic: true,
+                marginTop: 45
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

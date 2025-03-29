@@ -1,0 +1,110 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Animated SVG Rose charts using the grow() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 450px; height: 400px" id="chart-container1"></div>
+        <div style="width: 450px; height: 400px" id="chart-container2"></div>
+        <div style="width: 450px; height: 400px" id="chart-container3"></div>
+        <div style="width: 450px; height: 400px" id="chart-container4"></div>
+    </div>
+        
+    <script>
+        rose1 = new RGraph.SVG.Rose({
+            id: 'chart-container1',
+            data: [8,6,4,3,8,6,3],
+            options: {
+                colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+                backgroundGridRadialsCount: 0,
+                linewidth: 2,
+                amargin: '5deg',
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                tooltips: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                linewidth: .5
+            }
+        }).grow();
+
+
+
+
+        rose2 = new RGraph.SVG.Rose({
+            id: 'chart-container2',
+            data: [[4,8,3],[4,3,5],[2,6,8],[5,8,3],[7,5,4],[4,6,2],[3,3,7]],
+            options: {
+                colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+                backgroundGridRadialsCount: 0,
+                linewidth: 2,
+                amargin: '5deg',
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                tooltips: [
+                    'Mon morning', 'Mon afternoon', 'Mon evening',
+                    'Tue morning', 'Tue afternoon', 'Tue evening',
+                    'Wed morning', 'Wed afternoon', 'Wed evening',
+                    'Thu morning', 'Thu afternoon', 'Thu evening',
+                    'Fri morning', 'Fri afternoon', 'Fri evening',
+                    'Sat morning', 'Sat afternoon', 'Sat evening',
+                    'Sun morning', 'Sun afternoon', 'Sun evening'
+                ],
+                linewidth: .5
+            }
+        }).grow();
+
+
+
+
+        rose3 = new RGraph.SVG.Rose({
+            id: 'chart-container3',
+            data: [[4,6],[7,5],[8,3],[8,3],[4,8],[7,7],[4,9]],
+            options: {
+                colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+                backgroundGridRadialsCount: 0,
+                linewidth: 2,
+                amargin: '5deg',
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                tooltips: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                linewidth: .5,
+                variant: 'non-equi-angular'
+            }
+        }).grow();
+
+
+
+
+
+        rose4 = new RGraph.SVG.Rose({
+            id: 'chart-container4',
+            data: [ [[4,8,6],4], [[8,6,6],8], [[3,5,6],2], [[8,9,4],6], [[6,3,5],8], [[4,8,5],4], [[8,4,4],4] ],
+            options: {
+                colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+                backgroundGridRadialsCount: 0,
+                linewidth: 2,
+                amargin: '5deg',
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                tooltips: [
+                    'Mon morning', 'Mon afternoon', 'Mon evening',
+                    'Tue morning', 'Tue afternoon', 'Tue evening',
+                    'Wed morning', 'Wed afternoon', 'Wed evening',
+                    'Thu morning', 'Thu afternoon', 'Thu evening',
+                    'Fri morning', 'Fri afternoon', 'Fri evening',
+                    'Sat morning', 'Sat afternoon', 'Sat evening',
+                    'Sun morning', 'Sun afternoon', 'Sun evening'
+                ],
+                linewidth: .5,
+                variant: 'non-equi-angular'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

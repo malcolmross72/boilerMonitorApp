@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Another Meter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Meter({
+            id: 'cvs',
+            min: 50,
+            max: 100,
+            value:60,
+            options: {
+                scaleUnitsPost: 'k',
+                colorsRedStart: 85,
+                colorsRedEnd: 100,
+                colorsYellowStart: 65,
+                colorsYellowEnd: 85,
+                colorsGreenStart: 50,
+                colorsGreenEnd: 65
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

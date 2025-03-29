@@ -1,0 +1,30 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Pie chart implode effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [8,6,4,8,7,5],
+            options: {
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+            }
+        }).implode();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

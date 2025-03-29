@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Line chart trace reverse effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+        <button onclick="reverse()" style="font-size: 22pt; cursor: pointer">Reverse trace</button>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [10,1,10,7,4,9,5,6,3,5],
+            options: {
+                xaxis: false,
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false
+            }
+        }).on('beforedraw', function (obj)
+        {
+            RGraph.clear(obj.canvas, 'white')
+        }).trace();
+        
+        function reverse ()
+        {
+            line.trace({reverse: true}, function ()
+            {
+                setTimeout(function ()
+                {   
+                    line.original_data[0] = RGraph.arrayRandom(10, 0, 10);
+                    line.trace();
+                }, 500);
+            });
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

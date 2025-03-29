@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart with a highlighted bar using the wave() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 550px; height: 500px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        // The data
+        data = [0.1,0.2,0.3,3.2,0.2,0.5,0.5,0.2,0.4,0.8,0,0.1];
+
+        // Build the colors
+        colors = RGraph.SVG.arrayPad({
+            array: [],
+            length: data.length,
+            value: '#164366'
+        });
+        
+        // Change the color of the fourth bar
+        colors[3] = '#FDB515';
+
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                backgroundGrid: false,
+                xaxisScaleMax: 3.5,
+                xaxis: false,
+                xaxisScale: false,
+                colors: colors,
+                colorsSequential: true,
+                yaxisLlabels: ['Norway','Australia','Netherlands','United States','New Zealand','Canada','Ireland','Germany','Sweden','Switzerland','Japan','England and Wales'],
+                yaxisLabels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+                labelsAbove: true,
+                labelsAboveDecimals: 1,
+                yaxisTickmarks: false
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

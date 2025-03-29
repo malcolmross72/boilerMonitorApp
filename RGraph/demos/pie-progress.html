@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.activity.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>An Activity meter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="400" height="400" data-image-src="page-demos-pie-progress.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        activity = new RGraph.Activity({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: [28,19,39,45],
+            options: {
+                backgroundColor: 'transparent',
+                backgroundGrid: true,
+                backgroundGridColor: '#aaa',
+                backgroundRings: false,
+                colors: ['blue','gray','green','red'],
+                labels: ['Month 1','Month 2','Month 3','Month 4'],
+                labelsBold: true,
+                labelsItalic: true,
+                tooltips:                        'Result: %{key}',
+                 tooltipsCss:                       {
+                    fontSize: '20pt',
+                    textAlign: 'left'
+                 },
+                tooltipsFormattedKeyLabels:      ['Jenny','Richard','Dave','Kev'],
+                ends: 'straight',
+                labelsColor: 'black'
+            }
+        }).grow();
+        
+        setInterval(function ()
+        {
+            activity.value[0] += RGraph.random(-10,10);
+            activity.value[1] += RGraph.random(-10,10);
+            activity.value[2] += RGraph.random(-10,10);
+            activity.value[3] += RGraph.random(-10,10);
+            
+            activity.grow();
+        }, 5000);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

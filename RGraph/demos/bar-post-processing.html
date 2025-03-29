@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Post-processing on a Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="250" data-image-src="page-demos-bar-post-processing.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Create the bar chart just like a normal grouped bar chart
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [[47,75],[32,74],[71,85],[25,19],[23,71],[81,59],[43,130],[23,20]],
+            options: {
+                marginLeft: 50,
+                colors: ['#494949','#35A0DA'],
+                xaxisLabels: ['Alf','Bert','Craig','Dan','Edgar','Fred','Gary','Harry'],
+                yaxisLabelsCount: 3,
+                yaxisTickmarksCount: 3,
+                backgroundGridHlinesCount: 3,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                shadowOffsety: -3,
+                responsive: [
+                    {maxWidth: null, width: 600, height: 300, options: {textSize: 14, marginInner: 5, shadow: true,  xaxis: false, yaxis: false}},
+                    {maxWidth: 900,  width: 400, height: 200, options: {textSize: 10, marginInner: 2, shadow: false, xaxis: false, yaxis: false}}
+                ]
+            }
+        
+        // Now use the draw event and the coordinates that were created when
+        // the chart was drawn to add highlighting to the left side of each
+        // bar. The highlighting is graduated from semi-opaque white at the top
+        // to fully transparent white at the bottom.
+        }).on('draw', function (obj)
+        {
+            var len = obj.coords.length;
+
+            for (var i=0; i<len; ++i) {
+
+                // Get the coordinates for each bar - full height but only half
+                // width.
+                var x = obj.coords[i][0],
+                    y = obj.coords[i][1],
+                    w = obj.coords[i][2] / 2,
+                    h = obj.coords[i][3];
+
+                // Create the gradient using an RGraph API function
+                obj.context.fillStyle = RGraph.linearGradient({
+                    object: obj,
+                    x1: 0, y1: 0, x2: 0, y2: 250,
+                    colors: ['rgba(255,255,255,.75)','rgba(255,255,255,0)']
+                });
+                
+                // Draw the highlight rectangle
+                obj.context.fillRect(x,y,w,h)
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

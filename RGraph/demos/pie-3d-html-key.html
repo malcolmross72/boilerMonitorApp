@@ -1,0 +1,86 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Pie chart with a HTML key</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="container" style="display: inline-block; position: relative">
+            <canvas id="cvs" width="400" height="350" >[No canvas support]</canvas>
+        </div>
+        
+        <style>
+            table {
+                line-height: 25px;
+            }
+        </style>
+    </div>
+    
+    <script>
+        var colors = ['red','yellow','blue','cyan','green','pink','gray','#ddd'];
+        
+        var key = RGraph.HTML.Key('container',
+        {
+            colors: colors,
+            labels:['Louise', 'Fred', 'Charley', 'Lucy','Kevin','Luis','Pete','Jake'],
+            tableCss: {
+                position: 'absolute',
+                top: '50%',
+                right: '-70px',
+                transform: 'translateY(-50%)'
+            }
+        });
+
+
+
+
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,8,4,6,5,3,2,5],
+            options: {
+                marginLeft: 50,
+                marginRight: 50,
+                linewidth: 0,
+                colorsStroke: 'rgba(0,0,0,0)',
+                colors: colors,
+                variant: 'pie3d',
+                radius: 100,
+                radius: 80,
+                shadowOffsety: 5,
+                shadowColor: '#aaa',
+                exploded: [20,20,20]
+            }
+        }).on('draw', function (obj)
+        {
+            // This timeout is needed because the 3D pie chart does
+            // multiple draws - so without it if the transformation
+            // is reset in the first ondraw event then the subsequent
+            // draws by the pie chart, which are there to produce the
+            // depth of the 3D pie, will not be whilst transformed
+            setTimeout(function ()
+            {
+                obj.context.resetTransform();
+    
+                RGraph.text({
+                    object: obj,
+                    x: obj.canvas.width / 2,
+                    y: 65,
+                    text: 'A 3D Pie chart with a key',
+                    halign: 'center',
+                    size: 16
+                });
+            }, 10);
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

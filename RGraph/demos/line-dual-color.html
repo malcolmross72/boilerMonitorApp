@@ -1,0 +1,102 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>     
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A different colored line chart above/below a threshold</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data      = [14,16,18,19,29,28,29,35,34,38,41,45,56,58,65];
+        threshold = 40;
+        color1    = 'red';
+        color2    = 'green';
+
+        // Draw the green chart
+        line = new RGraph.Line({
+            id: 'cvs', 
+            data: data,
+            options: {
+                marginTop: 15,
+                marginBottom: 45,
+                linewidth: 3,
+                tickmarksStyle: 'endcircle',
+                tickmarksSize: 7,
+                marginInner: 10,
+                colors: [color1],
+                yaxisScaleMax: 100,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false
+            }
+        }).on('firstdraw', function (obj)
+        {
+            var boundary = obj.getYCoord(threshold);
+        
+            obj.on('beforedraw', function (obj)
+            {
+                RGraph.clipTo.start(obj, [0,0,obj.canvas.width, boundary]);
+        
+            }).on('draw', function (obj)
+            {
+                RGraph.clipTo.end(obj);
+            });
+            
+            RGraph.redraw();
+        }).draw();
+
+
+
+
+
+
+
+
+        // Draw the red chart
+        line = new RGraph.Line({
+            id: 'cvs', 
+            data: data,
+            options: {
+                marginTop: 15,
+                marginBottom: 45,
+                linewidth: 3,
+                tickmarksStyle: 'endcircle',
+                tickmarksSize: 7,
+                marginInner: 10,
+                colors: [color2],
+                yaxisScaleMax: 100,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false
+            }
+        }).on('firstdraw', function (obj)
+        {
+            var boundary = obj.getYCoord(threshold);
+        
+            obj.on('beforedraw', function (obj)
+            {
+                RGraph.clipTo.start(obj, [0,boundary,obj.canvas.width, 999]);
+        
+            }).on('draw', function (obj)
+            {
+                RGraph.clipTo.end(obj);
+            });
+            
+            RGraph.redraw();
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

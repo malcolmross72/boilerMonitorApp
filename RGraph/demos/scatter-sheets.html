@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.sheets.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart using the Google Sheets connector</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Sheets(
+            'AIzaSyBPofvjcDhOdet_U2Tr4-rSLItAgaCsMCM',
+            '1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E',
+            'Scatter chart',
+        function (sheet)
+        {        
+            var x = sheet.get('A2:A11'),
+                y = sheet.get('B2:B11'),
+                p = [];
+            
+            for (var i=0; i<x.length; i++) {
+                p.push([x[i], y[i]]);
+            }
+
+            var line = new RGraph.Scatter({
+                id: 'cvs',
+                data: p,
+                options: {
+                    xaxisScaleMax: 100,
+                    xaxisLabels: ['Q1','Q2','Q3','Q4'],
+                    yaxis: false,
+                    backgroundGridBorder: false,
+                    backgroundGridVlines: false
+                }
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

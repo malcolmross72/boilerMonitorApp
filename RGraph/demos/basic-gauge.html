@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Gauge chart example</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Gauge({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 78,
+            options: {
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

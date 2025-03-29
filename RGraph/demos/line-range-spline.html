@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A spline range Line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        opacity = 1;
+       
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [4,6,16,15,13,14,18,15,18,16],
+                [1,1,1,2,3,5,9,9,6,3]
+            ],
+            options: {
+                spline: true,
+                filled: true,
+                colors: ['red'],
+                shadow: false,
+                filledColors: ['rgba(0,0,255,1)','#fdd'],
+                xaxisLabels: ['a','b','c','d','e','f','g','h','i','j'],
+                xaxisTickmarksCount: 9,
+                tickmarksStyle: null,
+                marginBottom: 35,
+                textSize:14,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false
+            }
+        }).draw();
+
+        for (var i=100; i>=0; i-=1) {
+            (function (idx)
+            {
+                var opacity = i * 0.01;
+
+                setTimeout(function () {
+                    line.set('filledColors', ['rgba(0,0,255,' + opacity + ')','#fdd']);
+                    RGraph.redraw();
+                }, (100 - idx) * 20);
+            })(i);
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

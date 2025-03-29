@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic grouped SVG Horizontal Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 350px; height: 500px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [[5,4,8],[8,4,6],[6,2,9],[8,8,9],[4,6,3],[8,4,1],[6,5,6]],
+            options: {
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                xaxis: false,
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                title: 'A grouped HBar chart',
+                marginInner: 10,
+                marginInnerTop: 50,
+                marginInnerBottom: 50
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

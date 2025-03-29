@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.horseshoe.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Horseshoe Meter</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+        <p>
+            <button onclick="update()" style="font-size: 26pt; cursor: pointer">Adjust meter</button>
+        </p>
+    </div>
+    
+    <script>
+        hs = new RGraph.Horseshoe({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 57,
+            options: {
+                adjustable: true,
+                labelUnitsPost: '%',
+                labelSize: 70
+            }
+        }).grow();
+        
+        
+        
+        
+        function update()
+        {
+            hs.value = hs.value + RGraph.random(-10,10);
+            hs.grow();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

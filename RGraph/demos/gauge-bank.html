@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A bank of adjustable Gauge charts</h1>
+    
+    <div id="rgraph-demo-html">
+        <button onclick="animateGauge()">Click me to animate the center Gauge</button><br /><br />
+        <canvas id="cvs" width="725" height="250" style="border: 1px solid gray">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        gauge1 = new RGraph.Gauge({
+            id: 'cvs',
+            min:0,
+            max: 10,
+            value: 18,
+            options: {
+                titleTop: 'Pressure',
+                titleTopBold: true,
+                titleTopSize: 14,
+                titleBottom: 'Pa',
+                titleBottomColor: '#aaa',
+                centerx: 125,
+                radius: 110,
+                adjustable: true
+            }
+        }).draw();
+
+        gauge2 = new RGraph.Gauge({
+            id: 'cvs',
+            min:0,
+            max: 100,
+            value: 78,
+            options: {
+                centerx: 360,
+                radius:110,
+                adjustable: true,
+                titleTop: 'Volume',
+                titleTopBold: true,
+                titleTopSize: 14,
+                titleBottomColor: '#aaa'
+            }
+        }).draw();
+
+        gauge3 = new RGraph.Gauge({
+            id: 'cvs',
+            min:0,
+            max: 100,
+            value: 78,
+            options: {
+                centerx: 600,
+                radius:110,
+                adjustable: true,
+                titleTop: 'Flow rate',
+                titleTopBold: true,
+                titleTopSize: 14,
+                titleBottomColor: '#aaa'
+            }
+        }).draw();
+        
+        function animateGauge ()
+        {
+            gauge2.value = RGraph.random(0,100);
+            gauge2.grow()
+        }
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using the hide() / show() methods</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+        <button onclick="line.hidden(0) ? line.show(0) : line.hide(0)">Hide or show the red line</button>
+        <button onclick="line.hidden(1) ? line.show(1) : line.hide(1)">Hide or show the green line</button>
+    </div>
+    
+     <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [ [5,4,1,6,8,5,3], [7,8,5,4,9,1,5] ],
+            options: {
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                marginLeft: 55,
+                marginRight: 35,
+                marginBottom: 35,
+                marginTop: 35,
+                title: 'A basic line chart',
+                titleBold: true,
+                backgroundGridColor: '#aaa',
+                backgroundGridDashed: true,
+                xaxisLabelsOffsety: 5
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

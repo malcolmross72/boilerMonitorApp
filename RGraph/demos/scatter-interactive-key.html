@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Scatter chart with an interactive key</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data1 = [[45,51,'green'],[45,46,'green'],[45,35,'green']];
+        data2 = [[225,32,'red'],[225,25,'red'],[225,12,'red']];
+        data3 = [[315,13,'pink'],[315,26,'pink'],[315,36,'pink']];
+
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [data1, data2, data3],
+            options: {
+                xaxisScaleMax: 360,
+                xaxisLabels: ['Q1','Q2','Q3','Q4'],
+                key: ['Richard','Dave','Charles'],
+                keyPosition: 'margin',
+                keyInteractive: true,
+                keyColors: ['green','red','pink']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

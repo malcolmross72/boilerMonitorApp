@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>   
+    <h1>A graduated orange filled SVG Line chart</h1>
+
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div id="chart-container" style="width: 700px; height: 275px; background-color: black"></div>
+            <br />
+            <button onclick="toggleSpline()" style="font-size:16pt">Toggle the spline option</button>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [3,3.6,3.2,4.2,3.4,4,3,5,4.1,4.7,4,4.9,3.1],
+            options: {
+                colors: ['white'],
+                filled: true,
+                filledColors: ['Gradient(red:rgba(255,0,0,0.75):rgba(255,0,0,0.35):rgba(0,0,0,0.25))'],
+                backgroundGridColor: '#666',
+                textColor: 'white',
+                yaxisColor: 'gray',
+                xaxisColor: 'gray',
+                responsive:[
+                    {maxWidth:null,width:700,height:275,options:{linewidth:7,textSize:14,xaxisLabels: ['2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018']}},
+                    {maxWidth:800,width:400,height:200,options:{linewidth:5,textSize:10,xaxisLabels: ['`06','`07','`08','`09','`10','`11','`12','`13','`14','`15','`16','`17','`18'],}}
+                ]
+            }
+        }).trace();
+        
+        function toggleSpline ()
+        {
+            line.set('spline', !line.get('spline'));
+            RGraph.SVG.redraw();
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with a vertical margin</h1>
+   
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        // Create the data
+        data = [6,8,4,6];
+        
+        data.forEach((val, idx, arr) => arr[idx] = [val - 1, 1]);
+
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                colors: [
+                    'red','white',
+                    '#0f0','white',
+                    'blue','white',
+                    '#ccc','white'
+                ],
+                grouping: 'stacked',
+                colorsSequential: true,
+                shadow: false,
+                yaxisScale: false,
+                backgroundGrid: false,
+                marginInner: 20,
+                xaxisTickmarksCount: 0,
+                yaxisTickmarksCount: 0,
+                xaxisLinewidth: 3,
+                yaxisLinewidth: 3,
+                axesLinewidth: 3,
+                marginLeft: 5,
+                marginRight: 5,
+                marginTop: 35,
+                marginBottom: 5,
+                labelsAbove: true,
+                labelsAboveSize: 26,
+                labelsAboveUnitsPost: 'km',
+                title: 'A Bar chart with a vertical margin',
+                titleBold: true,
+                titleSize: 16,
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

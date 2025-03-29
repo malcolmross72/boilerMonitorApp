@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A striped line chart (now using clipping)</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: DATA = [8,7,6,5,8,7,9,8,6,5,8,3,4,1,1,9,5,7,8,5,6,9,8,7],
+            options: OPTIONS = {
+                tickmarksStyle: 'filledcircle',
+                tickmarksSize: 3,
+                linewidth: 2,
+                marginInner: 5,
+                shadow: false,
+                filled: true,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                title: 'Sales figures for 2012',
+                titleSize: '16',
+                titleBold: true,
+                yaxisScaleUnitsPost: '%',
+                marginLeft: 50,
+                xaxisLabels: [
+                    '','Jan','',
+                    '','Feb','',
+                    '','Mar','',
+                    '','Apr','',
+                    '','May','',
+                    '','Jun','',
+                    '','Jul','',
+                    '','Aug','',
+                    '','Sep','',
+                    '','Oct','',
+                    '','Nov','',
+                    '','Dec',''
+                ],
+                colors: ['#aa0'],
+                filledColors: ['rgba(248,231,209,0.75)'],
+                clip: 'scale:4-max'
+            }
+
+        }).draw();
+
+
+
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: DATA,
+            options: {
+                ...OPTIONS,
+                colors: ['rgba(220,234,216,0.5)'],
+                colors: ['#0a0'],
+                filledColors: ['rgba(220,234,216,0.5)'],
+                clip: 'scale:2-4'
+            }
+        }).draw();
+
+
+
+
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: DATA,
+            options: {
+                ...OPTIONS,
+                colors: ['#2288AE'],
+                yaxisScale: false,
+                filledColors: ['rgba(132,208,248,0.5)'],
+                clip: 'scale:min-2'
+            }
+        }).draw();
+
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

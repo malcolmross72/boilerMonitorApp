@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart using the AJAX functions</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        RGraph.SVG.AJAX.getJSON('/getdata.html?json', function (json)
+        {
+            new RGraph.SVG.Line({
+                id: 'chart-container',
+                data: json.data,
+                options: {
+                    xaxisLabels: json.labels,
+                    marginLeft: 50,
+                    yaxisScaleMax: 100,
+                    yaxis: false,
+                    linewidth: 3,
+                    shadow: true,
+                    shadowOpacity: 0.25
+                }
+            }).trace();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

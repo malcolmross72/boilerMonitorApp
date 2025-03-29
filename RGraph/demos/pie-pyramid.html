@@ -1,0 +1,38 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A pyramid chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Pie({
+            id: 'cvs',
+            data: [66,12,33,66],
+            options: {
+                colors: ['#ccf','#aa0','#ff0','#ccf'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                centerx: 275,
+                key: ['Sky','Dark side of pyramid','Sunny side of pyramid'],
+                keyColors: ['#ccf','#aa0','#ff0'],
+                keyPositionGraphBoxed: false,
+                keyPositionY: 150,
+                textSize: 20
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

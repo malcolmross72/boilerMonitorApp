@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A customised Gauge chart (with AJAX updating)</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="250" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        gauge = new RGraph.Gauge({
+            id: 'cvs',
+            min:0,
+            max: 100,
+            value: 7,
+            options: {
+                marginLeft: 10,
+                marginRight: 10,
+                marginTop: 10,
+                marginBottom: 10,
+                borderOutline: 'transparent',
+                needleColors: ['red'],
+                needleType: 'line',
+                centerpinRadius: 0.1,
+                titleTop: 'Speed'
+            }
+        }).on('draw', function (obj)
+        {
+            // This circle becomes the border of the centerpin
+            obj.path(
+                'b a % % 10 0 6.29 false f black',
+                obj.centerx, obj.centery
+            );
+        })
+        .draw();
+        
+        var delay = 1500;
+
+        function myAJAXCallback(num)
+        {
+            gauge.value = num;
+            gauge.grow()
+            
+            
+            // Make another AJAX call after the delay (which is in milliseconds)
+            setTimeout(function ()
+            {
+                RGraph.AJAX.getNumber({url: '/getdata.html', callback: myAJAXCallback});
+            },
+            delay);
+        }
+
+        //
+        // Make the AJAX call every so often (controlled by the delay variable)
+        //
+        setTimeout(function ()
+        {
+            RGraph.AJAX.getNumber({url: '/getdata.html', callback: myAJAXCallback});
+        }, delay);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Rose chart with tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [
+                [4,5,8],
+                [1,3,5],
+                [2,6,8],
+                [4,2,2],
+                [4,3,5]
+            ],
+            options: {
+                marginBottom: 35,
+                margin: 5,
+                labels: ['Bill','Kevin','Luis','Pete','Bob'],
+                tooltips: '%{property:labels[%{dataset}]}',
+                textSize: 26,
+                labelsAxesSize: 12,
+                labelsAxesBoxed: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

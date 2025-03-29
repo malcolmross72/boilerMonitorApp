@@ -1,0 +1,100 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dynamically updating filled range chart with a threshold</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="cvs-container">
+            <canvas id="cvs" width="1000" height="250">[No canvas support]</canvas>
+            <div id="cvs-gradient-cover"></div>
+        </div>
+
+        <style>
+            #cvs-container {
+                display:inline-block;
+                position: relative;
+            }
+    
+            #cvs-gradient-cover {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: inline-block;
+                background-image: linear-gradient(90deg, white,rgba(255,0,0,0) 450px);
+                top: 0; left: 0;
+            }
+        </style>
+    </div>
+    
+    <script>
+        var obj       = null;
+        var numvalues = 600;
+        var value     = 25;
+
+        // RGraph.arrayPad(array, length[, value])
+        var data1 = RGraph.arrayPad([], numvalues, null);
+        var data2 = RGraph.arrayPad([], numvalues, null);
+    
+        function drawGraph ()
+        {
+            var canvas = document.getElementById("cvs");
+            RGraph.clear(canvas);
+            
+
+            if (!obj) {
+                obj = new RGraph.Line({
+                    id: 'cvs',
+                    data: [data1, data2],
+                    options: {
+                        backgroundGridVlines: false,
+                        backgroundGridBorder: false,
+                        title: 'Bandwidth used (Mb/s)',
+                        titleBold: true,
+                        titleFont: 'Verdana',
+                        colors: ['black'],
+                        linewidth: 0.5,
+                        yaxisPosition: 'right',
+                        yaxisScaleMax: 50,
+                        yaxis: false,
+                        xaxis: false,
+                        filled: true,
+                        filledRange: true,
+                        filledRangeThreshold: 25,
+                        filledRangeThresholdColors: ['red','#0c0'],
+                        filledColors: 'red',
+                        colors: ['rgba(0,0,0,0)'],
+                        tickmarksStyle: null
+                    }
+                }).draw();
+            }
+
+            
+            value = value + RGraph.random(-3,3);
+            value = Math.max(0,value)
+            value = Math.min(50,value)
+            
+            obj.original_data[0].push(Math.min(value + 5, 50));
+            obj.original_data[1].push(Math.max(value - 5, 0));
+            
+            obj.original_data[0] = RGraph.arrayShift(obj.original_data[0]);
+            obj.original_data[1] = RGraph.arrayShift(obj.original_data[1]);
+            
+            obj.draw();
+
+            RGraph.Effects.updateCanvas(drawGraph);
+        }
+
+        drawGraph();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

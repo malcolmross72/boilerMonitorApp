@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+    <h1>A Horizontal Bar chart showing Internet users by country</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [2023, 704, 453,437,345,164,28],
+            options: {
+                labelsAbove: true,
+                backgroundColor: '#DCE6F2',
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                backgroundGridColor: '#4E85C6',
+                yaxis: false,
+                textSize: 10,
+                yaxisLabels: [
+                    'Asia',
+                    'Europe',
+                    'Africa',
+                    'Latin America /\nthe Carribean',
+                    'North America',
+                    'Middle East',
+                    'Oceania /\nAustralia'
+                ],
+                yaxisLabelsBold: true,
+                yaxisLabelsAboveBold: true,
+                marginInner: 10,
+                colors: ['#4E85C6'],
+                shadow: true,
+                shadowColor: '#aaa',
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                xaxisColor: '#aaa',
+                xaxisScaleMax: 2300,
+                title: 'Internet users by geographic region',
+                titleSize: 16,
+                xaxisTitle: 'Millions of users - June 2017',
+                xaxisTitleBold: true,
+                marginTop: 35,
+                marginBottom: 50
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

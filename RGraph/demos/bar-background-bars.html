@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart using the backgroundBarsCount option</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="450">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [153,425,163,648,755,648,922,378,512,566,388,642],
+            options: {
+                title: 'A demo of the backgroundBarsCount option',
+                titleBold: true,
+                titleSize: 16,
+                marginLeft: 75,
+                marginRight: 25,
+                marginTop: 35,
+                marginBottom: 25,
+                colors: ['red'],
+                yaxisScaleMax:1200,
+                yaxisLabelsCount:12,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                backgroundGrid: false,
+                backgroundBarsCount: 12,
+                backgroundBarsColor1: '#eee',
+                backgroundBarsColor2: '#ddd',
+                backgroundBorder: true,
+                yaxisScaleUnitsPost: 'km',
+                marginInner: 10,
+                xaxisColor:'gray',
+                yaxisColor:'gray',
+                xaxis: false,
+                yaxis: false,
+                textSize:8,
+                shadow: true,
+                shadowBlur: 2,
+                shadowOffsetx: 1,
+                shadowOffsety: 1
+                
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

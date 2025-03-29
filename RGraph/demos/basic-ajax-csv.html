@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of a CSV file and AJAX</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        //
+        // Initiate the AJAX request. The AJAX page is: http://www.rgraph.net/getdata.html
+        // If you view this in your browser you'll see that all it does is output a sequence of numbers.
+        //
+        RGraph.AJAX.getCSV({url: '/getdata.html', callback: drawGraph});
+
+        //
+        // This is the AJAX callback function. The AJAX getCSV() converts the strings to numbers for you.
+        //
+        function drawGraph (csv)
+        {
+            // Now draw the chart
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: csv,
+                options: {
+                    marginInner: 0,
+                    linewidth: 2,
+                    xaxisLabels: ['Gary','Rachel','Neil','Martha','Kevin','Craig','John','Peter','Luis','Bert'],
+                    yaxisScaleMax: 100,
+                    marginLeft: 35
+                }
+            }).draw()
+        }
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

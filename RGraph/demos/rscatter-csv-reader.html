@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.rscatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Radial Scatter chart importing CSV data</h1>
+
+    <script>
+        if (!location.host) {
+            document.write(`
+<div style="background-color: #ffc; border: 2px solid #cc0; border-radius: 5px; padding: 5px;">
+    <b>Note:</b>
+    For browser security reasons the <code>AJAX</code> demos don't work offline.
+    You can view the demos on the RGraph website here:
+    <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+</div>`);
+        }
+    </script>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="500" height="450" >[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Create the CSV reader with the URL of the CSV file and the
+        // callback function.
+        new RGraph.CSV('/sample.csv', function (csv)
+        {
+            // Fetch the two rows of data from the CSV file, starting at the
+            // second column (the numbers start at zero)
+
+            // Fetch the first row of the CSV file
+            var row1 = csv.row(0, 1);
+            
+            // Fetch the second row of the CSV file
+            var row2 = csv.row(1, 1);
+            
+            // Create an empty array that will hold the data
+            var data = [];
+
+            // Now fill the data array with the data that was retrieved from
+            // the CSV file
+            for (var i=0; i<row1.length; i+=1) {
+                data.push( [(row1[i] / 10) * 360, row2[i]]);
+            }
+
+            // Create and show the RScatter chart with only the north axis
+            // having labels
+            new RGraph.RScatter({
+                id: 'cvs',
+                data: data,
+                options: {
+                    labelsAxes: 'n',
+                    marginTop: 15,
+                    marginBottom: 15,
+                    marginLeft: 15,
+                    marginRight: 15,
+                    responsive: [
+                        {maxWidth:null,width:500,height:450},
+                        {maxWidth:900,width:400,height:300}
+                    ]
+                }
+            }).draw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.starburst.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with a rotating background</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        // Create and configure the Bar chart. Note that the chart is not drawn yet. That is done using
+        // the StarBurst callback function.
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [1,5,3,2,5,6,8],
+            options: {
+                colors: ['Gradient(#fcc:red)'],
+                xaxisTickmarks: false,
+                xaxisLinewidth: 2,
+                yaxisLinewidth: 2,
+                axesLinewidth: 2,
+                yaxisTickmarksCount: 0,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                backgroundGrid: false,
+                shadow: false,
+                textSize: 14,
+                title: 'An example of a Bar chart with a StarBurst at the back',
+                titleBold: true,
+                titleSize: 16
+            }
+        });
+
+        // Create and configure the StarBurst. This starburst is not animated .
+        new RGraph.StarBurst({
+            id: 'cvs',
+            options: {
+                colors:['rgba(255,0,0,0.01)','red'],
+                callback: function ()
+                {
+                    bar.draw();
+                }
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

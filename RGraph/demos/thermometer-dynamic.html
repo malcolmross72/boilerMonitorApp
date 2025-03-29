@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.thermometer.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dynamic Thermometer chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="100" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        function draw ()
+        {
+            var value = RGraph.random(0, 100)
+            
+            if (typeof thermometer == 'undefined') {
+                // A global on purpose
+                thermometer = new RGraph.Thermometer({
+                    id: 'cvs',
+                    min: 0,
+                    max: 100,
+                    value: value,
+                    options: {
+                        marginLeft: 25,
+                        marginRight: 25,
+                        marginTop: 25,
+                        marginBottom: 25,
+                    }
+                });
+            } else {
+                thermometer.value = value;
+            }
+    
+            thermometer.grow();
+        }
+        
+        draw();
+        
+        setInterval(function ()
+        {
+            RGraph.clear(thermometer.canvas);
+            draw();
+        }, 3000);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

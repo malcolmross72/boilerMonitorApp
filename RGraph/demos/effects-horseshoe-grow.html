@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.horseshoe.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>Horseshoe meter chart grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        horseshoe = new RGraph.Horseshoe({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 72,
+            options: {
+                labelSize: 60,
+                labelUnitsPost: '%'
+            }
+        }).grow();
+        
+        
+        setInterval(function ()
+        {
+            horseshoe.value = horseshoe.value + RGraph.random(-10,10);
+            horseshoe.grow();
+        }, 2000);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

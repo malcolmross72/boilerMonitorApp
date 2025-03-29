@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart with a right-hand side Y-axis</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 300px; border:1px solid gray" id="chart-container"></div>
+    </div>
+        
+    <script>
+        results  = [3,-2,5];
+        labels   = ['Freddy','Charlie','Peter'];
+
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: results,
+            options: {
+                tooltips: '<b>%{property:yaxisLabels[%{dataset}]}:</b> %{value}',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                },
+                yaxisLabels: labels,
+                yaxisPosition: 'right',
+                xaxis: false,
+                labelsAbove: true,
+                labelsAboveUnitsPost: '%',
+                marginInner: 20,
+                xaxisScaleMin:-5,
+                xaxisScaleMax:20,
+                xaxisScaleUnitsPost:'%'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

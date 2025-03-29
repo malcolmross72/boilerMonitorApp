@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A pink(ish) and blue Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [23,20,12,43,11,41,34,56,31,39,15,56],
+                [15,9,39,29,37,23,42,32,45,11,30,45]
+            ],
+            options: {
+                marginLeft: 5,
+                marginRight: 5,
+                marginTop: 5,
+                marginBottom: 5,
+                backgroundGridVlines: false,
+                linewidth: 5,
+                marginInner: 3,
+                axesLinewidth: 5,
+                xaxisLinewidth: 5,
+                yaxisLinewidth: 5,
+                xaxisTickmarksCount: 0,
+                yaxisTickmarksCount: 0,
+                colors: ['#F60091','#00ACDE'],
+                filled: true,
+                filledAccumulative: true,
+                filledColors: ['rgba(255,200,200,0.5)','rgba(200,200,255,0.5)'],
+                yaxisScale: false
+            }
+        }).trace({frames: 60});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

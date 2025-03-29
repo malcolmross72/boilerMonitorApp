@@ -1,0 +1,111 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="950" height="350">[No canvas support]</canvas>
+        
+        <style>
+            .RGraph_tooltip {padding:10px!important;}
+            .RGraph_tooltip table {border-collapse:collapse;}
+            .RGraph_tooltip table td:nth-child(1) {font-weight:bold;padding:3px;}
+            .RGraph_tooltip table td:nth-child(1) {background-color:#ddd;}
+            .RGraph_tooltip table td:nth-child(2) {padding-left:10px;}
+        </style>
+    </div>
+
+    <script>
+        data = [[17,14,9,16,28,2], [22,15,19,16,12,6], [18,15,21,13,11,13], [17,12,12,14,22,3]];
+        tooltipsFormattedTableLabels = ['SPD','CDU','Grune','Linke','AfD', 'FDP'];
+        tooltipsFormattedTableData   = [];
+
+        for (var i=0; i<data.length; i++) {
+            
+            tooltipsFormattedTableData[i] = [];
+            
+            for (var j=0; j<tooltipsFormattedTableLabels.length; ++j) {
+                tooltipsFormattedTableData[i].push([tooltipsFormattedTableLabels[j], data[i][j]]);
+            }
+        }
+
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                backgroundGridHlinesCount: 3,
+                yaxisLabelsCount: 3,
+                textColor: '#666',
+                textSize: 10,
+                marginInner: 55,
+                marginInnerGrouped: 2,
+                colors: ['#E30513', '#1C1C1B', '#86BC24', '#E5007D', '#2F8DCD', '#F9D900'],
+                xaxisLabels: ['Arbeiter','Angestellte','Selbststandige','Arbeitslose'],
+                yaxisScaleUnitsPost: ' %',
+                marginLeft: 50,
+                marginBottom: 65,
+                marginTop: 65,
+                title: 'AfD unter Arbeitern und Arbeitslosen starkste Kraft',
+                titleX: 50,
+                titleOffsety: 10,
+                titleHalign: 'left',
+                titleColor: 'gray',
+                titleSize: 14,
+                key: ['SPD','CDU','Grune','Linke','AfD','FDP'],
+                keyPosition: 'margin',
+                keyPositionY: 320,
+                keyTextSize: 12
+            }
+        }).draw();
+
+
+        // This chart is here to facilitate the tooltips
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [1,1,1,1],
+            options: {
+                yaxis: false,
+                yaxisScale: false,
+                backgroundGrid: false,
+                colors: ['transparent'],
+                marginLeft: 50,
+                marginBottom: 65,
+                marginInner: 55,
+                marginInnerGrouped: 2,
+                marginTop: 65,
+                tooltips: '%{table}',
+                tooltipsPointer: false,
+                tooltipsPositionStatic: false,
+                tooltipsCss: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                    padding: '10px',
+                    paddingLeft: '20px',
+                    border: '3px solid red',
+                    textAlign: 'left'
+                },
+                tooltipsFormattedTableData: tooltipsFormattedTableData,
+                tooltipsEvent: 'click',
+                highlightStroke: 'transparent'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

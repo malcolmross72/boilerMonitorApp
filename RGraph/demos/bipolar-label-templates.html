@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bipolar chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        //
+        // This formats the center labels
+        //
+        function values (index)
+        {
+            var obj = RGraph.Registry.get('label-templates-function-object');
+
+            return '{1}kg,{2}%'.format(
+                obj.left[index],
+                obj.right[index]
+            );
+        }
+
+        bipolar = new RGraph.Bipolar({
+            id: 'cvs',
+            left:  [4,8,6,3,5,2,5],
+            right: [7,5,6,3,2,5,5],
+            options: {
+                
+                names: ['Rich','Rach','John','Kev','Lou','Paul','Bea'],
+
+                marginInner: 2,
+                yaxisLabelsFormattedUnitsPos: 'kg',
+                yaxisLabels: '%{property:names[%{index}]} (%{function:values(%{index})})',
+                yaxisLabelsSize: 14,
+                //yaxisLabelsFormattedDecimals: 1,
+                //yaxisLabelsFormattedPoint: ',',
+                //yaxisLabelsFormattedThousand: ',,',
+                //yaxisLabelsFormattedUnitsPre: '$',
+                yaxisLabelsFormattedUnitsPost: 'kg',
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                tooltips: '%{key}',
+                tooltipsFormattedKeyLabels: ['1st competition:'],
+                tooltipsFormattedUnitsPost: 'Kg',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                }
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

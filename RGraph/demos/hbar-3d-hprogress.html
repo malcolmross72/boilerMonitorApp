@@ -1,0 +1,47 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Horizontal Progress chart (using the 3D Horizontal Bar chart)</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="150">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [51],
+            options: {
+                marginLeft: 25,
+                marginRight: 25,
+                marginTop: 25,
+                marginBottom: 85,
+                marginLeft: 100,
+                colors: ['red'],
+                variant: '3d',
+                shadow: true,
+                shadowOffsety:  -5,
+                shadowOffsetx: 13,
+                shadowBlur: 10,
+                shadowColor: '#ccc',
+                marginInner: 5,
+                xaxis: false,
+                yaxis: false,
+                yaxisLabels: ['% Complete'],
+                xaxisScaleMax: 100,
+                xaxisScaleUnitsPost: '%'
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

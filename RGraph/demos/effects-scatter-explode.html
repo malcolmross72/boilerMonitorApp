@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Scatter chart using the explode effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data  = [
+            [25,45],[51,23],[132,52],[166,52],
+            [311,-5],[322,-12],[56,52],[10,-20],
+            [355,56],[124,52],[52,56],[53,-12],
+            [225,53],[311,25],[144,52],[133,25]
+        ];
+        color = 'red';
+        
+        data.forEach(function (v, k, arr)
+        {
+            arr[k].push(color);
+        })
+
+        sca = new RGraph.Scatter({
+            id: 'cvs',
+            data: data,
+            options: {
+                xaxisScaleMax: 365,
+                yaxisScaleMin: -20,
+                yaxisScaleMax: 80,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                tickmarksStyle: 'circle',
+                tickmarksSize: 10
+            }
+        }).explode();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

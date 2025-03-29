@@ -1,0 +1,59 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.semicircularprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Semi-circular Progress Meter with a list in the tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width: 500px; height: 300px"></div>
+
+        <style>
+            .RGraph_tooltip li {
+                text-align: left;
+                margin: 3px;
+            }
+    
+            .RGraph_tooltip h2 {
+                color: white;
+                margin: 5px;
+                font-style: italic;
+            }
+        </style>
+    </div>
+
+    <script>
+        new RGraph.SVG.SemiCircularProgress({
+            id: 'chart-container',
+            min: 0,
+            max: 100,
+            value: 53,
+            options: {
+
+                tooltips: '<h2>Results</h2> %{list}',
+                tooltipsEffect: 'none',
+                
+                // The type of the list (ordered or unordered)
+                tooltipsFormattedListType: 'ol',
+
+                // The items that appear in the list
+                tooltipsFormattedListItems: [
+                    ['Barry','Larry','Harry']
+                ],
+
+                // The rest of the chart configuration
+                textSize: 16
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

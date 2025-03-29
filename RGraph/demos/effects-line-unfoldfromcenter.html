@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Line chart unfoldFromCenter effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250" data-l="false">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [10,1,10,7,4,9,5,6,3,5],
+                [8,4,6,8,2,3,4,6,8,4]
+            ],
+            options: {
+            }
+        }).unfoldFromCenter();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

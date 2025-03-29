@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart using the dollar syntax for events</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        pie = new RGraph.Pie({
+            id: 'cvs',
+            data: [4,8,4,6,5,3,2,5],
+            options: {
+                labels: ['Alvin','Pete','Hoolio','Jack','Kev','Luis','Lou','Jesse']
+            }
+        }).draw();
+        
+        pie.$2.onclick = function (e, shape)
+        {
+            alert('The segment was clicked!');
+        }
+        
+        pie.$2.onmousemove = function (e, shape)
+        {
+            return true;
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

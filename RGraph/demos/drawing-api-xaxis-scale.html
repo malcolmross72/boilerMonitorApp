@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.drawing.xaxis.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of the drawing API X axis object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,6,4,3,5,8],
+            options: {
+                xaxis: false,
+                yaxis: false
+            }
+        }).draw();
+
+
+
+        xaxis = new RGraph.Drawing.XAxis({
+            id: 'cvs',
+            y: bar.canvas.height - 35,
+            options: {
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                marginLeft: 35,
+                marginRight: 35
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

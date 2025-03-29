@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.table.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A basic standalone HTMLTable reader example</h1>
+
+    <div id="rgraph-demo-html">
+        <style>
+            td {
+                text-align: center;
+            }
+        </style>
+    
+        <table id="myTable" border="1">
+            <tr>
+                <td>Data</td>
+                <td>3</td>
+                <td>8</td>
+                <td>5</td>
+                <td>1</td>
+                <td>3</td>
+                <td>8</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>Labels</td>
+                <td>Leyla</td>
+                <td>Bill</td>
+                <td>Neil</td>
+                <td>Olga</td>
+                <td>Peter</td>
+                <td>Billy</td>
+                <td>Mini</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new RGraph.HTMLTable('myTable', function (table)
+        {
+            alert('Labels: ' + table.row('Labels',1));
+            alert('Data: ' + table.row('Data',1));
+        });
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

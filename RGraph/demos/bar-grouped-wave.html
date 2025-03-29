@@ -1,0 +1,68 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped Bar chart with a wave() effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        data       = [4,8,6,3,5,8,4];
+        data_chart = [];
+
+        data.forEach(function (v, k, arr)
+        {
+            data_chart.push(0);
+
+            for (var i=0; i<10; ++i) {
+                data_chart.push(v);
+            }
+            
+            data_chart.push(0);
+        });
+
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data_chart,
+            options: {
+                xaxisLabels: [
+                    '','','Monday','','',
+                    '','','Tuesday','','',
+                    '','','Wednesday','','',
+                    '','','Thursday','','',
+                    '','','Friday','','',
+                    '','','Saturday','','',
+                    '','','Sunday','',''
+                ],
+                yaxisScaleUnitsPost: 'k',
+                colors: ['Gradient(#c00:red)'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                textSize: 14,
+                title: 'A grouped Bar chart using the Wave effect',
+                yaxisTickmarksCount: 5,
+                xaxis: false,
+                yaxis: false,
+                marginLeft: 35,
+                marginInner: -1,
+                shadow: 0,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).wave({frames: 60});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

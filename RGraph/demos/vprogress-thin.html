@@ -1,0 +1,132 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A set of thin Vertical Progress bars</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="400" style="background-color: #aaa">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        RGraph.tooltips.style.fontSize = '26pt';
+
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 16.66,
+            options: {
+                tickmarks: false,
+                colors: ['#68C7FE'],
+                marginRight: 540,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+        
+        
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 33.33,
+            options: {
+                tickmarks: false,
+                colors: ['#4BB3D3'],
+                marginLeft: 120,
+                marginRight: 445,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+        
+        
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 50,
+            options: {
+                tickmarks: false,
+                colors: ['#4BB3D3'],
+                marginLeft: 210,
+                marginRight: 355,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+        
+        
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 66.66,
+            options: {
+                tickmarks: false,
+                colors: ['#86AA65'],
+                marginLeft: 300,
+                marginRight: 270,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+        
+        
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 82.33,
+            options: {
+                tickmarks: false,
+                colors: ['#EDA637'],
+                marginLeft: 390,
+                marginRight: 180,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+        
+        
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 100,
+            options: {
+                tickmarks: false,
+                colors: ['#D94C4B'],
+                marginLeft: 470,
+                marginRight: 100,
+                colorsStrokeOuter: 'rgba(0,0,0,0)',
+                backgroundColor: '#ddd',
+                corners: 'round',
+                tooltips: ['Daves results']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

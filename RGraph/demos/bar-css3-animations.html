@@ -1,0 +1,93 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/animations.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>CSS3 animations</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+
+        <button onclick="swap()" style="font-size: 26pt; cursor:pointer">Click me</button>
+    </div>
+    
+    <script>
+        chart = 1;
+
+        // Draws the blue bar chart
+        function drawBar1 ()
+        {
+            new RGraph.Bar({
+                id: 'cvs',
+                data: [4,5,3,8,4,9,6,5,3],
+                options: {
+                    title: 'Click the button to swap charts',
+                    titleSize: 16,
+                    titleBold: true,
+                    colors: ['blue'],
+                    xaxisLabels: ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe'],
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    backgroundGridVlinesCount: 9
+                }
+            }).draw();
+        }
+
+        // Draws the red bar chart
+        function drawBar2 ()
+        {
+            new RGraph.Bar({
+                id: 'cvs',
+                data: [4,8,5,4,8,6,3,5,2],
+                options: {
+                    title: 'Click the button to swap charts',
+                    titleSize: 16,
+                    titleBold: true,
+                    colors: ['red'],
+                    xaxisLabels: ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe'],
+                    colorsStroke: 'rgba(0,0,0,0)',
+                    backgroundGridVlinesCount: 9
+                }
+            }).draw();
+        }
+
+
+
+
+        // The swap function
+        function swap ()
+        {
+            $('#cvs').addClass('animated bounceOutLeft');
+
+            setTimeout(function ()
+            {
+                RGraph.reset(document.getElementById("cvs"));
+
+                if (chart == 2) {
+                    drawBar1();
+                    chart = 1;
+                } else {
+                    drawBar2();
+                    chart = 2;
+                }
+
+                $('#cvs').removeClass('bounceOutLeft');
+                $('#cvs').addClass('bounceInLeft');
+            }, 750)
+        }
+        
+        // Start with the first bar chart
+        drawBar1();
+        chart = 1;
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

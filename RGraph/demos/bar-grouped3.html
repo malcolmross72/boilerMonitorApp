@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [[3,4,6],[2,5,3],[1,5,2],[1,4,6],[1,6,8]],
+            options: {
+                title: 'An animated grouped Bar chart',
+                titleSize: 16,
+                titleBold: true,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                xaxisLabels:['Mal', 'Barry', 'Gary', 'Neil', 'Kim'],
+                colors: ['Gradient(#99f:#27afe9:#058DC7:#058DC7)', 'Gradient(#94f776:#50B332:#B1E59F)', 'Gradient(#fe783e:#EC561B:#F59F7D)'],
+                marginInner: 15,
+                colorsStroke: 'white',
+                linewidth: 1,
+                shadowColor: '#ccc',
+                shadowOffsetx: 0,
+                shadowOffsety: 0,
+                shadowBlur: 10
+            }
+        }).wave({frames:30});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

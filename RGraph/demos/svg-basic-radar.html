@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.radar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Radar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 600px; height: 500px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Radar({
+            id: 'chart-container',
+            data: [
+                [89,60,84,78,58],
+                [60,80,70,80,82]
+            ],
+            options: {
+                filled: true,
+                filledAccumulative: false,
+                colors: ['red','blue'],
+                tickmarksStyle: null,
+                linewidth: 3,
+                labels: ['Speed','Reliability','Comfort','Safety','Efficiency'],
+                tooltips: [
+                    '','Reliability','Comfort','Safety','Efficiency',
+                    'Speed','Reliability','Comfort','Safety','Efficiency'
+                ],
+                scaleColor: '#999',
+                key: ['Robert','Jeoffory'],
+                keyOffsety: -25,
+                marginTop: 45,
+                responsive: [
+                    {maxWidth: 900, width: 450, height: 350, options: {}},
+                    {maxWidth: null,width: 600, height: 500, options: {}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

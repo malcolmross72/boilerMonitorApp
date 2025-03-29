@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart using sequential colors</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [44865,81856,63254,34568,58431,44956],
+            options: {
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun'],
+                marginLeft: 100,
+                marginInner: 25,
+                colors: ['red','blue','pink','green','rgb(255,67,169)','brown','#cfc'],
+                colorsSequential: true,
+                yaxisScaleUnitsPre: '$',
+                yaxisScaleDecimals: 1,
+                yaxisScalePoint: ',',
+                yaxisScaleThousand: '.',
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                title: 'A Bar chart with sequential colors'
+            }
+        }).grow({frames:15});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Bar charts with background horizontal bars</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas><br />
+        <canvas id="cvs2" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [[21,31],[13, -5],[-12, -58],[5, 29],[59, 28],[40, 10]],
+            options: {
+                title: 'A demonstration of horizontal background bars',
+                titleBold: true,
+                titleSize: 16,
+                colors: ['blue', 'red'],
+                xaxisPosition: 'center',
+                xaxisLabels: ['2007', '2008', '2009', '2010', '2011', '2012'],
+                backgroundHbars: [
+                    [-55,-5,'rgba(255,0,0,0.2)'],
+                    [-45,-10,'rgba(255,255,0,0.2)'],
+                    [-45,90,'rgba(0,255,0,0.2)'],
+                    [45,10,'rgba(255,255,0,0.2)'],
+                    [55,null,'rgba(255,0,0,0.2)']
+                ],
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+
+        new RGraph.Bar({
+            id: 'cvs2',
+            data: [[21,31],[13, 5],[12, 19],[5, 29],[59, 28],[40, 10]],
+            options: {
+                title: 'A demonstration of horizontal background bars',
+                titleBold: true,
+                titleSize: 16,
+                colors: ['blue', 'red'],
+                xaxisLabels: ['2007', '2008', '2009', '2010', '2011', '2012'],
+                backgroundHbars: [
+                    [-55,-5,'rgba(255,0,0,0.2)'],
+                    [-45,-10,'rgba(255,255,0,0.2)'],
+                    [-45,90,'rgba(0,255,0,0.2)'],
+                    [45,10,'rgba(255,255,0,0.2)'],
+                    [55,null,'rgba(255,0,0,0.2)']
+                ],
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

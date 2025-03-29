@@ -1,0 +1,69 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Bar chart using the AJAX getString() function</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        state = {
+            first: true,
+            bar:  null
+        };
+
+        // This is the function that runs every second to fetch new data
+        function update ()
+        {
+            RGraph.SVG.AJAX.getString('/getdata.html', function (str)
+            {
+                arr = str.split(/,/);
+
+                for (var i=0; i<arr.length; ++i) {
+                    arr[i] = Number(arr[i]);
+                }
+                
+                // Clear the chart if need be
+                if (!state.first) {
+                    RGraph.SVG.clear(state.bar.svg);
+                }
+
+
+                state.bar = new RGraph.SVG.Bar({
+                    id: 'chart-container',
+                    data: arr,
+                    options: {
+                        backgroundGridVlines: false,
+                        backgroundGridBorder: false,
+                        xaxis: false,
+                        yaxis: false,
+                        xaxisLabels: ['Angela','Beatrix','Carol','Dana','Eva','Fay','Gina','Hetty','Indra','Jocey']
+                    }
+                }).draw();
+                
+                state.first = false;
+            });
+
+            setTimeout(function ()
+            {
+                update()
+            }, 1000);
+        }
+
+        // Initiate the first AJAX request
+        update();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

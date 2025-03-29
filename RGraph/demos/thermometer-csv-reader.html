@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.thermometer.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Thermometer chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="110" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            // Just fetch the first row of the CSV file
+            var row = csv.row(0);
+
+            var thermometer = new RGraph.Thermometer({
+                id: 'cvs',
+                min: 0,
+                max: 50,
+                value: row[1],
+                options: {
+                    labelsValueDecimals: 1,
+                    scaleUnitsPost: '%',
+                    scaleVisible: true,
+                    marginLeft: 25,
+                    marginRight: 25,
+                    marginTop: 25,
+                    marginBottom: 25,
+                }
+            }).draw();
+        }});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

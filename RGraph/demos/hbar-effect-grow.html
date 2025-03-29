@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart example</h1>
+
+   <div id="rgraph-demo-html">
+       <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+   </div>
+
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [0.1,0.2,0.3,3.2,0.2,0.5,0.5,0.2,0.4,0.8,0,0.1],
+            options: {
+                backgroundGrid: false,
+                xaxis: false,
+                xaxisScaleMax: 3.5,
+                xaxisScaleDecimals: 1,
+                xaxisScale: false,
+                colors: ['#164366','#164366','#164366','#FDB515','#164366'],
+                yaxisLabels: ['Norway','Australia','Netherlands','United States','New Zealand','Canada','Ireland','Germany','Sweden','Switzerland','Japan','England and Wales'],
+                labelsAbove: true,
+                labelsAboveDecimals: 1,
+                colorsSequential: true,
+                marginLeft: 150
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

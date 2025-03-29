@@ -1,0 +1,148 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.drawing.text.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of the drawing API text object being used as a button to switch between charts</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        var canvas = document.getElementById('cvs');
+        
+        //
+        // Draw the chart when the page loads
+        //
+        drawBar1();
+
+
+        //
+        // Draw the first chart
+        //
+        function drawBar1 ()
+        {
+            RGraph.reset(canvas);
+
+            new RGraph.Bar({
+                id: 'cvs',
+                data: [4,8,6,3,5,2,6],
+                options: {
+                    xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                    marginInner: 5,
+                    linewidth: 5
+                }
+            }).draw()
+            
+            
+            drawButtons();
+        }
+
+        //
+        // Draw the second chart
+        //
+        function drawBar2 ()
+        {
+            RGraph.reset(canvas);
+
+            new RGraph.Bar({
+                id: 'cvs',
+                data: [4,8,6,3,5,2,6],
+                options: {
+                    xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                    colors: ['Gradient(white:blue)']
+                }
+            }).draw();
+                
+            drawButtons();
+        }
+
+
+
+
+        //
+        // Draw the buttons (using the drawing API text object).
+        //
+        function drawButtons ()
+        {
+            var text1 = new RGraph.Drawing.Text({
+                id: 'cvs',
+                x: 600 - 25 - 5,
+                y: 25 + 5,
+                text: 'Chart one',
+                options: {
+                    textAccessible: true,
+                    textFont: 'Arial',
+                    textSize: 14,
+                    bounding: true,
+                    boundingFill: 'white',
+                    boundingShadow: true,
+                    boundingShadowColor: '#bbb',
+                    boundingShadowOffsetx: 1,
+                    boundingShadowOffsety: 1,
+                    halign: 'right',
+                    valign: 'top',
+                    colors: ['blue']
+                }
+            }).on('click', function (e, shape)
+            {
+                drawBar1();
+            }).on('mousemove', function ()
+            {
+                return true;
+            }).draw()
+
+
+
+
+            var text2 = new RGraph.Drawing.Text({
+                id: 'cvs',
+                x: 600 - 25 - 5 - 5 - text1.coords[0][2],
+                y: 25 + 5,
+                text: 'Chart two',
+                options: {
+                    textAccessible: true,
+                    textFont: 'Arial',
+                    textSize: 14,
+                    bounding: true,
+                    boundingFill: 'white',
+                    boundingShadow: true,
+                    boundingShadowColor: '#bbb',
+                    boundingShadowOffsetx: 1,
+                    boundingShadowOffsety: 1,
+                    halign: 'right',
+                    valign: 'top',
+                    colors: ['blue']
+                }
+            }).on('click', function (e, shape)
+            {
+                drawBar2();
+            }).on('mousemove', function ()
+            {
+                return true;
+            }).draw().
+
+
+
+
+            
+            text1.onmousemove =
+            text2.onmousemove = function (e, shape)
+            {
+                e.target.style.cursor = 'pointer';
+            }
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

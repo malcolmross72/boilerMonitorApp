@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta name="robots" content="noindex, nofollow" />
+    <script src="/libraries/RGraph.svg.common.csv.js"></script>
+</head>
+<body>
+    <h1>A basic demo of the standalone CSV reader</h1>
+
+
+    <div id="rgraph-demo-html">
+        <!-- Use this for embedded data -->
+        <div id="mydata" style="display: none">Jay,8,6,3,5,6,8</div>
+    </div>
+
+
+    <script>
+        new RGraph.CSV('/sample.csv', function (csv)
+        //new RGraph.CSV('id:mydata', function (csv)
+        {
+            // Get the first row
+            var data = csv.row(0);
+
+            alert(data);
+        });
+    </script>
+
+</body>
+</html>

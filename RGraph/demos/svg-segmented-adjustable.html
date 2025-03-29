@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.segmented.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable SVG Segmented donut chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 350px; height: 350px" id="chart-container1"></div>
+        <div style="width: 350px; height: 350px" id="chart-container2"></div>
+    </div>
+
+    <script>
+        segmented1 = new RGraph.SVG.Segmented({
+            id: 'chart-container1',
+            min: 0,
+            max: 100,
+            value: 73,
+            options: {
+                width: 60,
+                textSize: 55,
+                labelsCenterUnitsPost: 'kg'
+            }
+        }).roundRobin();
+
+        segmented1.container.onclick = function (e)
+        {
+            var value = segmented1.getValue(e);
+            
+            segmented1.value = value;
+            segmented1.grow();
+        };
+
+
+
+
+
+
+
+
+        segmented2 = new RGraph.SVG.Segmented({
+            id: 'chart-container2',
+            min: 0,
+            max: 100,
+            value: 73,
+            options: {
+                colors: ['green','#ddd'],
+                width: 60,
+                textSize: 55,
+                labelsCenterUnitsPost: 'kg',
+                adjustable: true
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

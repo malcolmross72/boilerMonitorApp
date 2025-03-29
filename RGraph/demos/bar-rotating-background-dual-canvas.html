@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.starburst.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A rotating background</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="position: relative; display: inline-block; max-width: 650px; max-height: 250px; margin-right: 25px" id="canvas-container">
+            <canvas id="cvs_background" width="650" height="250" style="position: absolute; top: 0; left: 0">[No canvas support]</canvas>
+            <canvas id="cvs_foreground" width="650" height="250" style="position: absolute; top: 0; left: 0">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        function removeLinebreak (str)
+        {
+            return str.replace(/\r?\n/g, ': ');
+        }
+
+        // This adds the StarBurst effect to the background canvas. It uses either the
+        // requestAnimationFrame() function or the setTimeout() function to animate itself.
+        // You can of course turn the animation off if you choose.
+        sb = new RGraph.StarBurst({
+            id: 'cvs_background',
+            options: {
+            }
+        }).draw();
+
+        // Define the data and the labels
+        data        = [4,8,6,5,3,7,8];
+        labelsAbove = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        
+        // Create the labels that go at the top of each bar
+        labelsAbove.forEach(function (v, k, arr)
+        {
+            arr[k] = v + '\r\n%1k'.format(data[k]);
+        });
+
+        // Create a Bar chart and add it to the foreground canvas tag. There are no
+        // xaxisLabels defined, though the labelsAbove labels from above are present
+        // and configured to appear at the top of each bar.
+        bar = new RGraph.Bar({
+            id: 'cvs_foreground',
+            data: data,
+            options: {
+                marginTop: 15,
+                marginLeft: 15,
+                marginRRight: 15,
+                marginBottom: 15,
+                xaxisLinewidth: 3,
+                xaxisTickmarksCount: 0,
+                yaxis: false,
+                yaxisScale: false,
+                colors: ['black'],
+                backgroundGrid: false,
+                shadow: false,
+                tooltipsCss: {
+                    fontSize: '20pt',
+                    fontWeight: 'bold'
+                },
+                labelsAbove: true,
+                tooltips: "<center>%{function:removeLinebreak('%{property:labelsAboveSpecific[%{dataset}]}')}</center>",
+                labelsAboveSpecific: labelsAbove,
+                labelsAboveColor: 'white',
+                labelsAboveBold: true,
+                labelsAboveItalic: true,
+                labelsAboveOffsetx: -2,
+                
+                // The responsive configuration for this chart,
+                // because it has the StarBurst behind it, is quite
+                // large
+                responsive: [
+                    {maxWidth: null,width: 650,height: 250,options: {marginInner:25,labelsAboveSize: 10,labelsAboveOffsety: -35},callback: function (){sb.canvas.width = 650,sb.canvas.height = 250;sb.set('centerx', 200);sb.set('centery', 50);document.getElementById('cvs_foreground').parentNode.style.width = '650px';document.getElementById('cvs_foreground').parentNode.style.height = '250px';RGraph.redraw();}},
+                    {maxWidth: 900,width: 400,height: 150,options: {marginInner:10, labelsAboveSize:7, labelsAboveOffsety:-25},callback: function (){sb.canvas.width = 400,sb.canvas.height = 150;sb.set('centerx', 150);sb.set('centery', 30);document.getElementById('cvs_foreground').parentNode.style.width = '400px';document.getElementById('cvs_foreground').parentNode.style.height = '150px';document.getElementById('cvs_foreground').__object__.draw();}}
+                ]
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

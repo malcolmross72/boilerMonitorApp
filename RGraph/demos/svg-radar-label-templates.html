@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.radar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Radar chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 550px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Radar({
+            id: 'chart-container',
+            data: [12,18,12,16,13,19],
+            options: {
+                names: ['Richard','Rachel','David','John','Lucy','Freda'],
+                labels: '%{property:names[%{index}]} (%{value_formatted})'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

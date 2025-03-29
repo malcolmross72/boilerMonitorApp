@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Rose chart explode effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="350" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [4,8,6,4,3,5,2],
+            options: {
+            }
+        }).explode()
+          .on('beforedraw', function (obj)
+        {
+            RGraph.clear(obj.canvas, 'white');
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

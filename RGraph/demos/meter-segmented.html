@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A segmented Meter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="450">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Meter({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value:75,
+            options: {
+                adjustable: true,
+                anglesStart: RGraph.PI - 0.55,
+                anglesEnd: RGraph.TWOPI + 0.5,
+                centery: 300,
+                linewidthSegments: 15,
+                textSize: 22,
+                textColor: 'black',
+                colorsGreenColor: '#0a0',
+                segmentsRadiusStart: 175,
+                border: false,
+                colorsStroke: 'white',
+                tickmarksSmallCount: 0,
+                tickmarksLargeCount: 0,
+                needleRadius: 150,
+                needleColor: 'gray',
+                textValign: 'bottom',
+                centerpinFill: 'white',
+                centerpinStroke: 'gray',
+                colorsRanges: [
+                    [0,10,'Gradient(#f00:#f00:#c00:#300)'],
+                    [10,20,'Gradient(#ffa:#ff0:#cc0:#330)'],
+                    [20,30,'Gradient(#ffa:#ff0:#cc0:#330)'],
+                    [30,40,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [40,50,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [50,60,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [60,70,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [70,80,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [80,90,'Gradient(#afa:#0f0:#0c0:#030)'],
+                    [90,100,'Gradient(#afa:#0f0:#0c0:#030)']
+                ]
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

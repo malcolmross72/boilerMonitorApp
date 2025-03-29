@@ -1,0 +1,90 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Line chart showing two range charts</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        line1 = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [4,3,3,3,5,2,4],
+                [8,5,6,8,9,7,8]
+            ],
+            options: {
+                filled: true,
+                filledRange: true,
+                linewidth: 3,
+                colors: ['red'],
+                filledColors: 'rgba(255,0,0,0.2)',
+                yaxisScaleMax: 10,
+                tickmarksStyle: null,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+            }
+        }).draw()
+        
+        var line2 = new RGraph.Line({
+            id: 'cvs',
+            data: [6,4,4.5,5.5,7,4.5,6],
+            options: {
+                backgroundGrid: false,
+                yaxisScale: false,
+                xaxis: false,
+                yaxis: false,
+                colors: ['black'],
+                linewidth: 3,
+                yaxisScaleMax: 10
+            }
+        }).draw()
+
+        var line3 = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [1,2,4,2,2,4,3],
+                [0,1,2,0,0,1,0]
+            ],
+            options: {
+                backgroundGrid: false,
+                yaxisScale: false,
+                xaxis: false,
+                yaxis: false,
+                filled: true,
+                filledRange: true,
+                linewidth: 3,
+                colors: ['blue'],
+                filledColors: 'rgba(0,0,255,0.2)',
+                yaxisScaleMax: 10,
+                tickmarksStyle: null
+            }
+        }).draw()
+        
+        var line4 = new RGraph.Line({
+            id: 'cvs',
+            data: [0.5,1.5,3,0.5,1,2.5,1.5],
+            options: {
+                backgroundGrid: false,
+                yaxisScale: false,
+                xaxis: false,
+                yaxis: false,
+                colors: ['black'],
+                linewidth: 3,
+                yaxisScaleMax: 10
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

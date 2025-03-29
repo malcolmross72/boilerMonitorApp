@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.activity.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>The Activity meter configured as a Radial Progress meter</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="500">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data = [28,19,39,45,48,53,26,35,45,15,13,43];
+        labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+        activity = new RGraph.Activity({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: data,
+            options: {
+                marginInner: 3,
+                backgroundColor: 'transparent',
+                backgroundGrid: true,
+                backgroundGridColor: '#ddd',
+                backgroundGridRadials: false,
+                backgroundRings: false,
+                colors: ['#0a0'],
+                labels: labels,
+                labelsSize: 8,
+                labelsItalic: true,
+                labelsColor: '##333',
+                ends: 'straight'
+            }
+        }).grow();
+
+        setInterval(function ()
+        {
+            for (var i=0; i<activity.value.length; ++i) {
+                activity.value[i] += RGraph.random(-3, 3);
+            }
+            
+            activity.grow();
+        }, 2500);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A demo of the updated JSON gradient syntax</h1>    
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="950" height="350">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,6,3,5,4,9],
+            options: {
+                colors: ['Gradient({colors:["red","yellow","red"],x1:0,y1:0,x2:700,y2:350})'],
+                xaxis: false,
+                yaxis: false,
+                labelsAbove:true,
+                labelsAboveSize:20,
+                labelsAboveSpecific: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                textSize: 20,
+                marginBottom: 15,
+                marginTop: 35,
+                marginRight: 5,
+                marginLeft: 45,
+                shadow: false,
+                title: 'A Bar chart using the JSON gradient syntax',
+                titleBold: true,
+                titleSize: 16
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

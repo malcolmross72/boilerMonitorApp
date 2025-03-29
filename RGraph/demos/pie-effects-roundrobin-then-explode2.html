@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart roundRobin() then explode() demo</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="margin-left: 50px">
+            <canvas id="cvs" width="450" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        data  = [21,12,25,17,7];
+        names = ['John', 'Richard', 'Fred', 'Brian', 'Peter'];
+
+        pie1 = new RGraph.Pie({
+            id: 'cvs',
+            data: data,
+            options: {
+                names: names,
+                radius: 100,
+                tooltips: '<b>%{property:names[%{index}]}:</b> <i>(%{value}%)</i>',
+                labels: names,
+                colorsStroke: 'white',
+                linewidth: 2,
+                shadow: false,
+                textColor: '#333'
+            }
+        })
+        
+        explode = 20;
+
+        function myExplode (obj)
+        {
+            window.__pie__ = pie1;
+
+            for (var i=0; i<obj.data.length; ++i) {
+                setTimeout('window.__pie__.explodeSegment('+i+',5)', i * 50);
+            }
+        }
+
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') >= 0) {
+            pie1.roundRobin();
+        
+        } else {
+            //
+            // The RoundRobin callback initiates the exploding
+            //
+            pie1.roundRobin(null, myExplode);
+        }
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

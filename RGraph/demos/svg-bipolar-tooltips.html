@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bipolar chart showing tooltips</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 900px; height: 500px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bipolar({
+            id: 'chart-container',
+            left: [4,8,6,5,2,3,9],
+            right: [8,6,9,5,8,5,4],
+            options: {
+                xaxisLinewidth: 3,
+                yaxisLinewidth: 3,
+                yaxisTickmarksLength: 10,
+                xaxisTickmarksLength: 10,
+                xaxisLabelsOffsety: 3,
+                xaxisLabelsBold: true,
+                xaxisLabelsSize: 16,
+                grouping: 'stacked',
+                title: 'A Bipolar chart showing tooltips',
+                tooltips: '%{property:yaxisLabels[%{dataset2}]}: %{value_formatted}kg',
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                marginInner: 15,
+                tooltipsCss: {
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontSize: '20pt'
+                }
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

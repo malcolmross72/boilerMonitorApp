@@ -1,0 +1,95 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A combined Bar and Line chart</h1>
+    
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 650px; height: 250px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        responsiveConf = [
+            {maxWidth:null,width:650,height:250,options: {textSize: 12,labelsAboveSize: 10}},
+            {maxWidth:900, width:400,height:200,options: {textSize: 8,labelsAboveSize: 8}}
+        ];
+
+
+
+        // Create a Bar chart which has the X-axis positioned in the center. Because
+        // it's created first the Bar chart will appear at the back of the Line chart.
+        // Here the maximum and minimum Y values are set to 100 and -100 manually.
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [[-43,14],[57,-44],[-64,-16],[56,-36],[21,-89],[-39,-41],[-78,-10]],
+            options: {
+                yaxisLabelsCount: 10,
+                yaxisScaleMin: -100,
+                yaxisScaleMax: 100,
+                marginInner: 10,
+                colors: ['rgba(255,0,0,0.2)','rgba(0,200,200,0.2)'],
+                marginLeft: 50,
+                labelsAbove: true,
+                
+                // Add a responsive configuration that resizes the
+                // chart when you use a smaller screen
+                responsive: responsiveConf
+            }
+        // Draw the chart
+        }).draw();
+
+
+
+
+
+
+
+
+        // Create the Line chart that's drawn on top of the Bar chart. The minimum
+        // and maximum Y values are, like the Bar chart, set at -100 and 100. The
+        // Line chart is configured to be filled with a semi-transparent color so
+        // that the Bar chart can be seen behind it. No background grid or axes
+        // are drawn by the Line chart.
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [19,-88,71,66,93,-96,55],
+            options: {
+                spline: true,
+                backgroundGrid: false,
+                marginLeft: 50,
+                yaxisScaleMax: 100,
+                yaxisScaleMin: -100,
+                yaxis:false,
+                yaxisScale: false,
+                xaxis: false,
+                marginInner: 40,
+                filled: true,
+                filledColors: ['rgba(0,200,200,0.25)'],
+                colors: ['#0bb'],
+                linewidth: 3,
+                tickmarksStyle: 'filledcircle',
+                labelsAbove: true,
+
+                // Add a responsive configuration that resizes the
+                // chart when you use a smaller screen
+                responsive: responsiveConf
+            }
+        
+        // Draw the chart
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Horizontal Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 500px; display: inline-block" id="chart-container"></div>
+    </div>       
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [14,16,24,26,23,45,12],
+            options: {
+                key: ['Richards sales of widgets'],
+                keyOffsetx: 30,
+                marginTop: 50,
+                yaxisLabels: ['Monday','Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
+                tooltips: ['Monday','Tuesday', 'Wednesday', 'Thursday','Friday','Saturday','Sunday'],
+                xaxis: false,
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                title: 'A basic Horizontal Bar chart',
+                responsive: [
+                    {maxWidth: 900,width: 400, height: 300, options:{textSize: 10}},
+                    {maxWidth: null,width: 750, height: 500, options:{textSize: 12}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

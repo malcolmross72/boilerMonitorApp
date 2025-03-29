@@ -1,0 +1,51 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Vertical Progress bar</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="200" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.VProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: [10,10,10,10],
+            options: {
+                margin: 7,
+                tooltips: '%{property:key[%{index}]} %{value}%',
+                colors: ['red','yellow','pink','white'],
+                key: ['Alf','Berty','Carlos','Dave'],
+                keyPositionX: 125,
+                marginRight: 125
+            }
+        }).exec(function (obj)
+        {
+            var background = RGraph.linearGradient({
+                object: obj,
+                x1:     25, y1: 0, x2: obj.canvas.width - 25, y2: 0,
+                colors: ['#ccc','white', 'white', 'white']
+            });
+            
+            obj.set({
+                colorsBackground: background
+            });
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

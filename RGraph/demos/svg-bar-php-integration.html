@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart demonstrating PHP integration</h1>
+
+
+    <div id="rgraph-demo-html">
+        <div style="width: 550px; height: 300px" id="chart-container"></div><br /><br />
+        Get your <code>php</code> script to output a <code>json</code> string like this:<br /><br />
+        <pre class="code">[{"value":6,"label":"Jan","labelsAbove":""},{"value":3,"label":"Feb","labelsAbove":""},{"value":8,"label":"Mar","labelsAbove":""},{"value":9,"label":"Apr","labelsAbove":"Highest"},{"value":4,"label":"May","labelsAbove":""},{"value":5,"label":"Jun","labelsAbove":""},{"value":6,"label":"Jul","labelsAbove":""},{"value":4,"label":"Aug","labelsAbove":""},{"value":3,"label":"Sep","labelsAbove":""},{"value":1,"label":"Oct","labelsAbove":"Lowest"},{"value":5,"label":"Nov","labelsAbove":""},{"value":6,"label":"Dec","labelsAbove":""}]</pre>
+    </div>
+
+    <script>
+        // This JSON could be printed by PHP. Eg :
+        //
+        // <?php printf('var src = %s;', json_encode($data)) ?>
+        //
+        var src = [{"value":6,"label":"Jan","labelsAbove":""},{"value":3,"label":"Feb","labelsAbove":""},{"value":8,"label":"Mar","labelsAbove":""},{"value":9,"label":"Apr","labelsAbove":"Highest"},{"value":4,"label":"May","labelsAbove":""},{"value":5,"label":"Jun","labelsAbove":""},{"value":6,"label":"Jul","labelsAbove":""},{"value":4,"label":"Aug","labelsAbove":""},{"value":3,"label":"Sep","labelsAbove":""},{"value":1,"label":"Oct","labelsAbove":"Lowest"},{"value":5,"label":"Nov","labelsAbove":""},{"value":6,"label":"Dec","labelsAbove":""}];
+        
+        data        = [];
+        labels      = [];
+        labelsAbove = [];
+
+        // Extract the data from the array
+        for (var i=0; i< src.length; ++i) {
+            data.push(src[i].value);
+            labels.push(src[i].label);
+            labelsAbove.push(src[i].labelsAbove);
+        }
+
+        var bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                colors: ['#a00'],
+                xaxisLabels: labels,
+                labelsAbove: true,
+                labelsAboveSize: 8,
+                labelsAboveSpecific: labelsAbove,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

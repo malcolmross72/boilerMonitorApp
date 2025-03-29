@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart with a dark background</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 600px; height: 300px; background-color: black; border-radius: 10px" id="chart-container"></div>
+        </div>
+    </div>
+    
+    <script>
+        var data = [[45,56],[75,32],[39,47],[34,48],[46,47],[48,52]];
+
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                colors: ['Gradient(white:white:#ccf:#ccf:#ccf:#ccf)','Gradient(white:white:#faa:#faa:#faa:#faa)'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                textColor: 'white',
+                xaxisLabels: ['2007','2008','2009','2011','2012','2013'],
+                marginInner: 7,
+                responsive: [
+                    {maxWidth:900,width:400,height:200,options: {textSize: 10,textBold: true,marginBottom: 35,marginLeft: 35,marginRight: 15,marginTop: 25}},
+                    {maxWidth:null,width:600,height:300,options: {textSize: 16,textBold: false,marginBottom: 45,marginLeft: 45,marginRight: 45,marginTop: 45}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

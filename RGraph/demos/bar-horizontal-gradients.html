@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with horizontal gradients</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="750" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [4,6,5,3,2,9,8],
+            options: {
+                backgroundGridBorder: false,
+                backgroundGridHlines: false,
+                xaxis: false,
+                yaxis: false,
+                textSize: 22,
+                xaxisLabels: ['Harry','Gary','Flo','Eddie','Doug','Charly','Bob']
+            }
+        }).wave().exec(function (obj)
+        {
+            var coords = obj.coords;
+            var colors = [];
+            
+            coords.forEach(v =>
+            {
+                var grad = 'Gradient({colors:["#f00","#d00"],x1:{1},y1:0,x2:{2},y2:0})'.format(
+                    v[0],v[0] + v[2]
+                );
+                
+                colors.push(grad);
+            });
+
+            // Set the new properties on the object
+            obj.set({
+                colors: colors,
+                colorsSequential: true
+            });
+            
+            // This is necessary so that the colors are parsed for
+            // gradients again
+            obj.colorsParsed = false;
+
+            // Redraw the chart
+            RGraph.redraw();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

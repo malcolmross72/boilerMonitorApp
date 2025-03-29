@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A demo of the Chrome-only dotted or dashed background grid</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs1" width="600" height="250">[No canvas support]</canvas>
+        <canvas id="cvs2" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Scatter({
+            id: 'cvs1',
+            data: [[50,50]],
+            options: {
+                backgroundGridDashed: true,
+                backgroundGridColor: '#000',
+                xaxisScaleMax: 150,
+                xaxisLabels: ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe'],
+                title: 'A dashed background grid',
+                marginTop: 35
+            }
+        }).draw();
+
+        new RGraph.Scatter({
+            id: 'cvs2',
+            data: [[50,50]],
+            options: {
+                backgroundGridDotted: true,
+                backgroundGridColor: '#000',
+                xaxisScaleMax: 150,
+                xaxisLabels: ['Mal', 'Barry', 'Gary', 'Neil', 'Kim', 'Pete', 'Lou', 'Fred', 'Jobe'],
+                title: 'A dotted background grid',
+                marginTop: 35
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

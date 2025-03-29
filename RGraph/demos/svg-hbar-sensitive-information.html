@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart showing what people consider to be sensitive information</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 700px; height: 300px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [89.2,65.7,62.6,58.3,47.3,46.3,44.6],
+            options: {
+                yaxis: false,
+                xaxis: false,
+                backgroundColor: '#ddd',
+                backgroundGrid: false,
+                labelsAbove: true,
+                labelsAboveBold: true,
+                labelsAboveOffsetx: -15,
+                labelsAboveOffsety: 1.5,
+                labelsAboveColor: 'black',
+                labelsAboveUnitsPost: '%',
+                labelsAboveHalign: 'right',
+                labelsAboveBackground: '#fff',
+                labelsAboveBackgroundPadding: 2,
+                xaxisScaleMax: 100,
+                yaxisLabels: [
+                    'Social security number',
+                    'Content of phone conversation',
+                    'Content of mental thoughts',
+                    'Visual images in mind',
+                    'Brainwave activity',
+                    'Your relationship history',
+                    'Awkard emotional feelings'
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

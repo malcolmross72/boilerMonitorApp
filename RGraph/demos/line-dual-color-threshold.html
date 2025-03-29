@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with different colors above a certain point</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        var d1  = [1,4,8,5,2,3,6,5,15,16,12,13,18,19,15,16];
+        var d2  = [];
+        
+        // Create the data
+        for (var i=0; i<d1.length; i+=1) {
+             d1[i] = d1[i] - 0.2; // The +/- 0.2 determines the width of the line
+             d2[i] = d1[i] + 0.2;
+        }
+
+    
+        var line = new RGraph.Line({
+            id: 'cvs',
+            data: [d1, d2],
+            options: {
+                backgroundGridHlinesCount: 5,
+                backgroundGridVlinesCount: 15,
+                filled: true,
+                filledRange: true,
+                filledRangeThreshold: 10,
+                filledRangeThresholdColors: ['red', 'blue'],
+                xaxisLabels: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'],
+                colors: ['transparent', 'transparent'],
+                xaxisTickmarksCount: 15,
+                tickmarksStyle: null
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

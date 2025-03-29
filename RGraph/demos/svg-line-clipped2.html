@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex,nofollow" />
+</head>
+<body>
+    <h1>An SVG clipped chart with an offset X-axis</h1>
+    
+    <div id="rgraph-demo-html">    
+        <div id="chart-container" style="border: 1px solid gray;width: 700px; height: 300px"></div>
+    </div>
+
+    <script>
+        // Separate out the configuration so that it can be easily
+        // reused for the second chart
+        opt = {
+            textSize: 16,
+            marginLeft: 50,
+            colors: ['green'],
+            filled: true,
+            filledColors: ['rgba(0,255,0,0.25)'],
+            yaxisScaleMax: 20,
+            yaxisScaleMin: -5,
+            xaxisTickmarks: false,
+            backgroundGridBorder: false,
+            backgroundGridVlines: false,
+            yaxis: false,
+            spline: true,
+            xaxisColor: '#666',
+            xaxisLinewidth: 2,
+            yaxisLabelsCount:10,
+            tooltips: 'Quantity of sales: %{value}',
+            tooltipsCss: {
+                fontSize: '16pt'
+            },
+            title: 'A sample title for the chart',
+            xaxisLabels: [
+                '','Jan','','','Feb','','','Mar','',
+                '','Apr','','','May','','','Jun','',
+                '','Jul','','','Aug','','','Sep','',
+                '','Oct','','','Nov','','','Dec',''
+            ],
+            linewidth: 2
+        };
+
+
+
+
+        // Create the green part of the line
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data = [4,5,15,5,-3,-2,-1,-5,-5,5,13,9,11,18,5,1,3,5,5,-5,-4,-5,-2,3],
+            options: {
+                ...opt,
+                clip: 'y:min-80%'
+            }
+        }).trace();
+
+
+        // Create the red part of the line
+        line2 = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                ...opt, // Reuse the configuration
+                clip: 'y:80%-max',
+                colors: ['red'],
+                filledColors: ['rgba(255,0,0,0.25)'],
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

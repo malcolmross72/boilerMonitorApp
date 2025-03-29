@@ -1,0 +1,74 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A thin grouped Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding-left: 35px; display: inline-block">
+            <canvas id="cvs" width="950" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [
+                [1.694,3.528],[2.873,4.354],
+                [7.874, 2.283],[13.556,16.063],
+                [17.889,21.235],[31.318,22.891],
+                [54.899,23.186],[107.843,22.609],
+                [147.123,15.922],[211.663,8.916],
+                [151.249,3.218],[108.742,9.637],
+                [67.415,5.273],[57.066,3.828],
+                [26.971,9.676],[3.650,9.149],
+                [1.721,19.925],[1.554,22.371],
+                [1.920,23.552],[3.447,21.294]
+            ],
+            options: {
+                title: 'Fluchtlinge kommen wieder u ber Italien',
+                titleSize: 16,
+                titleBold: true,
+                titleColor: '#999',
+                key: ['Griechenland', 'Italien'],
+                keyPosition: 'margin',
+                marginBottom: 50,
+                marginTop: 50,
+                yaxisScaleMax: 250,
+                yaxisScaleUnitsPost: '.000',
+                colors: ['#000','#2F8DCD'],
+                xaxisLabels: [
+                    'Jan `15','',
+                    'Mar `15','',
+                    'May `15','',
+                    'Jul `15','',
+                    'Sep `15','',
+                    'Nov `15','',
+                    'Jan `15','',
+                    'Mar `15','',
+                    'May `15','',
+                    'Jul `15',''
+                ],
+                textColor: 'gray',
+                marginInner: 10,
+                marginLeft:75,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                yaxis: false,
+                yaxisLabelsOffsetx: -10
+            }
+        }).grow({frames: 60});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.fuel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Fuel chart fetching its reading via AJAX</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="200" height="200">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        RGraph.AJAX.getNumber({url: '/getdata.html', callback: drawFuel});
+
+        function drawFuel (num)
+        {
+            var fuel = new RGraph.Fuel({
+                id: 'cvs',
+                min: 0,
+                max: 100,
+                value: num,
+                options: {
+                }
+            }).draw();
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

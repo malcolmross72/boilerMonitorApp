@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart where the whole line is clickable</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="350">[No canvas support]</canvas>
+    </div>
+    
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [
+                [5,8,4,6,3,5,4,9,5,4,3,5],
+                [7,8,5,4,6,8,9,8,7,8,4,8],
+                [4,8,6,3,5,8,4,6,9,9,4,8],
+                [4,8,5,2,5,6,8,7,4,5,6,3]
+            ],
+            options: {
+                //backgroundGrid: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                xaxis: false,
+                yaxis: false,
+                spline: true,
+                filled: true,
+                //filledAccumulative: false,
+                filledColors: ['#888','#aaa','#ccc','#eee'],
+                shadow: false,
+                colors: ['transparent','transparent','transparent','transparent'],
+                //linewidth: 10,
+
+                highlightDataset: true,
+                highlightDatasetStroke: 'red',
+                highlightDatasetFill: '#faa',
+                highlightDatasetDashArray: [5,10],
+                highlightDatasetLinewidth: 3,
+                //highlightDatasetCallback: function (opt)
+                //{
+                //    alert('This is the highlightDatasetCallback function!');
+                //}
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

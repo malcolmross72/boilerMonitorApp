@@ -1,0 +1,157 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../libraries/RGraph.common.core.js"></script>
+    <script src="../libraries/RGraph.common.effects.js"></script>
+    <script src="../libraries/RGraph.bar.js"></script>
+    <script src="../libraries/RGraph.line.js"></script>
+    <script src="../libraries/RGraph.pie.js"></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with a scissors transition effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="display: inline-block">
+            <div style="text-align: center">
+                <button onclick="hide(showBarChart)">Bar</button>
+                <button onclick="hide(showLineChart)">Line</button>
+                <button onclick="hide(showPieChart)">Pie</button><br />
+            </div>
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        bar = null;
+
+        function disableButtons ()
+        {
+            // This disables all of the buttons
+            var buttons = document.getElementsByTagName('button');
+            for (var i=0; i<buttons.length; ++i) {
+                buttons[i].disabled = true;
+            }
+        }
+
+
+
+
+        function enableButtons ()
+        {
+            // This disables all of the buttons
+            var buttons = document.getElementsByTagName('button');
+            for (var i=0; i<buttons.length; ++i) {
+                buttons[i].disabled = false;
+            }
+        }
+
+
+
+
+        // Hides the canvas using the VScissors effect
+        function hide (callback)
+        {
+            var canvas = document.getElementById("cvs");
+
+            // Close the "scissors"
+            canvas.__object__.vScissorsClose(null, function () {
+                RGraph.reset(canvas);
+                callback();
+            });
+            
+            disableButtons();
+        }
+
+
+
+
+        function showBarChart ()
+        {
+            var canvas = document.getElementById("cvs");
+            
+            // Now draw the bar chart
+            var bar = new RGraph.Bar({
+                id: 'cvs',
+                data: [4,6,3,5,2,4,6,8,9,5,4,1],
+                options: {
+                    title: 'A Bar chart',
+                    titleBold: true,
+                    titleSize: 16,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    yaxis: false,
+                    xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                    textSize: 14
+                }
+            }).vScissorsOpen(null, enableButtons);
+            
+        }
+
+
+
+
+        // Show the line chart
+        function showLineChart ()
+        {
+            var canvas = document.getElementById("cvs");
+            
+            // Now draw the bar chart
+            var line = new RGraph.Line({
+                id: 'cvs',
+                data: [4,6,3,5,2,4,6,8,9,5,4,1],
+                options: {
+                    title: 'A Line chart',
+                    titleBold: true,
+                    titleSize: 16,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    yaxis: false,
+                    xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                    textSize: 14,
+                    shadow: false
+                }
+            }).vScissorsOpen(null, enableButtons);
+        }
+
+
+
+
+        // Shows the Pie chart
+        function showPieChart ()
+        {
+            var canvas = document.getElementById("cvs");
+            
+            // Now draw the Pie chart
+            var pie = new RGraph.Pie({
+                id: 'cvs',
+                data: [4,5,1,2,3],
+                options: {
+                    title: 'A Pie chart',
+                    titleBold: true,
+                    titleSize: 16,
+                    labels: ['Joe','Pete','Luis','Kevin','John'],
+                    labelsSpaced: true,
+                    textSize: 14,
+                    shadow: false
+                }
+            }).vScissorsOpen(null, enableButtons)
+        }
+
+
+        // Initially the canvas is black so there is no need to clear anything. So it is sufficient to
+        // just call the relevant function to show the first chart.
+        window.onload = (function ()
+        {
+            disableButtons();
+            showBarChart();
+        })
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

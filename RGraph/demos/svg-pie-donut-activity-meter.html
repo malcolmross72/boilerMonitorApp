@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Pie chart configured to be an activity Meter</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 500px; height: 500px; border: 1px solid #ddd; background-color: black" id="chart-container"></div>
+    </div>       
+
+    <script>
+        conf = [
+            {value: 85, color: '#2B908F', radius: 245},
+            {value: 72, color: '#90EE7E', radius: 198},
+            {value: 64, color: '#F45B5B', radius: 151}
+        ];
+        
+        // Create the donut charts that become the background
+        for (var i1=0; i1<conf.length; ++i1) {
+            var pie = new RGraph.SVG.Pie({
+                id: 'chart-container',
+                data: [1],
+                options: {
+                    donut: true,
+                    radius: conf[i1].radius,
+                    colors: [conf[i1].color],
+                    donutWidth: 45
+                }
+            }).roundRobin();
+        }
+
+
+
+
+        // Create the donut charts that are the foreground donuts
+        for (var i2=0; i2<conf.length; ++i2) {
+            var pie = new RGraph.SVG.Pie({
+                id: 'chart-container',
+                data: [conf[i2].value, 100 - conf[i2].value],
+                options: {
+                    donut: true,
+                    radius: conf[i2].radius,
+                    colors: [conf[i2].color, 'rgba(0,0,0,0.5)'],
+                    donutWidth: 45
+                }
+            }).roundRobin();
+        }
+
+        RGraph.SVG.text({
+            object: pie,
+            x: pie.centerx,
+            y: pie.centery,
+            text: conf[0].value + '%',
+            halign: 'center',
+            valign: 'center',
+            size: 65,
+            bold: true,
+            color: '#ccc'
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

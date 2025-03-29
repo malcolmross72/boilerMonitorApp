@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.common.ajax.js" ></script>
+    <script src="../libraries/RGraph.svg.common.csv.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart using the CSV reader</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 500px; height: 250px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.CSV('/sample.csv', function (csv)
+        {
+            var data = csv.row(0).slice(1,7),
+                labels = csv.column(0);
+
+            var bar = new RGraph.SVG.Bar({
+                id: 'chart-container',
+                data: data,
+                options: {
+                    marginInner: 15,
+                    xaxis: false,
+                    yaxis: false,
+                    xaxisLabels: labels,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    colorsSequential: true,
+                    tooltips: labels
+                }
+            }).wave();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

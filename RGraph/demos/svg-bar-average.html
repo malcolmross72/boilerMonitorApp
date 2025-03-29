@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart with an average indicator</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 600px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [4,6,12,16,8,4,2,8,18,16,14,16],
+            options: {
+                horizontalLines: [{
+                    value: 'average',
+                    color: 'black',
+                    linewidth: 2,
+                    //dashed: undefined,
+                    //dotted: undefined,
+                    //label: 'Poop: %{value}',
+                    //labelFont:'Georgia',
+                    labelSize: 18,
+                    //labelColor: 'green',
+                    //labelBold: true,
+                    //labelItalic: true,
+                    //labelValueUnitsPre: '$',
+                    //labelValueUnitsPost: 'c',
+                    //labelValueDecimals: 6,
+                    //labelValuePoint:'..',
+                    //labelValueThousand:',,'
+                    //labelValueFormatter: function (obj, value)
+                    //{
+                    //    $a(value)
+                    //}
+                }],
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                xaxis: false,
+                yaxis: false
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

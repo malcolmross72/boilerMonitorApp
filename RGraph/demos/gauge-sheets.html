@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.sheets.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Gauge chart using the Google Sheets connector</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Sheets('AIzaSyBPofvjcDhOdet_U2Tr4-rSLItAgaCsMCM', '1ncvARBgXaDjzuca9i7Jyep6JTv9kms-bbIzyAxbaT0E', 'Gauge chart', function (sheet)
+        {        
+            var value = sheet.get('C3');
+
+            var gauge = new RGraph.Gauge({
+                id: 'cvs',
+                min: 0,
+                max: 100,
+                value: value,
+                options: {
+                }
+            }).grow();
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

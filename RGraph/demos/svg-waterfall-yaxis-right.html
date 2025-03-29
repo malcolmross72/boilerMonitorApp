@@ -1,0 +1,35 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex,nofollow" />
+</head>
+<body>
+    <h1>An SVG Waterfall chart with a right Y-axis</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="chart-container" style="width:600px; height: 250px"></div>
+    </div>
+    
+    <script>
+        new RGraph.SVG.Waterfall({
+            id: 'chart-container',
+            data: [50,-30,-50,-80,-40,52,-30],
+            options: {
+                yaxisScaleMax: 50,
+                yaxisScaleMin: -200,
+                yaxisPosition: 'right',
+                marginInner: 15,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                marginRight: 50
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

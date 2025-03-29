@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart using label templates</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [9,6],
+            options: {
+                tickmarksStyle: 'endcircle',
+                tickmarksSize: 7,
+                shadow: false,
+                marginInner: 50,
+                xaxisLabelsSize: 20
+,
+                months: ['January','June'],
+                year: ['1985',' 1995'],
+                xaxisLabels: '%{property:months[%{index}]} %{property:names[%{index}]} (%{value}%)'
+                
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

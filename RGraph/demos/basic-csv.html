@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Bar chart using CSV data</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        //
+        // This is the callback for the AJAX request
+        //
+        var callback = function ()
+        {
+            // Parse the AJAX result text
+            var data   = this.responseText.split(/\r?\n/);
+            var labels = [];
+            
+            // Handle the response
+            for (var i=0; i<data.length; ++i) {
+                var row = data[i].split(/,/);
+                labels.push(row[0]);
+
+                var newrow = [];
+
+                for (var j=1; j<row.length; ++j) {
+                    newrow.push(Number(row[j]));
+                }
+
+                data[i] = newrow;
+            }
+
+            var bar = new RGraph.Bar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    grouping: 'stacked',
+                    xaxisLabels: labels,
+                    colors: ['red','blue','yellow','pink','black','gray','green']
+                }
+            }).draw();
+        }
+
+
+        //
+        // Make the AJAX call that fetches the CSV data
+        //
+        RGraph.AJAX({url: '/sample.csv', callback: callback});
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

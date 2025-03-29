@@ -1,0 +1,46 @@
+w<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bipolar chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            // Fetch the first three columns to use as labels and the left/right data
+            var labels = csv.column(0),
+                left   = csv.column(1),
+                right  = csv.column(2);
+            
+            var bipolar = new RGraph.Bipolar({
+                id: 'cvs',
+                left: left,
+                right: right,
+                options: {
+                    yaxisLabels:  labels
+                }
+            }).draw();
+        }});
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

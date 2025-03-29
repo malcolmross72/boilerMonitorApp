@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart showing a bar-in-bar effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        data = {
+            shipped: [88000,88000,105000,105000,116000,116000,126000],
+            sold:    [30000,54000,54000,62000,63000,68000,68000]
+        };
+    
+        bar1 = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data.shipped,
+            options: {
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                marginLeft: 75,
+                colors: ['rgba(0,0,255,0.2)'],
+                xaxisLabels: ['Mini','Ford','Mercedes','BMW','Fiat','Renault','Honda'],
+                labelsAbove: data.shipped,
+                labelsAboveSize: 8,
+                title: 'Total cars produced vs sold',
+                colorsStroke: 'rgba(0,0,0,0)',
+                yaxis: false
+            }
+        }).grow();
+    
+        bar2 = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data.sold,
+            options: {
+                yaxis: false,
+                yaxisScaleMax: bar1.scale.max,
+                yaxisScale: false,
+                xaxis: false,
+                marginLeft: bar1.get('marginLeft'),
+                colors: ['pink'],
+                labelsAbove: true,
+                labelsAboveSize: 8,
+                marginInner: 20,
+                backgroundGrid: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                shadow: true
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

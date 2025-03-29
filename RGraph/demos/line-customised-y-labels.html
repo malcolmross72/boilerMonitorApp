@@ -1,0 +1,79 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.line.js"></script>
+    <script src="../libraries/RGraph.common.core.js"></script>
+    <script src="../libraries/RGraph.common.dynamic.js"></script>
+    <script src="../libraries/RGraph.common.tooltips.js"></script>
+    <script src="../libraries/RGraph.drawing.yaxis.js"></script>
+    <script src="demos.js"></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with customised Y labels</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [7,5,6,9,5,4,7],
+            options: {
+                spline: true,
+                xaxisLabels: labels,
+                tooltips: labels,
+                marginInner: 35,
+                tickmarksStyle: 'endcircle',
+                tickmarksSize: 5,
+                linewidth: 3,
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                textColor: '#999',
+                textSize: 14
+            }
+        }).on('draw', function (obj)
+        {
+            var ca = obj.canvas;
+            var co = obj.context;
+
+            // Because we're not drawing an axis, draw an extra grid line
+            co.strokeStyle = obj.get('backgroundGridColor');
+            co.strokeRect(obj.get('marginLeft'), ca.height - obj.get('marginBottom'), ca.width - obj.get('marginRight') - obj.get('marginLeft'), 0)
+        });
+        
+        var yaxis = new RGraph.Drawing.YAxis({
+            id: 'cvs',
+            x: 20,
+            options: {
+                marginTop: line.get('marginTop'),
+                marginBottom: line.get('marginBottom'),
+                yaxisScaleMax: 10,
+                yaxisLabelsOffsety: -15,
+                yaxisPosition: 'right',
+                yaxisColor: 'transparent',
+                yaxisScaleUnitsPost: 'Kg',
+                textColor: '#999',
+                colors: ['rgba(0,0,0,0)'],
+                textSize: 14
+            }
+        });
+        
+        // Delay the effect starting a little
+        setTimeout(function ()
+        {
+            line.trace();
+        }, 100);
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

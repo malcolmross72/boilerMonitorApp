@@ -1,0 +1,55 @@
+    <!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.marker1.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart that also uses the drawing API</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [4,8,5,3,2],
+            options: {
+                title: 'A Bar chart with a marker',
+                titleSize: 16,
+                titleBold: true,
+                xaxisLabels: ['Fred','John','James','Louis','Pete'],
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+        
+        // Get the X/Y coordinates from the bar chart
+        idx = 2;
+        x   = bar.coords[idx][0] + (bar.coords[idx][2] / 2);
+        y   = bar.coords[idx][1];
+        r   = 15;
+
+        marker = new RGraph.Drawing.Marker1({
+            id: 'cvs',
+            x: x,
+            y: y,
+            radius: r,
+            text: 'A',
+            options: {
+                tooltips: ['James was the winner by a country mile.'],
+                highlightFill: 'rgba(255,0,0,0.2)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

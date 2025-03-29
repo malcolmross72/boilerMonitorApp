@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="../libraries/RGraph.hprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Progress bar based bullet chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="100">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        hprogress = new RGraph.HProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 85,
+            options: {
+                marginLeft: 15,
+                marginRight: 15,
+                marginTop: 15,
+                marginBottom: 35,
+                marginInner: 7,
+                marginInner: 10
+            }
+        }).draw();
+        
+        var coords = hprogress.coords[0];
+        var x      = hprogress.getXCoord(55);
+
+        // Create the rect object that covers the lower part
+        var rect = new RGraph.Drawing.Rect({
+            id: 'cvs',
+            x: hprogress.marginLeft,
+            y: hprogress.marginTop + 5,
+            width: x - hprogress.marginLeft,
+            height: hprogress.canvas.height - hprogress.marginTop - hprogress.marginBottom - 10,
+            options: {
+                colorsFill: '#f008'
+            }
+        }).draw();
+        
+        x = hprogress.getXCoord(95);
+
+        // Create the rect object that indicates the target
+        var rect = new RGraph.Drawing.Rect({
+            id: 'cvs',
+            x: x - 3,
+            y: hprogress.marginTop + 5,
+            width: 6,
+            height: hprogress.canvas.height - hprogress.marginTop - hprogress.marginBottom - 10,
+            options: {
+                colorsFill: 'black',
+                highlightStroke: 'rgba(0,0,0,0)',
+                tooltips: ['The target was 95% of eveything, everywhere']
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

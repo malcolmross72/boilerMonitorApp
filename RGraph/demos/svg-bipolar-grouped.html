@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A grouped SVG Bipolar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 600px; height: 500px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bipolar({
+            id: 'chart-container',
+            left: [[4,3,5],[8,6,5],[4,8,8],[4,4,4],[6,5,8]],
+            right: [[9,15,8],[4,3,8],[26,5,15],[3,16,24],[12,16,18]],
+            options: {
+                grouping: 'grouped',
+                marginInner: 15,
+                title: 'A grouped Bipolar example chart',
+                titleSubtitle: 'A subtitle to go along with the title',
+                marginTop: 50
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

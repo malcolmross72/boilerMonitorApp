@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart that uses the growPoint() method to facilitate one-touch adjusting</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="250">[No canvas support]</canvas><br />
+        <button style="font-size: 20pt; cursor: pointer" onclick="line.set('spline', !line.get('spline')); RGraph.redraw();">Toggle spline</button>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: '12,18,10,9,6,20,18',
+            options: {
+                tickmarksStyle: 'filledcircle',
+                tickmarksSize: 5,
+                shadow: false,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false
+            }
+        }).draw();
+        
+        line.canvas.onclick = function (e)
+        {
+            var indexes = line.closest({event:e,xonly:true,tolerance: 50});
+            var value = line.getValue(e);
+
+            if (indexes) {
+                line.growPoint(
+                    indexes.index,
+                    value
+                );
+            }
+        };
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

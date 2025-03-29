@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.segmented.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Segmented Donut chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="350" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        segmented = new RGraph.Segmented({
+            id: 'cvs',
+            max: 100,
+            value: 70,
+            options: {
+                labelsCenterUnitsPost: '%',
+                labelsCenterColor: '#aaa',
+                responsive: [
+                    {maxWidth: null,width: 350,height: 350,options:{width: 55,labelsCenterSize: 60}},
+                    {maxWidth: 700,width: 250,height: 250,options:{width: 40,labelsCenterSize: 45}}
+                ]
+            }
+        }).roundRobin({frames: 60});
+
+
+
+        //
+        // If the chart is clicked then adjust the value
+        //
+        segmented.canvas.addEventListener('click', function (e)
+        {
+            var value = segmented.getValue(e);
+            
+            if (value) {
+                segmented.value = value;
+                segmented.grow();
+            }
+        }, false);
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

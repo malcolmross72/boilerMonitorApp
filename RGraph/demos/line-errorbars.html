@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart with errorbars</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [12,18,10,8,5,4,3,2,14,5,6,9],
+            options: {
+                min: 5,
+                errorbars: [1, [1,5],[5],3,3,3,3,3,3,3,3,3,3],
+                //errorbarsLinewidth: 5,
+                //errorbarsColor: 'red',
+                //errorbarsCapped: false,
+                //errorbarsCappedWidth: 100,
+                marginInner: 15,
+                tickmarksStyle: 'circle',
+                xaxis: false
+            }                
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

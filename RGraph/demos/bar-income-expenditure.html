@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart showing income and expenditure</h1>
+
+    <ul>
+        <li><a href="svg-bar-income-expenditure.html">There's also an <code>svg</code> version of this chart.</a></li>
+    </ul>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        data1 = [[2,5,9],[4,2,6],[6,5,8]];
+        data2 = [[-2,-1,-6],[0,0,-6],[0,-5,-8]];
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data1,
+            options: {
+                title: 'An income/expenditure Bar chart',
+                titleSize: 16,
+                titleBold: true,
+                marginLeft: 35,
+                shadow: false,
+                colorsStroke: 'rgba(0,0,0,0)',
+                xaxis: false,
+                yaxis: false,
+                yaxisScale: false,
+                colors: ['Gradient(black:#aaa:black)', 'Gradient(black:#aaa:black)', 'Gradient(black:#aaa:black)'],
+                marginInner: 25,
+                backgroundGridVlinesCount: 3,
+                xaxisPosition: 'center',
+                textSize: 14,
+                yaxisScaleMax: 10
+            }
+        }).wave();
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data2,
+            options: {
+                marginLeft: 35,
+                shadow: false,
+                colors: ['Gradient(red:#faa:red)', 'Gradient(red:#faa:red)', 'Gradient(red:#faa:red)'],
+                marginInner: 25,
+                xaxisPosition: 'center',
+                backgroundGrid: false,
+                yaxisScaleMax: 10
+            }
+        }).wave();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

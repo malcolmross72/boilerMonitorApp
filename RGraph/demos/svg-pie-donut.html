@@ -1,0 +1,48 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic SVG Donut chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 350px; height: 350px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Pie({
+            id: 'chart-container',
+            data: [41,37,16,3,3],
+            options: {
+                exploded: 5,
+                donut: true,
+                title: "Browser share",
+                titleSize: 20,
+                titleBold: true,
+                titleItalic: true,
+                name: ['MSIE 7', 'MSIE 6', 'Firefox', 'Safari', 'Other'],
+                tooltips: '%{property:name[%{index}]}: %{value}%',
+                shadow: true,
+                colors: [
+                  'Gradient(red:red:red:#faa:red)',
+                  'Gradient(#0f0:#0f0:#0f0:#afa:#0f0)',
+                  'Gradient(#00f:#00f:#00f:#aaf:#00f)',
+                  'Gradient(gray:gray:gray:#ccc:gray)',
+                  'Gradient(#f0f:#f0f:#f0f:#faf:#f0f)',
+                  'Gradient(#ff0:#ff0:#ff0:#ffa:#ff0)',
+                  'Gradient(red:red:red:#faa:red)'
+                ]
+            }
+        }).roundRobin();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

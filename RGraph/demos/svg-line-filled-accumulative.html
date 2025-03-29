@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG filled accumulative Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [
+                [4,8,6,5,3,1,2],
+                [4,8,6,5,3,8,9],
+                [4,8,6,5,3,2,1],
+                [9,8,7,6,5,8,7],
+                [1,2,5,3,2,14,1]
+            ],
+            options: {
+                linewidth: 0,
+                shadow: true,
+                filled: true,
+                filledAccumulative: true,
+                filledOpacity: 0.5,
+                spline: true,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                marginBottom: 50,
+                title: 'An accumulative filled Line chart'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

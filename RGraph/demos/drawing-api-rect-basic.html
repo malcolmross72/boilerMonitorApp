@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A basic example of the drawing API rect object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [5,8,6,4,3,5,2],
+            options: {
+                marginInner: 5,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                backgroundGridVlinesBorder: false
+            }
+        }).draw();
+        
+        coords = bar.coords[2];
+        
+        rect = new RGraph.Drawing.Rect({
+            id: 'cvs',
+            x: coords[0] - 15,
+            y: coords[1] - 15,
+            width: 30,
+            height: 30,
+            options: {
+                colorsFill: 'rgba(255,0,0,0.25)',
+                colorsStroke: 'black',
+                tooltips: ['The tooltip for the rect object!']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>     
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A blue Line chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [4,8,6,5,7,9,10,12,12,11,13,13],
+            options: {
+                marginBottom: 45,
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                colors: ['#7CB5EC'],
+                tickmarksStyle: 'filledcircle',
+                shadow: false,
+                backgroundGridColor: '#ccc',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                marginInner: 5,
+                xaxis: false,
+                yaxis: false,
+                textFont: 'Segoe UI',
+                textSize: 14,
+                textColor: '#bbb'
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

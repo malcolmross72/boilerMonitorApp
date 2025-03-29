@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A vertical line Scatter chart</h1>
+
+    <div class="page-common-messages-notice">
+        There's now a better way to produce vertical line charts and
+        that's to use
+        <a href="/canvas/hbar.html#line-properties">the Horizontal Bar chart</a>.
+        There's quite a few
+        options for it (including a <code>spline</code> mode) and
+        there's a couple of demos for it in
+        <a href="/download.html#stable">the download archive</a>
+        (<a href="hbar-vertical-line.html">hbar-vartical-line.html</a> and
+        <a href="hbar-vertical-line-multiple.html">hbar-vertical-line-multiple.html</a>).
+    </div>
+    
+    <hr />
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="550">[No canvas support]</canvas>
+    </div>
+
+    
+    <script id="rgraph-demo-source-code">
+        // Create the Scatter chart but configure it in such a way that it has
+        // the appearance of a vertical Line chart. One configuration option
+        // that is used here is the X-axis scale - which can be used on any
+        // Scatter chart instead of regular labels.
+        new RGraph.Scatter({
+            id: 'cvs',
+            data: [[76, 6.5],[34,5.5],[12,4.5],[48,3.5],[43,2.5],[14,1.5],[5,0.5]],
+            options: {
+                xaxis: false,
+                xaxisScaleMax: 100,
+                yaxisScaleMax: 7,
+                textSize: 14,
+                line: true,
+                lineLinewidth: 3,
+                backgroundGridBorder: false,
+                backgroundGridHlines: false,
+                backgroundGridVlinesCount: 5,
+                yaxisLabelsSpecific: ['', 'Monday','', 'Tuesday','', 'Wednesday','', 'Thursday','', 'Friday','', 'Saturday','', 'Sunday',''],
+                marginLeft: 100,
+                xaxisScale: true,
+                yaxisTickmarksCount: 14,
+                tickmarksStyle: null
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

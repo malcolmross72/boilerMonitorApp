@@ -1,0 +1,98 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A black and purple combined chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="display: block; margin: 25px" id="canvas-container" >
+            <canvas id="cvs" width="750" height="250" style="background-color: #555; border: 5px solid black; border-radius: 7px; box-shadow: 2px 2px 3px gray" data-image-src="page-demos-line-black-and-purple.png">[No canvas support]</canvas><br />
+            <button style="cursor: pointer; border-radius: 5px; font-size: 20px; margin: 10px; padding: 7px" onclick="line.set('spline', !line.get('spline')); RGraph.redraw()">Toggle spline</button>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [81,90,75,85,90,78,61],
+            options: {
+                yaxisScaleMax: 100,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                backgroundGridColor: '#999',
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                marginLeft: 55,
+                marginRight: 55,
+                marginBottom: 45,
+                colors: ['Gradient(#A18AC5:#D1AAF5)'],
+                textColor: '#ccc',
+                xaxisTickmarksCount: 0,
+                xaxis: false,
+                yaxis: false,
+                shadowColor: 'black',
+                shadowOffsetx: 0,
+                shadowOffsety: 0,
+                shadowBlur: 15,
+                colorsStroke: 'rgba(0,0,0,0)',
+                combinedEffect: 'wave',
+                combinedEffectOptions: '{frames: 30}',
+                
+                // Add some responsive capability to the Bar chart
+                responsive: [
+                    {maxWidth: null,width:750,height:250,options:{textSize:18,marginInner: 20}},
+                    {maxWidth: 900, width:400,height:150,options:{textSize:12,marginInner: 7}}
+                ]
+            }
+        });
+
+
+
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [150,255,566,542,588,122,131],
+            options: {
+                yaxisScaleMax: 600,
+                xaxis: false,
+                yaxis: false,
+                backgroundGrid: false,
+                colors: ['#d00'],
+                yaxisPosition: 'right',
+                textColor: '#ccc',
+                marginLeft: 45,
+                marginRight: 45,
+                tickmarksStyle: null,
+                spline: true,
+                combinedEffect: 'trace',
+                textSize: 18,
+                
+                // Add some responsive capability to the Line chart
+                responsive: [
+                    {maxWidth: null,options:{textSize:18,marginInner: 45,linewidth: 7}},
+                    {maxWidth: 900, options:{textSize:12,marginInner: 20,linewidth: 5}}
+                ]
+            }
+        });
+        
+        combo = new RGraph.CombinedChart([bar, line])
+            .draw();
+        
+        // Because the combo class turns the Line chart labels off,
+        // turn them back on
+        line.set({
+            yaxisScale: true
+        });
+
+        RGraph.redraw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

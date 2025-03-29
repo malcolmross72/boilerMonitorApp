@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>    
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.vprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic example of AJAX (getting a number)</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="100" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        //
+        // Initiate the AJAX request. The AJAX page is: http://www.rgraph.net/getdata.html
+        // If you view this in your browser you'll see that all it does is output a sequence of numbers.
+        //
+        RGraph.AJAX.getNumber({url: '/getdata.html', callback: function (num)
+        {
+            drawGraph(num);
+        }});
+
+
+
+        //
+        // This is the AJAX callback function. It splits up the response, converts
+        // it to numbers and then creates the chart.
+        //
+        function drawGraph (num)
+        {
+            // The num variable is the output of the AJAX request
+            var data = num;
+
+            // Draw the progress bar
+            // A global on purpose
+            if (typeof progress === 'undefined') {
+                progress = new RGraph.VProgress({
+                    id: 'cvs',
+                    min: 0,
+                    max: 100,
+                    value: num,
+                    options: {
+                        margin: 10,
+                        marginRight: 35
+                    }
+                })
+                
+            } else {
+            
+                progress.value = num;
+            }
+
+            progress.grow();
+        }
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

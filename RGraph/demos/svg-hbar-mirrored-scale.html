@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart with a mirrored scale</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 850px; height: 500px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [12,10,11,8,12,7,10,11,8,13,7],
+            options: {
+                marginLeft: 75,
+                marginLeftAuto: false,
+                xaxisScaleMax: 25,
+                xaxisScaleMin: 'mirror',
+                backgroundGridHlines: false,
+                backgroundGridVlines: false,
+                yaxisColor: 'gray',
+                xaxisLabelsCount: 10,
+                xaxisScaleFormatter: function (obj, num)
+                {
+                    return Math.abs(num);
+                },
+                colors: ['#A68560'],
+                yaxisLabels: ['IL89L','IL56I','ILH78','IL899H','IL78J','IL90P','IL56H','IL58H','IL99K','IL99J','IL654G'],
+                title: 'John and Barrys test results',
+                titleItalic: true
+            }
+        }).draw();
+
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [-11,-11,-10,-8,-10,-9,-11,-9,-10,-10,-9],
+            options: {
+                marginLeft: 75,
+                marginLeftAuto: false,
+                xaxisScaleMax: 25,
+                xaxisScaleMin: 'mirror',
+                backgroundGrid: false,
+                yaxis: false,
+                xaxis: false,
+                xaxisScale: false,
+                colors: ['#81A8BA']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

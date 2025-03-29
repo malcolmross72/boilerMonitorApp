@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Pie chart using label templates</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="650" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        chart = {
+            data: [8,4,6,5,3,14,2],
+            days: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+        }
+            
+            new RGraph.Pie({
+                id: 'cvs',
+                data: chart.data,
+                options: {
+                    shadow: false,
+                    labels: '%{global:chart.days[%{index}]} (%{value}%)',
+                    labelsList: false,
+                    labelsSticks: true,
+                    labelsSticksLength: 30,
+                    labelsSize: 16,
+                    radius: '-10'
+                }
+            }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

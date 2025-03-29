@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.fx.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A demo of the SVG reveal effect</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [4,8,6,3,5,9,6],
+            options: {
+                linewidth: 5,
+                marginInner: 0,
+                title: 'The reveal() effect',
+                marginLeft: 50,
+                marginBottom: 50,
+                yaxisScaleDecimals: 2,
+                tickmarksStyle: 'circle',
+                tickmarksLinewidth: 5,
+                tickmarksSize: 7,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                shadow: true
+            }
+        }).reveal({frames: 90});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

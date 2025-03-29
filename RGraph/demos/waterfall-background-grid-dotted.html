@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A demo of the Chrome-only dotted or dashed background grid</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs1" width="600" height="250">[No canvas support]</canvas>
+        <canvas id="cvs2" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Waterfall({
+            id: 'cvs1',
+            data: [4,8,6,5,-5,-6,6,-5,-4,-3,2,1],
+            options: {
+                marginTop: 35,
+                backgroundGridDashed: true,
+                backgroundGridColor: 'black',
+                backgroundGridVlinesCount: 13,
+                xaxisLabels: [
+                    'Mal',   'Barry',
+                    'Gary',  'Neil',
+                    'Kim',   'Pete',
+                    'Lou',   'Fred',
+                    'Jobe',  'Fred',
+                    'Harry', 'Jake',
+                    'Total'
+                ],
+                title: 'A dashed background grid',
+                textSize: 12,
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+
+        new RGraph.Waterfall({
+            id: 'cvs2',
+            data: [4,8,6,5,-5,-6,6,-5,-4,-3,1],
+            options: {
+                marginTop: 35,
+                xaxisLabels: [
+                    'Mal',   'Barry',
+                    'Gary',  'Neil',
+                    'Kim',   'Pete',
+                    'Lou',   'Fred',
+                    'Jobe',  'Lucy',
+                    'Kevin', 'Nevil'
+                ],
+                backgroundGridDotted: true,
+                backgroundGridColor: 'black',
+                title: 'A dotted background grid',
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+    
+</body>
+</html>

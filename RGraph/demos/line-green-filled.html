@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A filled green Line</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [ [25,24,21,26,35,33,29,32,18,20,15,13], [20,30,50,40,30,50,40,30,51,40,10,20] ],
+            options: {
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                colors: ['#666','#090'],
+                filled: true,
+                filledColors: [ 'Gradient(rgba(48,48,48,0.75):rgba(100,100,100,0.75))', 'Gradient(rgba(0,100,0,0.75):rgba(85,255,118,0.9))' ],
+                linewidth: 3,
+                tickmarksStyle: null,
+                shadow: null,
+                spline: true
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

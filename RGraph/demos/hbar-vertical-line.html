@@ -1,0 +1,70 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart/vertical Line chart with tooltips</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="600">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        hbar = new RGraph.HBar({
+            id: 'cvs',
+            data: [4,5,7,4,2,4,6,8,6,5],
+            options: {
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                colors: ['rgba(255,0,0,1)'],
+                yaxisLabels: [
+                    'John','Fredericko','Bono','Lucy','Charles',
+                    'Peter','Brian','Jilly','Peter','Lucy'
+                ],
+                textSize: 18,
+                title: 'A vertical line chart',
+                marginTop: 50,
+                
+                tooltips: '%{property:yaxisLabels[%{dataset}]}: %{value}%',
+                tooltipsHotspotShape: 'point',
+                tooltipsEvent: 'mousemove',
+                tooltipsOffsety: -3,
+                tooltipsCss: {
+                    fontSize: '20pt'
+                },
+
+                line: true,
+                lineLinejoin:                   'round',
+                lineLinecap:                    'round',
+                lineLinewidth:                    10,
+                lineTickmarksStyle:             'circle',
+                lineTickmarksSize:              8
+            }
+        }).trace({frames: 90}, function (obj)
+        {
+            for (let i=0; i<=30; ++i) {
+                setTimeout(function ()
+                {
+                    obj.set('colors', ['rgba(255,0,0,' + ((30-i) * 0.0333) + ')']);
+    
+                    if (i >= 30) {
+                        obj.set('colors', ['transparent']);
+                    }
+                    
+                    RGraph.redraw();
+                }, i * 15);
+            }
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

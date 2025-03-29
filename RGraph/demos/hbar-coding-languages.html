@@ -1,0 +1,84 @@
+<!DOCTYPE html > 
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Popular coding languages</h1>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="350" data-image-src="page-demos-hbar-coding-languages.png">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // The labels for the chart are not added by giving them to the
+        // chart but manually adding text to the chart.
+        labels = ['PHP','Python','C#','Java','MySQL','Oracle','JSP','MS SQL Server','Ruby'];
+
+        // Create the Horizontal Bar chart and configure it. With there
+        // being no labels on the left-hand-side the margin autofit
+        // will make the left margin zero
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [86,75,71,65,60,55,53,51,45],
+            options: {
+                textSize: 14,
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                xaxisScale: false,
+                labelsAbove: true,
+                labelsAboveUnitsPost: '%',
+                colors: ['green'],
+                shadow: true,
+                shadowColor: '#ddd',
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                tooltips: '<i style="position: relative; top: -5px">Usage worldwide:</i> <span style="font-size: 26pt; ">%{value}%</span>',
+                tooltipsCss: {
+                    fontSize: '14pt'
+                },
+                highlightFill: 'Gradient(rgba(255,255,255,0):white)',
+                highlightStroke: 'Gradient(rgba(255,255,255,0):white)'
+            }
+        
+        // Use the draw event to add the labels on the left-hand-side
+        }).on('draw', function (obj)
+        {
+            var coords = obj.coords;
+
+            // Loop through the coordinates of the bars
+            for (var i=0; i<coords.length; ++i) {
+            
+                // For each of the coordinates add a text label
+                // on the left-hand-side of the bar
+                RGraph.text({
+                    object: obj,
+                    text:   labels[i],
+                    x:      coords[i][0] + 10,
+                    y:      coords[i][1] + (coords[i][3] / 2),
+                    valign: 'center',
+                    bold:   true,
+                    color:  'white',
+                    size: obj.get('textSize'),
+                    responsive: [
+                        {maxWidth: null,width:600,height: 350,parentCss:{'float':'right', textAlign:'none'}},
+                        {maxWidth: 800,width:400,height: 300,parentCss:{'float':'none', textAlign:'center'}}
+                    ]
+                });
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>    
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Horizontal Bar chart showing inbar labels</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 900px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        data = [
+            [null,null,null,5,18,36,41],
+            [5,null,9,14,23,41,8],
+            [null,null,5,27,23,32,13]
+        ];
+
+        hbar = new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                key: ['Neil','Jim','Ricardo','Pete','Luis','Jenn','Fred'],
+                marginInnerTop: 20,
+                marginInnerBottom: 20,
+                grouping: 'stacked',
+                xaxis: false,
+                yaxisLabels: ['A', 'B', 'C'],
+                yaxisTickmarks: false,
+                xaxisScaleUnitsPost: '%',
+                xaxisLabelsCount: 4,
+                backgroundGridBorder: false,
+                backgroundGridVlinesCount: 4,
+                backgroundGridHlines: false,
+                colors: ['#c00','#E06666','#F4B400','#E5E5E5','#71DCD8','#00B1AA','#00817C'],
+                labelsInbar: true,
+                labelsInbarBackground:'white',
+                labelsInbarBackgroundPadding: 2,
+                labelsInbarBold: true,
+                labelsInbarUnitsPost: '%'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

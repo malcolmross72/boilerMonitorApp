@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart with errorbars</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [
+                [1,5,1,2,1,2,1],
+                [5,5,5,3,4,6,8]
+            ],
+            options: {
+                linewidth:3,
+                filled: true,
+                filledAccumulative: true,
+                errorbars: [
+                    {min: 1, max: 1, color: 'red', linewidth: 3,capwidth: 25},
+                    1,
+                    {min: null, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1},
+                    {min: 1, max: 1}
+                ],
+                errorbarsColor: 'black',
+                errorbarsLinewidth: 1,
+                errorbarsCapwidth: 10,
+                colors: ['rgba(255,0,0,0.25)','rgba(0,0,255,0.25)'],
+                marginInner: 20,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

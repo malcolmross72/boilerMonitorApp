@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.key.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG grouped Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block; top: 0; left; 0">
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [ [1,-2], [4,5], [4,2], [6,9], [4,3], [4,-3], [-4,8] ],
+            options: {
+                colors: ['#7CB5EC','#434348'],
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                xaxis: 'rgba(0,0,0,0.5)',
+                yaxis: false,
+                grouping: 'grouped',
+                marginInner: 20,
+                marginInnerGrouped: 5,
+                yaxisScaleMax: 20,
+                yaxisScaleMin: -5,
+                title: 'A grouped Bar chart',
+                key: ['Richard', 'Barry'],
+                marginTop: 50
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

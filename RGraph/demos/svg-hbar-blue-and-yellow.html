@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A simple bar-in-bar SVG Horizontal Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 500px; height: 300px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [62,48,42,43,64,61],
+            options: {
+                marginLeft: 30,
+                marginLeftAuto: false,
+                colors: ['blue'],
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                xaxis: false,
+                xaxisScaleMax: 80,
+                yaxisLabels: ['A','B','C','D','E','F']
+            }
+        }).draw();
+
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [45,47,50,33,43,52],
+            options: {
+                marginLeft: 30,
+                marginLeftAuto: false,
+                colors: ['orange'],
+                backgroundGrid: false,
+                xaxis: false,
+                xaxisScale: false,
+                xaxisScaleMax: 80,
+                marginInner: 10
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

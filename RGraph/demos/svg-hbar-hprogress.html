@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Horizontal Progress Bar</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 600px; height: 125px" id="chart-container"></div>
+    </div>
+
+    <script>
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [[36,15,49]],
+            options: {
+                xaxisScaleMax: 100,
+                xaxisScaleUnitsPost: '%',
+                yaxis: false,
+                yaxisLabels: ['Mondays usage'],
+                xaxis: false,
+                backgroundGrid: false,
+                title: 'A stacked Horizontal Bar chart',
+                marginInner: 10,
+                grouping: 'stacked',
+                colors: ['Gradient(white:red)','Gradient(white:green)','Gradient(white:blue)']
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.key.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An example of a Bar chart that's using a HTML key</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="container" style="position: relative">
+            <canvas id="cvs" width="600" height="200"></canvas>
+        </div>
+        
+        <style>
+            table {
+                line-height: 20px;
+            }
+        </style>
+    </div>
+
+    <script>
+        year1 = [4,5,8,6,7,8,4,6,5,3,2,1];
+        year2 = [1,2,6,8,4,9,5,6,3,5,4,4];
+        data  = [];
+        
+        // Combine the data
+        for (var i=0; i<12; i+=1) {
+            data.push([year1[i], year2[i]]);
+        }
+        
+        // Draw the key first
+        RGraph.HTML.Key('container', {
+            labels: ['First year','Second year'],
+            colors: ['red','#0c0'],
+            tableCss: {
+                top: '25px',
+                left: '600px',
+                position: 'absolute'
+            }
+        });
+
+        // Now draw the chart (AFTER the key)
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                title: 'A Bar chart with an HTML key',
+                titleSize: 16,
+                titleBold: true,
+                colors: ['red','#0c0'],
+                grouping: 'stacked',
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

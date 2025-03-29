@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hprogress.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Horizontal Progress bar</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="100">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HProgress({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value:89,
+            options: {
+                tickmarksCount: 20,
+                marginRight: 30,
+                marginInner: 5
+            }
+        }).draw().exec(function(obj)
+        {
+            obj.canvas.onclick = function (e)
+            {
+                var value = obj.getValue(e);
+                obj.value = value;
+            
+                obj.grow();
+            }
+        });
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

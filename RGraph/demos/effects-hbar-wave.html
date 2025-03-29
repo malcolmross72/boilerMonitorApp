@@ -1,0 +1,29 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>    
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Horizontal Bar wave effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        hbar = new RGraph.HBar({
+            id: 'cvs',
+            data: [1,2,3,4,5,6,7,8,9,10],
+            options: {
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

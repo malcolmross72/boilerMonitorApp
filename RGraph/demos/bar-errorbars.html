@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with errorbars</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [12,18,10,9,6,20,18],
+            options: {
+                title: 'A Bar chart with errorbars',
+                titleSize: 16,
+                titleBold: true,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                shadow: false,
+                colors: ['red'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                errorbars: [
+                    [5,5],
+                    [2,6],
+                    [1,2],
+                    [3,3],
+                    [7,4, 'blue'],
+                    null,
+                    [5,null]
+                ],
+                //errorbarsLinewidth: 2,
+                //errorbarsColor: 'gray',
+                //errorbarsCapped: false,
+                //errorbarsCappedWidth: 14 // This is the default
+            }                
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

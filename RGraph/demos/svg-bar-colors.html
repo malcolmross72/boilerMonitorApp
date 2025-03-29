@@ -1,0 +1,41 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="padding: 15px; display: inline-block">
+            <div style="width: 750px; height: 300px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script>
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [71,55,50,65,92,68,38,71,54,60,36,21],
+            options: {
+                title: 'A simple Bar chart ',
+                titleFont: 'Impact, Arial Black, Arial',
+                titleSize: 24,
+                colors: ['#4F81BC','#C0504E','#9BBB58','#8064A1','#8064A1','#4AACC5','#F79647','#7F6084','#77A033','#33558B','#E59566','#4F81BC','#C0504E'],
+                xaxisLabels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                colorsSequential: true,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridBorder: false,
+                backgroundGridVlines: false
+            }
+        }).grow({frames: 15});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

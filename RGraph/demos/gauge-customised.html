@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.gauge.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A customised Gauge chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="300" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        new RGraph.Gauge({
+            id: 'cvs',
+            min: 0,
+            max: 200,
+            value: [184,12],
+            options: {
+                marginLeft: 15,
+                marginRight: 15,
+                marginTop: 15,
+                marginBottom: 15,
+
+                // Configure the top titles appearance
+                titleTop: 'Air Speed',
+                titleTopSize: 22,
+                titleTopFont: 'Impact',
+                titleTopColor: 'white',
+                titleTopSize: 24,
+                titleTopItalic: true,
+                
+                // Configure the bottom titles appearance
+                titleBottom: 'Knots',
+                titleBottomSize: 14,
+                titleBottomItalic: true,
+                titleBottomFont: 'Impact',
+                titleBottomColor: '#ccc',
+                titleBottomPos: 0.4,
+
+                // The rest of the configuration for the Gauge chart - the needle,
+                // centerpin, tickmarks and the border
+                colorsRanges: [[160,200,'rgba(255,0,0,1)'], [120,160,'rgba(255,255,0,0.95']],
+                backgroundColor: 'black',
+                backgroundGradient: true,
+                centerpinColor: '#666',
+                needleSize: [null, 50],
+                needleColors: ['Gradient(transparent:white:white:white:white:white)', 'Gradient(transparent:#d66:#d66:#d66:#d66)'],
+                textColor: 'white',
+                tickmarksLargeColor: 'white',
+                tickmarksMediumColor: 'white',
+                tickmarksSmallColor: 'white',
+                borderOuter: '#666',
+                borderInner: '#333',
+                responsive: [
+                    {maxWidth:null},
+                    {maxWidth:900}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

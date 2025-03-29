@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart customised to look like a Vertical Progress bar</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="150" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [68],
+            options: {
+                yaxisScaleMax: 100,
+                xaxis: false,
+                xaxisLabels: ['Engine output'],
+                labelsAbove: true,
+                yaxisScaleUnitsPost: '%',
+                colors: ['gradient(red:white)'],
+                backgroundGrid: false,
+                marginLeft: 55,
+                marginRight: 5,
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

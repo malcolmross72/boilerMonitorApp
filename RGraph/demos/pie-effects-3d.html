@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="container" style="display: inline-block; position: relative">
+            <canvas id="cvs" width="375" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        colors   = ['red','yellow','blue','cyan','green','pink','white','#ddd'];
+        data     = [4,5,5,7,5,8,4,9];
+        tooltips = ['Mavis','Kevin','Luis','June','Olga','Luis','Pete','Bridget'];
+        
+        for (var i=0; i<data.length; i++) {
+            tooltips[i] = '{1}: {2}%'.format(tooltips[i], data[i]);
+        }
+
+        new RGraph.Pie({
+            id: 'cvs',
+            data: data,
+            options: {
+                colorsStroke: 'transparent',
+                variant: 'pie3d',
+                linewidth: 2,
+                shadowOffsetx: 0,
+                shadowOffsety: 7,
+                shadowColor: '#ddd',
+                shadowBlur: 15,
+                radius: 80,
+                colors: colors,
+                tooltips: tooltips,
+                tooltipsCss: {
+                    fontSize: '18pt'
+                }
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

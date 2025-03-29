@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart with a dark theme</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 950px; height: 250px" id="chart-container"></div>
+    </div>
+
+    <script>
+        var data = [4,5,3,8,6,5,9,4,1,8,5,6,8,9,4,8,7,9,8,9,11,13,10,12,11,16,15,18,13,19,21,17,19,23,18,21,25,26,24,29,30];
+
+        var line = new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: data,
+            options: {
+                colors: ['red'],
+                linewidth: 5,
+                backgroundGridColor: '#666',
+                backgroundGridVlinesCount: 4,
+                backgroundColor: 'black',
+                xaxis: false,
+                xaxisTickmarks:false,
+                xaxisLabels: [
+                    'Quarter 1',
+                    'Quarter 2',
+                    'Quarter 3',
+                    'Quarter 4'
+                ],
+                xaxisLabelsPosition: 'section',
+                yaxisTickmarks:false,
+                yaxis: false,
+                spline: true,
+                filled: true,
+                filledColors: ['Gradient(rgba(255,0,0,0.75):rgba(255,0,0,0.5):rgba(255,0,0,0))']
+            }
+        }).trace();
+        
+        line.svg.style.borderTopLeftRadius = '25px';
+        line.svg.style.borderBottomRightRadius = '25px';
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

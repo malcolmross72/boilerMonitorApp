@@ -1,0 +1,117 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A responsive Bar chart and HBar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="margin: 35px">
+            <canvas id="cvs" width="700" height="300">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script>
+        //
+        // Some common data that's used by both charts
+        //
+        data          = [4,8,6,4,5,3,1,9,5,8];
+        labels        = ['Bob','Jim','Lou','Pob','Kev','Doug','Bono','Vinny','Fee','Yugo'];
+        marginInner   =  10;
+        tooltipsStyle = {fontSize: '18pt'};
+
+        //
+        // This is the initial basic Bar chart that sets
+        // up the responsive configurations. It's the
+        // responsive callback functions that actually
+        // draw the charts.
+        //
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [],
+            options: {
+                responsive: [
+                    {maxWidth: null, width: 700, height: 350, callback: drawBar},
+                    {maxWidth: 750, width: 450, height: 700, callback: drawHbar}
+                ]
+            }
+        }).draw();
+
+        //
+        // This function resets the canvas and then draws
+        // an Horizontal Bar chart.
+        //
+        function drawHbar ()
+        {
+            RGraph.reset('cvs');
+            
+            new RGraph.HBar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    title: 'A responsive Bar and Hbar chart',
+                    titleSize: 16,
+                    titleBold: true,
+                    colors: ['Gradient(#fcc:#f00:#f00)'],
+                    yaxisLabels: labels,
+                    marginInner: marginInner,
+                    backgroundGridHlines: false,
+                    backgroundGridBorder: false,
+                    xaxis: false,
+                    textSize: 16,
+                    labelsAbove: true,
+                    labelsAboveUnitsPost: '%',
+                    tooltips: '%{property:yaxisLabels[%{group}]}s results: %{value}%',
+                    tooltipsCss: tooltipsStyle,
+                    yaxisLabelsOffsetx: -10,
+                    marginLeft: 75,
+                    marginLeftAuto: false
+                }
+            }).draw();
+        }
+
+        //
+        // This function resets the canvas and then draws
+        // a Bar chart.
+        //
+        function drawBar ()
+        {
+            RGraph.reset('cvs');
+            
+            new RGraph.Bar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    title: 'A responsive Bar and Hbar chart',
+                    titleSize: 16,
+                    titleBold: true,
+                    colors: ['Gradient(#fcc:#f00:#f00)'],
+                    xaxisLabels: labels,
+                    marginInner: marginInner,
+                    backgroundGridVlines: false,
+                    backgroundGridBorder: false,
+                    yaxis: false,
+                    textSize: 16,
+                    labelsAbove: true,
+                    labelsAboveUnitsPost: '%',
+                    tooltips: '%{property:xaxisLabels[%{group}]}s results: %{value}%',
+                    tooltipsCss: tooltipsStyle,
+                    xaxisLabelsOffsety: 5,
+                    marginBottom: 45
+                }
+            }).draw();
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

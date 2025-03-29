@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A dual dataset Waterfall chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        yaxisScaleMax = 35;
+
+        new RGraph.Waterfall({
+            id: 'cvs',
+            data: [10,10,5,-2,-15,6,-5],
+            options: {
+                marginInner: 30,
+                barOffsetx: -17,
+                yaxisScaleMax: yaxisScaleMax,
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday','Total'],
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).draw();
+
+        new RGraph.Waterfall({
+            id: 'cvs',
+            data: [4,8,6,3,5,4,2],
+            options: {
+                backgroundGrid: false,
+                xaxis: false,
+                yaxis: false,
+                marginInner: 30,
+                barOffsetx: 17,
+                yaxisLabels: false,
+                yaxisScaleMax: yaxisScaleMax,
+                yaxis: false
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

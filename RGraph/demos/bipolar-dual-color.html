@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bipolar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bipolar chart using two different colors</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data = [
+            [4,9,8,5,6,3,4],
+            [8,6,5,7,8,9,9]
+        ];
+
+        new RGraph.Bipolar({
+            id: 'cvs',
+            left: data[0],
+            right: data[1],
+            options: {
+                axes: false,
+                colorsLeft: ['Gradient(red:white:red)'],
+                colorsRight: ['Gradient(black:white:black)'],
+                yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            }
+        }).grow();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

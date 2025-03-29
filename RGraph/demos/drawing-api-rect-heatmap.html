@@ -1,0 +1,68 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.drawing.rect.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A heatmap like chart using the drawing API rect object</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        //
+        // The "data" that determines the color of the blocks
+        //
+        alerts = [];
+        alerts['34,7'] = {'color':'red','message':'Computer #37 is broken and needs shutting down and repairing'}
+        alerts['52,7'] = {'color':'red','message':'Computer #68 is broken and needs shutting down and repairing'}
+        alerts['53,7'] = {'color':'red','message':'Computer #69 is broken and needs shutting down and repairing'}
+        alerts['54,7'] = {'color':'red','message':'Computer #70 is broken and needs shutting down and repairing'}
+        alerts['14,19'] = {'color':'red','message':'Computer #135 is running hot','color':'yellow'}
+        alerts['14,20'] = {'color':'red','message':'Computer #139 is loose','color':'yellow'}
+        alerts['14,21'] = {'color':'red','message':'Computer #139 is old','color':'orange'}
+        alerts['45,21'] = {'color':'red','message':'Computer #139 is old','color':'orange'}
+        alerts['2,2'] = {'color':'red','message':'Computer #139 needs replacing','color':'orange'}
+        alerts['18,5'] = {'color':'red','message':'Computer #139 needs repairing','color':'red'}
+
+        // 25 "clusters of computers" (sticking to the datacenter analogy)
+        for (var y=0; y<25; ++y) {
+        
+            // 60 "Computers per cluster" (sticking to the datacenter analogy)
+            for (var x=0; x<60; ++x) {
+                var rect = new RGraph.Drawing.Rect({
+                    id: 'cvs',
+                    x: x*10,
+                    y: y*10,
+                    width: 10,
+                    height: 10,
+                    options: {
+                        colorsStroke: 'rgba(0,0,0,0.05)'
+                    }
+                })
+
+                if (alerts[x+','+y]) {
+                    rect.set({
+                        colorsFill: alerts[x+','+y].color,
+                        tooltips: [alerts[x+','+y].message]
+                    })
+                } else {
+                    rect.set('colorsFill', 'rgba(100,255,100,0.2)');
+                }
+
+                rect.draw();
+            }
+        }
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

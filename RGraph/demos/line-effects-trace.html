@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A Line chart that's using the trace() effect</h1>
+
+    <div id="rgraph-demo-html">
+        <div>
+            <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script>
+        new RGraph.Line({
+            id: 'cvs',
+            data: [84,-5,-30,-26,-45,12,84,73,60],
+            options: {
+                xaxisLabels: ['Felicity','Gary','Neil','Jay','Helga','Ray','Kev','Luis','Pete'],
+                yaxisTickmarksCount: 10,
+                colors: ['black'],
+                shadowOffsetx: 1,
+                shadowOffsety: 1,
+                linewidth: 2,
+                yaxisPosition: 'right',
+                xaxisPosition: 'center',
+                marginRight: 35,
+                backgroundGridVlinesCount: 8
+            }
+        }).trace({frames: 60});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

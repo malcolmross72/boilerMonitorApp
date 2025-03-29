@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Meter chart grow effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="450" height="350">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data = [4,8,6,3,1,2,5,8,9];
+
+        new RGraph.Meter({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 54,
+            options: {
+            }
+        }).grow();
+
+        setTimeout(function ()
+        {
+            meter.value = 10;
+            meter.grow();
+        }, 3500);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

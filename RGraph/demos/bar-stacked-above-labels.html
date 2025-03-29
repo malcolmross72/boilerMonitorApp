@@ -1,0 +1,45 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Bar chart with the labelsAbove option</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250"></canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [[10,12,13],[45,43,26],[42,21,52],[4,3,5]],
+            options: {
+                title: 'A stacked Bar chart with the labelsAbove option',
+                titleBold: true,
+                titleSize: 16,
+                xaxisLabels: ['January','February','March','April'],
+                labelsAbove: true,
+                labelsAboveUnitsPre: '',
+                labelsAboveUnitsPost: '',
+                marginInner: 20,
+                marginInnerGrouped: 2,
+                highlightFill: 'red',
+                grouping: 'stacked',
+                shadowOffsetx: 2,
+                shadowOffsety: 2,
+                shadowBlur: 2,
+                colorsStroke: 'rgba(0,0,0,0)',
+                marginLeft: 35
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

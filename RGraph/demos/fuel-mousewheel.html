@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.fuel.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Fuel chart with mousewheel support</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="200" height="200">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        fuel = new RGraph.Fuel({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 56,
+            options: {
+                scaleVisible: true,
+                scaleUnitsPost: '%',
+                textSize: 9,
+                adjustable: true
+            }
+        }).draw();
+        
+        fuel.canvas.addEventListener('wheel', function (e)
+        {
+            var amount = 3;
+            var dir = e.deltaY;
+            
+            if (dir < 0) {
+                fuel.value += amount;
+                if (fuel.value > 100) fuel.value = 100;
+            } else {
+                fuel.value -= amount;
+                if (fuel.value < 0) fuel.value = 0;
+            }
+            
+            RGraph.redraw();
+
+            e.preventDefault();
+        }, false);
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

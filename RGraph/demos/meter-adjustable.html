@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.meter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An adjustable Meter chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250" style="border-radius: 15px">[No canvas support]</canvas>
+    </div>
+
+    <script id="source">
+        meter = new RGraph.Meter({
+            id: 'cvs',
+            min: 0,
+            max: 100,
+            value: 75,
+            options: {
+                marginTop: 25,
+                marginBottom: 25,
+                marginLeft: 25,
+                marginRight: 25,
+                anglesStart: RGraph.PI + 0.5,
+                anglesEnd: RGraph.TWOPI - 0.5,
+                linewidthSegments: 15,
+                textSize: 16,
+                colorsStroke: 'white',
+                segmentsRadiusStart: 150,
+                border: 0,
+                tickmarksSmallCount: 0,
+                tickmarksLargeCount: 0,
+                adjustable: true,
+                needleRadius: 130,
+                needleHeadWidth: 0.15
+            }
+        
+        // Clear the canvas
+        }).on('beforedraw', function (obj)
+        {
+            RGraph.clear(obj.canvas, 'white');
+        
+        // A customised centerpin
+        }).on('draw', function (obj)
+        {
+            obj.path(
+                'b a % % 15 0 6.29 false f white',
+                obj.centerx, obj.centery
+            );
+            
+            obj.path(
+                'b a % % 12 0 6.29 false f black',
+                obj.centerx, obj.centery
+            );
+            
+            obj.path(
+                'b a % % 8 0 6.29 false f white',
+                obj.centerx, obj.centery
+            );
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

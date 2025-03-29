@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.drawing.background.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="750" height="250">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Drawing.Background({
+            id: 'cvs',
+            options: {
+                marginLeft: 35,
+                marginRight: 35,
+                marginTop: 35,
+                marginBottom: 35,
+                backgroundGridVlinesCount:48,
+                backgroundGridHlinesCount: 20,
+                backgroundGridColor: '#eee'
+            }
+        }).draw();
+
+        new RGraph.Line({
+            id: 'cvs',
+            data: [9,6,8,5,4,2,3],
+            options: {
+                //xaxisPosition: 'top'
+                responsive: [
+                    {maxWidth:900, width:400, height:150, options: {xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],textSize: 10}},
+                    {maxWidth:null, width:750, height:250, options: {xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],textSize:12}}
+                ]
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

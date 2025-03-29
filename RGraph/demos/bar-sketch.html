@@ -1,0 +1,49 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A sketchy Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="800" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        bar = new RGraph.Bar({
+            id: 'cvs',
+            data: [248,243,180,160,120,43],
+            options: {
+                yaxis: false,
+                title: 'Fruit consumed at the luncheon',
+                titleBold: true,
+                titleSize: 16,
+                titleX: 600,
+                titleSubtitle: 'A healthy luncheon!',
+                colors: ['black'],
+                labelsAbove: true,
+                labelsAboveSpecific: ['Apples', 'Oranges', 'Kiwi', 'Grapes', 'Mango', 'Kumquat'],
+                labelsAboveSize: 12,
+                marginTop: 50,
+                marginLeft: 150,
+                marginBottom: 25,
+                marginInner: 20,
+                variant: 'sketch',
+                variantSketchVerticals: true,
+                yaxisLabelsSpecific: ['Lots', 'Not so much'],
+                textFont: 'Comic sans MS',
+                textSize: 18,
+                backgroundGrid: false
+            }
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+    
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Bar chart showing the UK inflation rate</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        // This is the source data
+        data = {            
+            source: [
+                {rate: 2.5, label: 'March 2018'},
+                {rate: 2.7, label: 'February 2018'},
+                {rate: 3.0, label: 'January 2018'},
+                {rate: 3.0, label: 'December 2018'},
+                {rate: 3.1, label: 'November 2017'},
+                {rate: 3.0, label: 'October 2017'},
+                {rate: 3.0, label: 'September 2017'},
+                {rate: 2.9, label: 'August 2017'},
+                {rate: 2.6, label: 'July 2017'},
+                {rate: 2.6, label: 'June 2017'},
+                {rate: 2.9, label: 'May 2017'},
+                {rate: 2.7, label: 'April 2017'}
+            ],
+            
+            // These are for once the data has been extracted and split up from
+            // the source
+            data:   [],
+            labels: []
+        };
+
+        // Reverse the data so that the latest figure is on the right
+        data.source = RGraph.SVG.arrayReverse(data.source);
+        
+        
+        // Loop through the source data extracting the required parts
+        for (var i=0; i<data.source.length; ++i) {
+            if (data.source[i]) {
+                
+                // Extract the data piece from the source data
+                data.data[i] = data.source[i].rate;
+    
+                // Extract the label from the source data
+                data.labels[i] = ((i+1) % 3 === 0 ? data.source[i].label : '');
+            }
+        }
+
+
+
+
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data['data'],
+            options: {
+                xaxisLabels: data['labels'],
+                colors: ['Gradient(#94B7D4:#94B7D4:white)'],
+                colorsStroke: 'black',
+                textFont: 'Monospace',
+                textSize: 10,
+                marginInner: 8,
+                backgroundGridColor: '#eee',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                xaxis: false,
+                yaxisScaleDecimals: 1,
+                labelsAbove: true,
+                labelsAboveDecimals: 1,
+                title: 'UK inflation rate',
+                titleSize: 10,
+                titleHalign: 'left',
+                titleX: 50,
+                yaxisScaleMin: 2,
+                yaxisScaleMax: 3.5,
+                linewidth: 0.75
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

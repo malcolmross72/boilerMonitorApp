@@ -1,0 +1,54 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>Using the CSV reader</h1>
+    
+    <b>Note:</b>
+    For browser security reasons the <code>ajax</code> demos don't work offline. You can
+    view the demos on the RGraph website here:
+    <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="500" height="250">[No canvas support]</canvas>
+        </div>
+    </div>
+    
+    <script id="rgraph-demo-source-code">
+        // Use the CSV connector to read the sample.csv file from the server
+        new RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            // Fetch the first row of the CSV file, starting at the second column
+            // (as with many things in programming - counting starts at zero)
+            var data = csv.row(0, 1);
+
+            // Create and show the Horizontal Bar chart using the data that was
+            // retrieved from the CSV file. The only other configuration is the
+            // addition of some labels and widening the left margin.
+            new RGraph.HBar({
+                id: 'cvs',
+                data: data,
+                options: {
+                    yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                    marginLeft: 95,
+                    responsive: [
+                        {maxWidth: null,parentCss:{textAlign:'none'}},
+                        {maxWidth: 750,parentCss:{textAlign:'center'}}
+                    ]
+                }
+            }).draw();
+        }});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG HBar chart using label templates</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 650px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        names = ['Monday','Tuesday','Wednesday','Thursday','Friday', 'Saturday','Sunday'];
+
+        new RGraph.SVG.HBar({
+            id: 'chart-container',
+            data: [8,6,3,5,4,8,4],
+            options: {
+                yaxisLabels: '%{global:window.names[%{index}]} (%{value}pc)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

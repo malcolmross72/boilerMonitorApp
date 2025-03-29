@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Line chart in blue</h1>   
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="300">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        line = new RGraph.Line({
+            id: 'cvs',
+            data: [28,21,26,32,35,36,39,45,47,51,55,74,85],
+            options: {
+                backgroundGridBorder: false,
+                backgroundGridVlines: false,
+                xaxisLabels: ['1950','\n1955','1960','\n1965','1970','\n1975','1980','\n1985','1990','\n1995','2000','\n2005','2010'],
+                colors: ['blue'],
+                xaxis: false,
+                yaxis: false,
+                yaxisScaleMax: 100,
+                yaxisScaleUnitsPost: '%',
+                marginLeft: 65,
+                marginBottom: 55,
+                marginTop: 15,
+                linewidth: 3,
+                marginInner: 7,
+                shadow: false,
+                tickmarksStyle: 'filledcircle',
+                textSize: 16,
+                tooltips: '<span style="font-size: 26pt">%{property:xaxisLabels[%{index}]}</span><br /><i style="font-size: 16pt">Results: %{value}</i>',
+                highlightStroke: 'transparent',
+                highlightPointRadius: 3
+            }
+        }).on('draw',function (obj)
+        {
+            // Updated style for the path function
+            obj.path(
+                'ss black lw 1 lj miter sr % % % %',
+                65, 15, 500.01, 230
+            );
+        }).draw();
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

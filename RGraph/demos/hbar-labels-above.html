@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.hbar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Horizontal Bar chart using the labelsAbove option</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="700" height="450">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.HBar({
+            id: 'cvs',
+            data: [5.06,8.23,6.48,4,3.66,2.84,1.12,6.45,8.11],
+            options: {
+                yaxisLabels: ['Arial','Francine-Jane','Fred','Kev','Lou','Doug','Jim','Rachel','Jone'],
+                colors: ['Gradient(#009:#00f:#00f)'],
+                textSize: 14,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridHlines: false,
+                backgroundGridBorder: false,
+                labelsAbove: true,
+                labelsAboveDecimals: 2,
+                labelsAboveUnitsPost: 'Kg',
+                labelsAboveColor: '#999',
+                labelsAboveBold: true,
+                labelsAboveItalic: true
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.waterfall.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A basic Waterfall chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="900" height="250">[No canvas support]</canvas><br />
+        <button onclick="waterfall.set('xaxisPosition', 'bottom'); RGraph.redraw();" style="font-size: 14pt; cursor: pointer">Set X-axis position at bottom</button>
+        <button onclick="waterfall.set('xaxisPosition', 'center'); RGraph.redraw();" style="font-size: 14pt; cursor: pointer">Set X-axis position at center</button>
+        <button onclick="waterfall.set('xaxisPosition', 'top'); RGraph.redraw();" style="font-size: 14pt; cursor: pointer">Set X-axis position at top</button>
+    </div>
+
+    <script>
+        waterfall = new RGraph.Waterfall({
+            id: 'cvs',
+            data: [10,10,5,-2,-15,6,-5],
+            options: {
+                xaxisLabels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Total'],
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

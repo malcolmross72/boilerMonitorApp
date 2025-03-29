@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.csv.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A stacked Rose chart using the CSV reader</h1>
+
+    <div class="page-common-messages-notice">
+        For browser security reasons the AJAX demos don't work offline. You can
+        view the demos on the RGraph website here:
+        <a href="https://www.rgraph.net/demos/index.html" target="_blank">https://www.rgraph.net/demos/index.html</a>
+    </div>
+    
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        RGraph.CSV({url: '/sample.csv', callback: function (csv)
+        {
+            var data = [];
+
+            // The first column is the labels
+            var labels = csv.column(0);
+
+            // This is the number of rows in the CSV file
+            var numrows = csv.numrows;
+            
+            for (var i=0; i<numrows; i+=1) {
+                data.push(csv.row(i, 1));
+            }
+            
+            new RGraph.Rose({
+                id: 'cvs',
+                data: data,
+                options: {
+                    labelsAxes: 'n',
+                    margin: 15,
+                    colors: ['red', 'green', '#aaf', 'mauve', 'cyan','#fca', 'pink'],
+                    colorsAlpha: 0.5,
+                    axes: false,
+                    backgroundGridRadials: 0
+                }
+            }).draw();
+        }});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

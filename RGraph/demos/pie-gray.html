@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.pie.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A gray Pie chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="550" height="250" data-image-src="page-demos-pie-gray.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Here's the data, the labels and the tooltips that have been separated
+        // out from the configuration in order to aid clarity
+        data         = [41.2,18.2,17.2,14.2,5,4.2];
+        labels       = ['Symbian','Blackberry','Android','iOS','Windows','Others'];
+        labels_small = RGraph.arrayClone(labels);
+        labels_large = RGraph.arrayClone(labels);
+        tooltips     = [];
+        
+        // This bit of code loops through the labels and adds the relevant value
+        // to them. Normally a forEach() loop doesn't tend to get recommended
+        // because a function gets created for each iteration  (even though
+        // functions are cheap in JavaScript) so it suffers performance wise -
+        // but this isn't in a loop and there's not many data points so it's
+        // not too bad to use here.
+        labels.forEach(function (v, k, arr)
+        {
+            // Add the market share to the tooltip
+            tooltips[k] = '<b>{1}</b><br /><i>Market share: {2}%</i>'.format(
+                labels[k],
+                data[k]
+            );
+            
+            // Add the values from the data to the labels
+            labels_large[k] = labels[k] + ' ' + data[k] + '%';
+        });
+
+
+        // Create the Pie chart and give it the tooltips and the labels that
+        // were created above. The roundRobin() animation effect is used to
+        // display the chart.
+        new RGraph.Pie({
+            id: 'cvs',
+            data: data,
+            options: {
+                marginTop: 50,
+                
+                // Set the values that were created above as the tooltips
+                tooltips: tooltips,
+                
+                // Some default styles for the tooltips
+                tooltipsCss: {
+                    fontSize: '16pt',
+                    textAlign:'left',
+                    pointerEvents: 'none'
+                },
+
+                labels: labels_large,
+                labelsBold: true,
+                labelsColors: ['black'],
+                textFont: 'Lucida Grande, "Lucida Sans Unicode", Arial',
+                textSize: 10,
+                textColor: 'black',
+                shadow: false,
+                colors: ['#F0F0F0','#08306B','#D9D9D9','#BDBDBD','#969696','#D9D9D9'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                tooltipsEvent: 'mousemove',
+                highlightStyle: 'outline',
+                title: 'Smartphone share in Q2 2010',   
+                titleSize: 18,
+                responsive: [
+                    {maxWidth: null, width: 550, height: 250, options: {labelsList: true, labels: labels_large,textSize:10}},
+                    {maxWidth: 900, width: 350, height: 250, options: {labelsList: false, labels: labels_small,textSize:8}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

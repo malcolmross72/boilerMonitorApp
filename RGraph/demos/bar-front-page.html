@@ -1,0 +1,61 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.effects.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>The Bar chart from the front page of the website</h1>
+    
+    <p>
+        This is the Bar chart from the front page of the website (as of
+        September 2012).
+    </p>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="600" height="250">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [[45,60],[65,30],[40,80],[62,48]],
+            options: {
+                xaxisLabels: ['Luis', 'Kevin', 'John', 'Gregory'],
+                tooltips: '%{property:xaxisLabels[%{dataset}]}: $%{value}',
+                tooltipsCss: {
+                    fontWeight: 'bold',
+                    fontSize: '18pt',
+                    backgroundColor: 'black',
+                    color: 'white'
+                },
+                yaxisScaleMax: 100,
+                colorsStroke: 'white',
+                linewidth: 2,
+                shadow: false,
+                marginInnerGrouped: 5,
+                yaxisScaleUnitsPre: '$',
+                title: 'An example Bar chart',
+                titleSize: 14,
+                marginInner: 25,
+                colorsStroke: '#ccc',
+                colors: [
+                    'Gradient(white:rgb(255, 176, 176))',
+                    'Gradient(white:rgb(153, 208, 249))'
+                ],
+                backgroundGridHlinesCount: 5,
+                backgroundGridVlinesCount: 4
+            }
+        }).fadeIn({'duration': 250});
+    </script>
+    
+    <script>showSource()</script>
+
+</body>
+</html>

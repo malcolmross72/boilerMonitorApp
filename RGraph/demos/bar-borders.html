@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with vetical, black borders</h1>
+
+    <<div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="700" height="350">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // The data and a few common properties
+        data       = [4,8,6,5,3,5,2];
+        properties = {
+            marginInner: 20,
+            marginBottom: 50,
+            xaxis: false,
+            yaxis: false
+        };
+
+        // The black Bar chart "at the rear"
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                ...properties,
+                colors: ['black'],
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                xaxisLabels: RGraph.DAYS_SHORT,
+                textSize: 20,
+                xaxisLabelsOffsety: 5
+            }
+        }).grow();
+
+        // The red Bar chart
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                ...properties,
+                marginInner: 30,
+                backgroundGrid: false,
+                yaxisScale: false
+            }
+        }).grow();
+        
+
+        // A transparent Bar chart that's used just for tooltips
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                ...properties,
+                colors: ['transparent'],
+                backgroundGrid: false,
+                yaxisScale: false,
+                tooltips: 'Amount sold: %{value_formatted}',
+                tooltipsFormattedUnitsPost: 'k',
+                tooltipsCss: {
+                    fontSize: '20pt'
+                }
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

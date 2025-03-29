@@ -1,0 +1,53 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.line.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG Line chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 750px; height: 300px; background-color: black; box-shadow: 3px 3px 3px #ccc" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        new RGraph.SVG.Line({
+            id: 'chart-container',
+            data: [5,8,6,3,4,1,9,8,2,3,5,6,7,8,9,4,5,6,3,2,5,4,8,6,4,5,3,1,6,4,5],
+            options: {
+                backgroundGridVlinesCount: 11,
+                marginInner: 0,
+                textColor: 'white',
+                textFont: 'Verdana',
+                filled: true,
+                filledColors: ['rgba(25,51,74,0.75)'],
+                colors: ['#5AF'],
+                marginRight: 40,
+                marginBottom: 50,
+                marginTop: 20,
+                xaxis: false,
+                yaxis: false,
+                yaxisScaleUnitsPost: 'm',
+                yaxisScaleUnitsPre: '$',
+                tickmarksFill: 'black',
+                tickmarksLinewidth: 2,
+                linewidth: 4,
+                spline: true,
+                responsive: [
+                    {maxWidth: null,width:750,height:300,options: {xaxisLabels: ['Kev','John','Fred','July','Fred','Olga','Ben','Boris','Lenny','Pete','Lewis'],marginLeft: 65,textSize: 14,tickmarksStyle: 'circle',tickmarksSize: 5,linewidth: 3}},
+                    {maxWidth: 1000, width:400,height:200,options: {xaxisLabels: ['Kev','\nJohn','Fred','\nJuly','Fred','\nOlga','Ben','\nBoris','Lenny','\nPete','Lewis'],marginLeft: 50,textSize: 10,tickmarksStyle: '',tickmarksSize: 3,linewidth: 2}}
+                ]
+            }
+        }).trace();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

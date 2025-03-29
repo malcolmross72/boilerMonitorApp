@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A non-equi-angular stacked Rose</h1>
+    
+    <div id="rgraph-demo-html">
+        <div>
+            <div style="width: 450px; height: 400px" id="chart-container"></div>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        // Create and configure the Rose chart
+        new RGraph.SVG.Rose({
+            id: 'chart-container',
+            
+            // Note the data - an array of two elements. We have the data as
+            // the first element and the (relative) magnitude of the radius
+            // as the second. Here the data is another array of
+            // numbers (it can also be just a number) which means the Rose
+            // chart is a stacked variation.
+            data: [ [[4,8,2],14], [[3,6,8],19], [[1,6,9],6], [[4,5,3],7], [[2,1,7],9], [[7,2,5],6], [[8,4,3],23], [[4,7,9],7], [[3,2,3],9], [[5,7,3],4] ],
+
+            options: {
+                // Turn off the grid lines that emanate from center outwards
+                backgroundGridRadialsCount: 0,
+                colorsOpacity: 0.8,
+                colors: ['red', 'blue','#f6f'],
+                colorsStroke: 'rgba(0,0,0,0)',
+                linewidth: 1,
+                
+                // Set the Rose chart to be a non-equi-angular variant
+                variant: 'non-equi-angular',
+
+                amargin: 0.05,
+                labels: ['Alf','Bert','Craig','Doug','Edgar','Fred','Gary','Harry','Indigo','Jay'],
+                tooltips: '%{property:labels[%{dataset}]}: <b>$%{value}</b>',
+                tooltipsCss: {
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '3px solid black',
+                    fontSize: '20pt'
+                },
+                tooltipsPointer: false,
+                responsive: [
+                    {maxWidth: null, width: 450, height: 400,options:{labelsSize:16}},
+                    {maxWidth: 900,  width: 350, height: 300,options:{labelsSize:12}}
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

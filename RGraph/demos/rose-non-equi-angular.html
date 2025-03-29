@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>    
+    <h1>A non-equi-angular Rose chart</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="400" height="400">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [[4,5],[9,1],[2,6],[4,2],[4,3]],
+            options: {
+                margin: 5,
+                variant: 'non-equi-angular'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

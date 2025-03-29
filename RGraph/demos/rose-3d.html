@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.rose.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A 3D Rose chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div id="canvas-container">
+            <canvas id="cvs" width="600" height="300" data-image-src="page-demos-rose-3d.png">[No canvas support]</canvas>
+        </div>
+    </div>
+
+    <script id="rgraph-demo-source-code">
+        labels_small = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        labels_large = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+        // This is a stacked 3D Rose chart. The data is the same as a regular stacked
+        // Rose chart and looks just like the data that you'd pass to a grouped or
+        // stacked Bar chart.
+
+        new RGraph.Rose({
+            id: 'cvs',
+            data: [[4,8,7],[6,5,8],[4,5,3],[4,9,8],[3,8,6],[4,6,3],[1,5,8]],
+
+            options: {
+                // A custom property used in the tooltips
+                myNames: ['Wilf','Harry','Gerrard'],
+
+                colorsStroke: 'rgba(0,0,0,0)',
+                margin: 7,
+                variant: '3d',
+                variantThreedDepth: 10,
+                labelsAxes: 'n',
+                colors: ['gradient(#faa:red)','Gradient(#afa:green)','gradient(#aaf:#ddf)'],
+                
+                // Tooltips, given as a template string
+                tooltips: '%{property:myNames[%{index}]} on %{property:labels[%{dataset}]}: <b>%{value}%</b>',
+                
+                // Some CSS styles that are added to the tooltips
+                tooltipsCss: {
+                    fontSize:'20pt'
+                },
+
+                labels: labels_large,
+                responsive: [
+                    {maxWidth: null, width: 600, height: 300,options:{labels:labels_large,variant:'3d'}},
+                    {maxWidth: 800, width: 400, height: 350,options:{labels:labels_small,variant:'none'}}
+                ]
+            }
+        }).grow({frames: 15});
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

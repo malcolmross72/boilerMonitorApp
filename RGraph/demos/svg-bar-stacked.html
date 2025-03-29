@@ -1,0 +1,62 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG 100% Bar chart</h1>
+    
+    <div id="rgraph-demo-html">
+        <div style="width: 750px; height: 300px" id="chart-container"></div>
+    </div>
+        
+    <script>
+        // Define the data
+        data  = [[4,9,9],[8,6,4],[1,2,5],[5,6,2],[4,8,8],[3,2,5],[4,6,5]];
+
+        // Calculate the percentages that the data represents
+        data.forEach(function (v, k, arr)
+        {
+            var total = RGraph.SVG.arraySum(v);
+
+            for (var i=0; i<v.length; ++i) {
+                v[i] = (v[i] / total) * 100;
+            }
+        });
+
+
+
+
+        new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: data,
+            options: {
+                marginLeft: 50,
+                colors: ['#c66','#6c6','#66c'],
+                yaxisScaleUnitsPost: '%',
+                xaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+                names: ['Bob', 'Jerry', 'Ben'],
+                tooltips: '%{property:names[%{index}]}',
+                grouping: 'stacked',
+                marginInner: 20,
+                linewidth:3,
+                yaxisScaleMax: 100,
+                title: 'A 100% Bar chart',
+                shadow: true,
+                xaxis: false,
+                yaxis: false,
+                backgroundGridVlines: false,
+                backgroundGridBorder: false
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

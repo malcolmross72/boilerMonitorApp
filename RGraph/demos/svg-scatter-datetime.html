@@ -1,0 +1,71 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.scatter.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A time based SVG Scatter chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 700px; height: 250px" id="chart-container"></div>
+    </div>        
+
+    <script>
+        above = false;
+
+        data = [
+            {x:'23:59 15-01-2012',    y:5, tooltip: 'Yunka',   above: above},
+            {x:'2012 15th February',  y:6, tooltip: 'Ally',    above: above},
+            {x:'Mar 15 2012',         y:6, tooltip: 'Fred!',   above: above},
+            {x:'2012/04/15',          y:6, tooltip: 'Tom!',    above: above},
+            {x:'2012-05.15',          y:5, tooltip: 'Rachel!', above: above},
+            {x:'2012 June 15',        y:4, tooltip: 'Jone!',   above: above},
+            {x:'July 2012 15th',      y:5, tooltip: 'Luis!',   above: above},
+            {x:'aug 15th 2012',       y:6, tooltip: 'Peter!',  above: above},
+            {x:'15th september 2012', y:7, tooltip: 'Harry!',  above: above},
+            {x:'15 Oct 2012',         y:6, tooltip: 'Bert!',   above: above},
+            {x:'2012.11.15',          y:4, tooltip: 'Bob!',    above: above},
+            {x:'2012.12-15 00:00:00', y:5, tooltip: 'Bill!',   above: above}
+        ];
+
+        scatter = new RGraph.SVG.Scatter({
+            id: 'chart-container',
+            data: data,
+            options: {
+                tickmarksStyle: 'plus',
+                tickmarksStyle: 'cross',
+                tickmarksStyle: 'square',
+                tickmarksStyle: 'rect',
+                tickmarksStyle: 'dot',
+                tickmarksStyle: 'circle',
+                tickmarksStyle: 'cross',
+                backgroundGridVlines: false,
+                backgroundGridBorder: false,
+                yaxis: false,
+                tickmarksSize: 15,
+                colors: ['red', 'gray'],
+                title: 'A Scatter chart using datetime values',
+                titleItalic: true,
+                titleBold: true,
+                //tooltipsEvent: 'click',
+                xaxisScaleMin: '2012/01/06 12:14:12',
+                xaxisScaleMax: '31st dec 2012',
+                xaxisLabels: [
+                    'Jan','Feb','Mar','Apr',
+                    'May','Jun','Jul','Aug',
+                    'Sep','Oct','Nov','Dec'
+                ]
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

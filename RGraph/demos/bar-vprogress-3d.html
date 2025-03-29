@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.common.dynamic.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart/Vertical Progress bar with a 3D effect</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="125" height="300">[No canvas support]</canvas>
+    </div>
+
+    <script>
+        new RGraph.Bar({
+            id: 'cvs',
+            data: [100],
+            options: {
+                variant: '3d',
+                colorsStroke: 'rgba(0,0,0,0)',
+                colors: ['Gradient(red:#f99:#0f0:#0f0)'],
+                marginBottom: 80,
+                marginLeft: 50,
+                marginRight: 35,
+                yaxisScaleUnitsPost: '%',
+                marginInner: 7,
+                xaxisLabels: ['Completion'],
+                shadowColor:'#ccc',
+                yaxisScaleMax: 100,
+                shadowOffsetx: 3,
+                backgroundGridColor: 'rgba(0,0,0,0)',
+                adjustable: true,
+                xaxis: false,
+                yaxis: false
+            }
+        }).grow();
+    </script>
+
+    <script>showSource()</script> 
+
+</body>
+</html>

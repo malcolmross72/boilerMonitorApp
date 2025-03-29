@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.common.core.js" ></script>
+    <script src="../libraries/RGraph.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>A Bar chart with long labels</h1>
+
+    <div id="rgraph-demo-html">
+        <canvas id="cvs" width="500" height="350" style="border: 1px solid #ddd">[No canvas support]</canvas>
+    </div>
+    
+    <script>
+        data = [[4,5,3],[4,8,6],[4,2,4],[4,2,3],[1,2,3],[8,8,4],[4,8,6]];
+
+        new RGraph.Bar({
+            id: 'cvs',
+            data: data,
+            options: {
+                title: 'A Bar chart with long labels',
+                titleSize: 16,
+                titleBold: true,
+                xaxisLabels: [
+                    'Mondays sales statistics',
+                    'Tuesdays sales statistics',
+                    'Wednesdays sales statistics',
+                    'Thursdays sales statistics',
+                    'Fridays sales statistics',
+                    'Saturdays sales statistics',
+                    'Sundays sales statistics'
+                ],
+                xaxisLabelsOffsety: 8,
+                colors: ['red','yellow', 'pink'],
+                grouping: 'stacked',
+                marginLeft: 100,
+                marginTop: 35,
+                marginBottom: 175,
+                marginRight: 5,
+                xaxisLabelsAngle: 45,
+                colorsStroke: 'rgba(0,0,0,0)'
+            }
+        }).draw();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>

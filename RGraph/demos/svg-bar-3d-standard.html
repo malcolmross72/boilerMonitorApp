@@ -1,0 +1,55 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+    <script src="../libraries/RGraph.svg.common.core.js" ></script>
+    <script src="../libraries/RGraph.svg.common.tooltips.js" ></script>
+    <script src="../libraries/RGraph.svg.bar.js" ></script>
+    <script src="demos.js" ></script>
+    <meta name="robots" content="noindex, nofollow" />
+</head>
+<body>
+    <h1>An SVG 3D Bar chart</h1>
+
+    <div id="rgraph-demo-html">
+        <div style="width: 550px; height: 300px" id="chart-container"></div>
+    </div>
+
+    <script>
+        bar = new RGraph.SVG.Bar({
+            id: 'chart-container',
+            data: [4,8,6,1,2,3,4],
+            options: {
+                variant: '3d',
+                colorsStroke: 'rgba(0,0,0,)',
+                colors: ['Gradient(#aaf:#bbf)'],
+                marginTop: 30,
+                marginLeft: 45,
+                marginBottom: 80,
+                xaxisLabels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                xaxisColor: '#ddd',
+                xaxisTickmarks: false,
+                yaxisColor: '#ddd',
+                yaxisScaleUnitsPost: 'km',
+                yaxisTickmarks: false,
+                tooltips: 'Results: %{value_formatted}',
+                tooltipsFormattedUnitsPost: ',000m',
+                tooltipsCss: {
+                    fontSize:        '105%',
+                    fontFamily:      'Arial, sans-serif',
+                    fontWeight:      'bold',
+                    paddingTop:      '10px',
+                    textAlign:       'center'
+                },
+                shadow: false,
+                backgroundGridColor: '#eee',
+                title: 'Distance run in the past week',
+                marginInner: 15
+            }
+        }).wave();
+    </script>
+
+    <script>showSource()</script>
+
+</body>
+</html>
